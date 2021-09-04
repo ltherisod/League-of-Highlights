@@ -1,11 +1,16 @@
-
+import Home from "./pages/Home";
+import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-       
-    </div>
-  )
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default App;
