@@ -59,7 +59,7 @@ const Header = () => {
               <NavLink className="text-white fw-bold mx-1">News</NavLink>
             </NavItem>
             {/* <input placeholder='Search' type='text' className=' px-2 rounded-pil'/> */}
-            <Input placeholder="Search" bsSize="lg" className="mx-1" />
+            <Input placeholder="Search" bsSize="lg" className="mx-1 rounded-pill" />
           </Nav>
         </Collapse>
       </Navbar>
