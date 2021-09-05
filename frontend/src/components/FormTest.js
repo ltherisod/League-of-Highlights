@@ -108,7 +108,7 @@ const FormTest = () => {
             name="password"
             placeholder="password"
           />
-          <button type="button" onClick={submitHandler}>
+          <button type="button" onClick={() => setStep(2)}>
             Continue
           </button>
         </div>
