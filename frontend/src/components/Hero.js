@@ -1,35 +1,23 @@
-import { Jumbotron, Button } from 'reactstrap';
-import ReactPlayer from 'react-player/youtube'
+import { Jumbotron, Button } from 'reactstrap'
+import "./Hero.css"
 
 const Hero = () => {
   return (
     <>
-      <div>
-        {/* <video id="video" styles={{ backgroundImage:'url(https://www.youtube.com/watch?v=BTkl7budS2M)'}} autoPlay muted loop></video> */}
-
-        {/* <video loop autoPlay muted>
-          <source src="https://www.youtube.com/watch?v=BTkl7budS2M" type="video/mp4" />
-          </video>  */}
-       <ReactPlayer
-              className="position-relative"
-              url="https://www.youtube.com/watch?v=BTkl7budS2M"
-              loop={true}
-              playing={true}
-              width='100%'
-              sandbox="allow-scripts"
-            />
- <Jumbotron>
-        <h1 className="display-3">Hello, world!</h1>
-        <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr className="my-2" />
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p className="lead">
-          <Button color="primary">Learn More</Button>
-        </p>
-      </Jumbotron>
+      
+        <video loop autoPlay muted className="video">
+          <source src="/assets/video.mp4" type="video/mp4" />
+          </video> 
+          <div className="contentVideo">
+          <Jumbotron className='d-flex justify-content-center align-items-center flex-column'>
+          <h1 className="display-3 text-warning fw-bold my-3">League Of Highlights</h1>
+          <p className="lead text-white">
+            <Button color="primary">Community</Button>
+          </p>
+        </Jumbotron>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Hero;
