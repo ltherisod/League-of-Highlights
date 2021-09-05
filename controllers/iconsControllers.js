@@ -23,6 +23,7 @@ const iconsControllers = {
   },
   getIconByKey: async (req, res) => {
     try {
+      console.log(req.params.key)
       const icon = await Icon.findOne({ riotKey: req.params.key })
       res.json({ success: true, response: icon, error: null })
     } catch (e) {
