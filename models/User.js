@@ -6,10 +6,11 @@ const userSchema = new mongoose.Schema({
   password: String,
   username: { type: String },
   guest: { type: Boolean, required: true, default: true },
+  admin: { type: Boolean, default: false },
   topChampions: [{ type: mongoose.Types.ObjectId, ref: "champion" }],
-  rank: { type: String },
+  rank: { type: mongoose.Types.ObjectId, ref: "rank" },
   division: String,
-  icon: { type: String },
+  icon: { type: String, default: Math.round(Math.random() * 15) },
   videos: [{ type: mongoose.Types.ObjectId, ref: "video" }],
   reports: [{ type: mongoose.Types.ObjectId, ref: "report" }],
 })

@@ -1,22 +1,21 @@
-import React from 'react'
-import Header from '../components/Header'
-import Hero from '../components/Hero'
+import React from "react"
+import Header from "../components/Header"
+import Hero from "../components/Hero"
 import Footer from "../components/Footer"
 import News from "../components/News"
-import FormTest from '../components/FormTest'
+import Carousel from "../components/Carousel"
 import "./Home.css"
 
-const Home=()=>{
-return (
+const Home = () => {
+  return (
     <>
-    <Header/>
-    <Hero/>
-    <News/>
-    <FormTest/>
-    <Footer/>
+      <Header />
+      <Hero />
+      <Carousel />
+      <News />
+      <Footer />
     </>
-)
+  )
 }
 
-export default Home 
-
+export default Home
