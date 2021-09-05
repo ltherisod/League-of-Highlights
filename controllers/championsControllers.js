@@ -13,7 +13,7 @@ const rolesIds = {
 const championsControllers = {
   getChampions: async (req, res) => {
     try {
-      const champions = await Champion.find().populate("tags")
+      const champions = await Champion.find().populate("tags").sort("name")
       res.json({ success: true, response: champions, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
