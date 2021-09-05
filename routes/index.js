@@ -2,7 +2,8 @@ const express = require("express")
 const router = express.Router()
 const championsControllers = require("../controllers/championsControllers")
 const iconsControllers = require("../controllers/iconsControllers")
-
+const usersControllers = require("../controllers/usersControllers")
+const validator = require("../controllers/validator")
 router
   .route("/champions", championsControllers)
   .get(championsControllers.getChampions)
@@ -26,6 +27,13 @@ router
   .get(iconsControllers.getIcons)
   .post(iconsControllers.addIcon)
 //   .delete(iconsControllers.deleteIcons)
+router
+  .route("/signup")
+    .post(validator, usersControllers.singUp)
+
+router
+  .route("/login")
+    .post(usersControllers.logIn)
 
 router.route("/icon/:key").get(iconsControllers.getIconByKey)
 
