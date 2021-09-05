@@ -62,13 +62,13 @@ const FormTest = () => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value })
   }
   const submitHandler = async () => {
-    if (step === 1) {
-      res = axios
-      if (res.data.success) {
-        setStep(2)
-      } else {
-      }
-    }
+    // if (step === 1) {
+    //   res = axios
+    //   if (res.data.success) {
+    //     setStep(2)
+    //   } else {
+    //   }
+    // }
     if (step === 2) {
       const res = await axios.get(
         `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${newUser.username}?api_key=RGAPI-d0732bcc-ebfc-4b19-925f-9263198c2b0d`
