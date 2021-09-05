@@ -1,0 +1,9 @@
+div.userForm, form, div.riot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.userForm button, div.riot button {
+    margin: .5rem;
+}

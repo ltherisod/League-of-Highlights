@@ -3,8 +3,21 @@ import axios from "axios"
 const API_KEY = "RGAPI-2ba7d276-9e93-4067-ba32-9dbe7b8b5072"
 
 const userActions = {
-  signUp: () => {
-    return async (dispatch, getState) => {}
+  signUp: (userData) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.post("http://localhost:4000/signup", userData)
+        console.log(res.data)
+        if (res.data.success) {
+          dispatch({ type: "", payload: res.data.response }) // Agregar type
+          return { success: true, error: null }
+        } else {
+          throw new Error(res.data.error)
+        }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
   },
   refresh: (username, userMongoId) => {
     // El userMongoId pensamos sacarlo de la URL y linkearlo de alguna forma al boton que despacha esta acción.
@@ -41,7 +54,7 @@ const userActions = {
         // dispatch()
         // return
       } catch (e) {
-        return { error: e.message }
+        return { success: false, error: e.message }
       }
     }
   },
