@@ -1,5 +1,7 @@
 import "./SignUp.css"
 import Header from "../components/Header"
+import { connect } from 'react-redux'
+import userActions from '../redux/actions/userActions'
 
 const SignUp = () => {
     return (
@@ -40,4 +42,7 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+const mapDispatchToprops = {
+    signUp :userActions.signUp
+}
+export default connect(null, mapDispatchToprops)(SignUp)
