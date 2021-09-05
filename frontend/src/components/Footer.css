@@ -1,0 +1,36 @@
+footer {
+    background-color: rgb(29, 29, 112);
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-height: 80vh;
+    padding-bottom: 2rem;
+}
+
+div.logo {
+    background-color: black;
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem 2rem;
+}
+
+div.socialMedia {
+    display: flex;
+    margin: 1rem 2rem;
+}
+
+div.socialMedia div {
+    margin: 0rem 1rem;
+}
+
+div.socialMediaIcon a {
+    color: white;
+}
+
+@media screen and (max-width:769px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}
