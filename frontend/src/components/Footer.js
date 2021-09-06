@@ -25,8 +25,20 @@ const Footer = () => {
                         <img className="socialMediaIcon" src="./assets/reddit.png"/>
                     </NavLink> 
                 </div>
+                <div className="esrb">
+                    <img src="./assets/esrb-teen.png"/>
+                    <div>
+                        <p>Blood</p>
+                        <p>Fantasy violence</p>
+                        <p>Moderate suggestive themes</p>
+                        <p>se of alcohol and tobacco</p>
+                        <p>Online interactions not classified by the ESRB</p>
+                    </div>
+                </div>
+                <div className="copy">
+                    <p> &copy; League of Highlights. All rights reserved. </p>
+                </div>
             </div>
-                <p> &copy; League of Highlights. All rights reserved. </p>
         </footer>
     )
 

@@ -25,29 +25,48 @@ div.logo {
 
 div.socialMedia {
     display: flex;
-    margin: 1rem 2rem;
+    /* margin: 1rem 2rem; */
     display: flex;
-    flex-direction: column;
     justify-content: space-around;
-    height: 100%;
-    padding-right: 2%;
-    padding-top: 2%;
+    width: 30vw;
 }
 
 img.socialMediaIcon {
-    width: 40px;
+    width: 35px;
 }
 
 .footerBox {
     width: 100%;
     height: 60%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
 .logoFooter {
     width: 100px;
+}
+
+.esrb {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 40vw;
+}
+
+.esrb img{
+    width: 90px;
+}
+
+.esrb div{
+    /* width: 65px; */
+    line-height: 0.5em;
+    padding-top: 5%;
+}
+
+.copy {
+    padding-top: 1%;
 }
 
 @media screen and (max-width:769px) {
