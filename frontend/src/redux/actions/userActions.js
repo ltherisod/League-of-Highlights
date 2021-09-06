@@ -13,7 +13,7 @@ const userActions = {
         if (res.data.success) {
           localStorage.setItem("token", res.data.response.token)
           dispatch({ type: "SIGN_UP", payload: res.data.response }) // Agregar type
-          return { success: true, response: res.data.response, error: null }
+          return { success: true, response: res.data.response, error: null } // <-- se puede hacer un if en una linea y sacar else.
         } else {
           return { success: false, response: null, error: res.data.error }
         }
@@ -22,6 +22,22 @@ const userActions = {
       }
     }
   },
+  logIn: (userData) =>{
+    console.log(userData)
+    return async (dispatch, getState) => {
+      try{
+        const res = await axios.post("http://localhost:4000/api/login", userData)
+        if (!res.data.success) return { success: false, response: null, error: res.data.error }
+        localStorage.setItem("token", res.data.response.token)
+        dispatch({ type: "SIGN_UP", payload: res.data.response }) // "Agregar type" <- lo puse porque lo pusiste vos xd
+        return { success: true, response: res.data.response, error: null }
+      }catch(e){
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  
+
   refresh: (username, userMongoId) => {
     // El userMongoId pensamos sacarlo de la URL y linkearlo de alguna forma al boton que despacha esta acción.
     // validar acá.
@@ -61,6 +77,8 @@ const userActions = {
       }
     }
   },
+
+
 }
 
 export default userActions

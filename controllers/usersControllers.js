@@ -57,7 +57,7 @@ const usersControllers = {
       )
       res.json({
         success: true,
-        reponse: {
+        response: {
           name: user.name,
           icon: user.icon,
           email: user.email,
