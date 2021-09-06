@@ -54,7 +54,7 @@ const SignUp = (props) => {
     <>
       <Header />
       {step === 1 && (
-        <div className="userForm">
+        <div className="userForm" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
           <h3>Sign Up</h3>
           <form>
             {/* <p>Error</p> */}
