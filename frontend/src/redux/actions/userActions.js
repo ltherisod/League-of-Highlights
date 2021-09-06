@@ -28,8 +28,7 @@ const userActions = {
           "http://localhost:4000/api/login",
           userData
         )
-        if (!res.data.success)
-          return { success: false, response: null, error: res.data.error }
+        if (!res.data.success) return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
         dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) // "Agregar type" <- lo puse porque lo pusiste vos xd
         return { success: true, response: res.data.response, error: null }
