@@ -48,13 +48,19 @@ const SignUp = (props) => {
       userId,
       !hasRiotAccount
     )
-    console.log(res.response)
+    console.log(res) // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
   }
   return (
     <>
       <Header />
       {step === 1 && (
-        <div className="userForm" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
+        <div
+          className="userForm"
+          style={{
+            backgroundImage:
+              "url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')",
+          }}
+        >
           <h3>Sign Up</h3>
           <form>
             {/* <p>Error</p> */}

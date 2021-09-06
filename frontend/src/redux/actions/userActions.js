@@ -57,6 +57,7 @@ const userActions = {
         const accountData = await axios.get(
           `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?api_key=${API_KEY}`
         )
+        console.log(accountData)
         const { id, profileIconId } = accountData.data
         const rankData = await axios.get(
           `https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${API_KEY}`
@@ -64,11 +65,13 @@ const userActions = {
         const champs = await axios.get(
           `https://la2.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${API_KEY}`
         )
-        const soloQ =
-          rankData.data[0].queueType === "RANKED_SOLO_5x5"
+        let soloQ =
+          rankData.data[0]?.queueType === "RANKED_SOLO_5x5"
             ? { ...rankData.data[0] }
             : { ...rankData.data[1] }
-
+        if (!Object.keys(soloQ).length) {
+          soloQ = { tier: "UNRANKED", rank: "" }
+        }
         const refreshedData = {
           username,
           division: soloQ.rank,
@@ -81,11 +84,24 @@ const userActions = {
           `${HOST}/api/user/${userMongoId}`,
           refreshedData
         )
+        console.log("Me llegó la respuesta")
         if (!res.data.success) throw new Error(res.data.error)
         // dispatch()
+        console.log("Voy a responder al componente sin errores.")
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, error: e.message }
+      }
+    }
+  },
+  getProfile: (id) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.get(`${HOST}/api/user/${id}`)
+        if (!res.data.success) throw new Error(res.data.error)
+        return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
       }
     }
   },
