@@ -41,8 +41,8 @@ const Header = () => {
               <i className="fas fa-user-alt text-white fs-2"></i>
             </DropdownToggle>
             <DropdownMenu className="position-absolute top-0 end-0 mt-5">
-              <Link to="/signin"> <DropdownItem>Sign in</DropdownItem> </Link>
-              <DropdownItem>Sign up</DropdownItem>
+              <Link to="/signup"> <DropdownItem>Sign up</DropdownItem> </Link>
+              <Link to="signin"> <DropdownItem>Sign in</DropdownItem></Link>
             </DropdownMenu>
           </div>
         </UncontrolledDropdown>

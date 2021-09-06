@@ -18,14 +18,13 @@ const usersControllers = {
         password: hashedPass,
       })
       const user = await newUser.save()
-      console.log(user)
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         process.env.SECRETKEY
       )
       res.json({
         success: true,
-        reponse: {
+        response: {
           name: user.name,
           email: user.email,
           _id: user._id,
@@ -58,7 +57,7 @@ const usersControllers = {
       )
       res.json({
         success: true,
-        reponse: {
+        response: {
           name: user.name,
           icon: user.icon,
           email: user.email,
