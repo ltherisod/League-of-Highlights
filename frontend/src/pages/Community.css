@@ -28,4 +28,6 @@
 
 section{
     box-sizing: border-box;
+   text-align: center;
+   padding:1rem
 }

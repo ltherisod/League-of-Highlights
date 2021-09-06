@@ -9,7 +9,7 @@ const Community = () => {
       <div className="imageAndText">
         <h1>Community</h1>
       </div>
-      <h2>cosplay and fan art</h2>
+      <h2 className='text-center'>COSPLAY AND FAN ART</h2>
       <section>
       <p>
         The community submitted over 4,000 entries to the Season 2021 Fan Art
@@ -120,6 +120,14 @@ const Community = () => {
         <div
           style={{
             backgroundImage: `url("https://i.postimg.cc/65BpfYrj/2021-2-15-John-Crazzy.jpg")`,
+          }}
+          className="photo"
+        >
+          ''
+        </div>
+        <div
+          style={{
+            backgroundImage: `url("https://i.postimg.cc/hGLKwT42/OIP.jpg")`,
           }}
           className="photo"
         >
