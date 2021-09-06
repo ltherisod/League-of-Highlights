@@ -5,11 +5,13 @@ import SignIn from "./pages/SignIn"
 import Community from "./pages/Community"
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
 import Profile from "./pages/Profile"
-import { useSelector } from "react-redux"
-
-function App() {
-  const user = useSelector((state) => state.user)
-  console.log(user.user.token)
+import { connect } from "react-redux"
+import userActions from "./redux/actions/userActions"
+function App(props) {
+  const token = localStorage.getItem("token")
+  if (token) {
+    props.loginLS(token)
+  }
   return (
     <BrowserRouter>
       <Switch>
@@ -24,4 +26,8 @@ function App() {
   )
 }
 
-export default App
+const mapDispatchToProps = {
+  loginLS: userActions.loginLS,
+}
+
+export default connect(null, mapDispatchToProps)(App)

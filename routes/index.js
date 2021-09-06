@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const passport = require("passport")
 const championsControllers = require("../controllers/championsControllers")
 const iconsControllers = require("../controllers/iconsControllers")
 const usersControllers = require("../controllers/usersControllers")
@@ -33,6 +34,13 @@ router
 router.route("/signup").post(validator, usersControllers.signUp)
 
 router.route("/login").post(usersControllers.logIn)
+
+router
+  .route("/verifyToken")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.verifyToken
+  )
 
 router.route("/icon/:key").get(iconsControllers.getIconByKey)
 

@@ -53,7 +53,7 @@ const usersControllers = {
         { _id: user._id, email: user.email },
         process.env.SECRETKEY
       )
-      res.json({
+      return res.json({
         success: true,
         response: {
           name: user.name,
@@ -75,7 +75,7 @@ const usersControllers = {
   },
   updateUser: async (req, res) => {
     try {
-      const { username, division, rankName, iconKey, topChampionsKeys } =
+      const { username, division, rankName, iconKey, topChampionsKeys, guest } =
         req.body
       const id = req.params.id
       const icon = await Icon.findOne({ riotKey: iconKey })
@@ -91,6 +91,7 @@ const usersControllers = {
           rank,
           icon: icon.image,
           topChampions: topChampions.map((champion) => champion._id),
+          guest,
         },
         { new: true }
       )
@@ -100,6 +101,44 @@ const usersControllers = {
         })
         .populate("rank")
       res.json({ success: true, response: user, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  verifyToken: async (req, res) => {
+    try {
+      const id = req.user._id
+      const user = await User.findOne({ _id: id })
+        .populate({
+          path: "topChampions",
+          populate: { path: "tags" },
+        })
+        .populate("rank")
+      const { icon, email, guest, _id, name } = user
+      const token = jwt.sign({ _id, email }, process.env.SECRETKEY)
+      if (!user.guest) {
+        const { topChampions, rank, division, username } = user
+        return res.json({
+          success: true,
+          response: {
+            icon,
+            email,
+            guest,
+            _id,
+            name,
+            topChampions,
+            rank,
+            division,
+            username,
+          },
+          error: null,
+        })
+      }
+      return res.json({
+        success: true,
+        response: { icon, guest, _id, email, token, name },
+        error: null,
+      })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }

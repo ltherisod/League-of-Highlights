@@ -28,7 +28,6 @@ const SignUp = (props) => {
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {
-      console.log("Hay un campo vacío.")
       return false
     }
     const res = await props.signUp(userData)
@@ -42,7 +41,11 @@ const SignUp = (props) => {
 
   const refreshHandler = async () => {
     if (!usernameRef.current.value) return false // Completa los campos flojo de mierda.
-    const res = await props.refresh(usernameRef.current.value, userId)
+    const res = await props.refresh(
+      usernameRef.current.value,
+      userId,
+      !hasRiotAccount
+    )
     console.log(res.response)
   }
   return (

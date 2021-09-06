@@ -38,12 +38,22 @@ const userActions = {
       }
     }
   },
-  loginLS: () => {
+  loginLS: (token) => {
     return async (dispatch, getState) => {
-      const token = getState().user.user.token
+      try {
+        const res = await axios.get("http://localhost:4000/api/verifyToken", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        console.log(res.data)
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
     }
   },
-  refresh: (username, userMongoId) => {
+  refresh: (username, userMongoId, isGuest) => {
     // El userMongoId pensamos sacarlo de la URL y linkearlo de alguna forma al boton que despacha esta acción.
     // validar acá.
     return async (dispatch, getState) => {
@@ -69,6 +79,7 @@ const userActions = {
           rankName: soloQ.tier,
           iconKey: profileIconId,
           topChampionsKeys: champs.data.slice(0, 3).map((c) => c.championId),
+          guest: isGuest,
         }
         const res = await axios.put(
           `http://localhost:4000/api/user/${userMongoId}`,
