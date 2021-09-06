@@ -6,19 +6,38 @@ const userActions = {
   signUp: (userData) => {
     return async (dispatch, getState) => {
       try {
-        const res = await axios.post("http://localhost:4000/signup", userData)
-        console.log(res.data)
+        const res = await axios.post(
+          "http://localhost:4000/api/signup",
+          userData
+        )
         if (res.data.success) {
-          dispatch({ type: "", payload: res.data.response }) // Agregar type
-          return { success: true, error: null }
+          localStorage.setItem("token", res.data.response.token)
+          dispatch({ type: "SIGN_UP", payload: res.data.response }) // Agregar type
+          return { success: true, response: res.data.response, error: null } // <-- se puede hacer un if en una linea y sacar else.
         } else {
-          throw new Error(res.data.error)
+          return { success: false, response: null, error: res.data.error }
         }
       } catch (e) {
-        return { success: false, error: e.message }
+        return { success: false, response: null, error: e.message }
       }
     }
   },
+  logIn: (userData) =>{
+    console.log(userData)
+    return async (dispatch, getState) => {
+      try{
+        const res = await axios.post("http://localhost:4000/api/login", userData)
+        if (!res.data.success) return { success: false, response: null, error: res.data.error }
+        localStorage.setItem("token", res.data.response.token)
+        dispatch({ type: "SIGN_UP", payload: res.data.response }) // "Agregar type" <- lo puse porque lo pusiste vos xd
+        return { success: true, response: res.data.response, error: null }
+      }catch(e){
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  
+
   refresh: (username, userMongoId) => {
     // El userMongoId pensamos sacarlo de la URL y linkearlo de alguna forma al boton que despacha esta acción.
     // validar acá.
@@ -32,7 +51,7 @@ const userActions = {
           `https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${API_KEY}`
         )
         const champs = await axios.get(
-          `https://la2.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${userId}?api_key=${API_KEY}`
+          `https://la2.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${API_KEY}`
         )
         const soloQ =
           rankData.data[0].queueType === "RANKED_SOLO_5x5"
@@ -46,18 +65,20 @@ const userActions = {
           iconKey: profileIconId,
           topChampionsKeys: champs.data.slice(0, 3).map((c) => c.championId),
         }
-        const res = axios.put(
+        const res = await axios.put(
           `http://localhost:4000/api/user/${userMongoId}`,
           refreshedData
         )
         if (!res.data.success) throw new Error(res.data.error)
         // dispatch()
-        // return
+        return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, error: e.message }
       }
     }
   },
+
+
 }
 
 export default userActions
