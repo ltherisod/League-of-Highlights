@@ -9,18 +9,23 @@ footer {
 }
 
 .divFooter {
-    height: 30vh;
+    height: 86vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 div.logo {
-    background-color: black;
-    width: 5rem;
-    height: 5rem;
+    width: 25rem;
+    height: 13rem;
     margin: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 div.socialMedia {
@@ -28,16 +33,21 @@ div.socialMedia {
     /* margin: 1rem 2rem; */
     display: flex;
     justify-content: space-around;
-    width: 30vw;
+    width: 34vw;
 }
 
 img.socialMediaIcon {
     width: 35px;
 }
 
+a.socialMediaHover:hover {
+    opacity: .3;
+    transition: opacity .2s linear;
+}
+
 .footerBox {
     width: 100%;
-    height: 60%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,14 +55,14 @@ img.socialMediaIcon {
 }
 
 .logoFooter {
-    width: 100px;
+    width: 250px;
 }
 
 .esrb {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 40vw;
+    width: 32vw;
 }
 
 .esrb img{
@@ -67,6 +77,7 @@ img.socialMediaIcon {
 
 .copy {
     padding-top: 1%;
+    opacity: .3;
 }
 
 @media screen and (max-width:769px) {

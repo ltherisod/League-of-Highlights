@@ -22,7 +22,6 @@
     -webkit-align-items: center;
     align-items: center;
     justify-content: center;
-    align-items: center;
   }
   
   .swiper-slide img {
@@ -32,9 +31,18 @@
     object-fit: cover;
   }
 
+  .mainCarousel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 6%; */
+  }
+
   .carouselContainer {
-    height: 80vw;
-    height: 80vh;
+    height: 90vh;
+    width: 70vw;
+    /* background: coral; */
     /* temporal para trabajar con las slides */
   }
 
@@ -43,12 +51,16 @@
   }
 
   .carouselBox {
-    padding-top: 8%;
+    /* padding-top: 8%; */
     width: 80%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     /* display: flex; */
   }
 
   .carouselTitle {
+    margin-top: 7%;
     display: flex;
     flex-direction: column;
     justify-content: center;
