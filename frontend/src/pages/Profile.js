@@ -1,9 +1,10 @@
 import "./Profile.css"
+import Header from '../components/Header'
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <>
-            {/* nav */}
+            <Header/>
             <main>
                 <div>
                     <div className="user">
