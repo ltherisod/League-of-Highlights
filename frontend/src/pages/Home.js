@@ -9,11 +9,11 @@ import "./Home.css"
 const Home = () => {
   return (
     <>
-    <Header/>
-    <Hero/>
-    <Carousel/>
-    <News/>
-    <Footer/>
+      <Header />
+      <Hero />
+      <Carousel />
+      <News />
+      <Footer />
     </>
   )
 }

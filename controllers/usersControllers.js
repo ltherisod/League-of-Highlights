@@ -78,6 +78,7 @@ const usersControllers = {
       const { username, division, rankName, iconKey, topChampionsKeys, guest } =
         req.body
       const id = req.params.id
+      console.log(typeof topChampionsKeys[0])
       const icon = await Icon.findOne({ riotKey: iconKey })
       const rank = await Rank.findOne({ name: rankName })
       const topChampions = await Champion.find()

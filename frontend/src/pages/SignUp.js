@@ -4,8 +4,10 @@ import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
 import { useRef, useState } from "react"
 import { ref } from "joi"
+import championsActions from "../redux/actions/championsActions"
 
 const SignUp = (props) => {
+  props.getChampionsRotation()
   const [step, setStep] = useState(1)
 
   // step 1
@@ -125,6 +127,7 @@ const SignUp = (props) => {
 }
 
 const mapDispatchToprops = {
+  getChampionsRotation: championsActions.getChampionsRotation,
   signUp: userActions.signUp,
   refresh: userActions.refresh,
 }

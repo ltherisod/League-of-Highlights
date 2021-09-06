@@ -1,15 +1,13 @@
 import axios from "axios"
 
-const API_KEY = "RGAPI-2ba7d276-9e93-4067-ba32-9dbe7b8b5072"
+const API_KEY = "RGAPI-a587263e-a3d9-4592-bbbe-e97ff3ab6163"
+const HOST = "http://localhost:4000"
 
 const userActions = {
   signUp: (userData) => {
     return async (dispatch, getState) => {
       try {
-        const res = await axios.post(
-          "http://localhost:4000/api/signup",
-          userData
-        )
+        const res = await axios.post(`${HOST}/api/signup`, userData)
         if (!res.data.success)
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
@@ -21,13 +19,9 @@ const userActions = {
     }
   },
   logIn: (userData) => {
-    console.log(userData)
     return async (dispatch, getState) => {
       try {
-        const res = await axios.post(
-          "http://localhost:4000/api/login",
-          userData
-        )
+        const res = await axios.post(`${HOST}/api/login`, userData)
         if (!res.data.success)
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
@@ -41,11 +35,13 @@ const userActions = {
   loginLS: (token) => {
     return async (dispatch, getState) => {
       try {
-        const res = await axios.get("http://localhost:4000/api/verifyToken", {
+        const res = await axios.get(`${HOST}/api/verifyToken`, {
           headers: { Authorization: `Bearer ${token}` },
         })
-        console.log(res.data)
-        if (!res.data.success) throw new Error(res.data.error)
+        if (!res.data.success) {
+          localStorage.removeItem("token")
+          throw new Error(res.data.error)
+        }
         dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response })
         return { success: true, error: null }
       } catch (e) {
@@ -82,7 +78,7 @@ const userActions = {
           guest: isGuest,
         }
         const res = await axios.put(
-          `http://localhost:4000/api/user/${userMongoId}`,
+          `${HOST}/api/user/${userMongoId}`,
           refreshedData
         )
         if (!res.data.success) throw new Error(res.data.error)

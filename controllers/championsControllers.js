@@ -14,6 +14,22 @@ const championsControllers = {
   getChampions: async (req, res) => {
     try {
       const champions = await Champion.find().populate("tags").sort("name")
+      res.json({
+        success: true,
+        response: champions,
+        error: null,
+      })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  getChampionsByKeysArray: async (req, res) => {
+    try {
+      const { keysArray } = req.body
+      const champions = await Champion.find()
+        .where("riotKey")
+        .in(keysArray)
+        .populate("tags")
       res.json({ success: true, response: champions, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
