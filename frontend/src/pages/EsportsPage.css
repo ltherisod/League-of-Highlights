@@ -1,0 +1,13 @@
+div.videoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoEsports {
+    width: 360px !important;
+    height: 210px !important;
+    margin: 2rem;
+
+}

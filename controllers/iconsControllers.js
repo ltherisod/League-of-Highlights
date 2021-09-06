@@ -3,7 +3,7 @@ const Icon = require("../models/Icon")
 const iconsControllers = {
   getIcons: async (req, res) => {
     try {
-      const icons = await Icon.find()
+      const icons = await Icon.find().sort("riotKey")
       res.json({ success: true, response: icons, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })

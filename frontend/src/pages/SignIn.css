@@ -1,5 +1,125 @@
-div.userForm, form {
+div.userForm, form, .formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+div.userForm{
+    justify-content: center;
+    min-height: 87.7vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+}
+
+.formContainer {
+    padding: 1.5rem;
+    background-color: white;
+}
+
+.field {
+    padding:0.5em 1em;
+    background: rgba(126,126,126,0.1);
+    display: flex;
+    color: #525252;
+    position: relative;
+    border: 2px solid rgba(126,126,126,0.1);
+    border-radius: 4px;
+    background-clip: padding-box;
+    width: 100%;
+    margin-bottom: 1.496333981744725rem;
+    font-size: 2.102349244351339rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 100%;
+}
+
+.field__label {
+    pointer-events: none;
+    font-size: 2vmin;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 100%;
+}
+
+.field__form-input {
+    font-size: 3vmin;
+    line-height: 100%;
+    background: transparent;
+    line-height: 1.5em;
+    width: 100%;
+    outline: none;
+    border: 2px transparent;
+    display: block;
+    color: transparent;
+    margin-top:.5em ;
+}
+
+.password{
+    color: black;
+}
+
+.formContainer h3{
+    padding:1em 0;
+    font-size: 5vmin;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 110%;
+}
+
+.login-button {
+    width: 100%;
+    padding: 1em 5em;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    color: transparent;
+    border-radius: 4px;
+    border: 2px solid rgba(0,0,0,0.05);
+}
+
+.login-button img{
+width: 2em;
+}
+
+.buttonContainer{
+    display:flex;
+}
+
+.faceButton{
+    background-color:#1877f2;
+}
+
+.googleButton{
+    background-color: white;
+}
+
+.signIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 2em;
+    background-color: #d13639;
+    width: 40%;
+}
+
+.signIn p{
+    font-size: 1.5rem;
+    font-weight: 600;
+    align-self: center;
+    text-align: center;
+    color: white;
+}
+
+.textDataForm{
+    color:#525252;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: bold;
+}
+
+.textDataForm a{
+    text-decoration: none;
 }

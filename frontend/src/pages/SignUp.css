@@ -7,3 +7,11 @@ div.userForm, form, div.riot {
 div.userForm button, div.riot button {
     margin: .5rem;
 }
+
+div.userForm{
+    justify-content: center;
+    min-height: 87.7vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+}

@@ -46,7 +46,7 @@ const Header = () => {
           </div>
         </UncontrolledDropdown>
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto mx-4 d-flex align-items-center" navbar>
+          <Nav className="navBox mr-auto mx-4 d-flex align-items-center" navbar>
             <NavItem>
               <Link to="/" className="text-white fw-bold mx-1">
                 Home{" "}
@@ -56,7 +56,7 @@ const Header = () => {
               <Link to='/community' className="text-white fw-bold mx-1">Community</Link>
             </NavItem>
             <NavItem>
-              <Link to='/news' className="text-white fw-bold mx-1">News</Link>
+              <Link to='/news' className="text-white fw-bold mx-1">Esports</Link>
             </NavItem>
             {/* <input placeholder='Search' type='text' className=' px-2 rounded-pil'/> */}
             {/* <Input placeholder="Search" bsSize="sm" className="mx-1 rounded-pill inputSize px-5" /> */}

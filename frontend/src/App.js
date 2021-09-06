@@ -3,6 +3,7 @@ import SignUp from "./pages/SignUp"
 import "bootstrap/dist/css/bootstrap.min.css"
 import SignIn from "./pages/SignIn"
 import Community from "./pages/Community"
+import EsportsPage from "./pages/EsportsPage"
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
 import Profile from "./pages/Profile"
 import { connect } from "react-redux"
@@ -20,6 +21,7 @@ function App(props) {
         <Route path="/community" component={Community} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/esports" component={EsportsPage} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
