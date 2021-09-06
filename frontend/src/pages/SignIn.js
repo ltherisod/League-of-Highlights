@@ -35,9 +35,9 @@ const createHandler = async () => {
     <>
       <Header />
       <div className="userForm">
-        <h3 className="my-3">Sign in</h3>
-        <form className=" my-2">
-          <div className="my-1">
+        <h3 className="">Sign in</h3>
+        <form className=" ">
+          <div className="">
             <input
               type="text"
               placeholder="Email"
@@ -48,7 +48,7 @@ const createHandler = async () => {
             &nbsp;
             {/* <p>Error</p> */}
           </div>
-          <div className="my-1">
+          <div className="">
             <input
               type="password"
               onChange={inputHandler}

@@ -7,7 +7,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -41,23 +40,23 @@ const Header = () => {
               <i className="fas fa-user-alt text-white fs-2"></i>
             </DropdownToggle>
             <DropdownMenu className="position-absolute top-0 end-0 mt-5">
-              <Link to="/signup"> <DropdownItem>Sign up</DropdownItem> </Link>
-              <Link to="signin"> <DropdownItem>Sign in</DropdownItem></Link>
+              <Link to='/signup'><DropdownItem>Sign up</DropdownItem></Link> 
+              <Link to="/signin"> <DropdownItem>Sign in</DropdownItem> </Link>
             </DropdownMenu>
           </div>
         </UncontrolledDropdown>
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto mx-4 d-flex align-items-center" navbar>
             <NavItem>
-              <NavLink to="/" className="text-white fw-bold mx-1">
+              <Link to="/" className="text-white fw-bold mx-1">
                 Home{" "}
-              </NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <NavLink className="text-white fw-bold mx-1">Community</NavLink>
+              <Link to='/community' className="text-white fw-bold mx-1">Community</Link>
             </NavItem>
             <NavItem>
-              <NavLink className="text-white fw-bold mx-1">News</NavLink>
+              <Link to='/news' className="text-white fw-bold mx-1">News</Link>
             </NavItem>
             {/* <input placeholder='Search' type='text' className=' px-2 rounded-pil'/> */}
             {/* <Input placeholder="Search" bsSize="sm" className="mx-1 rounded-pill inputSize px-5" /> */}
