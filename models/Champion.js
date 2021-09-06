@@ -7,6 +7,7 @@ const championSchema = new mongoose.Schema({
   riotKey: { type: String, required: true },
   tags: [{ type: mongoose.Types.ObjectId, ref: "role" }],
   avatar: { type: String },
+  background: {type: String}
 })
 
 const Champion = mongoose.model("champion", championSchema)
