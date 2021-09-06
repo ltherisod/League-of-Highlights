@@ -46,7 +46,7 @@ const Header = () => {
           </div>
         </UncontrolledDropdown>
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto mx-4 d-flex align-items-center" navbar>
+          <Nav className="navBox mr-auto mx-4 d-flex align-items-center" navbar>
             <NavItem>
               <Link to="/" className="text-white fw-bold mx-1">
                 Home{" "}

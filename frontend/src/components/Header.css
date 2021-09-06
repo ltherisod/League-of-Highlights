@@ -16,7 +16,22 @@ header{
 	height:25px;
 	width: 275px;
   border-radius: 30px;
-  margin-left: 20%;
+  margin-left: 15%;
+}
+
+.navBox {
+  width: 20vw;
+  justify-content: space-around !important;
+}
+
+.text-white {
+  text-decoration: none;
+}
+
+.text-white:hover {
+  text-decoration: none;
+  opacity: .3;
+  transition: opacity .2s linear;
 }
 
 /* .inputSize{
@@ -39,5 +54,5 @@ header{
 
 .divSearch img {
   width: 30px;
-  margin-left: 2%;
+  margin-left: 1%;
 }
