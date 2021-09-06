@@ -11,3 +11,21 @@
 .contentVideo {
     margin: 17vw 6vw;
   }
+
+.divSearch {
+    width: 50vw;
+    display: flex;
+    justify-content: flex-start;
+    
+}
+
+.heroTitle {
+    width: 40wv;
+    height: 30vh;
+    position: relative;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5%;
+}

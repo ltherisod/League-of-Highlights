@@ -6,7 +6,7 @@
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    /* background: rgb(253, 203, 203); */
   
     /* Center slide text vertically */
     display: -webkit-box;
@@ -21,6 +21,8 @@
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+    justify-content: center;
+    align-items: center;
   }
   
   .swiper-slide img {
@@ -31,10 +33,31 @@
   }
 
   .carouselContainer {
-      height: 80vh;
+    height: 80vw;
+    height: 80vh;
     /* temporal para trabajar con las slides */
   }
 
   div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
       margin-right: 2rem;
+  }
+
+  .carouselBox {
+    padding-top: 8%;
+    width: 80%;
+    /* display: flex; */
+  }
+
+  .carouselTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+  }
+
+  .carouselTitle p {
+    font-family: 'Secular One', sans-serif;
+    font-size: 2.5rem !important;
+    letter-spacing: 0,5px;
   }
