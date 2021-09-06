@@ -1,9 +1,31 @@
-.photos{
-    display:flex;
-    flex-wrap: wrap;
+.imageAndText{
+    background-image:linear-gradient(rgba(13, 90, 134, 0.5), rgba(49, 37, 37,0.5)), url("https://i.postimg.cc/zDRv0yHM/R.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
 }
 
-.photos div{
-    width: 2rem;
-    height:2rem
+.photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+}
+
+.photo {
+  min-height: 17rem;
+  width: 17rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin:1rem
+}
+
+section{
+    box-sizing: border-box;
 }
