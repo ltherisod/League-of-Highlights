@@ -21,14 +21,14 @@ const Header = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <header className='sticky-top d-flex justify-content-center '>
+    <header className='sticky-top d-flex justify-content-around '>
       <Navbar
         className="bg-dark text-center d-flex justify-content-center align-items-center py-3 w-100"
         light
         expand="md"
       >
-        <NavbarBrand to="/" className="text-light d-none d-md-block ms-2 ">
-          LOGO
+        <NavbarBrand to="/" className="logoNavBox text-light d-none d-md-block ms-2 ">
+          <img className="logoNav" src="./assets/LOH_H.png"/>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} className="bg-light  text-dark mx-2 " />
         <UncontrolledDropdown
@@ -61,9 +61,12 @@ const Header = () => {
             </NavItem>
             {/* <input placeholder='Search' type='text' className=' px-2 rounded-pil'/> */}
             {/* <Input placeholder="Search" bsSize="sm" className="mx-1 rounded-pill inputSize px-5" /> */}
-            <input className="textbox" type="text"/>
           </Nav>
         </Collapse>
+        <div className="divSearch">
+            <input className="textbox" type="text" placeholder="Search your favourite player..."/>
+            <img src="./assets/search.png"/>
+        </div> 
       </Navbar>
     </header>
   );

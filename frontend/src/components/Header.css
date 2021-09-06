@@ -16,6 +16,7 @@ header{
 	height:25px;
 	width: 275px;
   border-radius: 30px;
+  margin-left: 20%;
 }
 
 /* .inputSize{
@@ -26,4 +27,17 @@ header{
   position: -webkit-sticky!important; /* Safari */
   position: sticky;
   top: 0;
+}
+
+.logoNav {
+  width: 50px;
+}
+
+.logoNavBox {
+  padding-left: 1.5%;
+}
+
+.divSearch img {
+  width: 30px;
+  margin-left: 2%;
 }
