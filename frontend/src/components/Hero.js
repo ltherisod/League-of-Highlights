@@ -10,7 +10,7 @@ const Hero = () => {
           <div className="contentVideo">
           <Jumbotron className='d-flex justify-content-center align-items-center flex-column'>
           <div className="heroTitle">
-            <img  src="./assets/LOH.png" alt="LOH"/>
+            <img  src="./assets/LOH2.png" alt="LOH"/>
           </div>
         </Jumbotron>
       </div>
