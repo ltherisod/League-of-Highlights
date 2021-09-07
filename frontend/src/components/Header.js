@@ -23,11 +23,9 @@ const Header = (props) => {
   const inputHandler = useRef()
 
   const createHandler = async () => {
-   console.log(inputHandler.current.value)
    if(inputHandler.current.value === "") return alert("completa los campos hijo de puta")
-    
     try{
-      const res = await props.getProfileByName(inputHandler)
+      const res = await props.getProfileByName(inputHandler.current.value)
       if(!res.success)  return alert("todo salio muy como el orto")
       if(res.response.length === 0) return alert("todo salio bien pero el usuario no existe amigo, o no esta en riot")
       console.log(res)
