@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom"
 import "./Footer.css"
 
 const Footer = () => {
@@ -9,21 +8,21 @@ const Footer = () => {
                     <img className="logoFooter" src="./assets/LOHWhite.png"/>
                 </div>
                 <div className="socialMedia">
-                    <NavLink className="socialMediaHover" to="https://www.youtube.com/user/riotgamesinc">
+                    <a className="socialMediaHover" href="https://www.youtube.com/user/riotgamesinc">
                         <img className="socialMediaIcon" src="./assets/youtube.png"/>
-                    </NavLink>
-                    <NavLink className="socialMediaHover" to="https://twitter.com/leagueoflegends">
+                    </a>
+                    <a className="socialMediaHover" href="https://twitter.com/leagueoflegends">
                         <img className="socialMediaIcon" src="./assets/twitter.png"/>
-                    </NavLink>
-                    <NavLink className="socialMediaHover" to="https://www.facebook.com/leagueoflegends">
+                    </a>
+                    <a className="socialMediaHover" href="https://www.facebook.com/leagueoflegends">
                         <img className="socialMediaIcon" src="./assets/facebook.png"/>
-                    </NavLink>
-                    <NavLink className="socialMediaHover" to="https://www.instagram.com/leagueoflegends/">
+                    </a>
+                    <a className="socialMediaHover" href="https://www.instagram.com/leagueoflegends/">
                         <img className="socialMediaIcon" src="./assets/instagram.png"/>
-                    </NavLink> 
-                    <NavLink className="socialMediaHover" to="https://www.reddit.com/r/leagueoflegends/">
+                    </a> 
+                    <a className="socialMediaHover" href="https://www.reddit.com/r/leagueoflegends/">
                         <img className="socialMediaIcon" src="./assets/reddit.png"/>
-                    </NavLink> 
+                    </a> 
                 </div>
                 <div className="esrb">
                     <img src="./assets/esrb-teen.png"/>
@@ -31,7 +30,7 @@ const Footer = () => {
                         <p>Blood</p>
                         <p>Fantasy violence</p>
                         <p>Moderate suggestive themes</p>
-                        <p>se of alcohol and tobacco</p>
+                        <p>Use of alcohol and tobacco</p>
                         <p>Online interactions not classified by the ESRB</p>
                     </div>
                 </div>
