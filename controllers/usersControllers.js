@@ -173,7 +173,7 @@ const usersControllers = {
         error: null,
       })
     } catch (e) {
-      res.json({ success: false, response: null, error: e.message })
+      res.json({ success: false, response: {}, error: e.message })
     }
   },
   verifyToken: async (req, res) => {
