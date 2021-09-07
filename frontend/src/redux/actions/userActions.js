@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_KEY = "RGAPI-a587263e-a3d9-4592-bbbe-e97ff3ab6163"
+const API_KEY = "RGAPI-01d033cb-b6e7-4a9b-8cd9-da58be561193"
 const HOST = "http://localhost:4000"
 
 const userActions = {
@@ -23,12 +23,14 @@ const userActions = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.post(`${HOST}/api/login`, userData)
+        console.log(res)
         if (!res.data.success)
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
         dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) // "Agregar type" <- lo puse porque lo pusiste vos xd
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
+        console.log('cai en catch')
         return { success: false, response: null, error: e.message }
       }
     }

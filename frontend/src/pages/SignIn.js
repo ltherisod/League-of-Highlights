@@ -40,43 +40,43 @@ const SignIn = (props) => {
     e.preventDefault()
     const name = e.target.name
     console.log(name)
-    props
-      .logIn(userData)
-      .then((response) => {
-        console.log(response)
-        if (!response.success) {
-          let value = response.error.filter((err) => err.path[0] === name)
-          if (value[0]) {
-            setErrorEmail(value[0].message)
-          } else {
-            setErrorEmail(null)
-          }
-        } else {
-          setErrorEmail(null)
-        }
-      })
-      .catch((error) => console.log(error))
+    // props
+    //   .logIn(userData)
+    //   .then((response) => {
+    //     console.log(response)
+    //     if (!response.success) {
+    //       let value = response.error.filter((err) => err.path[0] === name)
+    //       if (value[0]) {
+    //         setErrorEmail(value[0].message)
+    //       } else {
+    //         setErrorEmail(null)
+    //       }
+    //     } else {
+    //       setErrorEmail(null)
+    //     }
+    //   })
+    //   .catch((error) => console.log(error))
   }
 
   const showErrorPass = (e) => {
     e.preventDefault()
     const name = e.target.name
     console.log(name)
-    props
-      .logIn(userData)
-      .then((response) => {
-        if (!response.success) {
-          let value = response.error.filter((err) => err.path[0] === name)
-          if (value[0]) {
-            setErrorEmail(value[0].message)
-          } else {
-            setErrorEmail(null)
-          }
-        } else {
-          setErrorEmail(null)
-        }
-      })
-      .catch((error) => console.log(error))
+    // props
+    //   .logIn(userData)
+    //   .then((response) => {
+    //     if (!response.success) {
+    //       let value = response.error.filter((err) => err.path[0] === name)
+    //       if (value[0]) {
+    //         setErrorEmail(value[0].message)
+    //       } else {
+    //         setErrorEmail(null)
+    //       }
+    //     } else {
+    //       setErrorEmail(null)
+    //     }
+    //   })
+    //   .catch((error) => console.log(error))
   }
 
   const responseGoogle = (response) => {

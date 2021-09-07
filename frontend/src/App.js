@@ -30,11 +30,11 @@ function App(props) {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/signin" component={SignIn} />
+        {!props.userStatus && <Route path="/signin" component={SignIn} />}
         <Route path="/community" component={Community} />
-        {/* Aquí modifiqué a /profile/{mongoId} para poder obtener el perfil del usuario con ese id.*/}
-        <Route path="/profile" component={Profile} />
-        <Route exact path="/signup" component={SignUp} />
+        {/* Aquí modifiqué a /profile/{user}} para poder obtener el perfil del usuario con ese id.*/}
+         <Route path="/profile/:username" component={Profile} />{/*proteger la ruta, por ahora prueban*/} 
+        {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
         <Route exact path="/esports" component={EsportsPage} />
         <Redirect to="/" />
       </Switch>
@@ -42,8 +42,14 @@ function App(props) {
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    userStatus: state.user.user,
+  };
+};
+
 const mapDispatchToProps = {
   loginLS: userActions.loginLS,
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

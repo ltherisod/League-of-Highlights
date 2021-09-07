@@ -30,14 +30,18 @@ const Header = (props) => {
     try {
       const res = await props.getProfileByName(inputHandler.current.value)
       if (!res.success) return alert("todo salio muy como el orto")
-      if (res.response.length === 0)
-        return alert(
-          "todo salio bien pero el usuario no existe amigo, o no esta en riot"
-        )
+      if (res.response.length === 0)return alert("todo salio bien pero el usuario no existe amigo, o no esta en riot")
+      if(res.success){
+        props.history.push(`/profile/${res.response._id}`)
+      }else{
+        alert('oh no !')
+      }
     } catch (e) {
       alert("todo salio muyx2 como el orto ")
     }
   }
+
+  console.log(props)
 
   return (
     <header className="sticky-top d-flex justify-content-around ">
@@ -63,13 +67,25 @@ const Header = (props) => {
               <i className="fas fa-user-alt text-white fs-2"></i>
             </DropdownToggle>
             <DropdownMenu className="position-absolute top-0 end-0 mt-5">
-              <Link to="/signup">
-                <DropdownItem>Sign up</DropdownItem>
-              </Link>
-              <Link to="/signin">
-                {" "}
-                <DropdownItem>Sign in</DropdownItem>{" "}
-              </Link>
+              {props.userStatus ? (
+                <Link to="/signup">
+                  <DropdownItem>Log out</DropdownItem>
+                </Link>
+              ) : (
+                <div>
+                  {!props.userStatus && (
+                    <Link to="/signup">
+                      {" "}
+                      <DropdownItem>Sign up</DropdownItem>
+                    </Link>
+                  )}
+                  {!props.userStatus && (
+                    <Link to="/signin">
+                      <DropdownItem>Sign in</DropdownItem>
+                    </Link>
+                  )}
+                </div>
+              )}
             </DropdownMenu>
           </div>
         </UncontrolledDropdown>
@@ -108,8 +124,14 @@ const Header = (props) => {
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    userStatus: state.user.user,
+  }
+}
+
 const mapDispatchToProps = {
   getProfileByName: userActions.getProfileByName,
 }
 
-export default connect(null, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
