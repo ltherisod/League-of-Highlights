@@ -34,9 +34,9 @@ const io = socket(server, {
   },
 })
 
-io.on("connection", (socket) => {
-  console.log("Nueva conexion entrante" + socket.id)
-  socket.on("Hola", (mensaje) => {
-    console.log(mensaje)
-  })
-})
+// io.on("connection", (socket) => {
+//   console.log("Nueva conexion entrante" + socket.id)
+//   socket.on("Hola", (mensaje) => {
+//     console.log(mensaje)
+//   })
+// })

@@ -86,7 +86,8 @@ const SignIn = (props) => {
       googleFlag: true,
     }
     console.log("heey")
-    props.logIn(userData)
+    props
+      .logIn(userData)
       .then((res) => {
         if (!res.data.success) {
           console.log("hey is if")
@@ -116,7 +117,7 @@ const SignIn = (props) => {
             <div className="field">
               <label className="field__label">email</label>
               <input
-                onBlur={(e) => showErrorEmail(e)}
+                // onBlur={(e) => showErrorEmail(e)}
                 type="text"
                 onChange={inputHandler}
                 id="email"
@@ -128,7 +129,7 @@ const SignIn = (props) => {
             <div className="field">
               <label className="field__label">password</label>
               <input
-                onBlur={(e) => showErrorPass(e)}
+                // onBlur={(e) => showErrorPass(e)}
                 type="password"
                 onChange={inputHandler}
                 className="field__form-input password"

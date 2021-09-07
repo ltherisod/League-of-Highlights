@@ -8,11 +8,11 @@ import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
 
 const SignUp = (props) => {
-  props.getChampionsRotation();
+  props.getChampionsRotation()
   const [step, setStep] = useState(1)
   const [error, setError] = useState(null)
-  const [errorEmail,setErrorEmail]=useState(null)
-  const [errorPass,setErrorPass]=useState(null)
+  const [errorEmail, setErrorEmail] = useState(null)
+  const [errorPass, setErrorPass] = useState(null)
 
   // step 1
   const [userData, setUserData] = useState({
@@ -37,6 +37,7 @@ const SignUp = (props) => {
       return false
     }
     const res = await props.signUp(userData)
+    console.log(res)
     if (res.success) {
       setUserId(res.response._id)
       setStep(2)
@@ -45,86 +46,87 @@ const SignUp = (props) => {
     }
   }
 
-  const showError = (e) => {
-    e.preventDefault()
-    const name = e.target.name
-    props
-      .signUp(userData)
-      .then((response) => {
-        if (!response.success) {
-          let value = response.error.filter((err) => err.path[0] === name)
-          if (value[0]) {
-            setError(value[0].message)
-          } else {
-            setError(null)
-          }
-        } else {
-          setError(null)
-        }
-      })
-      .catch((error) => console.log(error))
-  }
+  // const showError = (e) => {
+  //   e.preventDefault()
+  //   const name = e.target.name
+  //   props
+  //     .signUp(userData)
+  //     .then((response) => {
+  //       if (!response.success) {
+  //         let value = response.error.filter((err) => err.path[0] === name)
+  //         if (value[0]) {
+  //           setError(value[0].message)
+  //         } else {
+  //           setError(null)
+  //         }
+  //       } else {
+  //         setError(null)
+  //       }
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
-  const showErrorEmail = (e) => {
-    e.preventDefault()
-    const name = e.target.name
-    props.signUp(userData)
-    .then((response) => {
-      if (!response.success) {
-        let value = response.error.filter((err) => err.path[0] === name)
-        if (value[0]) {
-          setErrorEmail(value[0].message)
-        } else {
-          setErrorEmail(null)
-        }
-      } else {
-        setErrorEmail(null)
-      }
-    })
-    .catch(error=> console.log(error))
-  }
+  // const showErrorEmail = (e) => {
+  //   e.preventDefault()
+  //   const name = e.target.name
+  //   props
+  //     .signUp(userData)
+  //     .then((response) => {
+  //       if (!response.success) {
+  //         let value = response.error.filter((err) => err.path[0] === name)
+  //         if (value[0]) {
+  //           setErrorEmail(value[0].message)
+  //         } else {
+  //           setErrorEmail(null)
+  //         }
+  //       } else {
+  //         setErrorEmail(null)
+  //       }
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
-  
-  const showErrorPass = (e) => {
-    e.preventDefault()
-    const name = e.target.name
-    props.signUp(userData)
-    .then((response) => {
-      if (!response.success) {
-        let value = response.error.filter((err) => err.path[0] === name)
-        if (value[0]) {
-          setErrorPass(value[0].message)
-        } else {
-          setErrorPass(null)
-        }
-      } else {
-        setErrorPass(null)
-      }
-    })
-    .catch(error=> console.log(error))
-  }
+  // const showErrorPass = (e) => {
+  //   e.preventDefault()
+  //   const name = e.target.name
+  //   props
+  //     .signUp(userData)
+  //     .then((response) => {
+  //       if (!response.success) {
+  //         let value = response.error.filter((err) => err.path[0] === name)
+  //         if (value[0]) {
+  //           setErrorPass(value[0].message)
+  //         } else {
+  //           setErrorPass(null)
+  //         }
+  //       } else {
+  //         setErrorPass(null)
+  //       }
+  //     })
+  //     .catch((error) => console.log(error))
+  // }
 
   const responseGoogle = (res) => {
     let googleUser = {
-        name: res.profileObj.givenName,
-        email: res.profileObj.email,
-        password: res.profileObj.googleId,
-        googleFlag: true, 
+      name: res.profileObj.givenName,
+      email: res.profileObj.email,
+      password: res.profileObj.googleId,
+      googleFlag: true,
     }
-     props.signUp(googleUser)
-    .then((response) => {
-      if (response.success) {
-        setUserId(response.response._id)
-        setStep(2)
-      } else {
-        throw new Error(response.error)
-      }
-    })
-    .catch((error) => {
+    props
+      .signUp(googleUser)
+      .then((response) => {
+        if (response.success) {
+          setUserId(response.response._id)
+          setStep(2)
+        } else {
+          throw new Error(response.error)
+        }
+      })
+      .catch((error) => {
         console.log(error)
-    })
-    
-}
+      })
+  }
 
   const refreshHandler = async () => {
     if (!usernameRef.current.value) return false // Completa los campos flojo de mierda.
@@ -139,108 +141,132 @@ const SignUp = (props) => {
     <>
       <Header />
       {step === 1 && (
-        <div className="userForm" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
-              <div className="formContainer">
-              <h3>Sign Up</h3>
-                <form>
-                    <small style={{ color: "red" }}>{error}&nbsp;</small>
+        <div
+          className="userForm"
+          style={{
+            backgroundImage:
+              "url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')",
+          }}
+        >
+          <div className="formContainer">
+            <h3>Sign Up</h3>
+            <form>
+              <small style={{ color: "red" }}>{error}&nbsp;</small>
+              <div className="field">
+                <label className="field__label">name</label>
+                <input
+                  type="text"
+                  // onBlur={(e) => showError(e)}
+                  onChange={inputHandler}
+                  name="name"
+                  className="field__form-input name"
+                  autoComplete="nope"
+                />
+              </div>
+              <small style={{ color: "red" }}>{errorEmail}&nbsp;</small>
+              <div className="field">
+                <label className="field__label">email</label>
+                <input
+                  ref={usernameRef}
+                  type="text"
+                  // onBlur={(e) => showErrorEmail(e)}
+                  onChange={inputHandler}
+                  name="email"
+                  className="field__form-input email"
+                  autoComplete="nope"
+                />
+              </div>
+              <small style={{ color: "red" }}>{errorPass}&nbsp;</small>
+              <div className="field">
+                <label className="field__label">password</label>
+                <input
+                  type="password"
+                  // onBlur={(e) => showErrorPass(e)}
+                  onChange={inputHandler}
+                  name="password"
+                  className="field__form-input password"
+                  autoComplete="nope"
+                />
+              </div>
+            </form>
+            <div className="buttonContainer">
+              <button className="login-button faceButton">
+                <img src="./assets/facebook.svg" alt="facebook" />
+              </button>
+              {/* <button className="login-button googleButton" > */}
+              {/* <img src="./assets/google.svg" alt="google"/> */}
+              <GoogleLogin
+                className="login-button googleButton"
+                clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                // buttonText="Sign Up with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
+              {/* </button> */}
+            </div>
+            <button onClick={createHandler} className="login-button signIn">
+              <p>Sign Up</p>
+            </button>
+            <p className="textDataForm">
+              Already have an account? <Link to="/signin">Sign in here! </Link>
+            </p>
+          </div>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div
+          className="userForm riot"
+          style={{
+            backgroundImage:
+              "url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')",
+          }}
+        >
+          <div className="formContainer">
+            <h3>Do you have a Riot account?</h3>
+            <div className="options">
+              <button
+                className="buttonRiot riotYes"
+                onClick={() => setHasRiotAccount(true)}
+              >
+                Yes
+              </button>
+              <button
+                className="buttonRiot riotNo"
+                onClick={() => setHasRiotAccount(false)}
+              >
+                No
+              </button>
+            </div>
+            <form>
+              {hasRiotAccount === true && (
+                <>
                   <div className="field">
-                    <label className="field__label">name</label>
-                      <input
-                        type="text"
-                        onBlur={(e) => showError(e)}
-                        onChange={inputHandler}
-                        name="name"
-                        className="field__form-input name"
-                        autoComplete="nope"
-                      />
-                  </div>
-                  <small style={{ color: "red" }}>{errorEmail}&nbsp;</small>
-                  <div className="field">
-                    <label className="field__label">email</label>
+                    <label className="field__label">username</label>
                     <input
                       ref={usernameRef}
                       type="text"
-                      onBlur={(e) => showErrorEmail(e)}
-                      onChange={inputHandler}
-                      name="email"
-                      className="field__form-input email"
-                      autoComplete="nope"
+                      name="username"
+                      className="field__form-input username"
                     />
                   </div>
-                  <small style={{ color: "red" }}>{errorPass}&nbsp;</small>
-                  <div className="field">
-                  <label className="field__label">password</label>
-                    <input
-                      type="password"
-                      onBlur={(e) => showErrorPass(e)}
-                      onChange={inputHandler}
-                      name="password"
-                      className="field__form-input password"
-                      autoComplete="nope"
-                    />
-                    </div>
-                </form>
-                <div className="buttonContainer">
-                  <button className="login-button faceButton">
-                    <img src="./assets/facebook.svg" alt="facebook"/>
+                  <button
+                    className="riotIcon"
+                    type="button"
+                    onClick={refreshHandler}
+                  >
+                    <img alt="riot" src="./assets/riot.png" />
                   </button>
-                  {/* <button className="login-button googleButton" > */}
-                    {/* <img src="./assets/google.svg" alt="google"/> */}
-                    <GoogleLogin className="login-button googleButton"
-                    clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-                    // buttonText="Sign Up with Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
-                    cookiePolicy={'single_host_origin'}
-                    />
-                  {/* </button> */}
-                </div>
-                <button onClick={createHandler} className="login-button signIn">
-                  <p>Sign Up</p>
-                  </button>
-                <p className="textDataForm">Already have an account? <Link to="/signin">Sign in here! </Link></p>
-            </div>
-          </div>
-        )}
-            
-
-        {step === 2 && (
-          <div className="userForm riot" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
-            <div className="formContainer">
-                <h3>Do you have a Riot account?</h3>
-                <div className="options">
-                  <button className="buttonRiot riotYes"onClick={() => setHasRiotAccount(true)}>
-                    Yes
-                    </button>
-                  <button  className="buttonRiot riotNo" onClick={() => setHasRiotAccount(false)}>
-                    No
-                  </button>
-                </div>
-                <form>
-                    {hasRiotAccount === true && (
-                      <>
-                        <div className="field">
-                            <label className="field__label">username</label>
-                            <input
-                              ref={usernameRef}
-                              type="text"
-                              name="username"
-                              className="field__form-input username"
-                            />
-                        </div>
-                        <button className="riotIcon"type="button" onClick={refreshHandler}>
-                            <img alt="riot" src="./assets/riot.png"/>
-                        </button>
-                      </>
-                    )}
-                    {hasRiotAccount === false && (
-                      <>
-                        <input type="text" placeholder="Icon" name="icon" />
-                        <button>No tiene cuenta riot</button>
-                      </>
-                    )}
-                    {/* <input type="text" placeholder="icon" name="icon" />
+                </>
+              )}
+              {hasRiotAccount === false && (
+                <>
+                  <input type="text" placeholder="Icon" name="icon" />
+                  <button>No tiene cuenta riot</button>
+                </>
+              )}
+              {/* <input type="text" placeholder="icon" name="icon" />
                             input condicional  */}
             </form>
           </div>
