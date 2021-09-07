@@ -9,15 +9,16 @@ const usersControllers = {
   signUp: async (req, res) => {
     try {
       const { name, email, password } = req.body
-      const hashedPass = await bcryptjs.hash(password, 10)
       const userExists = await User.findOne({ email: email })
       if (userExists) throw new Error("Email already in use!")
+      const hashedPass = await bcryptjs.hash(password, 10)
       const newUser = new User({
         name: name.toLowerCase(),
         email: email.toLowerCase(),
         password: hashedPass,
       })
       const user = await newUser.save()
+      console.log(user)
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         process.env.SECRETKEY
@@ -96,10 +97,21 @@ const usersControllers = {
   getUserByUsername: async (req, res) => {
     try {
       const { username } = req.params
-      console.log(req.params)
       const user = await User.find({ username })
       if (!user) throw new Error("User doesn't exist.")
-      res.json({ success: true, response: user, error: null })
+      res.json({
+        success: true,
+        response: {
+          icon: user.icon,
+          topChampions: user.topChampions,
+          guest: user.guest,
+          rank: user.rank,
+          division: user.division,
+          username: user.username,
+          _id: user._id,
+        },
+        error: null,
+      })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
@@ -110,11 +122,12 @@ const usersControllers = {
         req.body
       const id = req.params.id
       const icon = await Icon.findOne({ riotKey: iconKey })
+      console.log(icon)
       const rank = await Rank.findOne({ name: rankName })
       const topChampions = await Champion.find()
         .where("riotKey")
         .in(topChampionsKeys)
-      const userExists = await User.findOne({ _id: id })
+      const userExists = await User.findOne({ _id: id }) // Tiene el username 'antiguo'
       if (!userExists) throw new Error("This user doesn't exists.")
       const usernameExists = await User.findOne({
         username,
@@ -142,7 +155,20 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-      res.json({ success: true, response: user, error: null })
+
+      res.json({
+        success: true,
+        response: {
+          user: user.username,
+          _id: user._id,
+          icon: user.icon,
+          guest: user.guest,
+          rank: user.rank,
+          division: user.division,
+          topChampions: user.topChampions,
+        },
+        error: null,
+      })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
@@ -157,7 +183,6 @@ const usersControllers = {
         })
         .populate("rank")
       const { icon, email, guest, _id, name } = user
-      const token = jwt.sign({ _id, email }, process.env.SECRETKEY)
       if (!user.guest) {
         const { topChampions, rank, division, username } = user
         return res.json({
@@ -178,13 +203,31 @@ const usersControllers = {
       }
       return res.json({
         success: true,
-        response: { icon, guest, _id, email, token, name },
+        response: { icon, guest, _id, email, name },
         error: null,
       })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
   },
+  deleteUserByUsername: async (req, res) => {
+    try {
+      const user = await User.findOneAndDelete({
+        username: req.params.username,
+      })
+      res.json({ success: true, response: user, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  // deleteUsers: async (req, res) => {
+  //   try {
+  //     await User.deleteMany()
+  //     res.json({ success: true, response: "Usuarios eliminados", error: null })
+  //   } catch (e) {
+  //     res.json({ success: false, response: null, error: e.message })
+  //   }
+  // },
 }
 
 module.exports = usersControllers
