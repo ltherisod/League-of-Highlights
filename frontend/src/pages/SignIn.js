@@ -23,7 +23,7 @@ const createHandler = async () => {
   }
   try{
     const res = await props.logIn(userData)
-    if(!res.success) alert("contraseña o mail mal. o todo anda como el orto")
+    if(!res.success) return alert("contraseña o mail mal. o todo anda como el orto")
     alert("todo bien, iniciaste zesion altoke")
     console.log(res.response)
   }catch(e){

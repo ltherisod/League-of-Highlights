@@ -4,6 +4,7 @@ const API_KEY = "RGAPI-a587263e-a3d9-4592-bbbe-e97ff3ab6163"
 const HOST = "http://localhost:4000"
 
 const userActions = {
+
   signUp: (userData) => {
     return async (dispatch, getState) => {
       try {
@@ -18,6 +19,7 @@ const userActions = {
       }
     }
   },
+
   logIn: (userData) => {
     return async (dispatch, getState) => {
       try {
@@ -32,6 +34,7 @@ const userActions = {
       }
     }
   },
+
   loginLS: (token) => {
     return async (dispatch, getState) => {
       try {
@@ -49,6 +52,7 @@ const userActions = {
       }
     }
   },
+
   refresh: (username, userMongoId, isGuest) => {
     // El userMongoId pensamos sacarlo de la URL y linkearlo de alguna forma al boton que despacha esta acción.
     // validar acá.
@@ -94,6 +98,7 @@ const userActions = {
       }
     }
   },
+
   getProfile: (id) => {
     return async (dispatch, getState) => {
       try {
@@ -105,6 +110,18 @@ const userActions = {
       }
     }
   },
+  
+  getProfileByName: (userName) => {
+    return async (dispatch, getState) => {
+      try{
+        const res = await axios.get(`${HOST}/api/username/${userName}`)
+        if(!res.data.success) throw new Error(res.data.error)
+        return {success: true, response: res.data.response, error: null}
+      } catch (e){
+        return { success: false, response: null, error: e.message}
+      }
+    }
+  }
 }
 
 export default userActions
