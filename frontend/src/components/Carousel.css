@@ -66,6 +66,7 @@
     justify-content: center;
     align-items: center;
     height: 30vh;
+    
   }
 
   .carouselTitle p {
@@ -76,4 +77,10 @@
 
   .carousel-indicators button {
     display: none;
+  }
+
+  .prueba {
+    animation-duration: 2000ms;
+    animation-delay: 100ms;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1)
   }

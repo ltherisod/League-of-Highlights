@@ -1,14 +1,13 @@
-// import "./CallToAction.css"
+import "./CallToAction.css"
+import { Link } from "react-router-dom"
 
-// const CallToAction = () => {
-//     return (
-//         <div className="mainCallToAction" style={{backgroundImage: "url('https://i.postimg.cc/dtj26yv9/backgroundlol.png')"}}>
+const CallToAction = () => {
+    return (
+        <div className="mainCallToAction" style={{backgroundImage: "url('https://i.postimg.cc/vmmZW0Cc/nubescall.png')"}}>
+            <Link to="/esports"><button className="buttonCall">PRO VIEWS</button></Link>
+            <img className="rock" src="https://i.postimg.cc/HWb8Whmg/piedra.png"/>
+        </div>
+    )
+}
 
-
-//         </div>
-//     )
-// }
-
-// export default CallToAction
-
-// // style="animation-duration: 1800ms; animation-delay: 0ms; animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);"
+export default CallToAction
