@@ -1,6 +1,5 @@
 import "./Profile.css"
 import Header from "../components/Header"
-
 import { connect } from "react-redux"
 
 const Profile = (props) => {
