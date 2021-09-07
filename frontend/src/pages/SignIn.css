@@ -57,7 +57,7 @@ div.userForm{
     margin-top:.5em ;
 }
 
-.password{
+.password, .email{
     color: black;
 }
 

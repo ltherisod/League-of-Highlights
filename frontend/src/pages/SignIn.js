@@ -69,7 +69,7 @@ const showError = (e) => {
                 onChange={inputHandler}
                 id="email"
                 name="email"
-                className="field__form-input"
+                className="field__form-input email"
               />
             </div>
             { error ? <p style={{ color: "red"}}>{error}HOLa</p>
