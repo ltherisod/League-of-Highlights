@@ -6,14 +6,14 @@ import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
 
 const Profile = (props) => {
-    const [showProfileData, setProfileData]= useState([])
+    const [showProfileData, setShowProfileData]= useState([])
     const [loader, setLoader] = useState (true)
   
 
     async function getProfileByName (){
         try{
             let response = await props.getProfileByName(props.userData.username)
-            setProfileData(response)
+            setShowProfileData(response)
             setLoader(false)
         }catch (error){
             console.log(error)

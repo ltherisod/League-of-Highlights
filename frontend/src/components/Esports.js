@@ -53,7 +53,7 @@ const Esports = (props) => {
                     </NavLink> 
                 </div>
             </div>
-            <h2>ESPORTS</h2>
+            <h2>CHAMPION ROTATION</h2>
             <div className="rotationsContainer">
                 <Carousel className="rotationsCarousel">
                     {rotations.map((rotation, index) => {

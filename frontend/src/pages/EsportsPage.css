@@ -11,3 +11,20 @@ div.videoContainer {
     margin: 2rem;
 
 }
+
+.bodyBackground {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+.bodyBackground h1 {
+    font-family:'Secular One', sans-serif;
+    font-size: 6.5rem !important;
+    letter-spacing: 0,5px;
+    font-style: italic;
+    text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+    text-align: center;
+}
