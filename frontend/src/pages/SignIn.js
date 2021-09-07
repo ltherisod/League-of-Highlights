@@ -13,7 +13,6 @@ const SignIn = (props) => {
     email: "",
     password: "",
   })
-  //  const [hidden, setHidden] = useState(true)
 
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
