@@ -36,7 +36,7 @@ const createHandler = async () => {
 const showError = (e) => {
   e.preventDefault()
   const name = e.target.name
-  props.signUp(userData)
+  props.logIn(userData)
   .then((response) => {
     if (!response.success) {
       let value = response.error.filter((err) => err.path[0] === name)
