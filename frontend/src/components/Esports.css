@@ -59,13 +59,6 @@ div.rotationsContainer {
     
 }
 
-
-div.rotation {
-    background-color: rebeccapurple;
-    width: 25rem;
-    height: 18rem;
-}
-
 .rotationsCarousel {
     width: 100%;
     min-height: 90vh;
@@ -76,7 +69,7 @@ div.rotation {
     height: 90vh;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center top;
 }
 
 .carousel-indicators button {
