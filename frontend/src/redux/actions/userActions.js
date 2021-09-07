@@ -98,7 +98,7 @@ const userActions = {
         }
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
-        return { success: false, error: e.message }
+        return { success: false, response: null, error: e.message }
       }
     }
   },

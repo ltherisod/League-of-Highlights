@@ -21,7 +21,7 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen)
 
   const inputHandler = useRef()
-
+  console.log(props)
   const createHandler = async () => {
     console.log(inputHandler.current.value)
     if (inputHandler.current.value === "")

@@ -20,7 +20,6 @@ function App(props) {
     if (token) {
       props.loginLS(token)
     }
-
   }, [])
 
   if (socket) {

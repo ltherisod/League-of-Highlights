@@ -8,16 +8,16 @@ import Carousel from "../components/Carousel"
 import CarouselAkali from "../components/CarouselAkali"
 import "./Home.css"
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
-    <Header/>
-    <Hero/>
-    <Carousel/>
-    <Esports/>
-    {/* <CallToAction/> */}
-    <CarouselAkali/>
-    <Footer/>
+      <Header {...props} />
+      <Hero />
+      <Carousel />
+      <Esports />
+      {/* <CallToAction/> */}
+      <CarouselAkali />
+      <Footer />
     </>
   )
 }

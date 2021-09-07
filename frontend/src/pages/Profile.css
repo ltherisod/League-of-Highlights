@@ -1,44 +1,45 @@
-
-div.user, div.logoChampion, div.info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border: 2px solid black;
+div.user,
+div.logoChampion,
+div.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border: 2px solid black;
 }
 
 div.user h3 {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
-div.avatar, div.tag {
-    border-radius: 100%;
-    width: 10rem;
-    height: 10rem;
-    background-position: center;
-    background-size: cover;
+div.avatar,
+div.tag {
+  border-radius: 100%;
+  width: 10rem;
+  height: 10rem;
+  background-position: center;
+  background-size: cover;
 }
 
 div.champion {
-    flex: 1;
-    background-position: center;
-    background-size: cover;    
+  flex: 1;
+  background-position: center;
+  background-size: cover;
 }
 
 div.rank {
-    background-size: cover;
-    background-position: center;
-    width: 7rem;
-    height: 7rem;
+  background-size: cover;
+  background-position: center;
+  width: 7rem;
+  height: 7rem;
 }
 
 .userHero {
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    min-height: 90vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  min-height: 90vh;
 }
-
