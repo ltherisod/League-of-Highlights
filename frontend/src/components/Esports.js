@@ -20,7 +20,7 @@ const Esports = (props) => {
         fetchRotations()
     }, [])
     
-    console.log([...rotations])
+    //console.log([...rotations])
 
     if (!rotations) {
         return (

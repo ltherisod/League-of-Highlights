@@ -12,13 +12,9 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap"
-<<<<<<< HEAD
-import { useState } from "react"
-=======
 import { useState, useRef } from "react"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
->>>>>>> 2fcb0e4c40d106b4b5f78045ddbdb5ec63dbdeb9
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -109,11 +105,6 @@ const Header = (props) => {
         </div>
       </Navbar>
     </header>
-<<<<<<< HEAD
-  );
-};
-export default Header
-=======
   )
 }
 
@@ -122,4 +113,3 @@ const mapDispatchToProps = {
 }
 
 export default connect(null, mapDispatchToProps)(Header)
->>>>>>> 2fcb0e4c40d106b4b5f78045ddbdb5ec63dbdeb9

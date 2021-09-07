@@ -9,8 +9,10 @@ import { Link } from "react-router-dom"
 
 const SignUp = (props) => {
   props.getChampionsRotation();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1)
   const [error, setError] = useState(null)
+  const [errorEmail,setErrorEmail]=useState(null)
+  const [errorPass,setErrorPass]=useState(null)
 
   // step 1
   const [userData, setUserData] = useState({
@@ -62,6 +64,45 @@ const SignUp = (props) => {
     .catch(error=> console.log(error))
   }
 
+  const showErrorEmail = (e) => {
+    e.preventDefault()
+    const name = e.target.name
+    props.signUp(userData)
+    .then((response) => {
+      if (!response.success) {
+        let value = response.error.filter((err) => err.path[0] === name)
+        if (value[0]) {
+          setErrorEmail(value[0].message)
+        } else {
+          setErrorEmail(null)
+        }
+      } else {
+        setErrorEmail(null)
+      }
+    })
+    .catch(error=> console.log(error))
+  }
+
+  
+  const showErrorPass = (e) => {
+    e.preventDefault()
+    const name = e.target.name
+    props.signUp(userData)
+    .then((response) => {
+      if (!response.success) {
+        let value = response.error.filter((err) => err.path[0] === name)
+        if (value[0]) {
+          setErrorPass(value[0].message)
+        } else {
+          setErrorPass(null)
+        }
+      } else {
+        setErrorPass(null)
+      }
+    })
+    .catch(error=> console.log(error))
+  }
+
   const refreshHandler = async () => {
     if (!usernameRef.current.value) return false; // Completa los campos flojo de mierda.
     const res = await props.refresh(
@@ -81,7 +122,7 @@ const SignUp = (props) => {
                 <form>
                 <p style={{ color: "red" }}>{error}</p>&nbsp;
                   <div className="field">
-                    <label class="field__label">name</label>
+                    <label className="field__label">name</label>
                       <input
                         type="text"
                         onBlur={(e) => showError(e)}
@@ -91,24 +132,24 @@ const SignUp = (props) => {
                         autoComplete="nope"
                       />
                   </div>
-                     <p style={{ color: "red" }}>{error}</p>&nbsp;
+                     <p style={{ color: "red" }}>{errorEmail}</p>&nbsp;
                   <div className="field">
-                    <label class="field__label">email</label>
+                    <label className="field__label">email</label>
                     <input
                       type="text"
-                      onBlur={(e) => showError(e)}
+                      onBlur={(e) => showErrorEmail(e)}
                       onChange={inputHandler}
                       name="email"
                       className="field__form-input email"
                       autoComplete="nope"
                     />
                   </div>
-                  <p style={{ color: "red" }}>{error}</p>&nbsp;
+                  <p style={{ color: "red" }}>{errorPass}</p>&nbsp;
                   <div className="field">
-                  <label class="field__label">password</label>
+                  <label className="field__label">password</label>
                     <input
                       type="password"
-                      onBlur={(e) => showError(e)}
+                      onBlur={(e) => showErrorPass(e)}
                       onChange={inputHandler}
                       name="password"
                       className="field__form-input password"
@@ -149,7 +190,7 @@ const SignUp = (props) => {
                     {hasRiotAccount === true && (
                       <>
                         <div className="field">
-                            <label class="field__label">username</label>
+                            <label className="field__label">username</label>
                             <input
                               ref={usernameRef}
                               type="text"
