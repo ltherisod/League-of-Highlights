@@ -12,9 +12,9 @@ const Profile = (props) => {
   async function getProfileByName() {
     try {
       console.log(props.userData)
-      let response = await props.getProfileByName(props.userData.username) // reemplazar por props.match.params.culito /:culito
-      setShowProfileData(response)
-      setLoader(false)
+      let response = await props.getProfileByName(props.userData.username)
+      console.log("[]" + props.userData.username) // reemplazar por props.match.params.culito /:culito
+      return response
     } catch (error) {
       console.log(error)
     }
@@ -23,8 +23,14 @@ const Profile = (props) => {
   useEffect(() => {
     window.scroll(0, 0)
     getProfileByName(showProfileData)
+      .then((response) => {
+        setShowProfileData(response)
+        setLoader(false)
+      })
+      .catch((e) => console.log(e.message))
   }, [])
-
+  console.log(props.userData)
+  console.log(showProfileData)
   // const reflesh=(username, userMongoId, isGuest)=>{
   //     props.reflesh(username, userMongoId, isGuest)
   //     .then((res) =>{
