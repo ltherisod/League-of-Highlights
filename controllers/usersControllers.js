@@ -18,7 +18,6 @@ const usersControllers = {
         password: hashedPass,
       })
       const user = await newUser.save()
-      console.log(user)
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         process.env.SECRETKEY
@@ -47,6 +46,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
+      console.log(user)
       if (!user) throw new Error("Email and/or password incorrect")
       const secretPassword = await bcryptjs.compare(password, user.password)
       if (!secretPassword) throw new Error("Email and/or password incorrect")
@@ -97,7 +97,7 @@ const usersControllers = {
   getUserByUsername: async (req, res) => {
     try {
       const { username } = req.params
-      const user = await User.find({ username })
+      const user = await User.findOne({ username })
       if (!user) throw new Error("User doesn't exist.")
       res.json({
         success: true,
@@ -122,7 +122,6 @@ const usersControllers = {
         req.body
       const id = req.params.id
       const icon = await Icon.findOne({ riotKey: iconKey })
-      console.log(icon)
       const rank = await Rank.findOne({ name: rankName })
       const topChampions = await Champion.find()
         .where("riotKey")
@@ -155,7 +154,6 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-
       res.json({
         success: true,
         response: {
