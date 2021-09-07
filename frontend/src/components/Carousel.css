@@ -73,3 +73,7 @@
     font-size: 2.5rem !important;
     letter-spacing: 0,5px;
   }
+
+  .carousel-indicators button {
+    display: none;
+  }

@@ -23,7 +23,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin:1rem
+  margin:1rem;
+  border-radius: 2em;
+}
+
+.photo:hover{
+  border-radius: 2em;
+  transition: transform 1s, background-color 0.5s, -webkit-transform 1s;
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+  background-blend-mode: soft-light;
 }
 
 section{
