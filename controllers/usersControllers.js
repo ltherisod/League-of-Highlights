@@ -9,9 +9,9 @@ const usersControllers = {
   signUp: async (req, res) => {
     try {
       const { name, email, password } = req.body
-      const hashedPass = await bcryptjs.hash(password, 10)
       const userExists = await User.findOne({ email: email })
       if (userExists) throw new Error("Email already in use!")
+      const hashedPass = await bcryptjs.hash(password, 10)
       const newUser = new User({
         name: name.toLowerCase(),
         email: email.toLowerCase(),
@@ -96,7 +96,6 @@ const usersControllers = {
   getUserByUsername: async (req, res) => {
     try {
       const { username } = req.params
-      console.log(req.params)
       const user = await User.find({ username })
       if (!user) throw new Error("User doesn't exist.")
       res.json({ success: true, response: user, error: null })

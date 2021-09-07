@@ -5,6 +5,7 @@ require("dotenv").config()
 require("./config/database")
 require("./config/passport")
 const path = require("path")
+const socket = require("socket.io")
 
 const app = express()
 const router = require("./routes/index")
@@ -14,11 +15,28 @@ app.use(express.json())
 app.use("/api", router)
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"))
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname + "/client/build/index.html"))
-    })
-  }
-  
-  app.listen(process.env.PORT || 4000, process.env.HOST || "0.0.0.0", () =>
-    console.log(`Server listening on port ${process.env.PORT || 4000}`))
+  app.use(express.static("client/build"))
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"))
+  })
+}
+
+const server = app.listen(
+  process.env.PORT || 4000,
+  process.env.HOST || "0.0.0.0",
+  () => console.log(`Server listening on port ${process.env.PORT || 4000}`)
+)
+
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+})
+
+io.on("connection", (socket) => {
+  console.log("Nueva conexion entrante" + socket.id)
+  socket.on("Hola", (mensaje) => {
+    console.log(mensaje)
+  })
+})
