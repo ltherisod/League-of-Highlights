@@ -1,48 +1,69 @@
-import "./SignUp.css"
-import Header from "../components/Header"
-import { connect } from "react-redux"
-import userActions from "../redux/actions/userActions"
-import { useRef, useState } from "react"
-import { ref } from "joi"
-import championsActions from "../redux/actions/championsActions"
+import "./SignUp.css";
+import Header from "../components/Header";
+import { connect } from "react-redux";
+import userActions from "../redux/actions/userActions";
+import { useRef, useState } from "react";
+import { ref } from "joi";
+import championsActions from "../redux/actions/championsActions";
 
 const SignUp = (props) => {
-  props.getChampionsRotation()
-  const [step, setStep] = useState(1)
+  props.getChampionsRotation();
+  const [step, setStep] = useState(1);
+  const [error, setError] = useState(null);
 
   // step 1
   const [userData, setUserData] = useState({
     name: "",
     email: "",
     password: "",
-  })
+  });
 
   // step 2
-  const [hasRiotAccount, setHasRiotAccount] = useState(null)
-  const usernameRef = useRef()
-  const iconRef = useRef()
-  const [userId, setUserId] = useState("")
+  const [hasRiotAccount, setHasRiotAccount] = useState(null);
+  const usernameRef = useRef();
+  const iconRef = useRef();
+  const [userId, setUserId] = useState("");
 
   // Utils
   const inputHandler = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value })
-  }
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {
-      return false
+      return false;
     }
-    const res = await props.signUp(userData)
+    const res = await props.signUp(userData);
     if (res.success) {
-      setUserId(res.response._id)
-      setStep(2)
+      setUserId(res.response._id);
+      setStep(2);
     } else {
-      console.log(res.error) // Manejar el error acá.
+      console.log(res.error); // Manejar el error acá.
     }
-  }
+  };
+
+  const showError = (e) => {
+    e.preventDefault();
+    const name = e.target.name;
+
+    props.signUp(userData)
+    .then((response) => {
+      if (!response.success) {
+        let value = response.error.filter((err) => err.path[0] === name);
+        if (value[0]) {
+          setError(value[0].message);
+        } else {
+          setError(null);
+        }
+      } else {
+        setError(null);
+      }
+    })
+    .catch(error=> console.log(error))
+  };
 
   const refreshHandler = async () => {
-    if (!usernameRef.current.value) return false // Completa los campos flojo de mierda.
+    if (!usernameRef.current.value) return false; // Completa los campos flojo de mierda.
     const res = await props.refresh(
       usernameRef.current.value,
       userId,
@@ -63,27 +84,27 @@ const SignUp = (props) => {
         >
           <h3>Sign Up</h3>
           <form>
-            {/* <p>Error</p> */}
-            &nbsp;
+            <p style={{ color: "red" }}>{error}</p>&nbsp;
             <input
+              onBlur={(e) => showError(e)}
               type="text"
               placeholder="Name"
               onChange={inputHandler}
               name="name"
               autoComplete="nope"
             />
-            {/* <p>Error</p>  */}
-            &nbsp;
+            <p style={{ color: "red" }}>{error}</p>&nbsp;
             <input
+              onBlur={(e) => showError(e)}
               type="text"
               placeholder="Email"
               onChange={inputHandler}
               name="email"
               autoComplete="nope"
             />
-            {/* <p>Error</p> */}
-            &nbsp;
+            <p style={{ color: "red" }}>{error}</p>&nbsp;
             <input
+              onBlur={(e) => showError(e)}
               type="password"
               placeholder="Password"
               onChange={inputHandler}
@@ -129,13 +150,13 @@ const SignUp = (props) => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
 const mapDispatchToprops = {
   getChampionsRotation: championsActions.getChampionsRotation,
   signUp: userActions.signUp,
   refresh: userActions.refresh,
-}
+};
 
-export default connect(null, mapDispatchToprops)(SignUp)
+export default connect(null, mapDispatchToprops)(SignUp);

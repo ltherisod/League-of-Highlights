@@ -41,7 +41,7 @@ const createHandler = async () => {
           <h3 className="">Sign In</h3>
           <form className=" ">
             <div className="field">
-              <label class="field__label">email</label>
+              <label className="field__label">email</label>
               <input
                 type="text"
                 onChange={inputHandler}

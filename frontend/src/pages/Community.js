@@ -9,7 +9,8 @@ const Community = () => {
       <div className="imageAndText">
         <h1>Community</h1>
       </div>
-      <h2 className='text-center'>COSPLAY AND FAN ART</h2>
+      <h2 className='fs-2 text-center pt-2'> FAN ART</h2>
+      <h2 className='text-center'>COSPLAY</h2>
       <section>
       <p>
         The community submitted over 4,000 entries to the Season 2021 Fan Art
