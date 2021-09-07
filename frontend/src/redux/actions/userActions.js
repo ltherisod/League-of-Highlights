@@ -41,14 +41,20 @@ const userActions = {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (!res.data.success) {
-          localStorage.removeItem("token")
           throw new Error(res.data.error)
         }
         dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response })
         return { success: true, error: null }
       } catch (e) {
+        localStorage.removeItem("token")
         return { success: false, error: e.message }
       }
+    }
+  },
+  logOut: () => {
+    return async (dispatch, getState) => {
+      localStorage.removeItem("token")
+      dispatch({ type: "LOG_OUT" })
     }
   },
 
@@ -60,7 +66,6 @@ const userActions = {
         const accountData = await axios.get(
           `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?api_key=${API_KEY}`
         )
-        console.log(accountData)
         const { id, profileIconId } = accountData.data
         const rankData = await axios.get(
           `https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${API_KEY}`
@@ -88,7 +93,9 @@ const userActions = {
           refreshedData
         )
         if (!res.data.success) throw new Error(res.data.error)
-        // dispatch()
+        if (res.data.response._id === getState().user.user._id) {
+          dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response })
+        }
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, error: e.message }

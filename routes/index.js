@@ -53,12 +53,19 @@ router
     usersControllers.verifyToken
   )
 
-router.route("/username/:username").get(usersControllers.getUserByUsername)
+router
+  .route("/username/:username")
+  .get(usersControllers.getUserByUsername)
+  .delete(usersControllers.deleteUserByUsername)
 
 router
   .route("/user/:id")
   .get(usersControllers.getUserById) // Hacer validación user logueado.
   .put(usersControllers.updateUser)
+
+// NO USAR SALVO CASO DE EMERGENCIA
+// router.route("/users/users/users").delete(usersControllers.deleteUsers)
+
 // ICONS ROUTES
 
 router.route("/icon/:key").get(iconsControllers.getIconByKey)
