@@ -24,7 +24,6 @@ function App(props) {
     setSocket(io("http://localhost:4000"))
   }, [])
   if (socket) {
-    console.log("jj")
     socket.emit("Hola")
   }
   return (

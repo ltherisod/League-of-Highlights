@@ -12,6 +12,7 @@ const userActions = {
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
         dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) // Agregar type
+        console.log(res.data.response)
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
@@ -92,6 +93,7 @@ const userActions = {
           `${HOST}/api/user/${userMongoId}`,
           refreshedData
         )
+        console.log(res.data)
         if (!res.data.success) throw new Error(res.data.error)
         if (res.data.response._id === getState().user.user._id) {
           dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response })
