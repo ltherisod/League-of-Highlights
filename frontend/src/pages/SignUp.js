@@ -1,37 +1,37 @@
-import "./SignUp.css";
-import Header from "../components/Header";
-import { connect } from "react-redux";
-import userActions from "../redux/actions/userActions";
-import { useRef, useState } from "react";
+import "./SignUp.css"
+import Header from "../components/Header"
+import { connect } from "react-redux"
+import userActions from "../redux/actions/userActions"
+import { useRef, useState } from "react"
 import { ref } from "joi";
-import championsActions from "../redux/actions/championsActions";
+import championsActions from "../redux/actions/championsActions"
 
 const SignUp = (props) => {
   props.getChampionsRotation();
   const [step, setStep] = useState(1);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
 
   // step 1
   const [userData, setUserData] = useState({
     name: "",
     email: "",
     password: "",
-  });
+  })
 
   // step 2
-  const [hasRiotAccount, setHasRiotAccount] = useState(null);
-  const usernameRef = useRef();
-  const iconRef = useRef();
-  const [userId, setUserId] = useState("");
+  const [hasRiotAccount, setHasRiotAccount] = useState(null)
+  const usernameRef = useRef()
+  const iconRef = useRef()
+  const [userId, setUserId] = useState("")
 
   // Utils
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
-  };
+  }
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {
-      return false;
+      return false
     }
     const res = await props.signUp(userData);
     if (res.success) {
@@ -40,27 +40,26 @@ const SignUp = (props) => {
     } else {
       console.log(res.error); // Manejar el error acá.
     }
-  };
+  }
 
   const showError = (e) => {
-    e.preventDefault();
-    const name = e.target.name;
-
+    e.preventDefault()
+    const name = e.target.name
     props.signUp(userData)
     .then((response) => {
       if (!response.success) {
-        let value = response.error.filter((err) => err.path[0] === name);
+        let value = response.error.filter((err) => err.path[0] === name)
         if (value[0]) {
-          setError(value[0].message);
+          setError(value[0].message)
         } else {
-          setError(null);
+          setError(null)
         }
       } else {
-        setError(null);
+        setError(null)
       }
     })
     .catch(error=> console.log(error))
-  };
+  }
 
   const refreshHandler = async () => {
     if (!usernameRef.current.value) return false; // Completa los campos flojo de mierda.
@@ -68,9 +67,9 @@ const SignUp = (props) => {
       usernameRef.current.value,
       userId,
       !hasRiotAccount
-    );
-    console.log(res.response);
-  };
+    )
+    console.log(res.response)
+  }
   return (
     <>
       <Header />

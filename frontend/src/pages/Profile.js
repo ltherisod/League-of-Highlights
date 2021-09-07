@@ -11,7 +11,6 @@ const Profile = (props) => {
             <main>
                 <div>
                     <div className="user">
-                        {/* <h3>UserName</h3> */}
                         <h3>{props.userData.username}</h3>
                         <div className="avatar"
                         style={{backgroundImage: `url(${props.userData.icon})`}}></div>
