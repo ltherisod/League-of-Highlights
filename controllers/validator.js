@@ -21,6 +21,7 @@ const validator = async (req, res, next) => {
       "string.min": "Your password must have at least 6 characters",
       "string.max": "Your password must have at max 50 characters",
     }),
+    googleFlag: joi.boolean()
   })
   try {
     await schema.validateAsync(req.body, { abortEarly: false })

@@ -8,7 +8,7 @@ const Rank = require("../models/Rank")
 const usersControllers = {
   signUp: async (req, res) => {
     try {
-      const { name, email, password } = req.body
+      const { name, email, password, googleFlag} = req.body
       const userExists = await User.findOne({ email: email })
       if (userExists) throw new Error("Email already in use!")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -16,6 +16,7 @@ const usersControllers = {
         name: name.toLowerCase(),
         email: email.toLowerCase(),
         password: hashedPass,
+        google: googleFlag,
       })
       const user = await newUser.save()
       console.log(user)
@@ -97,7 +98,7 @@ const usersControllers = {
   getUserByUsername: async (req, res) => {
     try {
       const { username } = req.params
-      const user = await User.find({ username })
+      const user = await User.findOne({ username })
       if (!user) throw new Error("User doesn't exist.")
       res.json({
         success: true,
