@@ -134,8 +134,8 @@ const SignIn = (props) => {
               className="login-button googleButton"
               clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
               // buttonText="Sign Up with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
+              // onSuccess={responseGoogle}
+              // onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
             />
           </div>
