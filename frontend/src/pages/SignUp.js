@@ -5,6 +5,7 @@ import userActions from "../redux/actions/userActions"
 import { useRef, useState } from "react"
 import { ref } from "joi"
 import championsActions from "../redux/actions/championsActions"
+import { Link } from "react-router-dom"
 
 const SignUp = (props) => {
   props.getChampionsRotation()
@@ -55,72 +56,103 @@ const SignUp = (props) => {
       <Header />
       {step === 1 && (
         <div className="userForm" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
-          <h3>Sign Up</h3>
-          <form>
-            {/* <p>Error</p> */}
-            &nbsp;
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={inputHandler}
-              name="name"
-              autoComplete="nope"
-            />
-            {/* <p>Error</p>  */}
-            &nbsp;
-            <input
-              type="text"
-              placeholder="Email"
-              onChange={inputHandler}
-              name="email"
-              autoComplete="nope"
-            />
-            {/* <p>Error</p> */}
-            &nbsp;
-            <input
-              type="password"
-              placeholder="Password"
-              onChange={inputHandler}
-              name="password"
-              autoComplete="nope"
-            />
-          </form>
-          <button onClick={createHandler}>Create account</button>
-          <button>Sign Up with Google</button>
-        </div>
-      )}
-
-      {step === 2 && (
-        <div className="riot">
-          <h3>Do you have a Riot account?</h3>
-          <div className="options">
-            <button onClick={() => setHasRiotAccount(true)}>Yes</button>
-            <button onClick={() => setHasRiotAccount(false)}>No</button>
+              <div className="formContainer">
+              <h3>Sign Up</h3>
+                <form>
+                  {/* <p>Error</p> */}
+                  &nbsp;
+                  <div className="field">
+                    <label class="field__label">name</label>
+                      <input
+                        type="text"
+                        onChange={inputHandler}
+                        name="name"
+                        className="field__form-input name"
+                        autoComplete="nope"
+                      />
+                      {/* <p>Error</p>  */}
+                      &nbsp;
+                  </div>
+                  <div className="field">
+                    <label class="field__label">email</label>
+                    <input
+                      type="text"
+                      onChange={inputHandler}
+                      name="email"
+                      className="field__form-input email"
+                      autoComplete="nope"
+                    />
+                  {/* <p>Error</p> */}
+                  &nbsp;
+                  </div>
+                  <div className="field">
+                  <label class="field__label">password</label>
+                    <input
+                      type="password"
+                      onChange={inputHandler}
+                      name="password"
+                      className="field__form-input password"
+                      autoComplete="nope"
+                    />
+                    </div>
+                </form>
+                <div className="buttonContainer">
+                  <button className="login-button faceButton">
+                    <img src="./assets/facebook.svg" alt="facebook"/>
+                  </button>
+                  <button className="login-button googleButton">
+                    <img src="./assets/google.svg" alt="google"/>
+                  </button>
+                </div>
+                <button onClick={createHandler} className="login-button signIn">
+                  <p>Sing Up</p>
+                  </button>
+                <p className="textDataForm">Already have an account? <Link to="/signin">Sign in here! </Link></p>
+            </div>
           </div>
-          <form>
-            {hasRiotAccount === true && (
-              <>
-                <input
-                  ref={usernameRef}
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                />
-                <button type="button" onClick={refreshHandler}>
-                  Tiene cuenta riot
-                </button>
-              </>
-            )}
-            {hasRiotAccount === false && (
-              <>
-                <input type="text" placeholder="Icon" name="icon" />
-                <button>No tiene cuenta riot</button>
-              </>
-            )}
-            {/* <input type="text" placeholder="icon" name="icon" />
-                    input condicional  */}
-          </form>
-        </div>
+        )}
+            
+
+        {step === 2 && (
+          <div className="userForm riot" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
+            <div className="formContainer">
+                <h3>Do you have a Riot account?</h3>
+                <div className="options">
+                  <button className="buttonRiot riotYes"onClick={() => setHasRiotAccount(true)}>
+                    Yes
+                    </button>
+                  <button  className="buttonRiot riotNo" onClick={() => setHasRiotAccount(false)}>
+                    No
+                  </button>
+                </div>
+                <form>
+                    {hasRiotAccount === true && (
+                      <>
+                        <div className="field">
+                            <label class="field__label">username</label>
+                            <input
+                              ref={usernameRef}
+                              type="text"
+                              name="username"
+                              className="field__form-input username"
+                            />
+                        </div>
+                        <button className="riotIcon"type="button" onClick={refreshHandler}>
+                            <img alt="riot" src="./assets/riot.png"/>
+                        </button>
+                      </>
+                    )}
+                    {hasRiotAccount === false && (
+                      <>
+                        <input type="text" placeholder="Icon" name="icon" />
+                        <button>No tiene cuenta riot</button>
+                      </>
+                    )}
+                    {/* <input type="text" placeholder="icon" name="icon" />
+                            input condicional  */}
+                </form>
+            </div>
+          </div>
       )}
     </>
   )

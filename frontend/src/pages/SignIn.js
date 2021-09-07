@@ -47,7 +47,7 @@ const createHandler = async () => {
                 onChange={inputHandler}
                 id="email"
                 name="email"
-                className="field__form-input"
+                className="field__form-input email"
               />
               &nbsp;
               {/* <p>Error</p> */}
