@@ -12,6 +12,7 @@ function App(props) {
   const token = localStorage.getItem("token")
   if (token) {
     props.loginLS(token)
+    console.log("Holaa") // NO SACAR POR FAVOR, SE ROMPE TODO
   }
   return (
     <BrowserRouter>
@@ -19,7 +20,8 @@ function App(props) {
         <Route exact path="/" component={Home} />
         <Route path="/signin" component={SignIn} />
         <Route path="/community" component={Community} />
-        <Route exact path="/profile" component={Profile} />
+        {/* Aquí modifiqué a /profile/{mongoId} para poder obtener el perfil del usuario con ese id.*/}
+        <Route path="/profile" component={Profile} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/esports" component={EsportsPage} />
         <Redirect to="/" />

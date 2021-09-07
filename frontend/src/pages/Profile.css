@@ -1,10 +1,5 @@
-main {
-    background-color: rgb(125, 108, 143);
-    min-height: 80vh;
-    display: flex;
-}
 
-div.user, div.logoChampion, div.info, div.champion {
+div.user, div.logoChampion, div.info {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,14 +12,33 @@ div.user h3 {
     margin-bottom: 2rem;
 }
 
-div.avatar {
-    background-color: black;
+div.avatar, div.tag {
     border-radius: 100%;
     width: 10rem;
     height: 10rem;
+    background-position: center;
+    background-size: cover;
 }
 
-div.info {
+div.champion {
     flex: 1;
+    background-position: center;
+    background-size: cover;    
+}
+
+div.rank {
+    background-size: cover;
+    background-position: center;
+    width: 7rem;
+    height: 7rem;
+}
+
+.userHero {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    min-height: 90vh;
 }
 

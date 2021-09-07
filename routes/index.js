@@ -53,13 +53,17 @@ router
     usersControllers.verifyToken
   )
 
+router.route("/username/:username").get(usersControllers.getUserByUsername)
+
+router
+  .route("/user/:id")
+  .get(usersControllers.getUserById) // Hacer validación user logueado.
+  .put(usersControllers.updateUser)
 // ICONS ROUTES
 
 router.route("/icon/:key").get(iconsControllers.getIconByKey)
 
 router.route("/icons/:page").get(iconsControllers.getIconsByPageNumber)
-
-router.route("/user/:id").put(usersControllers.updateUser)
 
 // RANKS ROUTES
 

@@ -1,17 +1,36 @@
 import "./Esports.css"
 import Carousel from "react-bootstrap/Carousel"
 import { NavLink } from "react-router-dom"
+import { connect } from 'react-redux'
+import championsActions from "../redux/actions/championsActions"
+import { useEffect, useState } from "react"
 
-let rotations = [
-    "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Fiora_0.jpg",
-    "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Gwen_0.jpg",
-    "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_0.jpg",
-    "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kaisa_0.jpg",
-    "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Seraphine_0.jpg",
-    "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Nunu_0.jpg"
-]
+const Esports = (props) => {
+    const [rotations, setRotations] = useState([])
+    
+    useEffect(() => {
+        const fetchRotations = async () => {
+            try {
+                const response = await props.getChampions()
+                setRotations(response.response)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        fetchRotations()
+    }, [])
+    
+    console.log([...rotations])
 
-const Esports = () => {
+    if (!rotations) {
+        return (
+            <div className="preloader">
+                <p>loading...</p>
+            </div>
+        )
+    }
+    
+
     return (
         <div className="news">
             <div className="socialContent">
@@ -34,17 +53,14 @@ const Esports = () => {
                     </NavLink> 
                 </div>
             </div>
-            <h2>News</h2>
+            <h2>ESPORTS</h2>
             <div className="rotationsContainer">
                 <Carousel className="rotationsCarousel">
                     {rotations.map((rotation, index) => {
                         return(
                             <Carousel.Item key={index}>
-                            <div className="rotationImg" style={{backgroundImage: `url('${rotation}')`}}>    
+                            <div className="rotationImg" style={{backgroundImage: `url('${rotation.background}')`}}>    
                             </div>
-                            <Carousel.Caption>
-                            <h4 className="rotationTitle">titulo rotacion</h4>
-                            </Carousel.Caption>
                             </Carousel.Item>
                         )
                     })
@@ -55,4 +71,8 @@ const Esports = () => {
     )
 }
 
-export default Esports
+const mapDispatchToProps = {
+    getChampions: championsActions.getChampionsRotation
+}
+
+export default connect(null, mapDispatchToProps)(Esports)

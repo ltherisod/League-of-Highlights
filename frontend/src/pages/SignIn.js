@@ -6,6 +6,7 @@ import userActions from "../redux/actions/userActions"
 import { Link } from "react-router-dom"
 
 const SignIn = (props) => {
+  const [error, setError] = useState(null)
  const [userData, setUserData] = useState({
     email: "",
     password: ""
@@ -23,14 +24,32 @@ const createHandler = async () => {
   }
   try{
     const res = await props.logIn(userData)
-    if(!res.success) alert("contraseña o mail mal. o todo anda como el orto")
+    if(!res.success) return alert("contraseña o mail mal. o todo anda como el orto")
     alert("todo bien, iniciaste zesion altoke")
     console.log(res.response)
   }catch(e){
     alert("salio todo como el orto ")
     console.log(e)
   }
+}
 
+const showError = (e) => {
+  e.preventDefault()
+  const name = e.target.name
+  props.signUp(userData)
+  .then((response) => {
+    if (!response.success) {
+      let value = response.error.filter((err) => err.path[0] === name)
+      if (value[0]) {
+        setError(value[0].message)
+      } else {
+        setError(null)
+      }
+    } else {
+      setError(null)
+    }
+  })
+  .catch(error=> console.log(error))
 }
 
   return (
@@ -40,28 +59,30 @@ const createHandler = async () => {
         <div className="formContainer">
           <h3 className="">Sign In</h3>
           <form className=" ">
+           { error ? <p style={{ color: "red"}}>{error}HOLa</p>
+            : null } &nbsp; 
             <div className="field">
               <label className="field__label">email</label>
               <input
+                onBlur={(e) => showError(e)}
                 type="text"
                 onChange={inputHandler}
                 id="email"
                 name="email"
-                className="field__form-input"
+                className="field__form-input email"
               />
-              &nbsp;
-              {/* <p>Error</p> */}
             </div>
+            { error ? <p style={{ color: "red"}}>{error}HOLa</p>
+            : null } &nbsp; 
             <div className="field">
               <label className="field__label">password</label>
               <input
+                onBlur={(e) => showError(e)}
                 type="password"
                 onChange={inputHandler}
                 className="field__form-input password"
                 name="password"
               />
-              &nbsp;
-              {/* <p>Error</p> */}
             </div>
           </form>
           <div className="buttonContainer">
