@@ -79,7 +79,7 @@ const SignUp = (props) => {
               <div className="formContainer">
               <h3>Sign Up</h3>
                 <form>
-                <p style={{ color: "red" }}>{error}</p>&nbsp;
+                    <small style={{ color: "red" }}>{error}&nbsp;</small>
                   <div className="field">
                     <label class="field__label">name</label>
                       <input
@@ -91,7 +91,7 @@ const SignUp = (props) => {
                         autoComplete="nope"
                       />
                   </div>
-                     <p style={{ color: "red" }}>{error}</p>&nbsp;
+                  <small style={{ color: "red" }}>{error}&nbsp;</small>
                   <div className="field">
                     <label class="field__label">email</label>
                     <input
@@ -103,7 +103,7 @@ const SignUp = (props) => {
                       autoComplete="nope"
                     />
                   </div>
-                  <p style={{ color: "red" }}>{error}</p>&nbsp;
+                  <small style={{ color: "red" }}>{error}&nbsp;</small>
                   <div className="field">
                   <label class="field__label">password</label>
                     <input
