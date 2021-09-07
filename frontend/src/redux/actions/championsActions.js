@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_KEY = "RGAPI-a587263e-a3d9-4592-bbbe-e97ff3ab6163"
+const API_KEY = "RGAPI-01d033cb-b6e7-4a9b-8cd9-da58be561193"
 const HOST = "http://localhost:4000"
 
 const championsActions = {

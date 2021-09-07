@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
 import { useRef, useState } from "react"
+import { ref } from "joi";
 import championsActions from "../redux/actions/championsActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
@@ -36,33 +37,32 @@ const SignUp = (props) => {
     if (Object.values(userData).some((value) => value === "")) {
       return false
     }
-    const res = await props.signUp(userData)
+    const res = await props.signUp(userData);
     if (res.success) {
       setUserId(res.response._id)
       setStep(2)
     } else {
-      console.log(res.error) // Manejar el error acá.
+      console.log(res.error); // Manejar el error acá.
     }
   }
 
   const showError = (e) => {
     e.preventDefault()
     const name = e.target.name
-    props
-      .signUp(userData)
-      .then((response) => {
-        if (!response.success) {
-          let value = response.error.filter((err) => err.path[0] === name)
-          if (value[0]) {
-            setError(value[0].message)
-          } else {
-            setError(null)
-          }
+    props.signUp(userData)
+    .then((response) => {
+      if (!response.success) {
+        let value = response.error.filter((err) => err.path[0] === name)
+        if (value[0]) {
+          setError(value[0].message)
         } else {
           setError(null)
         }
-      })
-      .catch((error) => console.log(error))
+      } else {
+        setError(null)
+      }
+    })
+    .catch(error=> console.log(error))
   }
 
   const showErrorEmail = (e) => {
@@ -127,7 +127,7 @@ const SignUp = (props) => {
 }
 
   const refreshHandler = async () => {
-    if (!usernameRef.current.value) return false // Completa los campos flojo de mierda.
+    if (!usernameRef.current.value) return false; // Completa los campos flojo de mierda.
     const res = await props.refresh(
       usernameRef.current.value,
       userId,
@@ -148,7 +148,7 @@ const SignUp = (props) => {
                     <label className="field__label">name</label>
                       <input
                         type="text"
-                        onBlur={(e) => showError(e)}
+                        // onBlur={(e) => showError(e)}
                         onChange={inputHandler}
                         name="name"
                         className="field__form-input name"
@@ -159,9 +159,8 @@ const SignUp = (props) => {
                   <div className="field">
                     <label className="field__label">email</label>
                     <input
-                      ref={usernameRef}
                       type="text"
-                      onBlur={(e) => showErrorEmail(e)}
+                      // onBlur={(e) => showErrorEmail(e)}
                       onChange={inputHandler}
                       name="email"
                       className="field__form-input email"
@@ -173,7 +172,7 @@ const SignUp = (props) => {
                   <label className="field__label">password</label>
                     <input
                       type="password"
-                      onBlur={(e) => showErrorPass(e)}
+                      // onBlur={(e) => showErrorPass(e)}
                       onChange={inputHandler}
                       name="password"
                       className="field__form-input password"
@@ -194,6 +193,8 @@ const SignUp = (props) => {
                     onFailure={responseGoogle}
                     cookiePolicy={'single_host_origin'}
                     />
+                    
+
                   {/* </button> */}
                 </div>
                 <button onClick={createHandler} className="login-button signIn">
@@ -242,18 +243,18 @@ const SignUp = (props) => {
                     )}
                     {/* <input type="text" placeholder="icon" name="icon" />
                             input condicional  */}
-            </form>
+                </form>
+            </div>
           </div>
-        </div>
       )}
     </>
-  )
-}
+  );
+};
 
 const mapDispatchToprops = {
   getChampionsRotation: championsActions.getChampionsRotation,
   signUp: userActions.signUp,
   refresh: userActions.refresh,
-}
+};
 
-export default connect(null, mapDispatchToprops)(SignUp)
+export default connect(null, mapDispatchToprops)(SignUp);

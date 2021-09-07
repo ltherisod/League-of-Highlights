@@ -6,14 +6,15 @@ import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
 
 const Profile = (props) => {
-    const [showProfileData, setProfileData]= useState([])
+    console.log(props)
+    const [showProfileData, setShowProfileData]= useState([])
     const [loader, setLoader] = useState (true)
   
 
     async function getProfileByName (){
         try{
             let response = await props.getProfileByName(props.userData.username)
-            setProfileData(response)
+            setShowProfileData(response)
             setLoader(false)
         }catch (error){
             console.log(error)
@@ -43,6 +44,15 @@ const Profile = (props) => {
                 <h2>Loading</h2>
             </div>
     )}
+
+    const refreshProfile = (username, mongoId, isGuest) => {
+        props.refresh(props.userData.username, mongoId, null)
+        .then((res) => {
+            console.log(props.userData.username, mongoId)
+            console.log(res)
+        })
+        .catch((error) => console.log(error))
+    }
     
 
     return (
@@ -57,8 +67,8 @@ const Profile = (props) => {
                         </div>
                         <div className="logoChampion">
                             <div className="tag" style={{backgroundImage: `url(${props.userData.topChampions[0].tags[0].image})`}}></div>
-                            <button>
-                                <img src="./assets/reflesh" alt= "reflesh"/>
+                            <button onClick={refreshProfile}>Refresh
+                                {/* <img src="./assets/reflesh" alt= "reflesh"/> */}
                             </button>
                         </div>
                     </div>

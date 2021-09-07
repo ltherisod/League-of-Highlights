@@ -15,14 +15,14 @@ function App(props) {
   const token = localStorage.getItem("token")
   const [socket, setSocket] = useState(null)
 
-  if (token) {
-    props.loginLS(token)
-    console.log("Holaa") // NO SACAR POR FAVOR, SE ROMPE TODO
-  }
-
   useEffect(() => {
     setSocket(io("http://localhost:4000"))
+    if (token) {
+      props.loginLS(token)
+    }
+
   }, [])
+
   if (socket) {
     socket.emit("Hola")
   }
