@@ -1,8 +1,3 @@
-main {
-    background-color: rgb(125, 108, 143);
-    min-height: 80vh;
-    display: flex;
-}
 
 div.user, div.logoChampion, div.info, div.champion {
     display: flex;
@@ -26,5 +21,14 @@ div.avatar {
 
 div.info {
     flex: 1;
+}
+
+.userHero {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    min-height: 90vh;
 }
 
