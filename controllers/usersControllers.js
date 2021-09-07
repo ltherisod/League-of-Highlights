@@ -96,6 +96,7 @@ const usersControllers = {
   getUserByUsername: async (req, res) => {
     try {
       const { username } = req.params
+      console.log(req.params)
       const user = await User.find({ username })
       if (!user) throw new Error("User doesn't exist.")
       res.json({ success: true, response: user, error: null })

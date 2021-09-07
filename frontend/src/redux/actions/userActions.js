@@ -4,7 +4,6 @@ const API_KEY = "RGAPI-a587263e-a3d9-4592-bbbe-e97ff3ab6163"
 const HOST = "http://localhost:4000"
 
 const userActions = {
-
   signUp: (userData) => {
     return async (dispatch, getState) => {
       try {
@@ -88,10 +87,8 @@ const userActions = {
           `${HOST}/api/user/${userMongoId}`,
           refreshedData
         )
-        console.log("Me llegó la respuesta")
         if (!res.data.success) throw new Error(res.data.error)
         // dispatch()
-        console.log("Voy a responder al componente sin errores.")
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, error: e.message }
@@ -110,18 +107,18 @@ const userActions = {
       }
     }
   },
-  
+
   getProfileByName: (userName) => {
     return async (dispatch, getState) => {
-      try{
+      try {
         const res = await axios.get(`${HOST}/api/username/${userName}`)
-        if(!res.data.success) throw new Error(res.data.error)
-        return {success: true, response: res.data.response, error: null}
-      } catch (e){
-        return { success: false, response: null, error: e.message}
+        if (!res.data.success) throw new Error(res.data.error)
+        return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
       }
     }
-  }
+  },
 }
 
 export default userActions
