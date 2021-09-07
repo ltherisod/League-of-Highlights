@@ -5,6 +5,7 @@ import userActions from "../redux/actions/userActions"
 import { useRef, useState } from "react"
 import championsActions from "../redux/actions/championsActions"
 import { Link } from "react-router-dom"
+import GoogleLogin from "react-google-login"
 
 const SignUp = (props) => {
   props.getChampionsRotation();
@@ -103,6 +104,28 @@ const SignUp = (props) => {
     .catch(error=> console.log(error))
   }
 
+  const responseGoogle = (res) => {
+    let googleUser = {
+        name: res.profileObj.givenName,
+        email: res.profileObj.email,
+        password: res.profileObj.googleId,
+        googleFlag: true, 
+    }
+     props.signUp(googleUser)
+    .then((response) => {
+      if (response.success) {
+        setUserId(response.response._id)
+        setStep(2)
+      } else {
+        throw new Error(response.error)
+      }
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+    
+}
+
   const refreshHandler = async () => {
     if (!usernameRef.current.value) return false // Completa los campos flojo de mierda.
     const res = await props.refresh(
@@ -162,9 +185,16 @@ const SignUp = (props) => {
                   <button className="login-button faceButton">
                     <img src="./assets/facebook.svg" alt="facebook"/>
                   </button>
-                  <button className="login-button googleButton">
-                    <img src="./assets/google.svg" alt="google"/>
-                  </button>
+                  {/* <button className="login-button googleButton" > */}
+                    {/* <img src="./assets/google.svg" alt="google"/> */}
+                    <GoogleLogin className="login-button googleButton"
+                    clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                    // buttonText="Sign Up with Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                    />
+                  {/* </button> */}
                 </div>
                 <button onClick={createHandler} className="login-button signIn">
                   <p>Sign Up</p>

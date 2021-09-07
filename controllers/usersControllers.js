@@ -8,7 +8,7 @@ const Rank = require("../models/Rank")
 const usersControllers = {
   signUp: async (req, res) => {
     try {
-      const { name, email, password } = req.body
+      const { name, email, password, googleFlag} = req.body
       const userExists = await User.findOne({ email: email })
       if (userExists) throw new Error("Email already in use!")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -16,6 +16,7 @@ const usersControllers = {
         name: name.toLowerCase(),
         email: email.toLowerCase(),
         password: hashedPass,
+        google: googleFlag,
       })
       const user = await newUser.save()
       const token = jwt.sign(

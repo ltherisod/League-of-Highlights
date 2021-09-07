@@ -97,6 +97,11 @@ width: 2em;
     background-color: white;
 }
 
+div.buttonContainer span {
+    display: none!important;
+}
+
+
 .signIn, .riotIcon{
     display: flex;
     justify-content: center;
