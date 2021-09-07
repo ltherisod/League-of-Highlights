@@ -80,7 +80,6 @@ const SignUp = (props) => {
               <h3>Sign Up</h3>
                 <form>
                 <p style={{ color: "red" }}>{error}</p>&nbsp;
-                  &nbsp;
                   <div className="field">
                     <label class="field__label">name</label>
                       <input
@@ -91,9 +90,8 @@ const SignUp = (props) => {
                         className="field__form-input name"
                         autoComplete="nope"
                       />
-                     <p style={{ color: "red" }}>{error}</p>&nbsp;
-                      &nbsp;
                   </div>
+                     <p style={{ color: "red" }}>{error}</p>&nbsp;
                   <div className="field">
                     <label class="field__label">email</label>
                     <input
@@ -104,9 +102,8 @@ const SignUp = (props) => {
                       className="field__form-input email"
                       autoComplete="nope"
                     />
-                  <p style={{ color: "red" }}>{error}</p>&nbsp;
-                  &nbsp;
                   </div>
+                  <p style={{ color: "red" }}>{error}</p>&nbsp;
                   <div className="field">
                   <label class="field__label">password</label>
                     <input
@@ -128,7 +125,7 @@ const SignUp = (props) => {
                   </button>
                 </div>
                 <button onClick={createHandler} className="login-button signIn">
-                  <p>Sing Up</p>
+                  <p>Sign Up</p>
                   </button>
                 <p className="textDataForm">Already have an account? <Link to="/signin">Sign in here! </Link></p>
             </div>
