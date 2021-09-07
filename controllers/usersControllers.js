@@ -40,7 +40,7 @@ const usersControllers = {
   },
   logIn: async (req, res) => {
     try {
-      const { email, password } = req.body
+      const { email, password,googleFlag } = req.body
       const user = await User.findOne({ email: email })
         .populate({
           path: "topChampions",
@@ -48,6 +48,9 @@ const usersControllers = {
         })
         .populate("rank")
       if (!user) throw new Error("Email and/or password incorrect")
+      if(user.google && !googleFlag){
+        throw new Error("You  have a Google´s account,please log in there");
+      }
       const secretPassword = await bcryptjs.compare(password, user.password)
       if (!secretPassword) throw new Error("Email and/or password incorrect")
       const token = jwt.sign(

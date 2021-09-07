@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   icon: { type: String, default: Math.round(Math.random() * 15) },
   videos: [{ type: mongoose.Types.ObjectId, ref: "video" }],
   reports: [{ type: mongoose.Types.ObjectId, ref: "report" }],
+  google:{type:"Boolean",default:false},
 })
 
 const User = mongoose.model("user", userSchema)
