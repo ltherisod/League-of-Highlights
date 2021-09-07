@@ -15,17 +15,19 @@ function App(props) {
   const token = localStorage.getItem("token")
   const [socket, setSocket] = useState(null)
 
-  if (token) {
-    props.loginLS(token)
-    console.log("Holaa") // NO SACAR POR FAVOR, SE ROMPE TODO
-  }
+  
 
-  useEffect(() => {
+   useEffect(() => {
     setSocket(io("http://localhost:4000"))
+    if (token) {
+      props.loginLS(token)
+      console.log("Holaa") // NO SACAR POR FAVOR, SE ROMPE TODO
+    }
   }, [])
-  if (socket) {
-    socket.emit("Hola")
-  }
+
+  // if (socket) {
+  //   socket.emit("Hola")
+  // }
   return (
     <BrowserRouter>
       <Switch>

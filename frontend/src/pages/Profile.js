@@ -6,14 +6,14 @@ import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
 
 const Profile = (props) => {
-    const [showProfileData, setProfileData]= useState([])
+    const [showProfileData, setShowProfileData]= useState([])
     const [loader, setLoader] = useState (true)
   
 
     async function getProfileByName (){
         try{
             let response = await props.getProfileByName(props.userData.username)
-            setProfileData(response)
+            setShowProfileData(response)
             setLoader(false)
         }catch (error){
             console.log(error)
@@ -44,6 +44,7 @@ const Profile = (props) => {
             </div>
     )}
     
+    console.log(props)
 
     return (
         <>
@@ -56,17 +57,17 @@ const Profile = (props) => {
                             <div className="avatar" style={{backgroundImage: `url(${props.userData.icon})`}}></div>
                         </div>
                         <div className="logoChampion">
-                            <div className="tag" style={{backgroundImage: `url(${props.userData.topChampions[0].tags[0].image})`}}></div>
+                            {/* <div className="tag" style={{backgroundImage: `url(${props.userData.topChampions[0].tags[0].image})`}}></div> */}
                             <button>
                                 <img src="./assets/reflesh" alt= "reflesh"/>
                             </button>
                         </div>
                     </div>
-                    <div className="info">
+                    {/* <div className="info">
                       <div className="rank" style= {{backgroundImage: `url(${props.userData.rank.image})`}}></div>
                          <h4>{props.userData.rank.name} {props.userData.division}</h4>
                     </div>
-                    <div className="champion"  style={{backgroundImage: `url(${props.userData.topChampions[0].image})`}}></div>
+                    <div className="champion"  style={{backgroundImage: `url(${props.userData.topChampions[0].image})`}}></div> */}
                 </div>
             </main>
             <Footer/>

@@ -148,7 +148,7 @@ const SignUp = (props) => {
                     <label className="field__label">name</label>
                       <input
                         type="text"
-                        onBlur={(e) => showError(e)}
+                        
                         onChange={inputHandler}
                         name="name"
                         className="field__form-input name"
@@ -161,7 +161,7 @@ const SignUp = (props) => {
                     <input
                       ref={usernameRef}
                       type="text"
-                      onBlur={(e) => showErrorEmail(e)}
+                      
                       onChange={inputHandler}
                       name="email"
                       className="field__form-input email"
@@ -173,7 +173,7 @@ const SignUp = (props) => {
                   <label className="field__label">password</label>
                     <input
                       type="password"
-                      onBlur={(e) => showErrorPass(e)}
+                      
                       onChange={inputHandler}
                       name="password"
                       className="field__form-input password"

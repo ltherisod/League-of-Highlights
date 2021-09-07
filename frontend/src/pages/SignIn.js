@@ -35,50 +35,7 @@ const SignIn = (props) => {
       console.log(e)
     }
   }
-
-  const showErrorEmail = (e) => {
-    e.preventDefault()
-    const name = e.target.name
-    console.log(name)
-    // props
-    //   .logIn(userData)
-    //   .then((response) => {
-    //     console.log(response)
-    //     if (!response.success) {
-    //       let value = response.error.filter((err) => err.path[0] === name)
-    //       if (value[0]) {
-    //         setErrorEmail(value[0].message)
-    //       } else {
-    //         setErrorEmail(null)
-    //       }
-    //     } else {
-    //       setErrorEmail(null)
-    //     }
-    //   })
-    //   .catch((error) => console.log(error))
-  }
-
-  const showErrorPass = (e) => {
-    e.preventDefault()
-    const name = e.target.name
-    console.log(name)
-    // props
-    //   .logIn(userData)
-    //   .then((response) => {
-    //     if (!response.success) {
-    //       let value = response.error.filter((err) => err.path[0] === name)
-    //       if (value[0]) {
-    //         setErrorEmail(value[0].message)
-    //       } else {
-    //         setErrorEmail(null)
-    //       }
-    //     } else {
-    //       setErrorEmail(null)
-    //     }
-    //   })
-    //   .catch((error) => console.log(error))
-  }
-
+  
   const responseGoogle = (response) => {
     let user = {
       email: response.profileObj.email,
@@ -86,7 +43,7 @@ const SignIn = (props) => {
       googleFlag: true,
     }
     console.log("heey")
-    props.logIn(userData)
+    props.logIn(user)
       .then((res) => {
         if (!res.data.success) {
           console.log("hey is if")
@@ -116,7 +73,7 @@ const SignIn = (props) => {
             <div className="field">
               <label className="field__label">email</label>
               <input
-                onBlur={(e) => showErrorEmail(e)}
+                
                 type="text"
                 onChange={inputHandler}
                 id="email"
@@ -128,7 +85,7 @@ const SignIn = (props) => {
             <div className="field">
               <label className="field__label">password</label>
               <input
-                onBlur={(e) => showErrorPass(e)}
+                
                 type="password"
                 onChange={inputHandler}
                 className="field__form-input password"
