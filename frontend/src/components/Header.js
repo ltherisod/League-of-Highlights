@@ -1,5 +1,5 @@
 import "./Header.css"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import {
   Collapse,
   Navbar,
@@ -11,8 +11,8 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-} from "reactstrap";
-import { useState } from "react";
+} from "reactstrap"
+import { useState } from "react"
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,4 +70,4 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
+export default Header
