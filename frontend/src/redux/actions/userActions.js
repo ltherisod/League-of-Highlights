@@ -23,12 +23,14 @@ const userActions = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.post(`${HOST}/api/login`, userData)
+        console.log(res)
         if (!res.data.success)
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
         dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) // "Agregar type" <- lo puse porque lo pusiste vos xd
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
+        console.log('cai en catch')
         return { success: false, response: null, error: e.message }
       }
     }
@@ -118,7 +120,9 @@ const userActions = {
   getProfileByName: (userName) => {
     return async (dispatch, getState) => {
       try {
+        
         const res = await axios.get(`${HOST}/api/username/${userName}`)
+        console.log(res)
         if (!res.data.success) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
       } catch (e) {

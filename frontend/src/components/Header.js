@@ -23,7 +23,6 @@ const Header = (props) => {
   const inputHandler = useRef()
   console.log(props)
   const createHandler = async () => {
-    console.log(inputHandler.current.value)
     if (inputHandler.current.value === "")
       return alert("completa los campos hijo de puta")
 
@@ -34,11 +33,19 @@ const Header = (props) => {
         return alert(
           "todo salio bien pero el usuario no existe amigo, o no esta en riot"
         )
+      if (res.success) {
+        props.history.push(`/profile/${res.response._id}`)
+      } else {
+        alert("oh no !")
+      }
     } catch (e) {
-      alert("todo salio muyx2 como el orto ")
+      alert(e.message)
     }
   }
 
+  const sesionOut = () => {
+    props.logOut()
+  }
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
@@ -63,13 +70,25 @@ const Header = (props) => {
               <i className="fas fa-user-alt text-white fs-2"></i>
             </DropdownToggle>
             <DropdownMenu className="position-absolute top-0 end-0 mt-5">
-              <Link to="/signup">
-                <DropdownItem>Sign up</DropdownItem>
-              </Link>
-              <Link to="/signin">
-                {" "}
-                <DropdownItem>Sign in</DropdownItem>{" "}
-              </Link>
+              {props.userStatus ? (
+                <Link to="/">
+                  <DropdownItem to='/' onClick={sesionOut}>Log out</DropdownItem>
+                </Link>
+              ) : (
+                <div>
+                  {!props.userStatus && (
+                    <Link to="/signup">
+                      {" "}
+                      <DropdownItem>Sign up</DropdownItem>
+                    </Link>
+                  )}
+                  {!props.userStatus && (
+                    <Link to="/signin">
+                      <DropdownItem>Sign in</DropdownItem>
+                    </Link>
+                  )}
+                </div>
+              )}
             </DropdownMenu>
           </div>
         </UncontrolledDropdown>
@@ -108,8 +127,15 @@ const Header = (props) => {
   )
 }
 
-const mapDispatchToProps = {
-  getProfileByName: userActions.getProfileByName,
+const mapStateToProps = (state) => {
+  return {
+    userStatus: state.user.user,
+  }
 }
 
-export default connect(null, mapDispatchToProps)(Header)
+const mapDispatchToProps = {
+  getProfileByName: userActions.getProfileByName,
+  logOut: userActions.logOut,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

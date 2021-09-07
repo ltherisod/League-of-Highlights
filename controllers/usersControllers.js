@@ -101,6 +101,7 @@ const usersControllers = {
     try {
       const { username } = req.params
       const user = await User.findOne({ username })
+      console.log(user)
       if (!user) throw new Error("User doesn't exist.")
       res.json({
         success: true,

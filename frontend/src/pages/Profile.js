@@ -45,9 +45,12 @@ const Profile = (props) => {
   //  }
 
   if (loader) {
-    <div className="loaderdiv">
+    return(
+      <div className="loaderdiv">
         <h2>Loading</h2>
-    </div>
+      </div>
+    )
+   
   }
 
   if (!Object.keys(props.userData).length)
