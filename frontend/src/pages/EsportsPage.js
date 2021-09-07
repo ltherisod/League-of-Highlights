@@ -7,7 +7,7 @@ const EsportsPage = () => {
     return (
         <>
             <Header/>
-            <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/CMCFsDLV/fondofinal.png')"}}>
+            <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
                 <h1>ESPORTS</h1>
                 <div className="videoContainer">
                 <ReactPlayer url='http://www.youtube.com/watch?v=avzfp6RQLYA' className="videoEsports" controls={true}/>
