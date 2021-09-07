@@ -1,10 +1,49 @@
 import "./Profile.css"
 import Header from "../components/Header"
+import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import Footer from "../components/Footer"
+import userActions from "../redux/actions/userActions"
 
 const Profile = (props) => {
-    console.log(props.userData)
+    const [showProfileData, setProfileData]= useState([])
+    const [loader, setLoader] = useState (true)
+  
+
+    async function getProfileByName (){
+        try{
+            let response = await props.getProfileByName(props.userData.username)
+            setProfileData(response)
+            setLoader(false)
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+    useEffect (() => {
+        window.scroll(0,0)
+        getProfileByName(showProfileData)
+    },[])
+
+    // const reflesh=(username, userMongoId, isGuest)=>{
+    //     props.reflesh(username, userMongoId, isGuest)
+    //     .then((res) =>{
+    //         if(res.success){
+            
+    //         }else{
+    //             throw new Error()
+    //         }
+    //     })
+    //     .catch((error) => console.log(error))
+    //  }
+
+    if(loader){
+        return(
+            <div className="loaderdiv">
+                <h2>Loading</h2>
+            </div>
+    )}
+    
 
     return (
         <>
@@ -18,6 +57,9 @@ const Profile = (props) => {
                         </div>
                         <div className="logoChampion">
                             <div className="tag" style={{backgroundImage: `url(${props.userData.topChampions[0].tags[0].image})`}}></div>
+                            <button>
+                                <img src="./assets/reflesh" alt= "reflesh"/>
+                            </button>
                         </div>
                     </div>
                     <div className="info">
@@ -38,4 +80,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = {
+    getProfileByName:userActions.getProfileByName,
+    refresh: userActions.refresh
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Profile)
