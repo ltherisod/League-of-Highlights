@@ -46,6 +46,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
+      console.log(user)
       if (!user) throw new Error("Email and/or password incorrect")
       const secretPassword = await bcryptjs.compare(password, user.password)
       if (!secretPassword) throw new Error("Email and/or password incorrect")
