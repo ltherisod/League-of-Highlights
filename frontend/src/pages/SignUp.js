@@ -171,7 +171,7 @@ const SignUp = (props) => {
               </div>
               <small style={{ color: "red" }}>{errorEmail}&nbsp;</small>
               <div className="field">
-                <label className="field__label">username</label>
+                <label className="field__label">email</label>
                 <input
                   type="text"
                   // onBlur={(e) => showErrorEmail(e)}
