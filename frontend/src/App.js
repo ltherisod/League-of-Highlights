@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import SignIn from "./pages/SignIn"
 import Community from "./pages/Community"
 import EsportsPage from "./pages/EsportsPage"
+import Admin from "./pages/Admin"
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
 import Profile from "./pages/Profile"
 import { connect } from "react-redux"
@@ -14,7 +15,7 @@ import { useEffect, useState } from "react"
 function App(props) {
   const token = localStorage.getItem("token")
   const [socket, setSocket] = useState(null)
-
+  console.log(props.userStatus)
   
 
    useEffect(() => {
@@ -35,9 +36,10 @@ function App(props) {
         {!props.userStatus && <Route path="/signin" component={SignIn} />}
         <Route path="/community" component={Community} />
         {/* Aquí modifiqué a /profile/{user}} para poder obtener el perfil del usuario con ese id.*/}
-        {!props.userStatus && <Route path="/profile/:username" component={Profile} />} {/*proteger la ruta, por ahora prueban*/} 
+        {props.userStatus && <Route path="/profile/:username" component={Profile} />} {/*proteger la ruta, por ahora prueban*/} 
         {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
         <Route exact path="/esports" component={EsportsPage} />
+        <Route exact path="/admin" component={Admin} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
