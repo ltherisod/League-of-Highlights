@@ -1,19 +1,17 @@
-/* div.usersVideos, div.video {
+ div.usersVideos, div.video {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 
-div.usersVideos {
-    height: 100vh;
-    /* min height temporal mientras no hay contenido */
-/* } */
-/* 
-
-.video {
+.videoUser {
     width: 360px !important;
     height: 210px !important;
-    margin: 2rem;
-} */ 
+    margin: .5rem;
+} 
+
+.videoInfo {
+    display: flex;
+    justify-content: space-between;
+}
