@@ -48,66 +48,6 @@ const SignUp = (props) => {
     }
   }
 
-  // const showError = (e) => {
-  //   e.preventDefault()
-  //   const name = e.target.name
-  //   props
-  //     .signUp(userData)
-  //     .then((response) => {
-  //       if (!response.success) {
-  //         let value = response.error.filter((err) => err.path[0] === name)
-  //         if (value[0]) {
-  //           setError(value[0].message)
-  //         } else {
-  //           setError(null)
-  //         }
-  //       } else {
-  //         setError(null)
-  //       }
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-
-  // const showErrorEmail = (e) => {
-  //   e.preventDefault()
-  //   const name = e.target.name
-  //   props
-  //     .signUp(userData)
-  //     .then((response) => {
-  //       if (!response.success) {
-  //         let value = response.error.filter((err) => err.path[0] === name)
-  //         if (value[0]) {
-  //           setErrorEmail(value[0].message)
-  //         } else {
-  //           setErrorEmail(null)
-  //         }
-  //       } else {
-  //         setErrorEmail(null)
-  //       }
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-
-  // const showErrorPass = (e) => {
-  //   e.preventDefault()
-  //   const name = e.target.name
-  //   props
-  //     .signUp(userData)
-  //     .then((response) => {
-  //       if (!response.success) {
-  //         let value = response.error.filter((err) => err.path[0] === name)
-  //         if (value[0]) {
-  //           setErrorPass(value[0].message)
-  //         } else {
-  //           setErrorPass(null)
-  //         }
-  //       } else {
-  //         setErrorPass(null)
-  //       }
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-
   const responseGoogle = (res) => {
     let googleUser = {
       name: res.profileObj.givenName,
@@ -126,19 +66,23 @@ const SignUp = (props) => {
         }
       })
       .catch((error) => {
-        console.log(error)
+        alert(error)
       })
   }
 
   const refreshHandler = async () => {
-    if (!usernameRef.current.value) return false // Completa los campos flojo de mierda.
+    if (!usernameRef.current.value) return alert('empty fields') // Completa los campos flojo de mierda.
     const res = await props.refresh(
       usernameRef.current.value,
       userId,
       !hasRiotAccount
     )
+    console.log(res)
     if (res.success) {
       props.loginLS(localStorage.getItem("token"))
+
+    }else{
+      alert(res)
     } // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
   }
   return (

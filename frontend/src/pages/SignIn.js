@@ -25,8 +25,9 @@ const SignIn = (props) => {
     }
     try {
       const res = await props.logIn(userData)
+      console.log(res)
       if (!res.success)
-        return alert("contraseña o mail mal. o todo anda como el orto")
+        return alert(res.error)
     } catch (e) {
       console.log(e)
     }

@@ -9,22 +9,26 @@ h2 {
   font-family: "BeaufortforLOL-Bold.woff";
 }
 
-.imageAndText{
+.heroCommunity{
     background-image: url("https://i.postimg.cc/VNh13Yr9/evelynn-league-of-legends-kda-neon-by-west182-dctnajm-fullview.jpg");
     min-height: 100vh;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
+
+/* .text-center {
+  margin-top: 4%;
+  margin-bottom: 4%;
+} */
 
 .photos {
   display: flex;
   flex-wrap: wrap;
   justify-content:center;
+  align-items: center;
+  width: 100%;
 }
 
 .photo {
@@ -37,13 +41,12 @@ h2 {
   border-radius: 2em;
 }
 
-.photo:hover{
-  border-radius: 2em;
+/* .picCommunity:hover{
   transition: transform 1s, background-color 0.5s, -webkit-transform 1s;
   -webkit-transform: scale(1.08);
   transform: scale(1.08);
   background-blend-mode: soft-light;
-}
+} */
 
 section{
     box-sizing: border-box;
@@ -61,4 +64,21 @@ section{
     background-size: cover;
     padding-bottom: 4%;
     padding-top: 6%;
+}
+
+.picCommunity {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  width: 30%;
+  height: 70vh;
+  margin: 2rem;
+  box-shadow: 10px 10px 21px -1px rgba(255,0,181,0.43), -12px -12px 21px -1px rgba(0,144,255,0.43), -1px -1px 21px 8px rgba(115,0,255,1);
+
+}
+
+.picBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
