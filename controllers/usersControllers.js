@@ -103,7 +103,6 @@ const usersControllers = {
     try {
       const { username } = req.params
       const user = await User.findOne({ username })
-      console.log(user)
       if (!user) throw new Error("User doesn't exist.")
       res.json({
         success: true,
@@ -127,7 +126,6 @@ const usersControllers = {
       const { username, division, rankName, iconKey, topChampionsKeys, guest } =
         req.body
       const id = req.params.id
-      console.log(id)
       const icon = await Icon.findOne({ riotKey: iconKey })
       const rank = await Rank.findOne({ name: rankName })
       const topChampions = await Champion.find()
