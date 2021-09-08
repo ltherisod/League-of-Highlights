@@ -4,112 +4,37 @@ import "./Community.css";
 import "./Home.css"
 import { connect } from "react-redux"
 import BackHome from "../components/BackHome";
+import Aos from "aos"
+import "aos/dist/aos.css"
+import { useEffect } from "react"
 
 const Community = () => {
+
+  useEffect (() => {
+    Aos.init({duration:2000})
+  } ,[])
+
   return (
     <>
-    <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
+    <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/fyFKsXCW/pruebadifuminada.png')"}}>
         <Header />
-        <div className="imageAndText">
-        </div>
-        <h2 className='text-center'>COMMUNITY</h2>
-        <div className="photos">
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/L8Pw82PW/2021-2-15-Pirate-Invicta.jpg")`,
-            }}
-            className="photo"
-          ></div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/XYX3mcdk/ploop4.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/c4BT9CQ0/2021-2-15-Laurits-Rask.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/TYB2s2GN/2021-2-15-Little-Legends.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/j2HVkThm/2021-2-15-Nasus-Kim.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/gcHLZZVy/ploop5.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/9MJVWC99/ploop3.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/RhkYmDgf/ploop2.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/hGvN9TQX/ploop1.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/0Qyc1fnn/hk3drryu9wnicc44unma.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/65BpfYrj/2021-2-15-John-Crazzy.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
-          </div>
-          <div
-            style={{
-              backgroundImage: `url("https://i.postimg.cc/hGLKwT42/OIP.jpg")`,
-            }}
-            className="photo"
-          >
-            ''
+        <div className="heroCommunity"></div>
+          <h2 className='text-center'>COMMUNITY</h2>
+          <div className="photos">
+            <div className="picBox" data-aos="fade-up-right">
+              <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/0yx5NHVL/Ee-Q6x-P-XYAAe-Yhq.jpg')"}}></div>
+              <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/Njy91n6L/FHOp4q6oq-RYUl3m-X2-X9-ZPpc-Pr-Z3vki-EAqivaf-Xj-RGc-E-1.jpg')"}}></div>
+            </div>
+            <div className="picBox" data-aos="fade-left">
+              <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/L8yDsGHX/DUlz7f-XXc-AAKse-B.jpg')"}}></div>
+              <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/hGy5HfJ2/de651pd-55834d28-12b3-4edb-be3f-4adf37846837.jpg')"}}></div>
+            </div>
+            <div className="picBox" data-aos="fade-up-right">
+              <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/nhQbKKCn/Ahri-1253284740-172372-1024x1263.png')"}}></div>
+              <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/9XqdhrRr/12495063-1711676362447322-963432819313716272-n.jpg')"}}></div>
+            </div>
           </div>
           <BackHome/>
-        </div>
         <Footer />
     </div>
     </>
