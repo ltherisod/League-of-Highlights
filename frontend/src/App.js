@@ -35,9 +35,9 @@ function App(props) {
         {!props.userStatus && <Route path="/signin" component={SignIn} />}
         <Route path="/community" component={Community} />
         {/* Aquí modifiqué a /profile/{user}} para poder obtener el perfil del usuario con ese id.*/}
-        {!props.userStatus && <Route path="/profile/:username" component={Profile} />} {/*proteger la ruta, por ahora prueban*/} 
+        {props.userStatus && <Route path="/profile/:username" component={Profile} />} {/*proteger la ruta, por ahora prueban*/} 
         {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
-        <Route exact path="/esports" component={EsportsPage} />
+        <Route exact path="/" component={EsportsPage} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
