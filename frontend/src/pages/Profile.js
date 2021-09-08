@@ -30,11 +30,9 @@ const Profile = (props) => {
       .then((response) => {
         setShowProfileData(response.response || {})
         setLoader(false)
-        console.log(props)
       })
       .catch((e) => console.log(e.message))
   }, [])
-  console.log(showProfileData)
   if (loader) {
     return (
       <div className="loaderdiv">
@@ -52,7 +50,7 @@ const Profile = (props) => {
             "url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')",
         }}
       >
-        <Header />
+        <Header {...props}/>
         <main>
           <div className="userHero" style={{backgroundImage:"url('https://i.postimg.cc/kX2nvFmG/fondoperfil.png')"}}>
             <div className="userside" >

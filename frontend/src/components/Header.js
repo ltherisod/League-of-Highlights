@@ -32,9 +32,6 @@ const Header = (props) => {
           "todo salio bien pero el usuario no existe amigo, o no esta en riot"
         )
       if (res.success) {
-        console.log("caee en el iff")
-        console.log(props)
-        console.log(res.response.username)
         props.history.push(`/profile/${res.response.username}`)
       } else {
         alert("oh no !")
@@ -51,11 +48,6 @@ const Header = (props) => {
     props.logOut()
   }
 
-
-  console.log(props.userStatus.user)
-  console.log(props)
-  console.log(props.userStatus.username)
-  console.log('no caee')
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
@@ -133,7 +125,7 @@ const Header = (props) => {
             {/* <Input placeholder="Search" bsSize="sm" className="mx-1 rounded-pill inputSize px-5" /> */}
           </Nav>
         </Collapse>
-        <div className="divSearch">
+        <div className="divSearch ">
           <input
             className="textbox"
             type="text"

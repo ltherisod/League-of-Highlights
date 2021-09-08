@@ -127,3 +127,19 @@ div.buttonContainer span {
 .textDataForm a{
     text-decoration: none;
 }
+
+
+@media only screen and (max-width: 767px) {
+    .formContainer {
+        padding: 1.5rem;
+        background-color: white;
+        width:75%
+    }
+
+    .login-button {
+        width: 100%!important;
+        padding: 1em 2.8em!important;
+        margin:0.5rem
+    }
+  }
+  

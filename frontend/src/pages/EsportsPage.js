@@ -3,10 +3,10 @@ import Footer from "../components/Footer"
 import ReactPlayer from "react-player"
 import "./EsportsPage.css"
 
-const EsportsPage = () => {
+const EsportsPage = (props) => {
     return (
         <>
-            <Header/>
+            <Header {...props}/>
             <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
                 <h2>ESPORTS</h2>
                 <div className="videoContainer" style={{backgroundImage: "url('https://i.postimg.cc/vmmZW0Cc/nubescall.png')"}}>

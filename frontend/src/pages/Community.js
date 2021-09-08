@@ -5,10 +5,11 @@ import "./Home.css"
 import { connect } from "react-redux"
 
 const Community = (props) => {
+  console.log(props)
   return (
     <>
     <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
-        <Header />
+        <Header {...props} />
         <div className="imageAndText">
         </div>
         <h2 className='text-center'>COMMUNITY</h2>
