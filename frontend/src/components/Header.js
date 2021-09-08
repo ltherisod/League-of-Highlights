@@ -34,11 +34,12 @@ console.log(props)
         )
       if (res.success && !props.userStatus.guest) {
         console.log('caee en el iff')
+        console.log(props)
         console.log(res.response.username)
         props.history.push(`/profile/${res.response.username}`)
       } else {
-        props.history.push(`/`)
         alert("oh no !")
+        props.history.push(`/`)
       }
     } catch (e) {
       console.log('cae en el catch')
