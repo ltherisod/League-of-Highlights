@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "BeaufortforLOL-Bold.woff";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
+}
+
+h2 {
+  font-family: "BeaufortforLOL-Bold.woff";
+}
+
 .imageAndText{
     background-image: url("https://i.postimg.cc/VNh13Yr9/evelynn-league-of-legends-kda-neon-by-west182-dctnajm-fullview.jpg");
     min-height: 100vh;
@@ -38,4 +49,16 @@ section{
     box-sizing: border-box;
    text-align: center;
    padding:1rem
+}
+
+.backgroundCommunity {
+  display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 4%;
+    padding-top: 6%;
 }

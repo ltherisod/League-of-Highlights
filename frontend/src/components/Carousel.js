@@ -13,7 +13,7 @@ const Carousel = () => {
       <div className="mainCarousel">
         <div className="carouselTitle">
           <p>TOP</p>
-          <h2 className="prueba">HIGHLIGHTS</h2>
+          <h2>HIGHLIGHTS</h2>
         </div>
         <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/GmhKW85Z/fondo-Carousel.png')"}}>
             <Swiper className="carouselContainer"
