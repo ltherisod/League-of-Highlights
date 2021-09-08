@@ -8,8 +8,10 @@ const userActions = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.post(`${HOST}/api/signup`, userData)
-        if (!res.data.success)
+        if (!res.data.success) {
           return { success: false, response: null, error: res.data.error }
+        }
+        localStorage.setItem("token", res.data.response.token)
         // Agregar type
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
