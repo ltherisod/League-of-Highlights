@@ -4,7 +4,7 @@ import "./Community.css";
 import "./Home.css"
 import { connect } from "react-redux"
 
-const Community = () => {
+const Community = (props) => {
   return (
     <>
     <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
