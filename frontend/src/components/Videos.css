@@ -1,0 +1,19 @@
+/* div.usersVideos, div.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+div.usersVideos {
+    height: 100vh;
+    /* min height temporal mientras no hay contenido */
+/* } */
+/* 
+
+.video {
+    width: 360px !important;
+    height: 210px !important;
+    margin: 2rem;
+} */ 
