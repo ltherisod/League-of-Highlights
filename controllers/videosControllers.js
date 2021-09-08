@@ -117,16 +117,42 @@ const videosControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
-  handleComment: async (req, res) => {
-    try {
-      switch (
-        req.body.type // Pendiente
-      ) {
-      }
-    } catch (e) {
-      res.json({ success: false, response: null, error: e.message })
+
+  manageComment: async (req, res) => {
+    switch(req.body-type){
+        case "createComment":
+          try{
+            const newComment = await Video.findOneAndUpdate({_id: req.params.id}, {$push: {comments: {author: req.user._id , content: req.body.content}}}, {new: true})
+            if(!newComment) throw new Error()
+              res.json({success: true, response: newComment, error: null})
+          }catch(e){
+            res.json({success: false, response: null, error: e.message})
+          }
+          break
+
+        case "updateComment":
+          try{
+            const updateComment = await Video.findOneAndUpdate({"comments._id": req.params.id}, {$set: {"comments.$.content": req.body.content}}, {new: true})
+            if(!updateComment) throw new Error()
+            res.json({success: true, response: updateComment, error: null})
+          }catch(e){
+            res.json({success: false, response: null, error: e.message})
+          }
+          break
+
+        case "deleteComment":
+            try{
+              const deleteComment = await Video.findOneAndUpdate({"comments._id": req.body.commentId}, {$pull: {comments: {_id: req.body.commentId}}})
+              if(!deleteComment) throw new Error()
+              res.json({success: true})
+            }catch(e){
+              res.json({success: false, response: null, error: e.message})
+            }
+          break
     }
-  },
+
+  }  
+
 }
 
 module.exports = videosControllers

@@ -1,5 +1,4 @@
 import axios from "axios"
-
 const HOST = "http://localhost:4000"
 
 const videosActions = {
@@ -104,6 +103,34 @@ const videosActions = {
       }
     }
   },
-}
+
+  addComment: () => {
+    return async (dispatch, getState) => {
+      try {
+
+      }catch(e){
+        return { success: false, response: null, error: e.message }
+     }
+    } 
+  },
+  editComment: () => {
+    return async (dispatch, getState) => {
+      try {
+
+      }catch(e){
+        return { success: false, response: null, error: e.message }
+     }
+    } 
+  },
+  deleteComment: () => {
+    return async (dispatch, getState) => {
+      try {
+
+      }catch(e){
+        return { success: false, response: null, error: e.message }
+     }
+    } 
+  }
+}   
 
 export default videosActions
