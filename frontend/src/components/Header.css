@@ -65,3 +65,23 @@ header{
   border-radius: 3em;
 
 }
+
+.barraResponsive{
+  display:none!important
+}
+
+.barraDeAfuera{
+  display:block!important
+}
+
+@media only screen and (max-width: 767px) {
+  .textbox {
+    /* background: #FFF url(/images/css/input-text-9.png) no-repeat 4px 4px; */
+    border: 1px solid #999;
+    outline:0;
+    width:65%;
+    height:25px;
+    border-radius: 30px;
+    padding:0.8rem
+  }
+}

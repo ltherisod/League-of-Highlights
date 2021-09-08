@@ -5,11 +5,12 @@ import "./Home.css"
 import { connect } from "react-redux"
 import "animate.css"
 
-const Community = () => {
+const Community = (props) => {
+  console.log(props)
   return (
     <>
     <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
-        <Header />
+        <Header {...props} />
         <div className="imageAndText">
         </div>
         <h2 className='text-center animate__animated animate__fadeInUp'>COMMUNITY</h2>

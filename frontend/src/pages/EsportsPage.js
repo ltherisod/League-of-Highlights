@@ -4,10 +4,10 @@ import ReactPlayer from "react-player"
 import "./EsportsPage.css"
 import "animate.css"
 
-const EsportsPage = () => {
+const EsportsPage = (props) => {
     return (
         <>
-            <Header/>
+            <Header {...props}/>
             <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
                 <h2 className= "animate__animated animate__fadeInUp">ESPORTS</h2>
                 <div className="animate__animated animate__fadeInUp  videoContainer" style={{backgroundImage: "url('https://i.postimg.cc/vmmZW0Cc/nubescall.png')"}}>

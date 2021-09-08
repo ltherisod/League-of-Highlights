@@ -18,6 +18,7 @@ const Esports = (props) => {
             }
         }
         fetchRotations()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (!rotations) {

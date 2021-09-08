@@ -185,6 +185,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
+        console.log(user)
       const { icon, email, guest, _id, name, admin } = user
       if (!user.guest) {
         const { topChampions, rank, division, username } = user
