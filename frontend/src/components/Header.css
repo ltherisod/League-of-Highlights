@@ -56,3 +56,12 @@ header{
   width: 30px;
   margin-left: 1%;
 }
+
+.iconNav{
+  width: 3rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 3em;
+
+}
