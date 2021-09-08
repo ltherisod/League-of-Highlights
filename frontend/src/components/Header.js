@@ -24,7 +24,6 @@ const Header = (props) => {
   const createHandler = async () => {
     if (inputHandler.current.value === "")
       return alert("completa los campos hijo de puta")
-console.log(props)
     try {
       const res = await props.getProfileByName(inputHandler.current.value)
       if (!res.success) return alert("todo salio muy como el orto")
@@ -32,24 +31,31 @@ console.log(props)
         return alert(
           "todo salio bien pero el usuario no existe amigo, o no esta en riot"
         )
-      if (res.success && !props.userStatus.guest) {
-        console.log('caee en el iff')
+      if (res.success) {
+        console.log("caee en el iff")
+        console.log(props)
         console.log(res.response.username)
         props.history.push(`/profile/${res.response.username}`)
       } else {
-        props.history.push(`/`)
         alert("oh no !")
+        // props.history.push(`/`)
       }
     } catch (e) {
-      console.log('cae en el catch')
+      console.log("cae en el catch")
       alert(e.message)
     }
   }
 
   const sesionOut = () => {
+    alert('see you soon!')
     props.logOut()
   }
 
+
+  console.log(props.userStatus.user)
+  console.log(props)
+  console.log(props.userStatus.username)
+  console.log('no caee')
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
@@ -71,13 +77,23 @@ console.log(props)
         >
           <div className="iconPosition">
             <DropdownToggle nav caret className="text-white  ">
-              <i className="fas fa-user-alt text-white fs-2"></i>
+              {props.userStatus? <img className="iconNav" src={props.userStatus.icon}></img>:<i className="fas fa-user-alt text-white fs-2"></i>}
+              
             </DropdownToggle>
             <DropdownMenu className="position-absolute top-0 end-0 mt-5">
               {props.userStatus ? (
-                <Link to="/">
-                  <DropdownItem to='/' onClick={sesionOut}>Log out</DropdownItem>
-                </Link>
+                <>
+                  <Link to="/">
+                    <DropdownItem to="/" onClick={sesionOut}>
+                      Log out
+                    </DropdownItem>
+                  </Link>
+                  {props.userStatus && !props.userStatus.guest?<Link to={`/profile/${props.userStatus.username || props.userStatus.user}`}>
+                    <DropdownItem>
+                      Profile
+                    </DropdownItem>
+                  </Link>:null }
+                </>
               ) : (
                 <div>
                   {!props.userStatus && (

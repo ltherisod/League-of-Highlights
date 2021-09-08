@@ -13,6 +13,7 @@ const Profile = (props) => {
   async function fetchUser() {
     try {
       const response = await props.getProfileByName(props.match.params.username)
+      console.log(response)
       const refreshedUser = await props.refresh(
         response.response?.username,
         response.response?._id
@@ -62,11 +63,11 @@ const Profile = (props) => {
                 {props.match.params.username}
               </div>
               <div className="logoChampion">
-                <div className="tag" style={{backgroundImage: `url(${showProfileData.topChampions[0].tags[0].image})`,}}></div>
                  <div className="info">
                    <div className="rank"style={{backgroundImage: `url(${showProfileData.rank.image})`,}}></div>
                     <h4>{showProfileData.rank.name} {showProfileData.division}</h4>
                   </div>
+                <div className="tag" style={{backgroundImage: `url(${showProfileData.topChampions[0].tags[0].image})`,}}></div>
               </div>
             </div>
             <div  className="championback">

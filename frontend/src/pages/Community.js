@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "./Community.css";
 import "./Home.css"
+import { connect } from "react-redux"
 
 const Community = () => {
   return (
@@ -113,4 +114,10 @@ const Community = () => {
   );
 };
 
-export default Community;
+const mapStateToProps = (state) => {
+  return {
+    userStatus: state.user.user,
+  }
+}
+
+export default connect(mapStateToProps)(Community)
