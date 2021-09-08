@@ -21,11 +21,10 @@ const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen)
 
   const inputHandler = useRef()
-  console.log(props)
   const createHandler = async () => {
     if (inputHandler.current.value === "")
       return alert("completa los campos hijo de puta")
-
+console.log(props)
     try {
       const res = await props.getProfileByName(inputHandler.current.value)
       if (!res.success) return alert("todo salio muy como el orto")
@@ -33,12 +32,16 @@ const Header = (props) => {
         return alert(
           "todo salio bien pero el usuario no existe amigo, o no esta en riot"
         )
-      if (res.success) {
-        props.history.push(`/profile/${res.response._id}`)
+      if (res.success && !props.userStatus.guest) {
+        console.log('caee en el iff')
+        console.log(res.response.username)
+        props.history.push(`/profile/${res.response.username}`)
       } else {
+        props.history.push(`/`)
         alert("oh no !")
       }
     } catch (e) {
+      console.log('cae en el catch')
       alert(e.message)
     }
   }
@@ -46,6 +49,7 @@ const Header = (props) => {
   const sesionOut = () => {
     props.logOut()
   }
+
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
