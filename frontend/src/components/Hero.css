@@ -30,3 +30,7 @@
     align-items: center;
     padding-bottom: 5%;
 }
+
+.heroTitle img {
+    width: 100%;
+}
