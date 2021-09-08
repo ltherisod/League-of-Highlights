@@ -29,6 +29,7 @@ const Profile = (props) => {
       .then((response) => {
         setShowProfileData(response.response || {})
         setLoader(false)
+        console.log(props)
       })
       .catch((e) => console.log(e.message))
   }, [])
