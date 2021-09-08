@@ -7,6 +7,7 @@ const usersControllers = require("../controllers/usersControllers")
 const ranksControllers = require("../controllers/ranksControllers")
 
 const validator = require("../controllers/validator")
+const videosControllers = require("../controllers/videosControllers")
 
 // CHAMPIONS ROUTES
 
@@ -78,5 +79,21 @@ router
   .route("/rank")
   .get(ranksControllers.getRanks)
   .post(ranksControllers.addRank)
+
+// VIDEO ROUTES
+
+router
+  .route("/videos")
+  .get(videosControllers.getTopVideos)
+  .post(videosControllers.addVideo)
+router
+  .route("/video/:videoId")
+  .put(videosControllers.updateVideo)
+  .delete(videosControllers.deleteVideo)
+
+router.route("/videos/:username").get(videosControllers.getUserVideos)
+
+router.route("/video/like/:videoId").post(videosControllers.toggleLike)
+router.route("video/report/:videoId").post(videosControllers.reportVideo)
 
 module.exports = router

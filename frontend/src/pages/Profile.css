@@ -1,4 +1,3 @@
-div.user,
 div.logoChampion,
 div.info {
   display: flex;
@@ -6,28 +5,65 @@ div.info {
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  border: 2px solid black;
 }
 
 div.user h3 {
   margin-bottom: 2rem;
+}
+.user{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Secular One', sans-serif;
+  letter-spacing: 0,5px;
+  text-transform:capitalize;
+  font-size: 5.5vmin;
+  color:white;
+  font-style: italic;
+  text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+}
+.frameIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  width: 16rem;
+  min-height: 16rem;
 }
 
 div.avatar,
 div.tag {
   border-radius: 100%;
   width: 10rem;
-  height: 10rem;
+  min-height: 10rem;
   background-position: center;
   background-size: cover;
+}
+
+div.avatar {
+  width:9rem;
+  min-height: 9rem;
 }
 
 div.champion {
-  flex: 1;
   background-position: center;
   background-size: cover;
+  width: 100%;
+  min-height: 70%;
 }
 
+div.championback{
+  display: flex;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+}
 div.rank {
   background-size: cover;
   background-position: center;
@@ -42,4 +78,26 @@ div.rank {
   background-position: center;
   display: flex;
   min-height: 90vh;
+}
+
+.userside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width:50%;
+}
+
+.user h3, .info h4{
+  font-family: 'Secular One', sans-serif;
+  letter-spacing: 0,5px;
+  text-transform:capitalize;
+  font-size: 5.5vmin;
+  color:white;
+  font-style: italic;
+  text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+}
+
+.info h4{
+font-size: 5vmin;
+text-transform: uppercase;
 }
