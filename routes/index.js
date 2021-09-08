@@ -95,8 +95,12 @@ router
   )
 
 router.route("/videos/:username").get(videosControllers.getUserVideos)
-
 router.route("/video/like/:videoId").post(videosControllers.toggleLike)
 router.route("/video/report/:videoId").post(videosControllers.reportVideo)
+
+router
+  .route("/video/comments/:id")
+    .put( passport.authenticate("jwt", { session: false }),
+          videosControllers.manageComment)
 
 module.exports = router
