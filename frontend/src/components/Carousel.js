@@ -2,13 +2,33 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import "swiper/swiper-bundle.css"
 import "./Carousel.css"
+import { connect } from 'react-redux'
+import { useEffect, useState } from 'react'
+import videosActions from "../redux/actions/videosActions"
+import ReactPlayer from "react-player"
 
 
 SwiperCore.use([Navigation, Pagination])
 
 
 
-const Carousel = () => {
+const Carousel = (props) => {
+  const [videos, setVideos] = useState([])
+
+  useEffect(() => {
+
+    const getVideos = async () => {
+      const res = await props.getTopVideos()
+      if(res.success){
+        console.log(res.response)
+        setVideos(res.response)
+      } else {
+        alert(res.error)//cambiar alert feo
+      }
+    }
+    getVideos()
+  },[])
+
     return (
       <div className="mainCarousel">
         <div className="carouselTitle">
@@ -28,12 +48,15 @@ const Carousel = () => {
             onSwiper={(swiper) => console.log(swiper)}
             onSlideChange={() => console.log('slide change')}
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
-            <SwiperSlide>Slide 5</SwiperSlide>
-            <SwiperSlide>Slide 6</SwiperSlide>
+            {videos.map((video) =>
+            <SwiperSlide key={video._id}>
+              <div className="topVideos">
+                <h2>{video.owner.username}</h2>
+                <div className="championCarousel" style={{backgroundImage: `url(${video.champion.image})`}}></div>
+                <ReactPlayer url={video.url} className="videoUser" controls={true}/>
+              </div>
+            </SwiperSlide> )}
+            
           </Swiper>
         </div>
       </div>
@@ -41,4 +64,8 @@ const Carousel = () => {
     )
 }
 
-export default Carousel
+const mapDispatchToProps = {
+  getTopVideos: videosActions.getTopVideos
+}
+
+export default connect(null, mapDispatchToProps)(Carousel) 

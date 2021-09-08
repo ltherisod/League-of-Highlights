@@ -95,3 +95,13 @@
     display: none;
   }
 
+div.championCarousel {
+  width: 20rem;
+  height: 20rem;
+  background-position: center;
+  background-size: cover;
+}
+
+div.topVideos {
+  display: flex;
+}

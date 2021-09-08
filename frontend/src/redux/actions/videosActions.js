@@ -1,4 +1,8 @@
 import axios from "axios"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69a17aa69769268828e3ebf582360a1617fa04cc
 const HOST = "http://localhost:4000"
 
 const videosActions = {
@@ -93,6 +97,9 @@ const videosActions = {
 }
 
 export default videosActions
+<<<<<<< HEAD
 
+=======
+>>>>>>> 69a17aa69769268828e3ebf582360a1617fa04cc
 
 
