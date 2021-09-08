@@ -28,7 +28,7 @@ const userActions = {
         if (!res.data.success)
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
-        dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) // "Agregar type" <- lo puse porque lo pusiste vos xd
+        dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) 
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         console.log("cai en catch")
