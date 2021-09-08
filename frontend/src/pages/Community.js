@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import "./Community.css";
 import "./Home.css"
 import { connect } from "react-redux"
+import "animate.css"
 
 const Community = () => {
   return (
@@ -11,7 +12,7 @@ const Community = () => {
         <Header />
         <div className="imageAndText">
         </div>
-        <h2 className='text-center'>COMMUNITY</h2>
+        <h2 className='text-center animate__animated animate__fadeInUp'>COMMUNITY</h2>
         <div className="photos">
           <div
             style={{
