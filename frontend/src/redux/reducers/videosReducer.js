@@ -1,4 +1,4 @@
-const userReducer = (state = { userVideos: [] }, action) => {
+const videosReducer = (state = { userVideos: [] }, action) => {
 	switch (action.type) {
 		case "GET_VIDEOS_USER":
 			return {...state, userVideos: action.payload}
