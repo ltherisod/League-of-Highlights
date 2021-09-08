@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel"
 
 const CarouselAkali = () => {
     return (
-        <div className="mainAkali" style={{backgroundImage:"url('https://i.postimg.cc/jSqHY56J/nubesrosasdisfu.png')"}}>
+        <div className="mainAkali" style={{backgroundImage:"url('https://i.postimg.cc/V6RbWKFT/fondo-Akali.png')"}}>
             <div className="diamond" style={{backgroundImage:"url('https://i.postimg.cc/zv3qmJx7/Artboard-1.png')"}}>
                 <Carousel className="akaliCarousel carousel-fade">
                     <Carousel.Item>

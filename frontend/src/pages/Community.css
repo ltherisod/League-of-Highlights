@@ -1,14 +1,13 @@
 .imageAndText{
-    background-image:linear-gradient(rgba(13, 90, 134, 0.5), rgba(49, 37, 37,0.5)), url("https://i.postimg.cc/zDRv0yHM/R.jpg");
-    min-height: 500px;
+    background-image: url("https://i.postimg.cc/VNh13Yr9/evelynn-league-of-legends-kda-neon-by-west182-dctnajm-fullview.jpg");
+    min-height: 100vh;
     background-attachment: fixed;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: aliceblue;
 }
 
 .photos {

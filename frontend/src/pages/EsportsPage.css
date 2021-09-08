@@ -3,6 +3,9 @@ div.videoContainer {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .videoEsports {
@@ -13,6 +16,7 @@ div.videoContainer {
 }
 
 .bodyBackground {
+    min-height: 120vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -20,11 +24,24 @@ div.videoContainer {
     z-index: 1;
 }
 
-.bodyBackground h1 {
+.bodyBackground h2 {
     font-family:'Secular One', sans-serif;
-    font-size: 6.5rem !important;
+    font-size: 6rem !important;
     letter-spacing: 0,5px;
     font-style: italic;
     text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
     text-align: center;
 }
+
+.ruins{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 65vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center bottom;
+    position: relative;
+    z-index: 1;
+}
+

@@ -43,6 +43,7 @@ const SignUp = (props) => {
       setUserId(res.response._id)
       setStep(2)
     } else {
+      alert ("Something went wrong! Please try later.") //cambiar alert feo
       console.log(res.error) // Manejar el error acá.
     }
   }

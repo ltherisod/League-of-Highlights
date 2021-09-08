@@ -32,7 +32,8 @@ div.news h2 {
     padding: 1%;
     margin-bottom: 8%;
     margin-top: 8%;
-    border-top-right-radius: 25px;
+    -webkit-clip-path: polygon(97% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
+    clip-path: polygon(97% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
 }
 
 
@@ -55,13 +56,21 @@ div.news h2 {
 div.rotationsContainer {
     display: flex;
     justify-content: space-around;
-    width: 100%
-    
+    width: 80%;
 }
 
 .rotationsCarousel {
-    width: 100%;
+    width: 95%;
     min-height: 90vh;
+    padding: 1rem;
+    border-width: 3px;
+    border-style: solid;
+    border-image: 
+        linear-gradient(
+        rgba(224, 191, 122,0), 
+        rgba(224, 191, 122), 
+        rgba(149, 118, 62, 0)
+        ) 1 100%;
 }
 
 .rotationImg {
@@ -70,13 +79,43 @@ div.rotationsContainer {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
+    position: relative;
+    z-index: 1;
 }
 
 .carousel-indicators button {
     background-color: #0dcaf0;
 }
 
+.carouselBorder{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+}
 
+.dividerButtom {
+    width: 50%;
+    height: 10vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.dividerTop {
+    width: 50%;
+    height: 10vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.titleRotation {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30%;
+    height: 30vh;
+}
 
 @media screen and (max-width:769px) {
     div.rotationsContainer {
