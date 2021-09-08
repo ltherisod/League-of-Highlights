@@ -3,7 +3,7 @@
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 90vh;
+    height: 110vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,12 +17,14 @@
 
 .buttonCall {
     width: 9rem;
+    height: 2.5rem;
     padding: 1%;
-    border-radius: 20px;
-    background-color: black;
-    color: white;
+    background: rgb(224,191,122);
+    background: linear-gradient(90deg, rgba(224,191,122,1) 30%, rgba(149,118,62,1) 100%);
     border: none;
     box-shadow: 6px 12px 17px 0px rgba(0,0,0,0.51);
     -webkit-box-shadow: 6px 12px 17px 0px rgba(0,0,0,0.51);
     -moz-box-shadow: 6px 12px 17px 0px rgba(0,0,0,0.51);
+    -webkit-clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
+    clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
 }
