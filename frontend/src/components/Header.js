@@ -62,7 +62,7 @@ console.log(props)
           to="/"
           className="logoNavBox text-light d-none d-md-block ms-2 "
         >
-          <img className="logoNav" src="./assets/LOH_H2.png" />
+          <img className="logoNav" src="/assets/LOH_H2.png" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} className="bg-light  text-dark mx-2 " />
         <UncontrolledDropdown
@@ -125,7 +125,7 @@ console.log(props)
             placeholder="Search your favourite player..."
             ref={inputHandler}
           />
-          <img onClick={createHandler} src="./assets/search.png" />
+          <img onClick={createHandler} src="/assets/search.png" />
         </div>
       </Navbar>
     </header>

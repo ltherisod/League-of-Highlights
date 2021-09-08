@@ -15,7 +15,7 @@ const Carousel = () => {
           <p>TOP</p>
           <h2 className="prueba">HIGHLIGHTS</h2>
         </div>
-        <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/dtj26yv9/backgroundlol.png')"}}>
+        <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/GmhKW85Z/fondo-Carousel.png')"}}>
             <Swiper className="carouselContainer"
             // install Swiper modules
             direction={"vertical"}
