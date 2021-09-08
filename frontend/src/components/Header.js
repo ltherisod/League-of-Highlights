@@ -47,15 +47,10 @@ const Header = (props) => {
   }
 
   const sesionOut = () => {
-    alert('see you soon!')
+    alert("see you soon!")
     props.logOut()
   }
 
-
-  console.log(props.userStatus.user)
-  console.log(props)
-  console.log(props.userStatus.username)
-  console.log('no caee')
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
@@ -67,7 +62,7 @@ const Header = (props) => {
           to="/"
           className="logoNavBox text-light d-none d-md-block ms-2 "
         >
-          <img className="logoNav" src="/assets/LOH_H2.png" />
+          <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} className="bg-light  text-dark mx-2 " />
         <UncontrolledDropdown
@@ -77,8 +72,15 @@ const Header = (props) => {
         >
           <div className="iconPosition">
             <DropdownToggle nav caret className="text-white  ">
-              {props.userStatus? <img className="iconNav" src={props.userStatus.icon}></img>:<i className="fas fa-user-alt text-white fs-2"></i>}
-              
+              {props.userStatus ? (
+                <img
+                  className="iconNav"
+                  alt="nav icon"
+                  src={props.userStatus.icon}
+                ></img>
+              ) : (
+                <i className="fas fa-user-alt text-white fs-2"></i>
+              )}
             </DropdownToggle>
             <DropdownMenu className="position-absolute top-0 end-0 mt-5">
               {props.userStatus ? (
@@ -88,11 +90,15 @@ const Header = (props) => {
                       Log out
                     </DropdownItem>
                   </Link>
-                  {props.userStatus && !props.userStatus.guest?<Link to={`/profile/${props.userStatus.username || props.userStatus.user}`}>
-                    <DropdownItem>
-                      Profile
-                    </DropdownItem>
-                  </Link>:null }
+                  {props.userStatus && !props.userStatus.guest ? (
+                    <Link
+                      to={`/profile/${
+                        props.userStatus.username || props.userStatus.user
+                      }`}
+                    >
+                      <DropdownItem>Profile</DropdownItem>
+                    </Link>
+                  ) : null}
                 </>
               ) : (
                 <div>
@@ -140,7 +146,11 @@ const Header = (props) => {
             placeholder="Search your favourite player..."
             ref={inputHandler}
           />
-          <img onClick={createHandler} src="/assets/search.png" />
+          <img
+            onClick={createHandler}
+            alt="search icon"
+            src="/assets/search.png"
+          />
         </div>
       </Navbar>
     </header>
