@@ -83,7 +83,6 @@ const FormTest = () => {
       })
     }
   }
-  console.log(newUser)
   return (
     <div>
       <h1>Sign Up</h1>

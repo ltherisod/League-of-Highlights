@@ -20,7 +20,6 @@ const Carousel = (props) => {
     const getVideos = async () => {
       const res = await props.getTopVideos()
       if(res.success){
-        console.log(res.response)
         setVideos(res.response)
       } else {
         alert(res.error)//cambiar alert feo
@@ -45,8 +44,7 @@ const Carousel = (props) => {
           //   navigation
             pagination={{ clickable: true }}
           //   scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
+            
           >
             {videos.map((video) =>
             <SwiperSlide key={video._id}>

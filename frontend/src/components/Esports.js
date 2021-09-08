@@ -35,19 +35,19 @@ const Esports = (props) => {
                 <p>JOIN OUR SOCIAL NETWORKS |</p>
                 <div className="socialBox">
                     <NavLink className="socialMediaHover" to="https://www.youtube.com/user/riotgamesinc">
-                        <img className="socialMediaIcon" src="./assets/youtube.png"/>
+                        <img className="socialMediaIcon" src="./assets/youtube.png" alt=""/>
                     </NavLink>
                     <NavLink className="socialMediaHover" to="https://twitter.com/leagueoflegends">
-                        <img className="socialMediaIcon" src="./assets/twitter.png"/>
+                        <img className="socialMediaIcon" src="./assets/twitter.png" alt=""/>
                     </NavLink>
                     <NavLink className="socialMediaHover" to="https://www.facebook.com/leagueoflegends">
-                        <img className="socialMediaIcon" src="./assets/facebook.png"/>
+                        <img className="socialMediaIcon" src="./assets/facebook.png" alt=""/>
                     </NavLink>
                     <NavLink className="socialMediaHover" to="https://www.instagram.com/leagueoflegends/">
-                        <img className="socialMediaIcon" src="./assets/instagram.png"/>
+                        <img className="socialMediaIcon" src="./assets/instagram.png" alt=""/>
                     </NavLink> 
                     <NavLink className="socialMediaHover" to="https://www.reddit.com/r/leagueoflegends/">
-                        <img className="socialMediaIcon" src="./assets/reddit.png"/>
+                        <img className="socialMediaIcon" src="./assets/reddit.png" alt=""/>
                     </NavLink> 
                 </div>
             </div>
