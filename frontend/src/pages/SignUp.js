@@ -38,7 +38,6 @@ const SignUp = (props) => {
       return false
     }
     const res = await props.signUp(userData)
-    console.log(res)
     if (res.success) {
       setUserId(res.response._id)
       setStep(2)
@@ -77,7 +76,6 @@ const SignUp = (props) => {
       userId,
       !hasRiotAccount
     )
-    console.log(res)
     if (res.success) {
       props.loginLS(localStorage.getItem("token"))
 

@@ -14,7 +14,6 @@ const Profile = (props) => {
   async function fetchUser() {
     try {
       const response = await props.getProfileByName(props.match.params.username)
-      console.log(response)
       const refreshedUser = await props.refresh(
         response.response?.username,
         response.response?._id
