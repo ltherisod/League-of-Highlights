@@ -11,7 +11,7 @@ import "./Home.css"
 const Home = (props) => {
   return (
     <>
-      <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')"}}>
+      <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/wTQ3BSmJ/nuevolala.png')"}}>
         <Header {...props}/>
         <Hero/>
         <Carousel/>

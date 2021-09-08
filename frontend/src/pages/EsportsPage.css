@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "BeaufortforLOL-Bold.woff";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
+  }
+
 div.videoContainer {
     display: flex;
     flex-wrap: wrap;
@@ -25,10 +32,11 @@ div.videoContainer {
 }
 
 .bodyBackground h2 {
-    font-family:'Secular One', sans-serif;
-    font-size: 6rem !important;
+    /* font-family:'Secular One', sans-serif; */
+    font-family: "BeaufortforLOL-Bold.woff";
+    font-size: 4rem;
     letter-spacing: 0,5px;
-    font-style: italic;
+    /* font-style: italic; */
     text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
     text-align: center;
 }

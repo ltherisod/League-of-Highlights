@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import "./Community.css";
 import "./Home.css"
 import { connect } from "react-redux"
+import BackHome from "../components/BackHome";
 
 const Community = () => {
   return (
@@ -107,6 +108,7 @@ const Community = () => {
           >
             ''
           </div>
+          <BackHome/>
         </div>
         <Footer />
     </div>
