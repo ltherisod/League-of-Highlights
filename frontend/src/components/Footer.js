@@ -5,27 +5,27 @@ const Footer = () => {
         <footer className="divFooter" style={{backgroundImage: "url('https://i.postimg.cc/zvCK05xy/footer2.png')"}}>
             <div className="footerBox">
                 <div className="logo">
-                    <img className="logoFooter" src="./assets/LOHWhite.png"/>
+                    <img className="logoFooter" src="/assets/LOHWhite.png"/>
                 </div>
                 <div className="socialMedia">
                     <a className="socialMediaHover" href="https://www.youtube.com/user/riotgamesinc">
-                        <img className="socialMediaIcon" src="./assets/youtube.png"/>
+                        <img className="socialMediaIcon" src="/assets/youtube.png"/>
                     </a>
                     <a className="socialMediaHover" href="https://twitter.com/leagueoflegends">
-                        <img className="socialMediaIcon" src="./assets/twitter.png"/>
+                        <img className="socialMediaIcon" src="/assets/twitter.png"/>
                     </a>
                     <a className="socialMediaHover" href="https://www.facebook.com/leagueoflegends">
-                        <img className="socialMediaIcon" src="./assets/facebook.png"/>
+                        <img className="socialMediaIcon" src="/assets/facebook.png"/>
                     </a>
                     <a className="socialMediaHover" href="https://www.instagram.com/leagueoflegends/">
-                        <img className="socialMediaIcon" src="./assets/instagram.png"/>
+                        <img className="socialMediaIcon" src="/assets/instagram.png"/>
                     </a> 
                     <a className="socialMediaHover" href="https://www.reddit.com/r/leagueoflegends/">
-                        <img className="socialMediaIcon" src="./assets/reddit.png"/>
+                        <img className="socialMediaIcon" src="/assets/reddit.png"/>
                     </a> 
                 </div>
                 <div className="esrb">
-                    <img src="./assets/esrb-teen.png"/>
+                    <img src="/assets/esrb-teen.png"/>
                     <div>
                         <p>Blood</p>
                         <p>Fantasy violence</p>
