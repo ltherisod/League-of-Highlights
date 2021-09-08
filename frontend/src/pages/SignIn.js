@@ -27,10 +27,7 @@ const SignIn = (props) => {
       const res = await props.logIn(userData)
       if (!res.success)
         return alert("contraseña o mail mal. o todo anda como el orto")
-      alert("todo bien, iniciaste zesion altoke")
-      console.log(res.response)
     } catch (e) {
-      alert("salio todo como el orto ")
       console.log(e)
     }
   }
@@ -63,17 +60,18 @@ const SignIn = (props) => {
       password: response.profileObj.googleId,
       googleFlag: true,
     }
-    console.log("heey")
     props
-      .logIn(userData)
+      .logIn(user)
       .then((res) => {
-        if (!res.data.success) {
-          console.log("hey is if")
+        if (!res.success) {
+         alert('user doesn´t exits')
+         props.history.push('/')
         } else {
-          console.log("hey is else ")
+          props.history.push('/community')
         }
       })
       .catch((err) => {
+        console.log('cai en google catch')
         console.log(err.message)
       })
   }
@@ -128,8 +126,8 @@ const SignIn = (props) => {
               className="login-button googleButton"
               clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
               // buttonText="Sign Up with Google"
-              // onSuccess={responseGoogle}
-              // onFailure={responseGoogle}
+               onSuccess={responseGoogle}
+               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
             />
           </div>
