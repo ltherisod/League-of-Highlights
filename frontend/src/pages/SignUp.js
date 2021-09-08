@@ -43,7 +43,7 @@ const SignUp = (props) => {
       setUserId(res.response._id)
       setStep(2)
     } else {
-      alert ("Something went wrong! Please try later.") //cambiar alert feo
+      alert("Something went wrong! Please try later.") //cambiar alert feo
       console.log(res.error) // Manejar el error acá.
     }
   }
@@ -138,9 +138,7 @@ const SignUp = (props) => {
       !hasRiotAccount
     )
     if (res.success) {
-      console.log(res)
-      localStorage.setItem("token", res.response.token)
-      props.loginLS()
+      props.loginLS(localStorage.getItem("token"))
     } // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
   }
   return (

@@ -1,8 +1,15 @@
+@font-face {
+    font-family: "BeaufortforLOL-Bold.woff";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
+  }
+  
 h2{
-    font-family: 'Secular One', sans-serif;
-    font-size: 6.5rem !important;
+    font-family: "BeaufortforLOL-Bold.woff";
+    font-size: 4rem;
     letter-spacing: 0,5px;
-    font-style: italic;
+    /* font-style: italic; */
     text-shadow: 3px 2px 6px rgba(0,0,0,0.33);
 }
 
@@ -38,7 +45,7 @@ div.news h2 {
 
 
 .socialContent p {
-    font-family: 'Secular One', sans-serif;
+    /* font-family: 'Secular One', sans-serif; */
     font-size: 1.5rem !important;
     letter-spacing: 0,5px;
     color: white;

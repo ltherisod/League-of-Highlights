@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "BeaufortforLOL-Bold.woff";
+  /* font-style: normal; */
+  /* font-weight: normal; */
+  src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
+}
+
 .swiper {
     width: 100%;
     max-height: 100%;
@@ -67,21 +74,34 @@
     justify-content: center;
     align-items: center;
     height: 30vh;
-    
+  }
+
+  .carouselTitle h2 {
+    font-family: "BeaufortforLOL-Bold.woff";
+    font-size: 4rem;
+    font-weight: bold;
   }
 
   .carouselTitle p {
     font-family: 'Secular One', sans-serif;
-    font-size: 2.5rem !important;
+    font-size: 2rem;
     letter-spacing: 0,5px;
+    margin: 0;
+    margin-bottom: -3%;
+    text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
   }
 
   .carousel-indicators button {
     display: none;
   }
 
-  .prueba {
-    animation-duration: 2000ms;
-    animation-delay: 100ms;
-    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1)
-  }
+div.championCarousel {
+  width: 20rem;
+  height: 20rem;
+  background-position: center;
+  background-size: cover;
+}
+
+div.topVideos {
+  display: flex;
+}

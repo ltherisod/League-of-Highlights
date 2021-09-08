@@ -89,11 +89,14 @@ router
 router
   .route("/video/:videoId")
   .put(videosControllers.updateVideo)
-  .delete(videosControllers.deleteVideo)
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    videosControllers.deleteVideo
+  )
 
 router.route("/videos/:username").get(videosControllers.getUserVideos)
 
 router.route("/video/like/:videoId").post(videosControllers.toggleLike)
-router.route("video/report/:videoId").post(videosControllers.reportVideo)
+router.route("/video/report/:videoId").post(videosControllers.reportVideo)
 
 module.exports = router

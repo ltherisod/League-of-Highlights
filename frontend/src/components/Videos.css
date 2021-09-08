@@ -1,0 +1,17 @@
+ div.usersVideos, div.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.videoUser {
+    width: 360px !important;
+    height: 210px !important;
+    margin: .5rem;
+} 
+
+.videoInfo {
+    display: flex;
+    justify-content: space-between;
+}

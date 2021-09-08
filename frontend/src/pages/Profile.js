@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
+import Videos from "../components/Videos"
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -74,6 +75,7 @@ const Profile = (props) => {
               <div className="champion"style={{backgroundImage: `url(${showProfileData.topChampions[0].image})`,}}></div>
             </div>
           </div>
+          <Videos/>
         </main>
         <Footer />
       </div>

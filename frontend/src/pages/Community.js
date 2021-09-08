@@ -108,6 +108,7 @@ const Community = () => {
           >
             ''
           </div>
+          <BackHome/>
         </div>
         <Footer />
     </div>
