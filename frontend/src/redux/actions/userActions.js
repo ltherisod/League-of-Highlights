@@ -8,8 +8,7 @@ const userActions = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.post(`${HOST}/api/signup`, userData)
-        if (!res.data.success)
-        return { success: false, response: null, error: res.data.error }
+        if (!res.data.success) return { success: false, response: null, error: res.data.error }
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
