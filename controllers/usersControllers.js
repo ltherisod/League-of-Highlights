@@ -31,6 +31,7 @@ const usersControllers = {
           _id: user._id,
           icon: user.icon,
           token,
+          admin: user.admin,
         },
         error: null,
       })
@@ -70,6 +71,7 @@ const usersControllers = {
           username: user.username,
           _id: user._id,
           token,
+          admin: user.admin,
         },
         error: null,
       })
@@ -185,7 +187,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-      const { icon, email, guest, _id, name } = user
+      const { icon, email, guest, _id, name, admin } = user
       if (!user.guest) {
         const { topChampions, rank, division, username } = user
         return res.json({
@@ -200,13 +202,14 @@ const usersControllers = {
             rank,
             division,
             username,
+            admin,
           },
           error: null,
         })
       }
       return res.json({
         success: true,
-        response: { icon, guest, _id, email, name },
+        response: { icon, guest, _id, email, name, admin },
         error: null,
       })
     } catch (e) {
