@@ -106,7 +106,6 @@ const videosActions = {
   },
 
   addComment: (videoId, content) => {
-    // commentData debe venir así: { author}
     return async (dispatch, getState) => {
       try {
         const token = localStorage.getItem("token")
@@ -126,7 +125,6 @@ const videosActions = {
     }
   },
   editComment: (commentId, newContent) => {
-    console.log(commentId, newContent)
     return async (dispatch, getState) => {
       try {
         const token = localStorage.getItem("token")
@@ -138,7 +136,7 @@ const videosActions = {
         if (res.data.success) {
           dispatch({
             type: "UPDATE_COMMENT",
-            payload: { commentId, newContent },
+            payload: {...res.data.response, commentId ,newContent },
           })
           return { success: true, response: res.data.response }
         }

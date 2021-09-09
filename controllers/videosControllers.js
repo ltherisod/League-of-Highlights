@@ -144,7 +144,6 @@ const videosControllers = {
 
       case "updateComments":
         try {
-          console.log("llego aca")
           const updateComment = await Video.findOneAndUpdate(
             { "comments._id": req.params.id },
             { $set: { "comments.$.content": req.body.content } },
