@@ -40,8 +40,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-// const mapDispatchToProps = {
-//     getUserVideos: videosActions.getUserVideos
-// }
+const mapDispatchToProps = {
+    getUserVideos: videosActions.getUserVideos
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Videos) 
+export default connect(mapStateToProps, mapDispatchToProps)(Videos) 

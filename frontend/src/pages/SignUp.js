@@ -32,7 +32,7 @@ const SignUp = (props) => {
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {
-      return false
+      return false //poner alerta que llene los campos
     }
     const res = await props.signUp(userData)
     if (res.success) {
