@@ -49,11 +49,11 @@ h2 {
   background-blend-mode: soft-light;
 } */
 
-section{
+/* section{
     box-sizing: border-box;
    text-align: center;
    padding:1rem
-}
+} */
 
 .backgroundCommunity {
   display: flex;

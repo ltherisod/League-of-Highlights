@@ -2,6 +2,14 @@ header{
   width: 100%;
 }
 
+.bg-dark {
+  background-color: none !important;
+}
+
+.navBar{
+  background-color: black!important;
+}
+
 .iconPosition {
   position: absolute;
   top: 10px;
