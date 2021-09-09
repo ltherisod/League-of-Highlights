@@ -31,7 +31,7 @@ const Esports = (props) => {
     
     return (
         <div className="news">
-            <div className="socialContent d-none">
+            <div className="socialContent">
                 <p>JOIN OUR SOCIAL NETWORKS |</p>
                 <div className="socialBox">
                     <NavLink className="socialMediaHover" to="https://www.youtube.com/user/riotgamesinc">
