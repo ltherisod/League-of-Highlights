@@ -180,7 +180,7 @@ div.topVideos {
   }
 }
 
-@media screen and (min-width: 1920px) {
+@media (width: 1536px) {
   .mainCarousel{
     margin-top:-8%
   }

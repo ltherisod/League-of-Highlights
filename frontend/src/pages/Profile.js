@@ -39,7 +39,7 @@ const Profile = (props) => {
   if (loader) {
     return (
       <div className="loaderdiv">
-        <h2>Loading</h2>
+        <img src="/assets/sona.gif" alt=""/>
       </div>
     )
   }
