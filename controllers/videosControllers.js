@@ -6,15 +6,16 @@ const videosControllers = {
   getTopVideos: async (req, res) => {
     try {
       const videos = await Video.find()
-        .sort("-likes")
-        .limit(6)
         .populate({
           path: "owner",
           select: "username _id icon rank",
           populate: "rank",
         })
         .populate({ path: "champion", select: "image name" })
-      res.json({ success: true, response: videos, error: null })
+      const topVideos = videos
+        .sort((a, b) => b.likes.length - a.likes.length)
+        .slice(0, 6)
+      res.json({ success: true, response: topVideos, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }

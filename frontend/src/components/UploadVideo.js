@@ -5,74 +5,88 @@ import videosActions from "../redux/actions/videosActions"
 import championsActions from "../redux/actions/championsActions"
 
 const UploadVideo = (props) => {
-    const [champions, setChampions] = useState([])
-    const getChampions = async () => {
-        try{
-            const res = await props.getAllChampions()
-            if(!res.success) throw new Error()
-            setChampions(res.response.map((champion) => champion.name)) 
-        }catch(e){
-            console.log(e.message)
-        }
-      
+  const [champions, setChampions] = useState([])
+  const getChampions = async () => {
+    try {
+      const res = await props.getAllChampions()
+      if (!res.success) throw new Error()
+      setChampions(res.response.map((champion) => champion.name))
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
+  useEffect(() => {
+    getChampions()
+    // eslint-disable-next-line
+  }, [])
+
+  const [videoData, setVideoData] = useState({
+    title: "",
+    url: "",
+    owner: props.user._id,
+    championName: "",
+  })
+
+  const inputHandler = (e) => {
+    setVideoData({ ...videoData, [e.target.name]: e.target.value })
+  }
+  const sendVideo = async () => {
+    console.log("entre a esta mierda")
+    if (Object.values(videoData).some((value) => value === "")) {
+      return false // hacer alerta que llene los campos.
     }
 
-    useEffect(() => {
-        getChampions()
-    },[])
-
-    const [videoData, setVideoData] = useState({
-        title: '',
-        url: '',
-        owner: props.user._id,
-        championName: '',
-    })
-
-    const inputHandler = (e) => {
-        setVideoData({ ...videoData, [e.target.name]: e.target.value })
+    const res = await props.addVideo(videoData)
+    console.log(res)
+    if (res.success) {
+      alert(`video enviado`)
+    } else {
+      alert("Something went wrong! Please try later.") //cambiar alert feo
+      console.log(res.error) // Manejar el error acá.
     }
-    const sendVideo = async () => {
-        console.log("entre a esta mierda")
-        if((Object.values(videoData).some((value) => value === ""))){
-            return false // hacer alerta que llene los campos.
-        }
-        
-        const res = await props.addVideo(videoData)
-        console.log(res)
-        if (res.success) {
-            alert(`video enviado`)
-          } else {
-            alert("Something went wrong! Please try later.") //cambiar alert feo
-            console.log(res.error) // Manejar el error acá.
-          }  
-    }
+  }
 
-    return (
-        <>
-            <div className="videoForm">
-                <h3>Upload your video</h3>
-                <form>
-                    <input type="text" name="title" placeholder="Title of your video" onChange={inputHandler}/>
-                    <input type="text" name="url" placeholder="url of your video"  onChange={inputHandler} />
-                    <select name="championName" onChange={inputHandler} >
-                        <option>Choose your champion</option>
-                        {champions.map((champion) => <option value={champion} key={champion}>{champion}</option>)}
-                    </select>
-                </form>
-                <button onClick={sendVideo}>Send Video</button>
-            </div>
-        </>
-        )
+  return (
+    <>
+      <div className="videoForm">
+        <h3>Upload your video</h3>
+        <form>
+          <input
+            type="text"
+            name="title"
+            placeholder="Title of your video"
+            onChange={inputHandler}
+          />
+          <input
+            type="text"
+            name="url"
+            placeholder="url of your video"
+            onChange={inputHandler}
+          />
+          <select name="championName" onChange={inputHandler}>
+            <option>Choose your champion</option>
+            {champions.map((champion) => (
+              <option value={champion} key={champion}>
+                {champion}
+              </option>
+            ))}
+          </select>
+        </form>
+        <button onClick={sendVideo}>Send Video</button>
+      </div>
+    </>
+  )
 }
 const mapStateToProps = (state) => {
-    return{
-        user: state.user.user
-    }
+  return {
+    user: state.user.user,
+  }
 }
 
 const mapDispatchToProps = {
-    addVideo: videosActions.addVideo,
-    getAllChampions: championsActions.getAllChampions
+  addVideo: videosActions.addVideo,
+  getAllChampions: championsActions.getAllChampions,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UploadVideo)

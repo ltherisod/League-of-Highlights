@@ -7,15 +7,18 @@ import { useState, useEffect } from "react"
 const Videos = (props) => {
   // console.log(userId)
   const [loading, setLoading] = useState(true)
-  console.log(props.username)
   const getVideos = async () => {
     const res = await props.getUserVideos(props.username)
+    if (!res.success) {
+      // Tostada o algo, porque no cargan los videos.
+    }
     // Validar res
     setLoading(false)
   }
 
   useEffect(() => {
     getVideos()
+    // eslint-disable-next-line
   }, [props.username])
 
   if (loading) return <p>Loading...</p>

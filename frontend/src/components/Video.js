@@ -4,24 +4,50 @@ import Comments from "../components/Comments"
 import { connect } from "react-redux"
 
 const Video = (props) => {
-  console.log(props.video)
+  const deleteHandler = async () => {
+    // Pedir confirmación
+    const res = await props.deleteVideo(
+      props.video._id,
+      localStorage.getItem("token")
+    )
+    if (res.success) {
+      console.log("Video eliminado.")
+      return false
+    }
+    alert("No pudimos eliminar el video.")
+  }
+
+  const updateHandler = async () => {}
   return (
     <div className="videoContent">
       <div className="contentVideoUser">
-        <h4>:Title</h4>
-        {/* <div className="videoUser"> */}
+        <h4>{props.video.title}</h4>
+        {props.video.owner === props.user._id && (
+          <>
+            <button type="button" onClick={deleteHandler}>
+              Delete
+            </button>
+            <button type="button" onClick={updateHandler}>
+              Update
+            </button>
+            <button
+              onClick={() => props.toggleLike(props.video._id, props.user._id)}
+            >
+              {props.video.likes.includes(props.user._id) ? "Dislike" : "Like"}
+            </button>
+          </>
+        )}
         <ReactPlayer
-          url="https://www.youtube.com/watch?v=7qEmVvqjKiQ"
+          url={props.video.url}
           className="videoUser"
           controls={true}
         />
         {/* </div> */}
       </div>
       <div className="videoInfo">
-        <p>:hasthaghs</p>
         <div className="likeReport">
           {/* <img src={star}/> */}
-          estrellita
+          {props.video.likes.length}
           <button>Report</button>
         </div>
       </div>

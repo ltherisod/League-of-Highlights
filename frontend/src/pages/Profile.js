@@ -26,6 +26,7 @@ const Profile = (props) => {
   }
 
   useEffect(() => {
+    setLoader(true)
     window.scroll(0, 0)
     fetchUser(showProfileData)
       .then((response) => {
@@ -33,6 +34,7 @@ const Profile = (props) => {
         setLoader(false)
       })
       .catch((e) => console.log(e.message))
+    // eslint-disable-next-line
   }, [props.match.params.username])
   if (loader) {
     return (
@@ -105,7 +107,7 @@ const Profile = (props) => {
               ></div>
             </div>
           </div>
-          <UploadVideo/>
+          <UploadVideo />
           <Videos username={props.match.params.username} />
         </main>
         <Footer />

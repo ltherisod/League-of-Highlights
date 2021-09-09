@@ -7,10 +7,12 @@ const videosReducer = (state = { userVideos: [] }, action) => {
       return { ...state, userVideos: [action.payload, ...state.userVideos] }
 
     case "DELETE_VIDEO":
-      let deleteVideos = state.userVideos.filter(
-        (video) => video._id !== action.payload
-      )
-      return { ...state, userVideos: deleteVideos }
+      return {
+        ...state,
+        userVideos: state.userVideos.filter(
+          (video) => video._id !== action.payload._id
+        ),
+      }
     case "ON_COMMENT_ACTION":
       return {
         ...state,
@@ -59,6 +61,21 @@ const videosReducer = (state = { userVideos: [] }, action) => {
                 }
                 return comment
               }),
+            }
+          }
+          return video
+        }),
+      }
+    case "TOGGLE_LIKE":
+      return {
+        ...state,
+        userVideos: state.userVideos.map((video) => {
+          if (video._id === action.payload.videoId) {
+            return {
+              ...video,
+              likes: video.likes.includes(action.payload.userId)
+                ? video.likes.filter((uid) => uid !== action.payload.userId)
+                : [...video.likes, action.payload.userId],
             }
           }
           return video
