@@ -26,7 +26,6 @@ const Videos = () => {
                         </div>
                     </div>
                     <div className="comments">
-                        hola hola
                         <Comments/>
                     </div>
                 </div>
