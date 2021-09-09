@@ -106,7 +106,7 @@ const Header = (props) => {
                     </Link>
                   )}
                   {!props.userStatus && (
-                    <Link classname="accountLink " to="/signin">
+                    <Link className="accountLink " to="/signin">
                       <DropdownItem className= "accountBox">Sign in</DropdownItem>
                     </Link>
                   )}
