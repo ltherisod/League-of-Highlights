@@ -119,7 +119,7 @@ const videosControllers = {
   },
 
   manageComment: async (req, res) => {
-    switch(req.body-type){
+    switch(req.body.type){
         case "createComment":
           try{
             const newComment = await Video.findOneAndUpdate({_id: req.params.id}, {$push: {comments: {author: req.user._id , content: req.body.content}}}, {new: true})
