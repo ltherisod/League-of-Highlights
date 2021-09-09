@@ -109,7 +109,7 @@ const videosActions = {
     // commentData debe venir así: { author}
     return async (dispatch, getState) => {
       try {
-        const token = getState().user.user.token
+        const token = localStorage.getItem("token")
         const res = await axios.put(
           `${HOST}/api/video/comments/${videoId}`,
           { content, type: "createComment" },
@@ -131,7 +131,7 @@ const videosActions = {
         const token = getState().user.user.token
         const res = await axios.put(
           `${HOST}/api/video/comments/${commentId}`,
-          { content: newContent, type: "createComment" },
+          { content: newContent, type: "editComment" },
           { headers: { Authorization: `Bearer ${token}` } }
         )
         if (res.data.success) {
@@ -150,10 +150,10 @@ const videosActions = {
   deleteComment: (commentId) => {
     return async (dispatch, getState) => {
       try {
-        const token = getState().user.user.token
+        const token = localStorage.getItem("token")
         const res = await axios.put(
           `${HOST}/api/video/comments/${commentId}`,
-          { commentId, type: "createComment" },
+          { commentId, type: "deleteComment" },
           { headers: { Authorization: `Bearer ${token}` } }
         )
         if (res.data.success) {
