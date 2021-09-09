@@ -1,6 +1,14 @@
 div.van, div.deleteVideo {
     display: flex;
     flex-direction: column;
+}
+div.containerAdmin{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    margin-top: 10vh;
+    background-color: blue;
     align-items: center;
-    justify-content: center;
 }
