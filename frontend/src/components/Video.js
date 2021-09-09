@@ -58,7 +58,7 @@ const Video = (props) => {
         {showReport ? <ReportForm /> : null}
       </div>
       <div className="comments">
-        <Comments />
+        <Comments video={props.video} />
       </div>
     </div>
   )

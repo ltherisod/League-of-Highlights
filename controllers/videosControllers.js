@@ -26,7 +26,7 @@ const videosControllers = {
       const user = await User.findOne({ username })
       const videos = await Video.find({ owner: user._id }).populate({
         path: "comments.author",
-        select: "icon usernames",
+        select: "icon username",
       })
       const orderedVideos = videos.reverse().slice(0, 10)
       res.json({ success: true, response: orderedVideos, error: null })
@@ -133,7 +133,7 @@ const videosControllers = {
             { new: true }
           ).populate({
             path: "comments.author",
-            select: "icon usernames",
+            select: "icon username",
           })
           if (!newComment) throw new Error("Error posting this comment.")
           res.json({ success: true, response: newComment, error: null })
@@ -150,7 +150,7 @@ const videosControllers = {
             { new: true }
           ).populate({
             path: "comments.author",
-            select: "icon usernames",
+            select: "icon username",
           })
           if (!updateComment) throw new Error("Error updating this comment.")
           res.json({ success: true, response: updateComment, error: null })
@@ -161,13 +161,21 @@ const videosControllers = {
 
       case "deleteComment":
         try {
+          const video = await Video.findOne({
+            "comments._id": req.body.commentId,
+          })
+          const comment = video.comments.find(
+            (c) => c._id.toString() === req.body.commentId
+          )
+          if (comment?.author.toString() !== req.user._id.toString())
+            throw new Error("Unauthorized, bitch.")
           const deleteComment = await Video.findOneAndUpdate(
             { "comments._id": req.body.commentId },
             { $pull: { comments: { _id: req.body.commentId } } },
             { new: true }
           ).populate({
             path: "comments.author",
-            select: "icon usernames",
+            select: "icon username",
           })
           if (!deleteComment) throw new Error("Error deleting this comment.")
           res.json({ success: true, response: deleteComment, error: null })
