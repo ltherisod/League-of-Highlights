@@ -4,7 +4,6 @@ const videoSchema = new mongoose.Schema({
   owner: { type: mongoose.Types.ObjectId, ref: "user", required: true },
   champion: { type: mongoose.Types.ObjectId, ref: "champion" },
   title: { type: String },
-  hashtags: [{ type: String }],
   url: { type: String, required: true },
   comments: [
     {

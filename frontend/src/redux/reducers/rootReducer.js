@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux'
-import userReducer from './userReducer'
+import { combineReducers } from "redux"
+import userReducer from "./userReducer"
 import videosReducer from "./videosReducer"
 
 const rootReducer = combineReducers({
-	user: userReducer, 
-	video: videosReducer
+  user: userReducer,
+  videos: videosReducer,
 })
 
 export default rootReducer

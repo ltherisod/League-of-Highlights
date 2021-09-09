@@ -43,7 +43,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* margin-top: 6%; */
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: -3%;
   }
 
   .carouselContainer {
@@ -137,4 +139,31 @@ div.topVideos {
 .videoUser {
   padding: 0;
   margin: 0;
+}
+
+@media screen and (max-width:769px) {
+  div .userBox{
+    border-radius: 2rem;
+    width: 95%;
+  }
+
+   .videoUser video{
+    width:95%!important;
+    text-align: center;
+  } 
+
+  div.videoUser{
+    width:95%!important;
+  }
+
+  .championCarousel{
+    text-align:center;
+  }
+  
+   h2{
+    background-color: aqua;
+    opacity: 0.8rem;
+    width:90%!important;
+    display:none
+  }
 }

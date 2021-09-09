@@ -29,8 +29,8 @@ const Carousel = (props) => {
   },[])
 
     return (
-      <div className="mainCarousel">
-        <div className="carouselTitle">
+      <div className="mainCarousel" style={{backgroundImage:"url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')"}}>
+        <div className="carouselTitle" >
           <p>TOP</p>
           <h2>HIGHLIGHTS</h2>
         </div>

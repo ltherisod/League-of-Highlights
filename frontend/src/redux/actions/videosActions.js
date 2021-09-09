@@ -115,7 +115,7 @@ const videosActions = {
           { headers: { Authorization: `Bearer ${token}` } }
         )
         if (res.data.success) {
-          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          dispatch({ type: "ADD_COMMENT", payload: res.data.response })
           return { success: true, response: res.data.response, error: null }
         }
         throw new Error(res.data.error)
@@ -134,7 +134,10 @@ const videosActions = {
           { headers: { Authorization: `Bearer ${token}` } }
         )
         if (res.data.success) {
-          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          dispatch({
+            type: "UPDATE_COMMENT",
+            payload: { commentId, newContent },
+          })
           return { success: true, response: res.data.response }
         }
         throw new Error(res.data.error)
@@ -153,7 +156,10 @@ const videosActions = {
           { headers: { Authorization: `Bearer ${token}` } }
         )
         if (res.data.success) {
-          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          dispatch({
+            type: "DELETE_COMMENT",
+            payload: { videoId: res.data.response._id, commentId },
+          })
           return { success: true, response: res.data.response, error: null }
         }
         throw new Error(res.data.error)
