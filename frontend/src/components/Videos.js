@@ -2,6 +2,7 @@ import "./Videos.css"
 import ReactPlayer from "react-player"
 import videosActions from "../redux/actions/videosActions"
 import { connect } from "react-redux"
+import Comments from '../components/Comments'
 
 const Videos = () => {
     // console.log(userId)
@@ -26,6 +27,7 @@ const Videos = () => {
                     </div>
                     <div className="comments">
                         hola hola
+                        <Comments/>
                     </div>
                 </div>
             </div>
