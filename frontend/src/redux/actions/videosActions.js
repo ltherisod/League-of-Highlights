@@ -9,7 +9,6 @@ const videosActions = {
         if (!res.data.success) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
-        //nnada aqui despachar a la home
         return { success: false, response: null, error: e.message }
       }
     }
@@ -23,7 +22,6 @@ const videosActions = {
         dispatch({ type: "GET_VIDEOS_USER", payload: res.data.response })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
-        // nombre de usuario por parametro, que viene por params
         return { success: false, response: null, error: e.message }
       }
     }
@@ -36,7 +34,6 @@ const videosActions = {
         dispatch({ type: "ADD_VIDEO", payload: res.data.response })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
-        // obj mandar
         return { success: false, response: null, error: e.message }
       }
     }
@@ -48,7 +45,6 @@ const videosActions = {
         const res = await axios.put(`${HOST}/api/video/:videoId`)
         if (!res.data.success) throw new Error(res.data.error)
       } catch (e) {
-        // viene un objeto.
         return { success: false, response: null, error: e.message }
       }
     }
@@ -66,7 +62,6 @@ const videosActions = {
         dispatch({ type: "DELETE_VIDEO", payload: res.data.response })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
-        // por parametro el id del video que viene del video <- pasar el token
         return { success: false, response: null, error: e.message }
       }
     }
@@ -99,7 +94,6 @@ const videosActions = {
         dispatch({ type: "TOGGLE_LIKE", payload: { videoId, userId } })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
-        // videoid params, por body userId
         return { success: false, response: null, error: e.message }
       }
     }

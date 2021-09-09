@@ -224,6 +224,7 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
+  
   // deleteUsers: async (req, res) => {
   //   try {
   //     await User.deleteMany()
