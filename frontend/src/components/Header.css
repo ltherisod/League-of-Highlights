@@ -12,11 +12,19 @@ header{
 	/* background: #FFF url(/images/css/input-text-9.png) no-repeat 4px 4px; */
 	border: 1px solid #999;
 	outline:0;
+  padding: 1rem;
 	padding-left: 25px;
 	height:25px;
 	width: 275px;
   border-radius: 30px;
   margin-left: 15%;
+  text-align: inherit;
+}
+
+.textbox::placeholder {
+  text-align:center;
+  font-weight: bold;
+  color: rgb(180, 180, 180);
 }
 
 .navBox {
@@ -34,9 +42,15 @@ header{
   transition: opacity .2s linear;
 }
 
-/* .inputSize{
-  font-size:1rem!important
-} */
+.accountBox{
+  font-weight: bold !important;
+  text-decoration: none !important;
+  text-decoration-line:none !important ;
+}
+
+a{
+  text-decoration: none !important;
+}
 
 .navSpace{
   position: -webkit-sticky!important; /* Safari */
@@ -55,6 +69,7 @@ header{
 .divSearch img {
   width: 30px;
   margin-left: 1%;
+  cursor: pointer;
 }
 
 .iconNav{
@@ -73,6 +88,19 @@ header{
 .barraDeAfuera{
   display:block!important
 }
+
+.buttonToggle{
+ position:absolute;
+ left:6em;
+ z-index:1;
+ color:aliceblue!important
+ 
+}
+
+/* nav{
+  position:absolute;
+  z-index:1;
+} */
 
 @media only screen and (max-width: 767px) {
   .textbox {

@@ -1,12 +1,13 @@
 @font-face {
     font-family: "BeaufortforLOL-Bold.woff";
-    font-style: normal;
-    font-weight: normal;
+    /* font-style: normal;
+    font-weight: normal; */
     src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
   }
   
-h2{
+.titleRotation{
     font-family: "BeaufortforLOL-Bold.woff";
+    font-weight: bold;
     font-size: 4rem;
     letter-spacing: 0,5px;
     /* font-style: italic; */
@@ -46,7 +47,7 @@ div.news h2 {
 
 .socialContent p {
     /* font-family: 'Secular One', sans-serif; */
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
     letter-spacing: 0,5px;
     color: white;
     margin-bottom: 0;
@@ -120,8 +121,10 @@ div.rotationsContainer {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: 30%;
+    width: 50%;
     height: 30vh;
+    text-align: center;
+    font-size: 4rem;
 }
 
 @media screen and (max-width:769px) {

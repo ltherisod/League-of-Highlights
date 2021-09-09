@@ -1,7 +1,7 @@
 @font-face {
     font-family: "BeaufortforLOL-Bold.woff";
-    font-style: normal;
-    font-weight: normal;
+    /* font-style: normal;
+    font-weight: normal; */
     src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
   }
 
@@ -31,25 +31,26 @@ div.videoContainer {
     z-index: 1;
 }
 
-.bodyBackground h2 {
-    /* font-family:'Secular One', sans-serif; */
-    font-family: "BeaufortforLOL-Bold.woff";
-    font-size: 4rem;
-    letter-spacing: 0,5px;
-    /* font-style: italic; */
-    text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
-    text-align: center;
-}
-
 .ruins{
     display: flex;
     justify-content: center;
     width: 100%;
-    min-height: 65vh;
+    min-height: 95vh;
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center bottom;
     position: relative;
     z-index: 1;
+}
+
+.titleEsports {
+    font-family: "BeaufortforLOL-Bold.woff";
+    font-weight: bold;
+    font-size: 4rem;
+    letter-spacing: 0,5px;
+    text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+    text-align: center;
+    padding-top: 6%;
+    padding-bottom: 4%;
 }
 
