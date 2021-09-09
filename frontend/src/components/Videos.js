@@ -1,9 +1,10 @@
 import "./Videos.css"
 import ReactPlayer from "react-player"
 import videosActions from "../redux/actions/videosActions"
+import { connect } from "react-redux"
 
 const Videos = () => {
-    console.log(userId)
+    // console.log(userId)
 
     return (
         <>
@@ -34,7 +35,7 @@ const Videos = () => {
 
 const mapStateToProps = (state) => {
     return {
-        userId: state.user.user
+        // userId: state.user.user
     }
 }
 
