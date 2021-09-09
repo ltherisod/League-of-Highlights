@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
 import Videos from "../components/Videos"
+import UploadVideo from "../components/UploadVideo"
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -25,6 +26,7 @@ const Profile = (props) => {
   }
 
   useEffect(() => {
+    setLoader(true)
     window.scroll(0, 0)
     fetchUser(showProfileData)
       .then((response) => {
@@ -32,6 +34,7 @@ const Profile = (props) => {
         setLoader(false)
       })
       .catch((e) => console.log(e.message))
+    // eslint-disable-next-line
   }, [props.match.params.username])
   if (loader) {
     return (
@@ -104,6 +107,7 @@ const Profile = (props) => {
               ></div>
             </div>
           </div>
+          <UploadVideo />
           <Videos username={props.match.params.username} />
         </main>
         <Footer />

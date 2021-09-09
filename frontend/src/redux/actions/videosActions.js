@@ -73,6 +73,7 @@ const videosActions = {
   },
 
   reportVideo: (videoId, report) => {
+    // report = { author: userId, content: 'String' }
     return async (dispatch, getState) => {
       try {
         const res = await axios.post(
@@ -88,14 +89,14 @@ const videosActions = {
     } // puede reportar todas las veces pero va  allegar uno, no le avisemos por hijo de puta
   },
 
-  toggleLike: (videoId, userLike) => {
+  toggleLike: (videoId, userId) => {
     return async (dispatch, getState) => {
       try {
-        const res = await axios.post(
-          `${HOST}/api/video/like/${videoId}`,
-          userLike
-        )
+        const res = await axios.post(`${HOST}/api/video/like/${videoId}`, {
+          userId,
+        })
         if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "TOGGLE_LIKE", payload: { videoId, userId } })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         // videoid params, por body userId
