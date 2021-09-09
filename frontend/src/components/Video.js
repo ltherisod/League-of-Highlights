@@ -3,8 +3,10 @@ import ReactPlayer from "react-player"
 import Comments from "../components/Comments"
 import { connect } from "react-redux"
 import ReportForm from "./ReportForm"
+import { useState } from "react"
 
 const Video = (props) => {
+  const [showReport, setShowReport] = useState(false)
   const deleteHandler = async () => {
     // Pedir confirmación
     const res = await props.deleteVideo(
@@ -19,6 +21,10 @@ const Video = (props) => {
   }
 
   const updateHandler = async () => {}
+
+  const reportHandler = async () => {
+    setShowReport(!showReport)
+  }
   return (
     <div className="videoContent">
       <div className="contentVideoUser">
@@ -49,8 +55,9 @@ const Video = (props) => {
         <div className="likeReport">
           {/* <img src={star}/> */}
           {props.video.likes.length}
-          <button>Report</button>
-          <ReportForm/>
+          <button onClick={reportHandler}>Report</button>
+          {showReport ? <ReportForm/> : null}
+          
         </div>
       </div>
       <div className="comments">

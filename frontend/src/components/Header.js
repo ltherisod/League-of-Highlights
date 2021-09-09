@@ -82,11 +82,6 @@ const Header = (props) => {
             <DropdownMenu className="position-absolute top-0 end-0 mt-5 text-decoration-none">
               {props.userStatus ? (
                 <>
-                  <Link to="/">
-                    <DropdownItem to="/" onClick={sesionOut}>
-                      Log out
-                    </DropdownItem>
-                  </Link>
                   {props.userStatus && !props.userStatus.guest ? (
                     <Link
                       to={`/profile/${
@@ -96,6 +91,11 @@ const Header = (props) => {
                       <DropdownItem>Profile</DropdownItem>
                     </Link>
                   ) : null}
+                  <Link to="/">
+                    <DropdownItem to="/" onClick={sesionOut}>
+                      Log out
+                    </DropdownItem>
+                  </Link>
                 </>
               ) : (
                 <div>

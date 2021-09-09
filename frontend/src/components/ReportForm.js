@@ -1,8 +1,11 @@
+import "./ReportForm.css"
+
 const ReportForm = () => {
     return (
         <>
             <form>
-                <input type="textArea" placeholder="Why are you reporting this video?"/>
+                <input type="textArea" className="reportForm" placeholder="Why are you reporting this video?"/>
+                <button>Send</button>
             </form>
         </>
         )
