@@ -224,7 +224,28 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
-  
+  getReportedUsers: async (req, res) => {
+    try {
+      const users = await User.find().where("reports.count").gte(1)
+      res.json({ success: true, response: users, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  reportUser: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $push: { reports: { user: req.user._id, content: req.body.content } },
+        },
+        { new: true }
+      )
+      res.json({ success: true, response: user, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
   // deleteUsers: async (req, res) => {
   //   try {
   //     await User.deleteMany()
