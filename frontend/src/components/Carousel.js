@@ -53,7 +53,7 @@ const Carousel = (props) => {
                   <div className="userBox">
                     <p className="usernameTopVideo">{video.owner.username}</p>
                   </div>
-                  <ReactPlayer url={video.url} className="videoUser" controls={true}/>
+                  <ReactPlayer url={video.url} className="videoUser" playing={true} loop={true} volume={0} muted={true} controls={false} origin={"http://localhost3000"}/>
                 </div>
               </div>
             </SwiperSlide> )}
