@@ -1,5 +1,6 @@
 import "./Videos.css"
 import ReactPlayer from "react-player"
+import Comments from '../components/Comments'
 
 const Videos = () => {
     return (
@@ -22,6 +23,7 @@ const Videos = () => {
                     </div>
                     <div className="comments">
                         hola hola
+                        <Comments/>
                     </div>
                 </div>
             </div>

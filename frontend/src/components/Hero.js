@@ -1,4 +1,4 @@
-import { Jumbotron, Button } from 'reactstrap'
+import { Jumbotron } from 'reactstrap'
 import "./Hero.css"
 
 const Hero = () => {

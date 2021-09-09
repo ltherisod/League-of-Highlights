@@ -33,7 +33,7 @@ const Profile = (props) => {
         setLoader(false)
       })
       .catch((e) => console.log(e.message))
-  }, [])
+  }, [props.match.params.username])
   if (loader) {
     return (
       <div className="loaderdiv">

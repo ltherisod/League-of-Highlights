@@ -7,8 +7,8 @@ import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
 
 const SignIn = (props) => {
-  const [errorEmail, setErrorEmail] = useState(null)
-  const [errorPass, setErrorPass] = useState(null)
+  // const [errorEmail, setErrorEmail] = useState(null)
+  // const [errorPass, setErrorPass] = useState(null)
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -90,7 +90,7 @@ const SignIn = (props) => {
         <div className="formContainer">
           <h3 className="">Sign In</h3>
           <form className=" ">
-            <p style={{ color: "red" }}>{errorEmail}</p>&nbsp;
+            {/* <p style={{ color: "red" }}>{errorEmail}</p>&nbsp; */}
             <div className="field">
               <label className="field__label">email</label>
               <input
@@ -102,7 +102,7 @@ const SignIn = (props) => {
                 className="field__form-input email"
               />
             </div>
-            <p style={{ color: "red" }}>{errorPass}</p> &nbsp;
+            {/* <p style={{ color: "red" }}>{errorPass}</p> &nbsp; */}
             <div className="field">
               <label className="field__label">password</label>
               <input

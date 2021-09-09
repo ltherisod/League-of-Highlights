@@ -3,7 +3,7 @@ import Header from "../components/Header"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
 import { useRef, useState } from "react"
-import { ref } from "joi"
+//import { ref } from "joi"
 import championsActions from "../redux/actions/championsActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
@@ -11,9 +11,6 @@ import GoogleLogin from "react-google-login"
 const SignUp = (props) => {
   props.getChampionsRotation()
   const [step, setStep] = useState(1)
-  const [error, setError] = useState(null)
-  const [errorEmail, setErrorEmail] = useState(null)
-  const [errorPass, setErrorPass] = useState(null)
 
   // step 1
   const [userData, setUserData] = useState({
@@ -25,7 +22,7 @@ const SignUp = (props) => {
   // step 2
   const [hasRiotAccount, setHasRiotAccount] = useState(null)
   const usernameRef = useRef()
-  const iconRef = useRef()
+  //const iconRef = useRef()
   const [userId, setUserId] = useState("")
 
   // Utils
@@ -99,7 +96,7 @@ const SignUp = (props) => {
           <div className="formContainer">
             <h3>Sign Up</h3>
             <form>
-              <small style={{ color: "red" }}>{error}&nbsp;</small>
+              {/* <small style={{ color: "red" }}>{error}&nbsp;</small> */}
               <div className="field">
                 <label className="field__label">name</label>
                 <input
@@ -111,7 +108,7 @@ const SignUp = (props) => {
                   autoComplete="nope"
                 />
               </div>
-              <small style={{ color: "red" }}>{errorEmail}&nbsp;</small>
+              {/* <small style={{ color: "red" }}>{errorEmail}&nbsp;</small> */}
               <div className="field">
                 <label className="field__label">email</label>
                 <input
@@ -123,7 +120,7 @@ const SignUp = (props) => {
                   autoComplete="nope"
                 />
               </div>
-              <small style={{ color: "red" }}>{errorPass}&nbsp;</small>
+              {/* <small style={{ color: "red" }}>{errorPass}&nbsp;</small> */}
               <div className="field">
                 <label className="field__label">password</label>
                 <input
