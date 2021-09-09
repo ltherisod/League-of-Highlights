@@ -2,6 +2,7 @@ import videosActions from "../redux/actions/videosActions"
 import ReactPlayer from "react-player"
 import Comments from "../components/Comments"
 import { connect } from "react-redux"
+import ReportForm from "./ReportForm"
 
 const Video = (props) => {
   return (
@@ -22,6 +23,7 @@ const Video = (props) => {
           {/* <img src={star}/> */}
           estrellita
           <button>Report</button>
+          <ReportForm/>
         </div>
       </div>
       <div className="comments">
