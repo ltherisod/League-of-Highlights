@@ -78,8 +78,8 @@ div.championback{
 div.rank {
   background-size: cover;
   background-position: center;
-  width: 7rem;
-  height: 7rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 .userHero {
@@ -103,7 +103,7 @@ div.rank {
   letter-spacing: 0,5px;
   text-transform:capitalize;
   font-size: 5.5vmin;
-  color:white;
+  color:black;
   font-style: italic;
   text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
 }

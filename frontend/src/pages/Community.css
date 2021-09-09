@@ -8,7 +8,8 @@ h2 {
 }
 
 .heroCommunity{
-    background-image: url("https://i.postimg.cc/VNh13Yr9/evelynn-league-of-legends-kda-neon-by-west182-dctnajm-fullview.jpg");
+    width: 100%;
+    background-image: url("https://i.postimg.cc/PfvXvMLh/KDA-Evelynn.png");
     min-height: 100vh;
     background-attachment: fixed;
     background-position: center top;
@@ -17,29 +18,29 @@ h2 {
 }
 
 .textCommunity {
-  padding-top: 6%;
-  padding-bottom: 2%;
-  font-weight: bold;
-  font-size: 4rem;
-  text-align: center;
+    padding-top: 6%;
+    padding-bottom: 2%;
+    font-weight: bold;
+    font-size: 4rem;
+    text-align: center;
 }
 
 .photos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
 }
 
 .photo {
-  min-height: 17rem;
-  width: 17rem;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin:1rem;
-  border-radius: 2em;
+    min-height: 17rem;
+    width: 17rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin:1rem;
+    border-radius: 2em;
 }
 
 /* .picCommunity:hover{
@@ -49,11 +50,6 @@ h2 {
   background-blend-mode: soft-light;
 } */
 
-section{
-    box-sizing: border-box;
-   text-align: center;
-   padding:1rem
-}
 
 .backgroundCommunity {
   display: flex;
@@ -72,7 +68,7 @@ section{
   background-size: cover;
   background-position: center top;
   width: 30%;
-  height: 70vh;
+  min-height: 70vh;
   margin: 2rem;
   box-shadow: 10px 10px 21px -1px rgba(255,0,181,0.43), -12px -12px 21px -1px rgba(0,144,255,0.43), -1px -1px 21px 8px rgba(115,0,255,1);
 
