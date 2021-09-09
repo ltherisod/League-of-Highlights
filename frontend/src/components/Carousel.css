@@ -147,7 +147,7 @@ div.topVideos {
   }
 } */
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1050px) {
   .mainCarousel{
    background-size: 0;
   }
@@ -180,7 +180,7 @@ div.topVideos {
   }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1500px) {
   .mainCarousel{
     margin-top:-8%
   }

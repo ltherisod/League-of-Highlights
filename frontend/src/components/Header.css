@@ -110,7 +110,7 @@ a{
   z-index:1;
 } */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1150px) {
   .textbox {
     /* background: #FFF url(/images/css/input-text-9.png) no-repeat 4px 4px; */
     border: 1px solid #999;
@@ -119,5 +119,14 @@ a{
     height:25px;
     border-radius: 30px;
     padding:0.8rem
+  }
+
+  .iconPosition {
+    position: absolute;
+    right: 0px;
+  }
+
+  .divSearch{
+    margin-right: 2rem;
   }
 }
