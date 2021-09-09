@@ -126,12 +126,13 @@ const videosActions = {
     }
   },
   editComment: (commentId, newContent) => {
+    console.log(commentId, newContent)
     return async (dispatch, getState) => {
       try {
-        const token = getState().user.user.token
+        const token = localStorage.getItem("token")
         const res = await axios.put(
           `${HOST}/api/video/comments/${commentId}`,
-          { content: newContent, type: "editComment" },
+          { content: newContent, type: "updateComments" },
           { headers: { Authorization: `Bearer ${token}` } }
         )
         if (res.data.success) {

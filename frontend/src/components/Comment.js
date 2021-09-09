@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState, useRef } from "react"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 
 const Comment = (props) => {
-  console.log(props)
+  const [updateComment, setUpdateComment] = useState(false)
   const deleteHandler = async () => {
     const res = await props.deleteComment(props.comment._id)
     if (res.success) {
@@ -11,13 +11,28 @@ const Comment = (props) => {
     }
     console.log(res.error)
   }
+  
 
   const updateHandler = async () => {
-    console.log("Auch")
+    setUpdateComment(!updateComment)
   }
+  const inputHandler = useRef()
+  const sendUpdate = async () => {
+    const res = await props.updateComment(props.comment._id, inputHandler.current.value)
+    if(res.success){
+      setUpdateComment(!updateComment)
+    }
+  }
+
+  const inputUpdateComment = <div>
+                                  <input className="" type="text" defaultValue={props.comment.content} ref={inputHandler}></input>
+                                  <button onClick={sendUpdate}>ok</button>
+                            </div>
+
   return (
     <div>
-      <p className="text-white">{`${props.comment.author.username}: ${props.comment.content}`}</p>
+
+      {!updateComment ? <p className="text-white">{`${props.comment.author.username}: ${props.comment.content}`}</p> : inputUpdateComment}
       {props.comment.author._id === props.user._id && (
         <>
           <button type="button" onClick={deleteHandler}>
@@ -40,7 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   deleteComment: videosActions.deleteComment,
-  updateComment: videosActions.updateVideo,
+  updateComment: videosActions.editComment,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comment)
