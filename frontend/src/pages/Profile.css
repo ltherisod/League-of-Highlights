@@ -112,3 +112,17 @@ div.rank {
 font-size: 5vmin;
 text-transform: uppercase;
 }
+
+.loaderdiv{
+  background-color: black;
+  width: 100%;
+  min-height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaderdiv img {
+  width: 80%;
+  border-image: none;
+}
