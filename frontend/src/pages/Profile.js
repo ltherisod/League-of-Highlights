@@ -107,7 +107,8 @@ const Profile = (props) => {
               ></div>
             </div>
           </div>
-          <UploadVideo />
+          {/* Protegida la sección del formulario para agregar video */}
+          {showProfileData._id === props.userData._id && <UploadVideo />}
           <Videos username={props.match.params.username} />
         </main>
         <Footer />

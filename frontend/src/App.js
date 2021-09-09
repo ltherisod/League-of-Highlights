@@ -9,19 +9,20 @@ import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
 import Profile from "./pages/Profile"
 import { connect } from "react-redux"
 import userActions from "./redux/actions/userActions"
-import io from "socket.io-client"
-import { useEffect, useState } from "react"
+// import io from "socket.io-client"
+import { useEffect } from "react"
 
 function App(props) {
   const token = localStorage.getItem("token")
-  const [socket, setSocket] = useState(null)
+  // const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-    setSocket(io("http://localhost:4000"))
+    // setSocket(io("http://localhost:4000"))
     if (token) {
       props.loginLS(token)
     }
-  }, [token, props.loginLS])
+    // eslint-disable-next-line
+  }, [token])
 
   return (
     <BrowserRouter>
