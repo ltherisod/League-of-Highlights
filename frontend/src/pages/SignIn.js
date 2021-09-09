@@ -114,22 +114,22 @@ const SignIn = (props) => {
             </div>
           </form>
           <div className="buttonContainer">
-            <button className="login-button faceButton">
+            {/* <button className="login-button faceButton">
               <img src="./assets/facebook.svg" alt="facebook" />
-            </button>
+            </button> */}
             {/* <button className="login-button googleButton" 
             clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
             >
               <img src="./assets/google.svg" alt="google"/>
             </button> */}
-            <GoogleLogin
+            {/* <GoogleLogin
               className="login-button googleButton"
               clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
               // buttonText="Sign Up with Google"
                onSuccess={responseGoogle}
                onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
-            />
+            /> */}
           </div>
           <button
             type="button"
@@ -138,6 +138,14 @@ const SignIn = (props) => {
           >
             <p>Sign In</p>
           </button>
+          <GoogleLogin
+              className="login-button googleButton"
+              clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+               buttonText="Sign Up with Google"
+               onSuccess={responseGoogle}
+               onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
           <p className="textDataForm">
             Don't have an account? <Link to="/signup">Sign up here! </Link>
           </p>

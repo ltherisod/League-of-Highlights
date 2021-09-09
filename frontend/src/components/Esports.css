@@ -152,8 +152,13 @@ div.rotationsContainer {
     }
 
     .rotationsCarousel {
-        width: 25rem;
+        width: 95%; 
     }
+
+    .carouselBorder{
+        background-size: 0;
+     display:none!important;   
+    }    
 }
 
 @media screen and (max-width:700px) {

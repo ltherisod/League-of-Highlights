@@ -75,14 +75,28 @@ div.userForm{
     display: flex!important;
     outline: none!important;
     cursor: pointer!important;
-    appearance: none!important;
-    color: transparent!important;
+    /* appearance: none!important; */
+    /* color: transparent!important; */
     border-radius: 4px!important;
     border: 2px solid rgba(0,0,0,0.05)!important;
 }
 
 .login-button img{
 width: 2em;
+}
+
+.login-button span{
+    display:block!important;
+    color: #525252;
+    font-size: 1rem;
+    font-family: 'Secular One', sans-serif;
+}
+
+.googleButton {
+    display:flex!important;
+    justify-content:center!important;
+    align-items: center;
+    font-size: 5rem;
 }
 
 .buttonContainer{
@@ -97,9 +111,9 @@ width: 2em;
     background-color: white!important;
 }
 
-div.buttonContainer span {
+/* div.buttonContainer span {
     display: none!important;
-}
+} */
 
 .signIn{
     display: flex;
