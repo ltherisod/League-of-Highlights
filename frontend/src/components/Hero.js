@@ -10,6 +10,7 @@ const Hero = () => {
           </video>
           <div className="contentVideo">
           <Jumbotron className='d-flex justify-content-center align-items-center flex-column'>
+          {/* <div className="shadowVideo" style={{backgroundImage:"url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')"}}></div> */}
           <div className="heroTitle">
               <img  src="./assets/LOHNEONNEGRO.png" alt="LOH"/>
           </div>

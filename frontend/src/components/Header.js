@@ -51,7 +51,7 @@ const Header = (props) => {
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
-        className="bg-dark text-center d-flex justify-content-center align-items-center py-3 w-100"
+        className="navBar text-center d-flex justify-content-center align-items-center w-100"
         light
         expand="md"
       >
