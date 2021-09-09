@@ -21,7 +21,6 @@ const EsportsPage = (props) => {
                 </div>
                 <BackHome/>
             </div>
-            
             <Footer/>
         </>
     )
