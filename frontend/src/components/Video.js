@@ -37,13 +37,13 @@ const Video = (props) => {
             <button type="button" onClick={updateHandler}>
               Update
             </button>
-            <button
-              onClick={() => props.toggleLike(props.video._id, props.user._id)}
-            >
-              {props.video.likes.includes(props.user._id) ? "Dislike" : "Like"}
-            </button>
           </>
         )}
+        <button
+          onClick={() => props.toggleLike(props.video._id, props.user._id)}
+        >
+          {props.video.likes.includes(props.user._id) ? "Dislike" : "Like"}
+        </button>
         <ReactPlayer
           url={props.video.url}
           className="videoUser"
@@ -56,8 +56,7 @@ const Video = (props) => {
           {/* <img src={star}/> */}
           {props.video.likes.length}
           <button onClick={reportHandler}>Report</button>
-          {showReport ? <ReportForm/> : null}
-          
+          {showReport ? <ReportForm /> : null}
         </div>
       </div>
       <div className="comments">
