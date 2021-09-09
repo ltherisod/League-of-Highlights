@@ -6,6 +6,7 @@
   }
 
 div.videoContainer {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,8 +17,8 @@ div.videoContainer {
 }
 
 .videoEsports {
-    width: 360px !important;
-    height: 210px !important;
+    /* width: 360px !important;
+    height: 210px !important; */
     margin: 2rem;
 
 }
@@ -54,3 +55,10 @@ div.videoContainer {
     padding-bottom: 4%;
 }
 
+/* @media (max-width: 847) {
+    .videoEsports{
+      
+
+    }
+    
+} */

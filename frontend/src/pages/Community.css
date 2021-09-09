@@ -7,6 +7,14 @@ h2 {
   font-family: "BeaufortforLOL-Bold.woff";
 }
 
+.textCommunity {
+  padding-top: 6%;
+  padding-bottom: 2%;
+  font-weight: bold;
+  font-size: 10vmin;
+  text-align: center;
+}
+
 .heroCommunity{
     width: 100%;
     background-image: url("https://i.postimg.cc/PfvXvMLh/KDA-Evelynn.png");
@@ -17,13 +25,6 @@ h2 {
     background-size: cover;
 }
 
-.textCommunity {
-    padding-top: 6%;
-    padding-bottom: 2%;
-    font-weight: bold;
-    font-size: 4rem;
-    text-align: center;
-}
 
 .photos {
     display: flex;
@@ -84,3 +85,18 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 990px){
+  .picBox{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .picCommunity{
+    width: 85%;
+    height: 90vh;
+  }
+  
+}
+
