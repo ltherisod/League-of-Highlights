@@ -139,4 +139,8 @@ div.rotationsContainer {
         height: 20rem;
     }
 
+    .titleRotation{
+     background-color: aqua;
+     font-size: 2vw;
+    }
 }

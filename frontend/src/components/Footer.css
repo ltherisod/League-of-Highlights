@@ -85,4 +85,8 @@ a.socialMediaHover:hover {
         flex-direction: column;
         align-items: center;
     }
+
+    .logo{
+     width:80%
+    }
 }
