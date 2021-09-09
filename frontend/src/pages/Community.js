@@ -34,7 +34,9 @@ const Community = () => {
               <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/9XqdhrRr/12495063-1711676362447322-963432819313716272-n.jpg')"}}></div>
             </div>
           </div>
-          <BackHome/>
+          <div className="mainBackHome" style={{backgroundImage: "url('https://i.postimg.cc/L5mGj4Tz/back-To-Home.png')"}}>
+            <BackHome/>
+          </div>
         <Footer />
     </div>
     </>
