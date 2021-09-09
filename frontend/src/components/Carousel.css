@@ -48,7 +48,7 @@
 
   .carouselContainer {
     height: 100vh;
-    width: 70vw;
+    width: 100%;
     /* background: coral; */
     /* temporal para trabajar con las slides */
   }
@@ -96,12 +96,45 @@
   }
 
 div.championCarousel {
-  width: 20rem;
-  height: 20rem;
+  width: 100%;
+  height: 70vh;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  cursor: grabbing;
 }
 
 div.topVideos {
   display: flex;
+  flex-direction: column;
+  width: 85%;
+  
+}
+
+.usernameTopVideo {
+  font-size: 1.5rem;
+  letter-spacing: 0,5px;
+  color: white;
+  margin-bottom: 0;
+  margin-right: 1%;
+  padding-top: 1%;
+}
+
+.userBox {
+  background-color: rgb(0, 0, 0);
+  width: 360px;
+  height: 50px;
+  -webkit-clip-path: polygon(92% 0, 100% 43%, 100% 100%, 50% 100%, 0 100%, 0 0);
+  clip-path: polygon(92% 0, 100% 43%, 100% 100%, 50% 100%, 0 100%, 0 0);
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.videoUser {
+  padding: 0;
+  margin: 0;
 }

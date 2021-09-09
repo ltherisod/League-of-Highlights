@@ -1,7 +1,5 @@
 @font-face {
   font-family: "BeaufortforLOL-Bold.woff";
-  font-style: normal;
-  font-weight: normal;
   src: url("../assets/BeaufortforLOL-Bold.woff.ttf") format("woff", "OneType", "TrueType");
 }
 
@@ -12,16 +10,19 @@ h2 {
 .heroCommunity{
     background-image: url("https://i.postimg.cc/VNh13Yr9/evelynn-league-of-legends-kda-neon-by-west182-dctnajm-fullview.jpg");
     min-height: 100vh;
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-/* .text-center {
-  margin-top: 4%;
-  margin-bottom: 4%;
-} */
+.textCommunity {
+  padding-top: 6%;
+  padding-bottom: 2%;
+  font-weight: bold;
+  font-size: 4rem;
+  text-align: center;
+}
 
 .photos {
   display: flex;

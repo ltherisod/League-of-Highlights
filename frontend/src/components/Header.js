@@ -79,7 +79,7 @@ const Header = (props) => {
                 <i className="fas fa-user-alt text-white fs-2"></i>
               )}
             </DropdownToggle>
-            <DropdownMenu className="position-absolute top-0 end-0 mt-5">
+            <DropdownMenu className="position-absolute top-0 end-0 mt-5 text-decoration-none">
               {props.userStatus ? (
                 <>
                   <Link to="/">
