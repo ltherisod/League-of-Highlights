@@ -3,8 +3,8 @@ import "./ReportForm.css"
 const ReportForm = () => {
     return (
         <>
-            <form>
-                <input type="textArea" className="reportForm" placeholder="Why are you reporting this video?"/>
+            <form className="reportForm">
+                <input type="textArea" className="reportInput" placeholder="Why are you reporting this video?"/>
                 <button>Send</button>
             </form>
         </>
