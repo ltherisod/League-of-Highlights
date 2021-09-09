@@ -104,33 +104,64 @@ const videosActions = {
     }
   },
 
-  addComment: () => {
+  addComment: (videoId, content) => {
+    // commentData debe venir así: { author}
     return async (dispatch, getState) => {
       try {
-
-      }catch(e){
+        const token = getState().user.user.token
+        const res = await axios.put(
+          `${HOST}/api/video/comments/${videoId}`,
+          { content, type: "createComment" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        if (res.data.success) {
+          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
         return { success: false, response: null, error: e.message }
-     }
-    } 
+      }
+    }
   },
-  editComment: () => {
+  editComment: (commentId, newContent) => {
     return async (dispatch, getState) => {
       try {
-
-      }catch(e){
+        const token = getState().user.user.token
+        const res = await axios.put(
+          `${HOST}/api/video/comments/${commentId}`,
+          { content: newContent, type: "createComment" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        if (res.data.success) {
+          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          return { success: true, response: res.data.response }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
         return { success: false, response: null, error: e.message }
-     }
-    } 
+      }
+    }
   },
-  deleteComment: () => {
+  deleteComment: (commentId) => {
     return async (dispatch, getState) => {
       try {
-
-      }catch(e){
+        const token = getState().user.user.token
+        const res = await axios.put(
+          `${HOST}/api/video/comments/${commentId}`,
+          { commentId, type: "createComment" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        if (res.data.success) {
+          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
         return { success: false, response: null, error: e.message }
-     }
-    } 
-  }
-}   
+      }
+    }
+  },
+}
 
 export default videosActions
