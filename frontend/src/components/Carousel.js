@@ -31,8 +31,8 @@ const Carousel = (props) => {
     return (
       <div className="mainCarousel" style={{backgroundImage:"url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')"}}>
         <div className="carouselTitle" >
-          <p>TOP</p>
-          <h2>HIGHLIGHTS</h2>
+          <p className='topTitle'>TOP</p>
+          <h2 className='titleCarouselHome'>HIGHLIGHTS</h2>
         </div>
         <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
             <Swiper className="carouselContainer"

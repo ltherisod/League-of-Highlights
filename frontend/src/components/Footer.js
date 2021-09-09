@@ -9,9 +9,9 @@ const Footer = () => {
       }}
     >
       <div className="footerBox">
-        <div className="logo">
+        <div className="logo d-none">
           <img
-            className="logoFooter"
+            className="logoFooter "
             alt="footer logo"
             src="/assets/LOHWhite.png"
           />
@@ -69,8 +69,8 @@ const Footer = () => {
           </a>
         </div>
         <div className="esrb">
-          <img alt="no se que logo" src="/assets/esrb-teen.png" />
-          <div>
+          <img alt="no se que logo" src="/assets/esrb-teen.png"  />
+          <div className='esrbText'>
             <p>Blood</p>
             <p>Fantasy violence</p>
             <p>Moderate suggestive themes</p>

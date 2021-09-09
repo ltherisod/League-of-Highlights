@@ -140,7 +140,11 @@ div.rotationsContainer {
     }
 
     .titleRotation{
-     background-color: aqua;
-     font-size: 2vw;
+     
+     font-size: 10vw;
+    }
+
+    .rotationsCarousel {
+        width: 25rem;
     }
 }
