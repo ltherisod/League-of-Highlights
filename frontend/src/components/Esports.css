@@ -127,6 +127,13 @@ div.rotationsContainer {
     font-size: 4rem;
 }
 
+
+@media screen and (max-width:900px) {
+    .socialBox {
+        width: 30vw;
+    }
+}
+
 @media screen and (max-width:769px) {
     div.rotationsContainer {
         flex-direction: column;
@@ -144,3 +151,10 @@ div.rotationsContainer {
      font-size: 2vw;
     }
 }
+
+@media screen and (max-width:700px) {
+    .socialContent{
+        display: none;
+    }
+}
+

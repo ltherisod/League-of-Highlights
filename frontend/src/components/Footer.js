@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
         <div className="esrb">
           <img alt="no se que logo" src="/assets/esrb-teen.png" />
-          <div>
+          <div className="esrbText">
             <p>Blood</p>
             <p>Fantasy violence</p>
             <p>Moderate suggestive themes</p>
