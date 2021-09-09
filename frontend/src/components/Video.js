@@ -4,6 +4,7 @@ import Comments from "../components/Comments"
 import { connect } from "react-redux"
 
 const Video = (props) => {
+  console.log(props.video)
   return (
     <div className="videoContent">
       <div className="contentVideoUser">
