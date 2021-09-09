@@ -1,7 +1,10 @@
 import "./Videos.css"
 import ReactPlayer from "react-player"
+import videosActions from "../redux/actions/videosActions"
 
 const Videos = () => {
+    console.log(userId)
+
     return (
         <>
             <div className="usersVideos">
@@ -29,4 +32,14 @@ const Videos = () => {
     )
 }
 
-export default Videos
+const mapStateToProps = (state) => {
+    return {
+        userId: state.user.user
+    }
+}
+
+const mapDispatchToProps = {
+    getUserVideos: videosActions.getUserVideos
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Videos) 
