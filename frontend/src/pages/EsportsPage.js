@@ -19,7 +19,9 @@ const EsportsPage = (props) => {
                 <ReactPlayer url='http://www.youtube.com/watch?v=todFRrm9auU&t=1s' className="videoEsports" controls={true}/>
                 <ReactPlayer url='http://www.youtube.com/watch?v=jnnolqQC1D0' className="videoEsports" controls={true}/>
                 </div>
-                <BackHome/>
+                <div className="mainBackHome" style={{backgroundImage: "url('https://i.postimg.cc/L5mGj4Tz/back-To-Home.png')"}}>
+                    <BackHome/>
+                </div>
             </div>
             <Footer/>
         </>

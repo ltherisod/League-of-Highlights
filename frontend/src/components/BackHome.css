@@ -9,18 +9,6 @@
     font-family: "BeaufortforLOL-Bold.woff";
   }
 
-.mainBackHome {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 110vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .backHomeButton {
     width: 9rem;
     height: 2.5rem;

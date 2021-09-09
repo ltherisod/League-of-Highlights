@@ -7,6 +7,7 @@ import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
 import Videos from "../components/Videos"
 import UploadVideo from "../components/UploadVideo"
+import BackHome from "../components/BackHome"
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -50,7 +51,7 @@ const Profile = (props) => {
         className="bodyBackground"
         style={{
           backgroundImage:
-            "url('https://i.postimg.cc/4dGhW9qH/background-Violeta.png')",
+            "url('https://i.postimg.cc/hPZZ3SQn/azulazo.png')",
         }}
       >
         <Header {...props} />
@@ -59,56 +60,63 @@ const Profile = (props) => {
             className="userHero"
             style={{
               backgroundImage:
-                "url('https://i.postimg.cc/kX2nvFmG/fondoperfil.png')",
+                "url('https://i.postimg.cc/hvzp7Ycm/fondazo.png')",
             }}
           >
-            <div className="userside">
+            <div className="userside" style={{backgroundImage:"url('https://i.postimg.cc/0NKMfdKp/banderita.png')"}}>
               <div className="user">
                 <div
                   className="frameIcon"
-                  style={{
-                    backgroundImage:
-                      "url('https://i.postimg.cc/L6g8PMSW/portrait-frame.png')",
-                  }}
+                  // style={{
+                  //   backgroundImage:
+                  //     "url('https://i.postimg.cc/L6g8PMSW/portrait-frame.png')",
+                  // }}
                 >
                   <div
                     className="avatar"
                     style={{ backgroundImage: `url(${showProfileData.icon})` }}
                   ></div>
                 </div>
-                {props.match.params.username}
-              </div>
-              <div className="logoChampion">
-                <div className="info">
-                  <div
-                    className="rank"
-                    style={{
-                      backgroundImage: `url(${showProfileData.rank.image})`,
-                    }}
-                  ></div>
-                  <h4>
-                    {showProfileData.rank.name} {showProfileData.division}
-                  </h4>
+                <div className="usernameProfile">
+                  {props.match.params.username}
                 </div>
+              </div>
+              <div className="info">
                 <div
-                  className="tag"
+                  className="rank"
                   style={{
-                    backgroundImage: `url(${showProfileData.topChampions[0].tags[0].image})`,
+                    backgroundImage: `url(${showProfileData.rank.image})`,
+                  }}
+                ></div>
+                <div className="rankNameProfile">
+                  {showProfileData.rank.name} {showProfileData.division}
+                </div>
+              </div>
+              <div
+                className="tag"
+                style={{
+                  backgroundImage: `url(${showProfileData.topChampions[0].tags[0].image})`,
+                }}
+              ></div>
+            </div>
+            <div className="championBox">
+              <div className="dividerTopProfile" style={{backgroundImage:"url('https://i.postimg.cc/wMgzzdnf/dividertop.png')"}}></div>
+              <div className="championback">
+                <div
+                  className="champion"
+                  style={{
+                    backgroundImage: `url(${showProfileData.topChampions[0].image})`,
                   }}
                 ></div>
               </div>
-            </div>
-            <div className="championback">
-              <div
-                className="champion"
-                style={{
-                  backgroundImage: `url(${showProfileData.topChampions[0].image})`,
-                }}
-              ></div>
+              <div className="dividerButtomProfile" style={{backgroundImage:"url('https://i.postimg.cc/brxv0gfM/divider.png')"}}></div>
             </div>
           </div>
           <UploadVideo />
           <Videos username={props.match.params.username} />
+          <div className="mainBackHome" style={{backgroundImage:"url('https://i.postimg.cc/V6RbWKFT/fondo-Akali.png')"}}>
+            <BackHome/>
+          </div>
         </main>
         <Footer />
       </div>
