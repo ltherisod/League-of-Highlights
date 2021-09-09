@@ -1,8 +1,8 @@
-input.reportForm {
+input.reportInput {
   width: 20rem;
   height: 10rem;
 }
 
-/* form {
+form.reportForm {
     position: absolute;
-} */
+}

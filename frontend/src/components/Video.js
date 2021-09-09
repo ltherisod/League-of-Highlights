@@ -4,6 +4,7 @@ import Comments from "../components/Comments"
 import { connect } from "react-redux"
 import ReportForm from "./ReportForm"
 import { useState } from "react"
+import "./Videos.css"
 
 const Video = (props) => {
   const [showReport, setShowReport] = useState(false)
@@ -25,6 +26,8 @@ const Video = (props) => {
   const reportHandler = async () => {
     setShowReport(!showReport)
   }
+
+  let star = props.video.likes.includes(props.user._id) ? "/assets/star_fill.svg" : "/assets/star.svg"
   return (
     <div className="videoContent">
       <div className="contentVideoUser">
@@ -39,11 +42,6 @@ const Video = (props) => {
             </button>
           </>
         )}
-        <button
-          onClick={() => props.toggleLike(props.video._id, props.user._id)}
-        >
-          {props.video.likes.includes(props.user._id) ? "Dislike" : "Like"}
-        </button>
         <ReactPlayer
           url={props.video.url}
           className="videoUser"
@@ -51,13 +49,13 @@ const Video = (props) => {
         />
         {/* </div> */}
       </div>
-      <div className="videoInfo">
-        <div className="likeReport">
-          {/* <img src={star}/> */}
+      <div className="likeReport">
+        <div className="videolikes">
+          <img src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)}/>
           {props.video.likes.length}
-          <button onClick={reportHandler}>Report</button>
-          {showReport ? <ReportForm /> : null}
         </div>
+        <button onClick={reportHandler}>Report</button>
+        {showReport ? <ReportForm /> : null}
       </div>
       <div className="comments">
         <Comments />
