@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn"
 import Community from "./pages/Community"
 import EsportsPage from "./pages/EsportsPage"
 import Admin from "./pages/Admin"
+import Test from "./pages/Test"
 import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
 import Profile from "./pages/Profile"
 import { connect } from "react-redux"
@@ -14,21 +15,15 @@ import { useEffect, useState } from "react"
 
 function App(props) {
   const token = localStorage.getItem("token")
-  console.log(token)
   const [socket, setSocket] = useState(null)
 
   useEffect(() => {
     setSocket(io("http://localhost:4000"))
     if (token) {
       props.loginLS(token)
-      console.log(token)
-      console.log("Holaa") // NO SACAR POR FAVOR, SE ROMPE TODO
     }
   }, [])
 
-  // if (socket) {
-  //   socket.emit("Hola")
-  // }
   return (
     <BrowserRouter>
       <Switch>
@@ -45,6 +40,7 @@ function App(props) {
         {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
         <Route exact path="/esports" component={EsportsPage} />
         <Route exact path="/admin" component={Admin} />
+        <Route exact path="/test" component={Test} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>

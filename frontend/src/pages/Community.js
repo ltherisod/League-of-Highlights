@@ -19,7 +19,7 @@ const Community = () => {
     <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/fyFKsXCW/pruebadifuminada.png')"}}>
         <Header />
         <div className="heroCommunity"></div>
-          <h2 className='text-center'>COMMUNITY</h2>
+          <h2 className='textCommunity'>COMMUNITY</h2>
           <div className="photos">
             <div className="picBox" data-aos="fade-up-right">
               <div className="picCommunity" style={{backgroundImage:"url('https://i.postimg.cc/0yx5NHVL/Ee-Q6x-P-XYAAe-Yhq.jpg')"}}></div>

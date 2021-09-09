@@ -20,7 +20,6 @@ const Carousel = (props) => {
     const getVideos = async () => {
       const res = await props.getTopVideos()
       if(res.success){
-        console.log(res.response)
         setVideos(res.response)
       } else {
         alert(res.error)//cambiar alert feo
@@ -35,7 +34,7 @@ const Carousel = (props) => {
           <p>TOP</p>
           <h2>HIGHLIGHTS</h2>
         </div>
-        <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/GmhKW85Z/fondo-Carousel.png')"}}>
+        <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
             <Swiper className="carouselContainer"
             // install Swiper modules
             direction={"vertical"}
@@ -44,16 +43,18 @@ const Carousel = (props) => {
           //   slidesPerView={3}
           //   navigation
             pagination={{ clickable: true }}
-          //   scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log('slide change')}
+            // scrollbar={{ draggable: true }}
+            
           >
             {videos.map((video) =>
             <SwiperSlide key={video._id}>
               <div className="topVideos">
-                <h2>{video.owner.username}</h2>
-                <div className="championCarousel" style={{backgroundImage: `url(${video.champion.image})`}}></div>
-                <ReactPlayer url={video.url} className="videoUser" controls={true}/>
+                <div className="championCarousel" style={{backgroundImage: `url(${video.champion.image})`}}>
+                  <div className="userBox">
+                    <p className="usernameTopVideo">{video.owner.username}</p>
+                  </div>
+                  <ReactPlayer url={video.url} className="videoUser" controls={true}/>
+                </div>
               </div>
             </SwiperSlide> )}
             

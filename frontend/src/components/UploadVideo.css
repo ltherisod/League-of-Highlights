@@ -1,0 +1,17 @@
+form, div.videoForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+div.videoForm {
+    border: 1px solid black;
+    width: 25%;
+}
+
+
+form input {
+    margin: 0.5rem;
+}

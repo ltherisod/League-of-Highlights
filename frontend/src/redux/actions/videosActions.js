@@ -1,5 +1,4 @@
 import axios from "axios"
-
 const HOST = "http://localhost:4000"
 
 const videosActions = {
@@ -7,7 +6,6 @@ const videosActions = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.get(`${HOST}/api/videos`)
-        console.log(res)
         if (!res.data.success) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
@@ -101,6 +99,65 @@ const videosActions = {
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         // videoid params, por body userId
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+
+  addComment: (videoId, content) => {
+    // commentData debe venir así: { author}
+    return async (dispatch, getState) => {
+      try {
+        const token = getState().user.user.token
+        const res = await axios.put(
+          `${HOST}/api/video/comments/${videoId}`,
+          { content, type: "createComment" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        if (res.data.success) {
+          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  editComment: (commentId, newContent) => {
+    return async (dispatch, getState) => {
+      try {
+        const token = getState().user.user.token
+        const res = await axios.put(
+          `${HOST}/api/video/comments/${commentId}`,
+          { content: newContent, type: "createComment" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        if (res.data.success) {
+          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          return { success: true, response: res.data.response }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  deleteComment: (commentId) => {
+    return async (dispatch, getState) => {
+      try {
+        const token = getState().user.user.token
+        const res = await axios.put(
+          `${HOST}/api/video/comments/${commentId}`,
+          { commentId, type: "createComment" },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+        if (res.data.success) {
+          dispatch({ type: "ON_COMMENT_ACTION", payload: res.data.response })
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
         return { success: false, response: null, error: e.message }
       }
     }
