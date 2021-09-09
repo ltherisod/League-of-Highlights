@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
 import Videos from "../components/Videos"
+import UploadVideo from "../components/UploadVideo"
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -104,6 +105,7 @@ const Profile = (props) => {
               ></div>
             </div>
           </div>
+          <UploadVideo/>
           <Videos username={props.match.params.username} />
         </main>
         <Footer />

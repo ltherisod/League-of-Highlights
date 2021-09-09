@@ -16,7 +16,7 @@ const Videos = (props) => {
 
   useEffect(() => {
     getVideos()
-  }, [])
+  }, [props.username])
 
   if (loading) return <p>Loading...</p>
   if (!props.userVideos.length) return <p>Todavía no tengo videos :c</p>

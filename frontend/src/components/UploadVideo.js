@@ -6,11 +6,11 @@ import championsActions from "../redux/actions/championsActions"
 
 const UploadVideo = (props) => {
     const [champions, setChampions] = useState([])
-
     const getChampions = async () => {
         try{
             const res = await props.getAllChampions()
-            console.log(res)
+            if(!res.success) throw new Error()
+            setChampions(res.response.map((champion) => champion.name)) 
         }catch(e){
             console.log(e.message)
         }
@@ -21,22 +21,24 @@ const UploadVideo = (props) => {
         getChampions()
     },[])
 
-
     const [videoData, setVideoData] = useState({
         title: '',
         url: '',
-        owner: '',
-        champion: '',
+        owner: props.user._id,
+        championName: '',
     })
 
     const inputHandler = (e) => {
         setVideoData({ ...videoData, [e.target.name]: e.target.value })
     }
     const sendVideo = async () => {
+        console.log("entre a esta mierda")
         if((Object.values(videoData).some((value) => value === ""))){
             return false // hacer alerta que llene los campos.
         }
-        const res = await props.sendVideo(videoData)
+        
+        const res = await props.addVideo(videoData)
+        console.log(res)
         if (res.success) {
             alert(`video enviado`)
           } else {
@@ -52,8 +54,9 @@ const UploadVideo = (props) => {
                 <form>
                     <input type="text" name="title" placeholder="Title of your video" onChange={inputHandler}/>
                     <input type="text" name="url" placeholder="url of your video"  onChange={inputHandler} />
-                    <select >
+                    <select name="championName" onChange={inputHandler} >
                         <option>Choose your champion</option>
+                        {champions.map((champion) => <option value={champion} key={champion}>{champion}</option>)}
                     </select>
                 </form>
                 <button onClick={sendVideo}>Send Video</button>
@@ -61,10 +64,15 @@ const UploadVideo = (props) => {
         </>
         )
 }
+const mapStateToProps = (state) => {
+    return{
+        user: state.user.user
+    }
+}
 
 const mapDispatchToProps = {
     addVideo: videosActions.addVideo,
-    getChampions: championsActions.getAllChampions
+    getAllChampions: championsActions.getAllChampions
 }
 
-export default connect(null, mapDispatchToProps)(UploadVideo)
+export default connect(mapStateToProps, mapDispatchToProps)(UploadVideo)

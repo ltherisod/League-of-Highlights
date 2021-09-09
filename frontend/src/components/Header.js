@@ -100,13 +100,13 @@ const Header = (props) => {
               ) : (
                 <div>
                   {!props.userStatus && (
-                    <Link classname="accountLink " to="/signup">
+                    <Link className="accountLink " to="/signup">
                       {" "}
                       <DropdownItem className= "accountBox">Sign up</DropdownItem>
                     </Link>
                   )}
                   {!props.userStatus && (
-                    <Link classname="accountLink " to="/signin">
+                    <Link className="accountLink " to="/signin">
                       <DropdownItem className= "accountBox">Sign in</DropdownItem>
                     </Link>
                   )}
