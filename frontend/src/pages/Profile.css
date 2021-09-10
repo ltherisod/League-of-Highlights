@@ -79,7 +79,7 @@ div.tag {
   /* background-color: rgb(237, 100, 225); */
 }
 
-.userHero {
+.userHero, .backgroundUpload {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -90,6 +90,12 @@ div.tag {
   min-height: 90vh;
   /* background-color: crimson; */
 }
+
+/* .backgroundUpload {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+} */
 
 .userside {
   display: flex;
@@ -214,4 +220,12 @@ text-transform: uppercase;
 .loaderdiv img {
   width: 80%;
   border-image: none;
+}
+
+.boxVideos {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: darkcyan; */
 }

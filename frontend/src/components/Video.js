@@ -29,37 +29,42 @@ const Video = (props) => {
 
   let star = props.video.likes.includes(props.user._id) ? "/assets/star_fill.svg" : "/assets/star.svg"
   return (
-    <div className="videoContent">
-      <div className="contentVideoUser">
-        <h4>{props.video.title}</h4>
-        {props.video.owner === props.user._id && (
-          <>
-            <button type="button" onClick={deleteHandler}>
-              Delete
-            </button>
-            <button type="button" onClick={updateHandler}>
-              Update
-            </button>
-          </>
-        )}
-        <ReactPlayer
-          url={props.video.url}
-          className="videoUser"
-          controls={true}
-        />
-        {/* </div> */}
-      </div>
-      <div className="likeReport">
-        <div className="videolikes">
-          <img src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)}/>
-          {props.video.likes.length}
+    // <div className="videoContent" style={{backgroundImage:"url('https://i.postimg.cc/rszLM3Ft/news-banner-frame.png')"}}>
+    <div className="videoContent" >
+        <div className="contentVideoUser">
+          <div className="titleVideo">
+            <h4>{props.video.title}</h4>
+            {props.video.owner === props.user._id && (
+              <>
+                {/* <button type="button" onClick={updateHandler}>
+                  Update
+                </button> */}
+              </>
+            )}
+          </div>
+          <ReactPlayer
+            width="650px"
+            height="400px"
+            url={props.video.url}
+            className="videoUser"
+            controls={true}
+          />
+          {/* </div> */}
         </div>
-        <button onClick={reportHandler}>Report</button>
-        {showReport ? <ReportForm /> : null}
-      </div>
-      <div className="comments">
-        <Comments video={props.video} />
-      </div>
+        <div className="likeReport">
+          <div className="videolikes">
+            {props.video.likes.length}
+            <img src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)}/>
+          </div>
+          <div className="buttonsProfile">
+            <button type="button" onClick={deleteHandler}>Delete</button>
+            <button onClick={reportHandler}>Report</button>
+          </div>
+          {showReport ? <ReportForm /> : null}
+        </div>
+        <div className="commentsfather">
+          <Comments video={props.video} />
+        </div>
     </div>
   )
 }

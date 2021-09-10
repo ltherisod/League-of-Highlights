@@ -3,9 +3,12 @@ import "./UploadVideo.css"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 import championsActions from "../redux/actions/championsActions"
+// import { FiX } from "react-icons/fi";
 
 const UploadVideo = (props) => {
   const [champions, setChampions] = useState([])
+  const [view, setView] = useState(false)
+
   const getChampions = async () => {
     try {
       const res = await props.getAllChampions()
@@ -49,32 +52,37 @@ const UploadVideo = (props) => {
 
   return (
     <>
+    <div className="uploadBox">
+      {view && 
       <div className="videoForm">
-        <h3>Upload your video</h3>
-        <form>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title of your video"
-            onChange={inputHandler}
-          />
-          <input
-            type="text"
-            name="url"
-            placeholder="url of your video"
-            onChange={inputHandler}
-          />
-          <select name="championName" onChange={inputHandler}>
-            <option>Choose your champion</option>
-            {champions.map((champion) => (
-              <option value={champion} key={champion}>
-                {champion}
-              </option>
-            ))}
-          </select>
-        </form>
-        <button onClick={sendVideo}>Send Video</button>
-      </div>
+      <h3>Upload your video</h3>
+      <form>
+        <input
+          type="text"
+          name="title"
+          placeholder="Title of your video"
+          onChange={inputHandler}
+        />
+        <input
+          type="text"
+          name="url"
+          placeholder="url of your video"
+          onChange={inputHandler}
+        />
+        <select name="championName" onChange={inputHandler}>
+          <option>Choose your champion</option>
+          {champions.map((champion) => (
+            <option value={champion} key={champion}>
+              {champion}
+            </option>
+          ))}
+        </select>
+      </form>
+      <button className="sendVideo" onClick={sendVideo}>Send Video</button>
+    </div>
+      }
+      <button className="postButton" onClick={() => setView(!view)}>{view ? "close" : "New Post"}</button>
+    </div>
     </>
   )
 }
