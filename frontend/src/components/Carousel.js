@@ -13,6 +13,7 @@ SwiperCore.use([Navigation, Pagination])
 
 
 const Carousel = (props) => {
+  console.log(props)
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
