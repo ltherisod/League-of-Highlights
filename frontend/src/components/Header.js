@@ -97,11 +97,11 @@ const Header = (props) => {
                         props.userStatus.username || props.userStatus.user
                       }`}
                     >
-                      <DropdownItem>Profile</DropdownItem>
+                      <DropdownItem className="accountBox text-white">Profile</DropdownItem>
                     </Link>
                   ) : null}
                   <Link to="/">
-                    <DropdownItem to="/" onClick={sesionOut}>
+                    <DropdownItem className="accountBox text-white" to="/" onClick={sesionOut}>
                       Log out
                     </DropdownItem>
                   </Link>
@@ -111,14 +111,14 @@ const Header = (props) => {
                   {!props.userStatus && (
                     <Link className="accountLink " to="/signup">
                       {" "}
-                      <DropdownItem className="accountBox">
+                      <DropdownItem className="accountBox text-white">
                         Sign up
                       </DropdownItem>
                     </Link>
                   )}
                   {!props.userStatus && (
                     <Link className="accountLink " to="/signin">
-                      <DropdownItem className="accountBox">
+                      <DropdownItem className="accountBox text-white">
                         Sign in
                       </DropdownItem>
                     </Link>
@@ -151,7 +151,7 @@ const Header = (props) => {
         </Collapse>
         <div className="divSearch ">
           <input
-            className="textbox"
+            className="linkbox"
             type="text"
             placeholder="Search your favourite player..."
             ref={inputHandler}

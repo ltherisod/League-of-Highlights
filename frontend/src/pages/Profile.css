@@ -217,10 +217,10 @@ text-transform: uppercase;
   align-items: center;
 }
 
-.loaderdiv img {
+/* .loaderdiv img {
   width: 80%;
-  border-image: none;
-}
+  
+} */
 
 .boxVideos {
   width: 100%;
