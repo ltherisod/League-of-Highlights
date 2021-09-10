@@ -55,6 +55,14 @@ div.videoContainer {
     padding-bottom: 4%;
 }
 
+.titleEsports{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 25%;
+    height: 40vh;
+}
+
 .mainBackHome {
     background-repeat: no-repeat;
     background-size: cover;
