@@ -28,7 +28,23 @@ const Header = (props) => {
     //   return alert("empty field")
     // }
     if (!props.userStatus) {
-      alert("create an account to do it")
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            You have to log in to search!
+          </p>
+        </div>
+      ))
     } else {
       if (inputHandler.current.value === "") {
         return alert("empty field")
@@ -55,35 +71,23 @@ const Header = (props) => {
   }
 
   const sesionOut = () => {
-
     toast.custom((t) => (
       <div
         className={`${
           t.visible ? 'animate-enter' : 'animate-leave'
-        } bg-black shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+        } bg-black flex`}
+        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
       >
-        <div className="flex w-0 p-4">
-          <div className="flex items-start">
-            <div className="flex-shrink-0 pt-0.5">
-              <img
-                className="h-4 w-4 rounded-full"
-                src="https://i.postimg.cc/bwK5xRpW/success2.png"
-                // src="./assets/facebook.svg"
-                alt=""
-              />
-            </div>
-            <div className="ml-3 flex-1">
-              <p className="text-sm font-medium text-white">
-                See you soon!
-              </p>
-            </div>
-          </div>
-        </div>
+        <img style={{ width: "60px", height: "60px"}}
+          className="h-4 w-4 rounded-full"
+          src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+          alt=""
+        />
+        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          See you soon!
+        </p>
       </div>
     ))
-
-
-    
     props.logOut()
   }
 
@@ -195,7 +199,11 @@ const Header = (props) => {
         </div>
       </Navbar>
       <Toaster 
-        position="top-left"
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
         toastOptions={{
           duration: 1500,
       }}/>

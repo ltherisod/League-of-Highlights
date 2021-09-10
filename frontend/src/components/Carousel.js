@@ -37,7 +37,7 @@ const Carousel = (props) => {
           <p className='topTitle'>TOP</p>
           <h2 className='titleCarouselHome'>HIGHLIGHTS</h2>
         </div>
-        <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
+        {/* <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
             <Swiper className="carouselContainer"
             // install Swiper modules
             direction={"vertical"}
@@ -60,8 +60,8 @@ const Carousel = (props) => {
               </div>
             </SwiperSlide> )} */}
             
-          </Swiper>
-        </div>
+          </Swiper> */}
+        {/* </div> */}
       </div>
 
     )
