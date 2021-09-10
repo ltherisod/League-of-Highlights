@@ -7,11 +7,92 @@ form, div.videoForm {
 }
 
 div.videoForm {
-    border: 1px solid black;
+
+    background-color: rgba(0, 0, 0, 0.473);
     width: 25%;
 }
 
 
 form input {
     margin: 0.5rem;
+}
+
+/* 
+.postButton {
+    align-self: flex-start;
+} */
+
+.uploadBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    min-height: 60vh;
+}
+
+.videoForm h3{
+    color:rgb(189, 151, 81);
+}
+
+.videoForm input{
+    flex: 1;
+    background-color: transparent;
+    padding: 1%;
+    border-color: rgb(175, 140, 23);
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.videoForm input::placeholder{
+    color: rgb(175, 140, 23);
+    font-style: italic;
+}
+
+.videoForm select {
+    border-color: rgb(175, 140, 23);
+    color: rgb(175, 140, 23);
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    padding: 1%;
+    margin-top: 4%;
+}
+
+.videoForm select::-webkit-scrollbar {
+    width: 100px;     /* Tamaño del scroll en vertical */
+    height: 200px;    /* Tamaño del scroll en horizontal */
+    display: none;  /* Ocultar scroll */
+}
+
+.videoForm::-webkit-scrollbar-track {
+    background: #f70909;
+    border-radius: 4px;
+}
+
+.videoForm option {
+    background-color: black;
+}
+
+
+.sendVideo {
+    background-color: rgb(189, 151, 81);
+    border-color: rgb(189, 151, 81);
+    padding: 2%;
+    margin-left: 1%;
+    -webkit-clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
+    clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
+    font-weight: bold;
+}
+
+.postButton {
+    background-color: rgb(189, 151, 81);
+    border-color: rgb(189, 151, 81);
+    padding: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin-left: 1%;
+    -webkit-clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
+    clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
+    font-weight: bold;
 }

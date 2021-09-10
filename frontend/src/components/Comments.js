@@ -15,17 +15,22 @@ const Comments = (props) => {
     console.log(res.error)
   }
   return (
-    <div>
-      {props.video.comments.map((comment) => (
-        <Comment key={comment._id} comment={comment} />
-      ))}
-      <input
-        type="text"
-        placeholder="Leave a comment."
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <button onClick={addCommentHandler}>Add comment</button>
-    </div>
+    <>
+      <div className="comment">
+          {props.video.comments.map((comment) => (
+            <Comment key={comment._id} comment={comment} />
+          ))}
+      </div>
+        <div className="inputComment">
+          <input
+            className="inputCom"
+            type="text"
+            placeholder="Leave a comment."
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button className="addComment" onClick={addCommentHandler}>Add comment</button>
+        </div>
+      </>
   )
 }
 

@@ -30,18 +30,17 @@ const Comment = (props) => {
                             </div>
 
   return (
-    <div>
-
-      {!updateComment ? <p className="text-white">{`${props.comment.author.username}: ${props.comment.content}`}</p> : inputUpdateComment}
+    <div className="commentBox">
+      {!updateComment ? <p className="textComment">{`${props.comment.author.username}: ${props.comment.content}`}</p> : inputUpdateComment}
       {props.comment.author._id === props.user._id && (
-        <>
+        <div className="buttonsComment">
           <button type="button" onClick={deleteHandler}>
             Delete
           </button>
           <button type="button" onClick={updateHandler}>
             Update
           </button>
-        </>
+        </div>
       )}
     </div>
   )

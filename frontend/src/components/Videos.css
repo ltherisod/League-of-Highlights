@@ -6,8 +6,8 @@
 }
 
 .videoUser {
-    width: 360px !important;
-    height: 210px !important;
+    /* width: 360px !important;
+    height: 210px !important; */
     margin: .5rem;
 } 
 
@@ -15,4 +15,157 @@ div.likeReport {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    /* padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%; */
+}
+
+.videoContent {
+    width: 100%;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+    background-color: rgba(0, 0, 0, 0.445);
+    padding: 2%;
+}
+
+.titleVideo h4{
+    text-align: center;
+    font-family: 'Secular One', sans-serif;
+    letter-spacing: 0,5px;
+    text-transform:capitalize;
+    font-size: 3rem!important;
+    color: rgb(0, 0, 0);
+    text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+    text-align: center;
+    line-height: 1;
+    background-color: rgb(189, 151, 81);
+    -webkit-clip-path: polygon(96% 0, 100% 45%, 100% 100%, 50% 100%, 0 100%, 0 0);
+    clip-path: polygon(96% 0, 100% 45%, 100% 100%, 50% 100%, 0 100%, 0 0);
+    margin: 0.5rem;
+    margin-top: 0;
+    padding-top: 1%;
+}
+
+.buttonsProfile, .buttonsComment {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonsProfile {
+    padding-right: 3%;
+}
+
+.comments {
+    min-height: 100vh;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2vh;
+    overflow-y: auto;
+    z-index: -1;
+    height: 50vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    border-width: 1px;
+    border-style: solid;
+    padding: 1%;
+    border-color: rgb(175, 140, 23);
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+
+.inputComment {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+}
+
+.inputCom{
+    flex: 1;
+    background-color: transparent;
+    padding: 1%;
+    border-color: rgb(175, 140, 23);
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.inputCom::placeholder{
+    color: rgb(175, 140, 23);
+    font-style: italic;
+}
+
+/* .inputCom:focus {
+    border: none;
+}
+
+.inputCom:active {
+    border: none;
+} */
+
+.commentBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* padding: 1%; */
+    padding-left: 3%;
+}
+
+.commentBox p {
+    background-color: rgb(20, 20, 20);
+    /* background-color: rgb(94, 73, 17); */
+    border-radius: 10px;
+    padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 2%;
+    color: blanchedalmond;
+}
+
+.buttonsProfile button{
+    background-color: rgb(189, 151, 81);
+    border: none;
+    width: 4rem;
+    margin-right: 5%;
+}
+
+.addComment{
+    background-color: rgb(189, 151, 81);
+    border-color: rgb(189, 151, 81);
+    border-radius: 5px;
+    padding: 1%;
+    margin-left: 1%;
+}
+
+.videolikes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(189, 151, 81);
+    font-size: 3vmin;
+    width: 15%;
+}
+
+.videolikes img{
+    padding-left: 5%;
+}
+
+.commentsfather{
+    width: 100%;
 }

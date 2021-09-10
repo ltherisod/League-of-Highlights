@@ -113,8 +113,10 @@ const Profile = (props) => {
             </div>
           </div>
           {/* Protegida la sección del formulario para agregar video */}
-          {showProfileData._id === props.userData._id && <UploadVideo />}
-          <Videos username={props.match.params.username} />
+            {showProfileData._id === props.userData._id && <UploadVideo />}
+            <div className="boxVideos">
+              <Videos className="videoPost" username={props.match.params.username} />
+            </div>
           <div className="mainBackHome" style={{backgroundImage:"url('https://i.postimg.cc/V6RbWKFT/fondo-Akali.png')"}}>
             <BackHome/>
           </div>
