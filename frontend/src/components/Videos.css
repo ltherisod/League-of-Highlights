@@ -55,10 +55,24 @@ div.likeReport {
 }
 
 .buttonsProfile, .buttonsComment {
-    width: 20%;
+    width: 10%;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.buttonsProfile {
+    width: 13%;
+}
+
+.buttonsComment button{
+    background-color: transparent;
+    border: none;
+}
+
+.buttonsProfile button{
+    background-color: transparent;
+    border: none;
 }
 
 .buttonsProfile {
@@ -86,7 +100,6 @@ div.likeReport {
     border-radius: 5px;
     margin-top: 2%;
 }
-
 
 .inputComment {
     width: 100%;
@@ -138,19 +151,13 @@ div.likeReport {
     color: blanchedalmond;
 }
 
-.buttonsProfile button{
-    background-color: rgb(189, 151, 81);
-    border: none;
-    width: 4rem;
-    margin-right: 5%;
-}
-
 .addComment{
     background-color: rgb(189, 151, 81);
     border-color: rgb(189, 151, 81);
     border-radius: 5px;
     padding: 1%;
     margin-left: 1%;
+    font-weight: bold;
 }
 
 .videolikes {
@@ -168,4 +175,10 @@ div.likeReport {
 
 .commentsfather{
     width: 100%;
+}
+
+.delete, .upDate, .report {
+    width: 20px;
+    height: 20px;
+    color: rgb(189, 151, 81);
 }

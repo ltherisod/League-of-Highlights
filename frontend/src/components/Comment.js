@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
+import { FiTrash2, FiEdit2 } from "react-icons/fi";
 
 const Comment = (props) => {
   const [updateComment, setUpdateComment] = useState(false)
@@ -35,10 +36,10 @@ const Comment = (props) => {
       {props.comment.author._id === props.user._id && (
         <div className="buttonsComment">
           <button type="button" onClick={deleteHandler}>
-            Delete
+            <FiTrash2 className="delete"/>
           </button>
           <button type="button" onClick={updateHandler}>
-            Update
+            <FiEdit2 className="upDate"/>
           </button>
         </div>
       )}

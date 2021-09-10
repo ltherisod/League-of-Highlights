@@ -9,6 +9,7 @@ import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom"
 import Profile from "./pages/Profile"
 import { connect } from "react-redux"
 import userActions from "./redux/actions/userActions"
+import Error from "./pages/Error"
 // import io from "socket.io-client"
 import { useEffect } from "react"
 
@@ -39,6 +40,7 @@ function App(props) {
         {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
         <Route exact path="/esports" component={EsportsPage} />
         <Route exact path="/admin" component={Admin} />
+        <Route path="/error" component={Error} />
         <Redirect to="/" />
       </Switch>
     </BrowserRouter>
