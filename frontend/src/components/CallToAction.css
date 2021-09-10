@@ -14,16 +14,25 @@
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: -2%;
+}
+
+.buttonAndRock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .rock {
     width: 40rem;
     height: 25rem;
+    margin-top: -5%;
 }
 
 .buttonCall { 
@@ -44,6 +53,10 @@
     margin: 0;
     /* margin-bottom: -3%; */
     text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+}
+
+.videoCallToAction{
+  margin: 2rem;
 }
 
 @media only screen and (max-width: 900px) {
