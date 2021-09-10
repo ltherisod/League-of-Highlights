@@ -31,7 +31,6 @@ header{
 
 .textbox::placeholder {
   text-align:center;
-  font-weight: bold;
   color: rgb(180, 180, 180);
 }
 
