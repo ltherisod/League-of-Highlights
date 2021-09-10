@@ -101,6 +101,9 @@ div.buttonContainer span {
     display: none!important;
 }
 
+.buttonContainer .googleButton{
+    width:70%!important
+} 
 
 .signIn, .riotIcon{
     display: flex;
@@ -111,13 +114,18 @@ div.buttonContainer span {
     width: 40%;
 }
 
-.signIn p, .riotYes p, .riotNo p{
-    font-size: 1.5rem;
+.riotYes p, .riotNo p{
+    font-size: 1.1rem;
     font-weight: 600;
     align-self: center;
     text-align: center;
     color: white;
 }
+
+.signIn p{
+    font-size:0.9rem!important;
+    font-weight: 1000;
+} 
 
 .textDataForm{
     color:#525252!important;

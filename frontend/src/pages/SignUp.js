@@ -148,17 +148,19 @@ const SignUp = (props) => {
             </form>
             {/* <button className="login-button googleButton" > */}
             {/* <img src="./assets/google.svg" alt="google"/> */}
+            <div className='buttonContainer'>
             <button onClick={createHandler} className="login-button signIn">
               <p>Sign Up</p>
             </button>
             <GoogleLogin
-              className="login-button googleButton shadow"
+              className="login-button googleButton"
               clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
                buttonText="Sign Up with Google"
               onSuccess={responseGoogle}
               onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
             />
+            </div>
             <p className="textDataForm">
               Already have an account? <Link to="/signin">Sign in here! </Link>
             </p>
