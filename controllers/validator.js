@@ -11,13 +11,13 @@ const validator = async (req, res, next) => {
       )
       .required()
       .messages({
-        "string.pattern.base": "Only letters can be entered in the name",
+        "string.pattern.base": "Only letters can be entered in the name field",
       }),
     email: joi.string().email().min(6).messages({
       "string.min": "Your email must have at least 6 characters",
       "string.email": "Please write a valid email address",
     }),
-    password: joi.string().min(6).max(50).messages({
+    password: joi.string().min(6).max(250).messages({
       "string.min": "Your password must have at least 6 characters",
       "string.max": "Your password must have at max 50 characters",
     }),
