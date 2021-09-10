@@ -62,17 +62,26 @@ form input {
 .videoForm select::-webkit-scrollbar {
     width: 100px;     /* Tamaño del scroll en vertical */
     height: 200px;    /* Tamaño del scroll en horizontal */
-    display: none;  /* Ocultar scroll */
+    display: none; 
 }
 
-.videoForm::-webkit-scrollbar-track {
-    background: #f70909;
+/* .videoForm::-webkit-scrollbar-thumb {
+    background: rgb(206, 19, 19);
     border-radius: 4px;
+}
+
+.videoForm::-webkit-scrollbar-thumb:hover {
+    background: #3032db;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.videoForm::-webkit-scrollbar-thumb:active {
+    background-color: #460909;
 }
 
 .videoForm option {
     background-color: black;
-}
+} */
 
 
 .sendVideo {
@@ -95,4 +104,10 @@ form input {
     -webkit-clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
     clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
     font-weight: bold;
+}
+
+.close{
+    width: 30px;
+    height: 30px;
+
 }
