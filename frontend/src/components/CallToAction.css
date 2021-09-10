@@ -59,7 +59,36 @@
   margin: 2rem;
 }
 
-@media only screen and (max-width: 900px) {
+@media (max-width: 500px) {
+
+  .mainCallToAction{
+    flex-wrap: wrap
+  }
+
+  .rock{
+    width: 90%;
+    height: 30vh;
+    margin-top: 4%;
+  }
+
+};
+
+@media (max-width: 450px) {
+
+  .mainCallToAction{
+    flex-wrap: wrap
+  }
+
+  .rock{
+    width: 90%;
+    height: 30vh;
+    margin-top: 4%;
+  }
+
+};
+  
+
+/* @media only screen and (max-width: 900px) {
   .rock{
     width: 95%;
   }
@@ -68,4 +97,4 @@
     height: 50vh;
 }
 
-}
+} */

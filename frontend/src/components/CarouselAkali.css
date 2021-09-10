@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,7 +12,7 @@
 
 .diamond {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: center;
@@ -30,15 +30,43 @@
 
 .akaliImg {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   align-self: center;
 }
 
-@media screen and (max-width: 769px) {
+@media (max-width:500px) {
+  .mainAkali{
+    height: 40vh;
+  }
+
+  .akaliImg{
+    height: 40vh;
+  }
+
+  .diamond{
+    height: 40vh;
+  }
+}
+
+@media (max-width:450px) {
+  .mainAkali{
+    height: 40vh;
+  }
+
+  .akaliImg{
+    height: 40vh;
+  }
+
+  .diamond{
+    height: 40vh;
+  }
+}
+
+/* @media screen and (max-width: 769px) {
   .mainAkali {
     min-height: 0vh;
   }
-}
+} */
