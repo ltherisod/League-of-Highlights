@@ -69,10 +69,10 @@ const UploadVideo = (props) => {
           placeholder="url of your video"
           onChange={inputHandler}
         />
-        <select name="championName" onChange={inputHandler}>
-          <option>Choose your champion</option>
+        <select className="championName" name="championName" onChange={inputHandler}>
+          <option className="optionChampion">Choose your champion</option>
           {champions.map((champion) => (
-            <option value={champion} key={champion}>
+            <option className="optionChampion" value={champion} key={champion}>
               {champion}
             </option>
           ))}
