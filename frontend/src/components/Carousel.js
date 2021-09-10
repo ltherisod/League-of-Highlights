@@ -45,7 +45,6 @@ const Carousel = (props) => {
           //   navigation
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
-            
           >
             {videos.map((video) =>
             <SwiperSlide key={video._id}>
