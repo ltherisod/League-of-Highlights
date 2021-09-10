@@ -16,7 +16,7 @@ header{
   right: 6px;
 }
 
-.textbox {
+.linkbox {
 	/* background: #FFF url(/images/css/input-text-9.png) no-repeat 4px 4px; */
 	border: 1px solid #999;
 	outline:0;
@@ -53,10 +53,12 @@ header{
   font-weight: bold !important;
   text-decoration: none !important;
   text-decoration-line:none !important ;
+  color: whitesmoke !important;
 }
 
 a{
   text-decoration: none !important;
+  color: whitesmoke !important;
 }
 
 .navSpace{
@@ -102,6 +104,10 @@ a{
  z-index:1;
  color:aliceblue!important
  
+}
+.dropdown-menu {
+  background-color: black !important;
+  color: whitesmoke !important;
 }
 
 /* nav{
