@@ -10,10 +10,9 @@ const championsActions = {
         const championsRotationKeys = await axios.get(
           `https://la2.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${API_KEY}`
         )
-        const res = await axios.post(
-          `${HOST}/api/championsKeys`,
-          { keysArray: championsRotationKeys.data.freeChampionIds }
-        )
+        const res = await axios.post(`${HOST}/api/championsKeys`, {
+          keysArray: championsRotationKeys.data.freeChampionIds,
+        })
         if (!res.data.response) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
@@ -21,7 +20,7 @@ const championsActions = {
       }
     }
   },
-  getAllChampions : () => {
+  getAllChampions: () => {
     return async () => {
       try {
         const res = await axios.get(`${HOST}/api/champions`)
@@ -31,7 +30,7 @@ const championsActions = {
         return { success: false, response: null, error: e.message }
       }
     }
-  }
+  },
 }
 
 export default championsActions

@@ -5,6 +5,7 @@ const Icon = require("../models/Icon")
 const Champion = require("../models/Champion")
 const Rank = require("../models/Rank")
 const BlackList = require("../models/BlackList")
+const Video = require("../models/Video")
 
 const usersControllers = {
   signUp: async (req, res) => {
@@ -265,6 +266,7 @@ const usersControllers = {
   deleteUserById: async (req, res) => {
     try {
       const user = await User.findOneAndDelete({ _id: req.params.id })
+      await Video.deleteMany({ owner: req.params.id })
       const email = new BlackList({ email: user.email })
       await email.save()
       res.json({ success: true, response: user, error: null })
@@ -276,6 +278,38 @@ const usersControllers = {
     try {
       const blacklist = await BlackList.find()
       res.json({ success: true, response: blacklist, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  setAdmin: async (req, res) => {
+    try {
+      if (req.body.adminKey !== process.env.ADMIN_KEY)
+        throw new Error("Unauthorized.")
+      const admin = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        { admin: req.body.admin },
+        { new: true }
+      )
+      res.json({ success: true, response: admin, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  dismissUserReport: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: { reports: [] } },
+        { new: true }
+      )
+      res.json({ success: true, response: user, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  dismissVideoReport: async (req, res) => {
+    try {
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
