@@ -120,7 +120,7 @@ div.buttonContainer span {
 }
 
 .textDataForm{
-    color:#525252;
+    color:#525252!important;
     font-family: 'Maven Pro', sans-serif;
     font-weight: bold;
 }

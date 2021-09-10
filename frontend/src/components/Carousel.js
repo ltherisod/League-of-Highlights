@@ -19,6 +19,7 @@ const Carousel = (props) => {
 
     const getVideos = async () => {
       const res = await props.getTopVideos()
+      console.log(res)
       if(res.success){
         setVideos(res.response)
       } else {
@@ -47,7 +48,7 @@ const Carousel = (props) => {
             // scrollbar={{ draggable: true }}
             
           >
-            {videos.map((video) =>
+            {/* {videos.map((video) =>
             <SwiperSlide key={video._id}>
               <div className="topVideos">
                 <div className="championCarousel" style={{backgroundImage: `url(${video.champion.image})`}}>
@@ -57,7 +58,7 @@ const Carousel = (props) => {
                   <ReactPlayer width="360px" height="250px" url={video.url} className="videoUser" playing={true} loop={true} volume={0} muted={true} controls={false} origin={"http://localhost3000"}/>
                 </div>
               </div>
-            </SwiperSlide> )}
+            </SwiperSlide> )} */}
             
           </Swiper>
         </div>

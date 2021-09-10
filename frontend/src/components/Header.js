@@ -70,7 +70,7 @@ const Header = (props) => {
         >
           <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" />
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} className="bg-light  text-dark mx-2 " />
+        <NavbarToggler onClick={toggle} className="bg-light  text-dark mx-2 changeButton " />
         <UncontrolledDropdown
           nav
           inNavbar
@@ -152,6 +152,7 @@ const Header = (props) => {
         <div className="divSearch ">
           <input
             className="linkbox"
+             disabled={!props.userStatus}         
             type="text"
             placeholder="Search your favourite player..."
             ref={inputHandler}
