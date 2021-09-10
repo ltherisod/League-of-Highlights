@@ -2,11 +2,18 @@ import "./Admin.css"
 import Header from "../components/Header"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
+import userActions from "../redux/actions/userActions"
+import { useEffect, useState } from "react"
 
 const Admin = (props) => {
+  const [reportedUsers, serReportedUsers] = useState([])
   const deleteReportedVideo = () => {
     props.deleteVideo() // id del video a borrar.
   }
+  
+  useEffect(() =>{
+    props.getReportedUsers()
+  },[])
 
   const deleteUser = () => {}
   return (
@@ -25,8 +32,12 @@ const Admin = (props) => {
     </>
   )
 }
+
+
+
 const mapDispatchToProps = {
   deleteVideo: videosActions.deleteVideo,
+  getReportedUsers: userActions.getReportedUsers
 }
 
 export default connect(null, mapDispatchToProps)(Admin)

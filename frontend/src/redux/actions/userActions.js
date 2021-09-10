@@ -127,6 +127,18 @@ const userActions = {
       }
     }
   },
+
+  getReportedUsers: () => {
+    return async (dispatch, getState) => {
+      try{
+        const res = await axios.get(`${HOST}/api/user/reports`)
+        if(!res.data.success) throw new Error(res.data.error)
+        return {success: true, response: res.data.response, error: null}
+      } catch(e){
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  }
   
 }
 
