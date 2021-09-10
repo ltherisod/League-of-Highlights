@@ -7,16 +7,28 @@ import { useEffect, useState } from "react"
 
 const Admin = (props) => {
   const [reportedUsers, setReportedUsers] = useState([])
-  const deleteReportedVideo = () => {
-    props.deleteVideo() // id del video a borrar.
-  }
+  const [reportedVideos, setReportedVideos] = useState([])
 
-  console.log(reportedUsers)
   useEffect(() => {
+    window.scrollTo(0, 0)
     props.getReportedUsers().then((res) => setReportedUsers(res.response))
+    props.getReportedVideos().then((res) => setReportedVideos(res.response))
   }, [])
-  const dismissReport = async () => {}
 
+  const dismissUserReport = async () => {}
+  const dismissVideoReport = async () => {}
+
+  const deleteReportedVideo = async (id, token) => {
+    const res = await props.deleteVideo(id, token) // id del video a borrar.
+    if (res.success) {
+      setReportedVideos(
+        reportedVideos.filter((video) => video._id !== res.response._id)
+      )
+      alert("Video borrado.")
+      return true
+    }
+    alert("Error: " + res.error)
+  }
   const deleteUser = async (id) => {
     const res = await props.deleteUser(id)
     if (res.success) {
@@ -42,14 +54,28 @@ const Admin = (props) => {
               ))}
             </ul>
             <button onClick={() => deleteUser(user._id)}>Delete account</button>
-            <button onClick={dismissReport}>Dismiss</button>
+            <button onClick={dismissUserReport}>Dismiss</button>
           </div>
         ))}
         <h3>Van videos</h3>
-        <div className="deleteVideo">
-          <p>:video reported</p>
-          <button onClick={deleteReportedVideo}>delete</button>
-        </div>
+        {reportedVideos.map((video) => (
+          <div key={video._id} className="deleteVideo">
+            <p>{`The video "${video.title}" owned by ${video.owner.username} was reported ${video.reports.length} times:`}</p>
+            <ul>
+              {video.reports.map((report) => (
+                <li key={report._id}>{report.content}</li>
+              ))}
+            </ul>
+            <p>:video reported</p>
+            <button
+              onClick={() =>
+                deleteReportedVideo(video._id, localStorage.getItem("token"))
+              }
+            >
+              delete
+            </button>
+          </div>
+        ))}
       </div>
     </>
   )
@@ -59,6 +85,7 @@ const mapDispatchToProps = {
   deleteVideo: videosActions.deleteVideo,
   getReportedUsers: userActions.getReportedUsers,
   deleteUser: userActions.deleteUser,
+  getReportedVideos: videosActions.getReportedVideos,
 }
 
 export default connect(null, mapDispatchToProps)(Admin)

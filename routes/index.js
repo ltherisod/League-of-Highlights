@@ -73,6 +73,16 @@ router
   .put(usersControllers.updateUser)
   .delete(usersControllers.deleteUserById)
 
+router.route("/dismiss/user/:id").put(usersControllers.dismissUserReport)
+router.route("/dismiss/video/:id").put(usersControllers.dismissVideoReport)
+
+router
+  .route("/admin/set/:id")
+  .put(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.setAdmin
+  )
+
 // NO USAR SALVO CASO DE EMERGENCIA
 // router.route("/users/users/users").delete(usersControllers.deleteUsers)
 
@@ -106,7 +116,7 @@ router
 router.route("/videos/:username").get(videosControllers.getUserVideos)
 router.route("/video/like/:videoId").post(videosControllers.toggleLike)
 router.route("/video/report/:videoId").post(videosControllers.reportVideo)
-router.route("/video/reports")
+router.route("/video/reports").get(videosControllers.getReportedVideos)
 
 router
   .route("/video/comments/:id")
