@@ -60,14 +60,14 @@ const Header = (props) => {
       <div
         className={`${
           t.visible ? 'animate-enter' : 'animate-leave'
-        } bg-black shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+        } bg-black shadow-lg rounded-lg pointer-events-auto flex-1 ring-1 ring-black ring-opacity-5`}
       >
         <div className="flex w-0 p-4">
           <div className="flex items-start">
             <div className="flex-shrink-0 pt-0.5">
-              <img
+              <img style={{ width: "80px", height: "80px"}}
                 className="h-4 w-4 rounded-full"
-                src="https://i.postimg.cc/bwK5xRpW/success2.png"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
                 // src="./assets/facebook.svg"
                 alt=""
               />
