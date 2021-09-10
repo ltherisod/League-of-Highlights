@@ -4,12 +4,17 @@ const jwt = require("jsonwebtoken")
 const Icon = require("../models/Icon")
 const Champion = require("../models/Champion")
 const Rank = require("../models/Rank")
+const BlackList = require("../models/BlackList")
 
 const usersControllers = {
   signUp: async (req, res) => {
     try {
       const { name, email, password, googleFlag } = req.body
       const userExists = await User.findOne({ email: email })
+      const emailInBlackList = await BlackList.findOne({ email: email })
+      if (emailInBlackList) {
+        throw new Error("This email is in black list. Fucking idiot.")
+      }
       if (userExists) throw new Error("Email already in use!")
       const hashedPass = await bcryptjs.hash(password, 10)
       const newUser = new User({
@@ -42,6 +47,9 @@ const usersControllers = {
   logIn: async (req, res) => {
     try {
       const { email, password, googleFlag } = req.body
+      const userInBlackList = await BlackList.findOne({ email })
+      console.log(userInBlackList)
+      if (userInBlackList) throw new Error("Estás en la blacklist fermacanas.")
       const user = await User.findOne({ email: email })
         .populate({
           path: "topChampions",
@@ -224,6 +232,28 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
+  getReportedUsers: async (req, res) => {
+    try {
+      const users = await User.find().where("reports.count").gte(1)
+      res.json({ success: true, response: users, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  reportUser: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $push: { reports: { user: req.user._id, content: req.body.content } },
+        },
+        { new: true }
+      )
+      res.json({ success: true, response: user, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
   // deleteUsers: async (req, res) => {
   //   try {
   //     await User.deleteMany()
@@ -232,6 +262,24 @@ const usersControllers = {
   //     res.json({ success: false, response: null, error: e.message })
   //   }
   // },
+  deleteUserById: async (req, res) => {
+    try {
+      const user = await User.findOneAndDelete({ _id: req.params.id })
+      const email = new BlackList({ email: user.email })
+      await email.save()
+      res.json({ success: true, response: user, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  getBlackList: async (req, res) => {
+    try {
+      const blacklist = await BlackList.find()
+      res.json({ success: true, response: blacklist, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
 }
 
 module.exports = usersControllers

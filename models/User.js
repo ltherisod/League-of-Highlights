@@ -16,7 +16,9 @@ const userSchema = new mongoose.Schema({
       "http://pm1.narvii.com/7529/efc9424d7d0651de3913bfc1a426e98c4836f627r1-200-200v2_uhq.jpg",
   },
   videos: [{ type: mongoose.Types.ObjectId, ref: "video" }],
-  reports: [{ type: mongoose.Types.ObjectId, ref: "report" }],
+  reports: [
+    { user: { type: mongoose.Types.ObjectId, ref: "user" }, content: String },
+  ],
   google: { type: Boolean, default: false },
 })
 

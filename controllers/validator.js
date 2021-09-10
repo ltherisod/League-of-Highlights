@@ -6,7 +6,7 @@ const validator = async (req, res, next) => {
       .string()
       .pattern(
         new RegExp(
-          "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"
+          "^[a-zA-ZÀ-ÿ\u00f1\u00d1]+( [a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"
         )
       )
       .required()
@@ -21,7 +21,7 @@ const validator = async (req, res, next) => {
       "string.min": "Your password must have at least 6 characters",
       "string.max": "Your password must have at max 50 characters",
     }),
-    googleFlag: joi.boolean()
+    googleFlag: joi.boolean(),
   })
   try {
     await schema.validateAsync(req.body, { abortEarly: false })

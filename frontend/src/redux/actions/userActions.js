@@ -27,7 +27,7 @@ const userActions = {
         if (!res.data.success)
           return { success: false, response: null, error: res.data.error }
         localStorage.setItem("token", res.data.response.token)
-        dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response }) 
+        dispatch({ type: "LOG_INTO_SYSTEM", payload: res.data.response })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
@@ -122,6 +122,31 @@ const userActions = {
         const res = await axios.get(`${HOST}/api/username/${userName}`)
         if (!res.data.success) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+
+  getReportedUsers: () => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.get(`${HOST}/api/user/reports`)
+        if (!res.data.success) throw new Error(res.data.error)
+        return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  deleteUser: (id) => {
+    return async (dispatch) => {
+      try {
+        const res = await axios.delete(`${HOST}/api/user/${id}`)
+        if (res.data.success) {
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
       } catch (e) {
         return { success: false, response: null, error: e.message }
       }
