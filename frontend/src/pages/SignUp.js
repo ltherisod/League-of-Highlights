@@ -37,20 +37,29 @@ const SignUp = (props) => {
     }
     try {
       const res = await props.signUp(userData)
-      console.log(res)
       if (res.success) {
         setUserId(res.response._id)
         setStep(2)
       } else {
-        setErrorName(res.error.find(err=> err.path[0] === 'name')? res.error.find(err=> err.path[0] === 'name').message :null)
-        setErrorEmail(res.error.find(err=> err.path[0] === 'email')? res.error.find(err=> err.path[0] === 'email').message :null)
-        setErrorPass(res.error.find(err=> err.path[0] === 'password')? res.error.find(err=> err.path[0] === 'password').message :null)
-        console.log(res)
+        setErrorName(
+          res.error.find((err) => err.path[0] === "name")
+            ? res.error.find((err) => err.path[0] === "name").message
+            : null
+        )
+        setErrorEmail(
+          res.error.find((err) => err.path[0] === "email")
+            ? res.error.find((err) => err.path[0] === "email").message
+            : null
+        )
+        setErrorPass(
+          res.error.find((err) => err.path[0] === "password")
+            ? res.error.find((err) => err.path[0] === "password").message
+            : null
+        )
         // alert("Something went wrong! Please try later.") //cambiar alert feo
         console.log(res.error) // Manejar el error acá.
       }
     } catch (error) {
-      console.log('caigo en catch')
       alert(error)
     }
   }
@@ -148,17 +157,35 @@ const SignUp = (props) => {
             </form>
             {/* <button className="login-button googleButton" > */}
             {/* <img src="./assets/google.svg" alt="google"/> */}
-            <button onClick={createHandler} className="login-button signIn">
-              <p>Sign Up</p>
-            </button>
-            <GoogleLogin
-              className="login-button googleButton shadow"
-              clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-               buttonText="Sign Up with Google"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
+            {/* <div className="buttonContainer"> */}
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-12 col-sm-6">
+                  <div className="d-flex justify-content-center align-items-center">
+                    <button
+                      onClick={createHandler}
+                      // className="login-button signIn"
+                      className="sessionButton"
+                    >
+                      <span>Sign Up</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="col-xs-12 col-sm-6">
+                  <div className="d-flex justify-content-center align-items-center">
+                    <GoogleLogin
+                      // className="login-button googleButton"
+                      className="googleButton"
+                      clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                      buttonText="Sign Up with Google"
+                      onSuccess={responseGoogle}
+                      onFailure={responseGoogle}
+                      cookiePolicy={"single_host_origin"}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <p className="textDataForm">
               Already have an account? <Link to="/signin">Sign in here! </Link>
             </p>

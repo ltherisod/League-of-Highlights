@@ -51,8 +51,9 @@ const Esports = (props) => {
                     </NavLink> 
                 </div>
             </div>
-            <h2 className="titleRotation">CHAMPIONS ROTATION</h2>
-            {/* <div className="titleRotation" style={{backgroundImage:"url('https://i.postimg.cc/6p2q1Gg5/champions-Rotation.png')"}}></div> */}
+            {/* <h2 className="titleRotation champH2">CHAMPIONS</h2>
+            <h2 className="titleRotation">ROTATION</h2> */}
+            <div className="titleRotation" style={{backgroundImage:"url('https://i.postimg.cc/6p2q1Gg5/champions-Rotation.png')"}}></div>
             <div className="dividerTop" style={{backgroundImage:"url('https://i.postimg.cc/wMgzzdnf/dividertop.png')"}}></div>
             <div className="rotationsContainer">
                 <div className="carouselBorder" style={{backgroundImage:"url('https://i.postimg.cc/9MZDQC0y/marcovideo.png')"}}></div>

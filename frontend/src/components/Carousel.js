@@ -24,32 +24,19 @@ const Carousel = (props) => {
     }
     getVideos()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-  console.log(videos)
-  if (!videos.length) return <p>que no se rompa.</p>
-  return (
-    <div
-      className="mainCarousel"
-      style={{
-        backgroundImage:
-          "url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')",
-      }}
-    >
-      <div className="carouselTitle">
-        <p className="topTitle">TOP</p>
-        <h2 className="titleCarouselHome">HIGHLIGHTS</h2>
-      </div>
-      <div
-        className="carouselBox"
-        style={{
-          backgroundImage:
-            "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')",
-        }}
-      >
-        <Swiper
-          className="carouselContainer"
-          // install Swiper modules
-          direction={"vertical"}
+  },[])
+
+    return (
+      <div className="mainCarousel" style={{backgroundImage:"url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')"}}>
+        <div className="carouselTitle" style={{backgroundImage:"url('https://i.postimg.cc/nLx9RsFh/highlights.png')"}}>
+          {/* <p className='topTitle'>TOP</p>
+          <h2 className='titleCarouselHome'>HIGHLIGHTS</h2> */}
+        </div>
+        <div className="dividerButtomCarousel" style={{backgroundImage:"url('https://i.postimg.cc/brxv0gfM/divider.png')"}}></div>
+        <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
+            <Swiper className="carouselContainer"
+            // install Swiper modules
+            direction={"vertical"}
           //   modules={[Navigation, Pagination]}
           //   spaceBetween={50}
           //   slidesPerView={3}

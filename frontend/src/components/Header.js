@@ -28,61 +28,117 @@ const Header = (props) => {
     //   return alert("empty field")
     // }
     if (!props.userStatus) {
-      alert("create an account to do it")
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            You have to log in to search!
+          </p>
+        </div>
+      ))
     } else {
       if (inputHandler.current.value === "") {
-        return alert("empty field")
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Please complete the field!
+            </p>
+          </div>
+        ))
       }
       try {
         const res = await props.getProfileByName(inputHandler.current.value)
         console.log(res)
-        if (!res.success) return alert("champion not found, try another")
-        if (res.response.length === 0)
-          return alert(
-            "todo salio bien pero el usuario no existe amigo, o no esta en riot"
+        if (!res.success) {
+          return (
+            toast.custom((t) => (
+              <div
+                className={`${
+                  t.visible ? 'animate-enter' : 'animate-leave'
+                } bg-black flex`}
+                style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+              >
+                <img style={{ width: "60px", height: "60px"}}
+                  className="h-4 w-4 rounded-full"
+                  src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                  alt=""
+                />
+                <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+                  User not found, please try another one
+                </p>
+              </div>
+            ))
           )
+        }
+        if (res.response.length === 0){
+          return (
+            toast.custom((t) => (
+              <div
+                className={`${
+                  t.visible ? 'animate-enter' : 'animate-leave'
+                } bg-black flex`}
+                style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+              >
+                <img style={{ width: "60px", height: "60px"}}
+                  className="h-4 w-4 rounded-full"
+                  src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                  alt=""
+                />
+                <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+                  Sorry we couldn't find that user!
+                </p>
+              </div>
+            ))
+          )
+        }
         if (res.success) {
           props.history.push(`/profile/${res.response.username}`)
         } else {
-          console.log("cai en else y me voy a home ")
           props.history.push(`/`)
         }
       } catch (e) {
-        console.log("cae en el catch")
         alert(e.message)
       }
     }
   }
 
   const sesionOut = () => {
-
     toast.custom((t) => (
       <div
         className={`${
           t.visible ? 'animate-enter' : 'animate-leave'
-        } bg-black shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+        } bg-black flex`}
+        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
       >
-        <div className="flex w-0 p-4">
-          <div className="flex items-start">
-            <div className="flex-shrink-0 pt-0.5">
-              <img
-                className="h-4 w-4 rounded-full"
-                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
-                alt=""
-              />
-            </div>
-            <div className="ml-3 flex-1">
-              <p className="text-sm font-medium text-white">
-                See you soon!
-              </p>
-            </div>
-          </div>
-        </div>
+        <img style={{ width: "60px", height: "60px"}}
+          className="h-4 w-4 rounded-full"
+          src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+          alt=""
+        />
+        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          See you soon!
+        </p>
       </div>
     ))
-
-
-    
     props.logOut()
   }
 
@@ -194,10 +250,14 @@ const Header = (props) => {
         </div>
       </Navbar>
       <Toaster 
-      position="top-left"
-      toastOptions={{
-    duration: 1500,
-    }}/>
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </header>
   )
 }

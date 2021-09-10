@@ -6,13 +6,45 @@
   }
   
 .titleRotation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: "BeaufortforLOL-Bold.woff";
     font-weight: bold;
     font-size: 4rem;
     letter-spacing: 0,5px;
-    /* font-style: italic; */
-    text-shadow: 3px 2px 6px rgba(0,0,0,0.33);
+    color: rgb(192, 149, 58);
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.6);
+    
 }
+
+.titleRotation{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 25%;
+    height: 20vh;
+}
+
+.champH2{
+    font-size: 2rem;
+    font-family: "Secular One", sans-serif;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    margin-bottom: -1%;
+}
+
+/* .titleRotation {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 30vh;
+    text-align: center;
+    font-size: 4rem;
+} */
+
 
 div.news {
     display: flex;
@@ -25,10 +57,6 @@ div.news {
     background-position: center;
     /* margin-bottom: 4%; */
     /* margin: 5rem 0rem; */
-}
-
-div.news h2 {
-    margin-bottom: 2rem;
 }
 
 .socialContent {
@@ -117,15 +145,6 @@ div.rotationsContainer {
     background-size: contain;
 }
 
-.titleRotation {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 50%;
-    height: 30vh;
-    text-align: center;
-    font-size: 4rem;
-}
 
 
 @media screen and (max-width:900px) {

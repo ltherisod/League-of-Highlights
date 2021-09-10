@@ -112,6 +112,22 @@ width: 2em;
     background-color: white!important;
 }
 
+.googleButton{
+    background-color: white!important;
+    width: 100%!important;
+    padding: 0.3em 1em!important;
+    /* display: flex!important;
+    flex-direction: row!important; */
+    outline: none!important;
+    cursor: pointer!important;
+    border-radius: 4px!important;
+    border: 2px solid rgba(0,0,0,0.05)!important;
+}
+
+.googleButton>span{
+    font-family: 'Secular One', sans-serif;
+    color: #525252;
+}
 /* div.buttonContainer span {
     display: none!important;
 } */
@@ -124,6 +140,26 @@ width: 2em;
     padding:0em 3em!important;
     background-color: #d13639;
     width: 40%;
+}
+
+.sessionButton {
+    width: 100%!important;
+    padding: 1em 1em!important;
+    /* display: flex!important;
+    flex-direction: row!important; */
+    outline: none!important;
+    cursor: pointer!important;
+    border-radius: 4px!important;
+    border: 2px solid rgba(0,0,0,0.05)!important;    
+    background-color: #d13639;
+}
+
+.sessionButton span{
+    font-size: 1.5rem;
+    font-weight: 600;
+    align-self: center;
+    text-align: center;
+    color: white;
 }
 
 .signIn p{

@@ -5,6 +5,7 @@ import { useState } from "react"
 import userActions from "../redux/actions/userActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignIn = (props) => {
   // const [errorEmail, setErrorEmail] = useState(null)
@@ -20,18 +21,51 @@ const SignIn = (props) => {
 
   const createHandler = async () => {
     if (userData.email === "" || userData.password === "") {
-      alert("campos vacios")
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            empty fields!
+          </p>
+        </div>
+      ))
       return false
     }
     try {
       const res = await props.logIn(userData)
-      if (!res.success)
-        return alert(res.error)
+      if (!res.success){
+        return toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              {res.error}
+            </p>
+          </div>
+        ))
+      } 
     } catch (e) {
       console.log(e)
     }
   }
-  
+
   const responseGoogle = (response) => {
     let user = {
       email: response.profileObj.email,
@@ -42,14 +76,14 @@ const SignIn = (props) => {
       .logIn(user)
       .then((res) => {
         if (!res.success) {
-         alert('user doesn´t exits')
-         props.history.push('/')
+          alert("user doesn´t exits")
+          props.history.push("/")
         } else {
-          props.history.push('/community')
+          props.history.push("/community")
         }
       })
       .catch((err) => {
-        console.log('cai en google catch')
+        console.log("cai en google catch")
         console.log(err.message)
       })
   }
@@ -91,28 +125,50 @@ const SignIn = (props) => {
               />
             </div>
           </form>
-          <div className='buttonContainer'>
-          <button
-            type="button"
-            onClick={createHandler}
-            className="login-button signIn"
-          >
-            <p>Sign In</p>
-          </button>
-          <GoogleLogin
-              className="login-button googleButton "
-              clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-               buttonText="Sign In with Google"
-               onSuccess={responseGoogle}
-               onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            />
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-12 col-sm-6">
+                <div className="d-flex justify-content-center align-items-center">
+                  <button
+                    type="button"
+                    onClick={createHandler}
+                    // className="login-button signIn"
+                    className="sessionButton"
+                  >
+                    {/* <p>Sign In</p> */}
+                    <span className="">Sign In</span>
+                  </button>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-6">
+                <div className="d-flex justify-content-center align-items-center">
+                  <GoogleLogin
+                    // className="login-button googleButton "
+                    className="googleButton"
+                    clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                    buttonText="Sign In with Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <p className="textDataForm">
             Don't have an account? <Link to="/signup">Sign up here! </Link>
           </p>
         </div>
       </div>
+      <Toaster 
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </>
   )
 }
