@@ -24,7 +24,9 @@ const SignUp = (props) => {
   const usernameRef = useRef()
   //const iconRef = useRef()
   const [userId, setUserId] = useState("")
-
+  const [errorName, setErrorName] = useState(null)
+  const [errorEmail, setErrorEmail] = useState(null)
+  const [errorPass, setErrorPass] = useState(null)
   // Utils
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -32,15 +34,25 @@ const SignUp = (props) => {
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {
-      return false //poner alerta que llene los campos
+      return alert("empty fields") //poner alerta que llene los campos
     }
-    const res = await props.signUp(userData)
-    if (res.success) {
-      setUserId(res.response._id)
-      setStep(2)
-    } else {
-      alert("Something went wrong! Please try later.") //cambiar alert feo
-      console.log(res.error) // Manejar el error acá.
+    try {
+      const res = await props.signUp(userData)
+      console.log(res)
+      if (res.success) {
+        setUserId(res.response._id)
+        setStep(2)
+      } else {
+        setErrorName(res.error.find(err=> err.path[0] === 'name')? res.error.find(err=> err.path[0] === 'name').message :null)
+        setErrorEmail(res.error.find(err=> err.path[0] === 'email')? res.error.find(err=> err.path[0] === 'email').message :null)
+        setErrorPass(res.error.find(err=> err.path[0] === 'password')? res.error.find(err=> err.path[0] === 'password').message :null)
+        console.log(res)
+        // alert("Something went wrong! Please try later.") //cambiar alert feo
+        console.log(res.error) // Manejar el error acá.
+      }
+    } catch (error) {
+      console.log('caigo en catch')
+      alert(error)
     }
   }
 
@@ -67,19 +79,23 @@ const SignUp = (props) => {
   }
 
   const refreshHandler = async () => {
-    if (!usernameRef.current.value) return alert('empty fields') // Completa los campos flojo de mierda.
-    const res = await props.refresh(
-      usernameRef.current.value,
-      userId,
-      !hasRiotAccount
-    )
-    if (res.success) {
-      props.loginLS(localStorage.getItem("token"))
-
-    }else{
-      alert(res)
-    } // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
+    try {
+      if (!usernameRef.current.value) return alert("empty fields") // Completa los campos flojo de mierda.
+      const res = await props.refresh(
+        usernameRef.current.value,
+        userId,
+        !hasRiotAccount
+      )
+      if (res.success) {
+        props.loginLS(localStorage.getItem("token"))
+      } else {
+        alert(res)
+      } // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
+    } catch (error) {
+      alert(error)
+    }
   }
+
   return (
     <>
       <Header />
@@ -94,7 +110,7 @@ const SignUp = (props) => {
           <div className="formContainer">
             <h3>Sign Up</h3>
             <form>
-              {/* <small style={{ color: "red" }}>{error}&nbsp;</small> */}
+              <small style={{ color: "red" }}>{errorName}&nbsp;</small>
               <div className="field">
                 <label className="field__label">name</label>
                 <input
@@ -106,7 +122,7 @@ const SignUp = (props) => {
                   autoComplete="nope"
                 />
               </div>
-              {/* <small style={{ color: "red" }}>{errorEmail}&nbsp;</small> */}
+              <small style={{ color: "red" }}>{errorEmail}&nbsp;</small>
               <div className="field">
                 <label className="field__label">email</label>
                 <input
@@ -118,7 +134,7 @@ const SignUp = (props) => {
                   autoComplete="nope"
                 />
               </div>
-              {/* <small style={{ color: "red" }}>{errorPass}&nbsp;</small> */}
+              <small style={{ color: "red" }}>{errorPass}&nbsp;</small>
               <div className="field">
                 <label className="field__label">password</label>
                 <input
@@ -131,26 +147,19 @@ const SignUp = (props) => {
                 />
               </div>
             </form>
-            <div className="buttonContainer">
-              <button className="login-button faceButton">
-                <img src="./assets/facebook.svg" alt="facebook" />
-              </button>
-              {/* <button className="login-button googleButton" > */}
-              {/* <img src="./assets/google.svg" alt="google"/> */}
-              <GoogleLogin
-                className="login-button googleButton"
-                clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-                // buttonText="Sign Up with Google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={"single_host_origin"}
-              />
-
-              {/* </button> */}
-            </div>
+            {/* <button className="login-button googleButton" > */}
+            {/* <img src="./assets/google.svg" alt="google"/> */}
             <button onClick={createHandler} className="login-button signIn">
               <p>Sign Up</p>
             </button>
+            <GoogleLogin
+              className="login-button googleButton shadow"
+              clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+               buttonText="Sign Up with Google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={"single_host_origin"}
+            />
             <p className="textDataForm">
               Already have an account? <Link to="/signin">Sign in here! </Link>
             </p>
@@ -177,7 +186,7 @@ const SignUp = (props) => {
               </button>
               <button
                 className="buttonRiot riotNo"
-                onClick={() => setHasRiotAccount(false)}
+                onClick={() => props.loginLS(localStorage.getItem("token"))}
               >
                 No
               </button>
@@ -203,14 +212,6 @@ const SignUp = (props) => {
                   </button>
                 </>
               )}
-              {hasRiotAccount === false && (
-                <>
-                  <input type="text" placeholder="Icon" name="icon" />
-                  <button>No tiene cuenta riot</button>
-                </>
-              )}
-              {/* <input type="text" placeholder="icon" name="icon" />
-                            input condicional  */}
             </form>
           </div>
         </div>

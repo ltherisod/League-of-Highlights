@@ -31,29 +31,7 @@ const SignIn = (props) => {
       console.log(e)
     }
   }
-
-  // const showErrorEmail = (e) => {
-  //   e.preventDefault()
-  //   const name = e.target.name
-  //   console.log(name)
-  //   props
-  //     .logIn(userData)
-  //     .then((response) => {
-  //       console.log(response)
-  //       if (!response.success) {
-  //         let value = response.error.filter((err) => err.path[0] === name)
-  //         if (value[0]) {
-  //           setErrorEmail(value[0].message)
-  //         } else {
-  //           setErrorEmail(null)
-  //         }
-  //       } else {
-  //         setErrorEmail(null)
-  //       }
-  //     })
-  //     .catch((error) => console.log(error))
-  // }
-
+  
   const responseGoogle = (response) => {
     let user = {
       email: response.profileObj.email,
@@ -113,24 +91,6 @@ const SignIn = (props) => {
               />
             </div>
           </form>
-          <div className="buttonContainer">
-            {/* <button className="login-button faceButton">
-              <img src="./assets/facebook.svg" alt="facebook" />
-            </button> */}
-            {/* <button className="login-button googleButton" 
-            clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-            >
-              <img src="./assets/google.svg" alt="google"/>
-            </button> */}
-            {/* <GoogleLogin
-              className="login-button googleButton"
-              clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-              // buttonText="Sign Up with Google"
-               onSuccess={responseGoogle}
-               onFailure={responseGoogle}
-              cookiePolicy={"single_host_origin"}
-            /> */}
-          </div>
           <button
             type="button"
             onClick={createHandler}
@@ -139,9 +99,9 @@ const SignIn = (props) => {
             <p>Sign In</p>
           </button>
           <GoogleLogin
-              className="login-button googleButton"
+              className="login-button googleButton shadow"
               clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-               buttonText="Sign Up with Google"
+               buttonText="Sign In with Google"
                onSuccess={responseGoogle}
                onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
