@@ -15,6 +15,8 @@ import {
 import { useState, useRef } from "react"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -53,7 +55,34 @@ const Header = (props) => {
   }
 
   const sesionOut = () => {
-    alert("see you soon!")
+
+    toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? 'animate-enter' : 'animate-leave'
+        } bg-black shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+      >
+        <div className="flex w-0 p-4">
+          <div className="flex items-start">
+            <div className="flex-shrink-0 pt-0.5">
+              <img
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+            </div>
+            <div className="ml-3 flex-1">
+              <p className="text-sm font-medium text-white">
+                See you soon!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))
+
+
+    
     props.logOut()
   }
 
@@ -163,6 +192,11 @@ const Header = (props) => {
           />
         </div>
       </Navbar>
+      <Toaster 
+      position="top-left"
+      toastOptions={{
+    duration: 1500,
+    }}/>
     </header>
   )
 }
