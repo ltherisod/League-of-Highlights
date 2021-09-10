@@ -6,6 +6,7 @@ import { useRef, useState } from "react"
 import championsActions from "../redux/actions/championsActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
+import toast, { Toaster } from "react-hot-toast"
 
 const SignUp = (props) => {
   props.getChampionsRotation()
@@ -33,7 +34,33 @@ const SignUp = (props) => {
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {
-      return alert("empty fields") //poner alerta que llene los campos
+      return toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          <img
+            style={{ width: "60px", height: "60px" }}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            alt=""
+          />
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
+          >
+            empty fields!
+          </p>
+        </div>
+      ))
     }
     try {
       const res = await props.signUp(userData)
@@ -41,26 +68,110 @@ const SignUp = (props) => {
         setUserId(res.response._id)
         setStep(2)
       } else {
-        setErrorName(
-          res.error.find((err) => err.path[0] === "name")
-            ? res.error.find((err) => err.path[0] === "name").message
-            : null
-        )
-        setErrorEmail(
-          res.error.find((err) => err.path[0] === "email")
-            ? res.error.find((err) => err.path[0] === "email").message
-            : null
-        )
-        setErrorPass(
-          res.error.find((err) => err.path[0] === "password")
-            ? res.error.find((err) => err.path[0] === "password").message
-            : null
-        )
-        // alert("Something went wrong! Please try later.") //cambiar alert feo
-        console.log(res.error) // Manejar el error acá.
+        if (res.error === "Network Error") {
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
+              >
+                {res.error}
+              </p>
+            </div>
+          ))
+          props.history.push("/")
+        } else if (res.error === "Email already in use!") {
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
+              >
+                {res.error}
+              </p>
+            </div>
+          ))
+        } else {
+          setErrorName(
+            res.error.find((err) => err.path[0] === "name")
+              ? res.error.find((err) => err.path[0] === "name").message
+              : null
+          )
+          setErrorEmail(
+            res.error.find((err) => err.path[0] === "email")
+              ? res.error.find((err) => err.path[0] === "email").message
+              : null
+          )
+          setErrorPass(
+            res.error.find((err) => err.path[0] === "password")
+              ? res.error.find((err) => err.path[0] === "password").message
+              : null
+          )
+        }
       }
     } catch (error) {
-      alert(error)
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          <img
+            style={{ width: "60px", height: "60px" }}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
+          >
+            {error}
+          </p>
+        </div>
+      ))
+      props.history.push("/")
     }
   }
 
@@ -78,29 +189,167 @@ const SignUp = (props) => {
           setUserId(response.response._id)
           setStep(2)
         } else {
-          throw new Error(response.error)
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
+              >
+                {response.error}
+              </p>
+            </div>
+          ))
         }
       })
       .catch((error) => {
-        alert(error)
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
+          >
+            <img
+              style={{ width: "60px", height: "60px" }}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+              alt=""
+            />
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
+              {error}
+            </p>
+          </div>
+        ))
+        props.history.push("/")
       })
   }
 
   const refreshHandler = async () => {
     try {
-      if (!usernameRef.current.value) return alert("empty fields") // Completa los campos flojo de mierda.
+      if (!usernameRef.current.value) {
+        return toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
+          >
+            <img
+              style={{ width: "60px", height: "60px" }}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
+              empty fields!
+            </p>
+          </div>
+        ))
+      }
+
       const res = await props.refresh(
         usernameRef.current.value,
         userId,
         !hasRiotAccount
       )
+      console.log(res)
       if (res.success) {
         props.loginLS(localStorage.getItem("token"))
+        console.log('caigo en if de refresh')
       } else {
-        alert(res)
-      } // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
+        console.log('caigo en else de refresh')
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
+          >
+            <img
+              style={{ width: "60px", height: "60px" }}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
+              {res.error}
+            </p>
+          </div>
+        ))
+      }
     } catch (error) {
-      alert(error)
+      console.log('caigo en catch de refresh ')
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          <img
+            style={{ width: "60px", height: "60px" }}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            alt=""
+          />
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
+          >
+            {error}
+          </p>
+        </div>
+      ))
     }
   }
 
@@ -162,11 +411,7 @@ const SignUp = (props) => {
               <div className="row">
                 <div className="col-xs-12 col-sm-6">
                   <div className="d-flex justify-content-center align-items-center">
-                    <button
-                      onClick={createHandler}
-                      // className="login-button signIn"
-                      className="sessionButton"
-                    >
+                    <button onClick={createHandler} className="sessionButton">
                       <span>Sign Up</span>
                     </button>
                   </div>
@@ -174,7 +419,6 @@ const SignUp = (props) => {
                 <div className="col-xs-12 col-sm-6">
                   <div className="d-flex justify-content-center align-items-center">
                     <GoogleLogin
-                      // className="login-button googleButton"
                       className="googleButton"
                       clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
                       buttonText="Sign Up with Google"
@@ -242,6 +486,17 @@ const SignUp = (props) => {
           </div>
         </div>
       )}
+      <Toaster
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,
+        }}
+        toastOptions={{
+          duration: 1500,
+        }}
+      />
     </>
   )
 }
