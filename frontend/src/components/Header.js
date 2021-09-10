@@ -67,8 +67,8 @@ const Header = (props) => {
             <div className="flex-shrink-0 pt-0.5">
               <img
                 className="h-4 w-4 rounded-full"
-                // src="https://i.postimg.cc/bwK5xRpW/success2.png"
-                src="./assets/facebook.svg"
+                src="https://i.postimg.cc/bwK5xRpW/success2.png"
+                // src="./assets/facebook.svg"
                 alt=""
               />
             </div>
