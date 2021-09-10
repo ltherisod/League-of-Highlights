@@ -28,11 +28,12 @@ const Carousel = (props) => {
 
     return (
       <div className="mainCarousel" style={{backgroundImage:"url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')"}}>
-        <div className="carouselTitle" style={{backgroundImage:"url('https://i.postimg.cc/nLx9RsFh/highlights.png')"}}>
           {/* <p className='topTitle'>TOP</p>
           <h2 className='titleCarouselHome'>HIGHLIGHTS</h2> */}
-        </div>
-        <div className="dividerButtomCarousel" style={{backgroundImage:"url('https://i.postimg.cc/brxv0gfM/divider.png')"}}></div>
+          <div className="boxTitleCarousel">
+              <div className="carouselTitle" style={{backgroundImage:"url('https://i.postimg.cc/nLx9RsFh/highlights.png')"}}></div>
+              <div className="dividerButtomCarousel" style={{backgroundImage:"url('https://i.postimg.cc/brxv0gfM/divider.png')"}}></div>
+          </div>
         <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
             <Swiper className="carouselContainer"
             // install Swiper modules

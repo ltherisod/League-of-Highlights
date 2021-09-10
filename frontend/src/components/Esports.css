@@ -89,15 +89,11 @@ div.news {
     width: 20vw;
 }
 
-div.rotationsContainer {
+.rotationsCarousel {
     display: flex;
     justify-content: space-around;
-    width: 80%;
-}
-
-.rotationsCarousel {
     width: 95%;
-    min-height: 90vh;
+    height: 90vh;
     padding: 1rem;
     border-width: 3px;
     border-style: solid;
@@ -145,9 +141,39 @@ div.rotationsContainer {
     background-size: contain;
 }
 
+@media screen and (max-width:450px) {
+    .titleRotation{
+        width: 70%;
+    }
 
+    .rotationImg{
+        width: 100%;
+        height: 50vh;
+        padding: 0;
+        border-image: none;
+    }
 
-@media screen and (max-width:900px) {
+    .rotationsCarousel{
+        width: 100%;
+        height: 50vh;
+        border: none;
+    }
+
+    .rotationsContainer{
+        width: 100%;
+        height: 50vh;
+    }
+    
+    .dividerButtom, .dividerTop {
+        display: none;
+    }
+
+    .news{
+        margin-bottom: -50%;
+    }
+}
+
+/* @media screen and (max-width:900px) {
     .socialBox {
         width: 30vw;
     }
@@ -166,7 +192,7 @@ div.rotationsContainer {
     }
 
     .titleRotation{
-     /* margin-bottom:5vh; */
+     margin-bottom:5vh;
      font-size: 8vw;
      height:20vh
     }
@@ -181,19 +207,19 @@ div.rotationsContainer {
      display:none!important;   
     }    
 
-    /* .rotationImg{
+    .rotationImg{
         background-size:0!important;
-    } */
+    }
 
     .rotationsCarousel {
         width: 110%;
-        /* min-height: 90vh; */
+        min-height: 90vh;
         padding: 0rem;
         border-width: 3px;
         border-style: solid;
         border-image: none
     }
-}
+} */
 
 @media screen and (max-width:700px) {
     .socialContent{

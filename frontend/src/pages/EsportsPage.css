@@ -63,6 +63,13 @@ div.videoContainer {
     height: 40vh;
 }
 
+.esportsBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .mainBackHome {
     background-repeat: no-repeat;
     background-size: cover;
