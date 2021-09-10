@@ -13,12 +13,14 @@ SwiperCore.use([Navigation, Pagination])
 
 
 const Carousel = (props) => {
+  console.log(props)
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
 
     const getVideos = async () => {
       const res = await props.getTopVideos()
+      console.log(res)
       if(res.success){
         setVideos(res.response)
       } else {
