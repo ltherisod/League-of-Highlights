@@ -17,7 +17,12 @@ const Comments = (props) => {
   return (
     <>
       <div className="comment">
-          {props.video.comments.map((comment) => (
+          { props.video.comments.length === 0 ?
+          <div className="noComments">
+            <p>Would you like to post the first comment?</p>
+            <img src="https://i.postimg.cc/MT8wXJsr/minion.png" alt=""/>
+          </div> :          
+          props.video.comments.map((comment) => (
             <Comment key={comment._id} comment={comment} />
           ))}
       </div>

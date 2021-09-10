@@ -55,7 +55,7 @@ const Video = (props) => {
         <div className="likeReport">
           <div className="videolikes">
             {props.video.likes.length}
-            <img src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)}/>
+            <img className="star" src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)} alt=""/>
           </div>
           <div className="buttonsProfile">
             <button type="button" onClick={deleteHandler}><FiTrash2 className="delete"/></button>

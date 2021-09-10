@@ -8,7 +8,7 @@ import userActions from "../redux/actions/userActions"
 import Videos from "../components/Videos"
 import UploadVideo from "../components/UploadVideo"
 import BackHome from "../components/BackHome"
-import { FiRefreshCw, FiUserX } from "react-icons/fi";
+import { FiRefreshCw, FiAlertTriangle } from "react-icons/fi";
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -103,7 +103,7 @@ const Profile = (props) => {
               </div>
               <div className="boxRefresh">
                 <button><FiRefreshCw className="refresh"/></button>
-                <button><FiUserX  className="reportUser"/></button>
+                <button><FiAlertTriangle  className="reportUser"/></button>
               </div>
 
             </div>

@@ -65,9 +65,13 @@ div.likeReport {
     width: 13%;
 }
 
-.buttonsComment button{
+.buttonsComment button, .inputUpDate button{
     background-color: transparent;
     border: none;
+}
+
+.inputUpDate button {
+    margin-left: 2%;
 }
 
 .buttonsProfile button{
@@ -101,6 +105,16 @@ div.likeReport {
     margin-top: 2%;
 }
 
+.comment::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+.comment::-webkit-scrollbar-thumb{
+    background-color: rgb(189, 151, 81);
+    border-radius: 8px;
+}
+
+
 .inputComment {
     width: 100%;
     display: flex;
@@ -118,18 +132,23 @@ div.likeReport {
     color: whitesmoke;
 }
 
+.inputUpDate{
+    width: 100%;
+    padding-top: 2%;
+}
+
+.inputComEdit{
+    background-color: transparent;
+    padding: 1%;
+    border-color: rgb(175, 140, 23);
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
 .inputCom::placeholder{
     color: rgb(175, 140, 23);
     font-style: italic;
 }
-
-/* .inputCom:focus {
-    border: none;
-}
-
-.inputCom:active {
-    border: none;
-} */
 
 .commentBox {
     display: flex;
@@ -149,6 +168,7 @@ div.likeReport {
     padding-right: 2%;
     margin-top: 2%;
     color: blanchedalmond;
+    margin-bottom: 0;
 }
 
 .addComment{
@@ -177,8 +197,31 @@ div.likeReport {
     width: 100%;
 }
 
-.delete, .upDate, .report {
+.delete, .upDate, .report, .ok {
     width: 20px;
     height: 20px;
     color: rgb(189, 151, 81);
+}
+
+.noComments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70vh;
+}
+
+.noComments p {
+    color: rgb(189, 151, 81);
+    font-size: 2.5vmin;
+    /* font-family: ; */
+}
+
+.noComments img {
+    width: 20%;
+}
+
+.videolikes{
+    cursor: pointer;
 }
