@@ -5,6 +5,7 @@ import { useState } from "react"
 import userActions from "../redux/actions/userActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignIn = (props) => {
   // const [errorEmail, setErrorEmail] = useState(null)
@@ -20,12 +21,46 @@ const SignIn = (props) => {
 
   const createHandler = async () => {
     if (userData.email === "" || userData.password === "") {
-      alert("campos vacios")
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            empty fields!
+          </p>
+        </div>
+      ))
       return false
     }
     try {
       const res = await props.logIn(userData)
-      if (!res.success) return alert(res.error)
+      if (!res.success){
+        return toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              {res.error}
+            </p>
+          </div>
+        ))
+      } 
     } catch (e) {
       console.log(e)
     }
@@ -125,6 +160,15 @@ const SignIn = (props) => {
           </p>
         </div>
       </div>
+      <Toaster 
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </>
   )
 }
