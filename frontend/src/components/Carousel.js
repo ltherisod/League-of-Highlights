@@ -19,7 +19,7 @@ const Carousel = (props) => {
       if (res.success) {
         setVideos(res.response)
       } else {
-        alert(res.error) //cambiar alert feo
+        console.log(res.error)
       }
     }
     getVideos()

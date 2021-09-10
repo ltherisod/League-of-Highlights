@@ -37,6 +37,7 @@ const SignUp = (props) => {
     }
     try {
       const res = await props.signUp(userData)
+      console.log(res)
       if (res.success) {
         setUserId(res.response._id)
         setStep(2)
