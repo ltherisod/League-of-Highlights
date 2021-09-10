@@ -67,7 +67,8 @@ const Header = (props) => {
             <div className="flex-shrink-0 pt-0.5">
               <img
                 className="h-4 w-4 rounded-full"
-                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                src="https://i.postimg.cc/bwK5xRpW/success2.png"
+                // src="./assets/facebook.svg"
                 alt=""
               />
             </div>
@@ -194,10 +195,10 @@ const Header = (props) => {
         </div>
       </Navbar>
       <Toaster 
-      position="top-left"
-      toastOptions={{
-    duration: 1500,
-    }}/>
+        position="top-left"
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </header>
   )
 }
