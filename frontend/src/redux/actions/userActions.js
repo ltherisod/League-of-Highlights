@@ -120,6 +120,7 @@ const userActions = {
     return async (dispatch, getState) => {
       try {
         const res = await axios.get(`${HOST}/api/username/${userName}`)
+        console.log(res)
         if (!res.data.success) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
       } catch (e) {

@@ -91,6 +91,7 @@ const SignIn = (props) => {
               />
             </div>
           </form>
+          <div className='buttonContainer'>
           <button
             type="button"
             onClick={createHandler}
@@ -99,13 +100,14 @@ const SignIn = (props) => {
             <p>Sign In</p>
           </button>
           <GoogleLogin
-              className="login-button googleButton shadow"
+              className="login-button googleButton "
               clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
                buttonText="Sign In with Google"
                onSuccess={responseGoogle}
                onFailure={responseGoogle}
               cookiePolicy={"single_host_origin"}
             />
+          </div>
           <p className="textDataForm">
             Don't have an account? <Link to="/signup">Sign up here! </Link>
           </p>

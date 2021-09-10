@@ -54,10 +54,17 @@ const videosControllers = {
   },
   deleteVideo: async (req, res) => {
     try {
-      const video = await Video.findOneAndDelete({ _id: req.params.videoId })
-      if (req.user._id.toString() !== video.owner.toString())
+      const video = await Video.findOne({ _id: req.params.videoId })
+      if (
+        !(req.user.admin || req.user._id.toString() === video.owner.toString())
+      ) {
         throw new Error("You are not allowed to delete this video.")
-      res.json({ success: true, response: video, error: null })
+      }
+      const deletedVideo = await Video.findOneAndDelete({
+        _id: req.params.videoId,
+      })
+
+      res.json({ success: true, response: deletedVideo, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
@@ -190,6 +197,17 @@ const videosControllers = {
           error:
             "Error with the type. Do you spell it correctly? The options are createComment, updateComment and deleteComment",
         })
+    }
+  },
+  getReportedVideos: async (req, res) => {
+    try {
+      const reportedVideos = await Video.find()
+        .where("reports.count")
+        .gte(1)
+        .populate({ path: "owner", select: "username" })
+      res.json({ success: true, response: reportedVideos, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
     }
   },
 }

@@ -3,6 +3,7 @@ import videosActions from "../redux/actions/videosActions"
 import { connect } from "react-redux"
 import Video from "./Video"
 import { useState, useEffect } from "react"
+import NoVideos from "./NoVideos"
 
 const Videos = (props) => {
   // console.log(userId)
@@ -22,7 +23,7 @@ const Videos = (props) => {
   }, [props.username])
 
   if (loading) return <p>Loading...</p>
-  if (!props.userVideos.length) return <p>Todavía no tengo videos :c</p>
+  if (!props.userVideos.length) return <NoVideos/>
   // Después de esto hay que renderizar desde props.userVideos
   return (
     <>

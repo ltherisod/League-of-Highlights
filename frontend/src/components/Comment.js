@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
-import { FiTrash2, FiEdit2 } from "react-icons/fi";
+import { FiTrash2, FiEdit2, FiCheck } from "react-icons/fi";
 
 const Comment = (props) => {
   const [updateComment, setUpdateComment] = useState(false)
@@ -25,9 +25,9 @@ const Comment = (props) => {
     }
   }
 
-  const inputUpdateComment = <div>
-                                  <input className="" type="text" defaultValue={props.comment.content} ref={inputHandler}></input>
-                                  <button onClick={sendUpdate}>ok</button>
+  const inputUpdateComment = <div className="inputUpDate">
+                                  <input className="inputComEdit" type="text" defaultValue={props.comment.content} ref={inputHandler}></input>
+                                  <button onClick={sendUpdate}><FiCheck className="ok"/></button>
                             </div>
 
   return (

@@ -150,6 +150,19 @@ const videosActions = {
       }
     }
   },
+  getReportedVideos: () => {
+    return async (dispatch) => {
+      try {
+        const res = await axios.get(`${HOST}/api/video/reports`)
+        if (res.data.success) {
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
 }
 
 export default videosActions
