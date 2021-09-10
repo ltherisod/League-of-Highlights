@@ -7,6 +7,15 @@ h2 {
   font-family: "BeaufortforLOL-Bold.woff";
 }
 
+.community{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+
 .mainBackHome {
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,12 +28,14 @@ h2 {
   flex-direction: column;
 }
 
-.textCommunity {
-  padding-top: 6%;
-  padding-bottom: 2%;
-  font-weight: bold;
-  font-size: 10vmin;
-  text-align: center;
+.textCommunity{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 30%;
+  height: 40vh;
+  align-self: center;
+  margin-bottom: -3%;
 }
 
 .heroCommunity{
@@ -35,6 +46,9 @@ h2 {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

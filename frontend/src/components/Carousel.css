@@ -77,6 +77,23 @@ div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   margin-bottom: -4%;
 }
 
+.carouselTitle{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 30%;
+  height: 30vh;
+}
+
+.dividerButtomCarousel{
+  margin-top: 1%;
+  width: 35%;
+  height: 10vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: -5%;
+}
+
 .carouselTitle h2 {
   font-family: "BeaufortforLOL-Bold.woff";
   font-size: 4rem;
@@ -140,7 +157,7 @@ div.topVideos {
 }
 
 .carouselTitle{
-  color: rgb(223, 149, 59);
+  color: rgb(192, 149, 58);
   text-shadow: 4px 4px 8px rgba(0,0,0,0.6);
 }
 /* @media only screen and (width: 12rem) {
