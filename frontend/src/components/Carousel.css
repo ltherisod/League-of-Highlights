@@ -150,6 +150,7 @@ div.topVideos {
 @media screen and (max-width: 1050px) {
   .mainCarousel{
    background-size: 0;
+   /* margin:0px */
   }
 
   div .userBox {
@@ -178,6 +179,10 @@ div.topVideos {
   div.championCarousel {
     background-size: 0;
   }
+
+   .carouselTitle{
+    opacity: 0;
+  } 
 }
 
 @media screen and (min-width: 1500px) {

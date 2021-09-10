@@ -46,8 +46,13 @@
     text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 900px) {
   .rock{
     width: 95%;
   }
+
+  .mainCallToAction {
+    height: 50vh;
+}
+
 }

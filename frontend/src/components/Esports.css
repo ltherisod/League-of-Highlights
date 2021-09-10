@@ -134,7 +134,7 @@ div.rotationsContainer {
     }
 }
 
-@media screen and (max-width:769px) {
+@media screen and (max-width:1050px) {
     div.rotationsContainer {
         flex-direction: column;
         align-items: center;
@@ -147,18 +147,33 @@ div.rotationsContainer {
     }
 
     .titleRotation{
-     
-     font-size: 10vw;
+     /* margin-bottom:5vh; */
+     font-size: 8vw;
+     height:20vh
     }
 
     .rotationsCarousel {
-        width: 95%; 
+        width: 95%;
+        background-size: 0; 
     }
 
     .carouselBorder{
-        background-size: 0;
+        background-size: 0!important;
      display:none!important;   
     }    
+
+    /* .rotationImg{
+        background-size:0!important;
+    } */
+
+    .rotationsCarousel {
+        width: 110%;
+        /* min-height: 90vh; */
+        padding: 0rem;
+        border-width: 3px;
+        border-style: solid;
+        border-image: none
+    }
 }
 
 @media screen and (max-width:700px) {
