@@ -8,7 +8,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react"
 
-const Community = () => {
+const Community = (props) => {
 
   useEffect (() => {
     Aos.init({duration:2000})
@@ -17,7 +17,7 @@ const Community = () => {
   return (
     <>
     <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/fyFKsXCW/pruebadifuminada.png')"}}>
-        <Header />
+        <Header {...props}/>
         <div className="heroCommunity"></div>
           <h2 className='textCommunity'>COMMUNITY</h2>
           <div className="photos">
