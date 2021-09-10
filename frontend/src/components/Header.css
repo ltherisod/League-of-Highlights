@@ -81,7 +81,7 @@ a{
 }
 
 .iconNav{
-  width: 3rem;
+  width: 2.8rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -121,9 +121,10 @@ a{
     padding:0.8rem
   }
 
-  .iconPosition {
+  .iconNav {
     position: absolute;
-    right: 0px;
+    right: 6px;
+    top:0px
   }
 
   .divSearch{

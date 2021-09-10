@@ -22,24 +22,33 @@ const Header = (props) => {
 
   const inputHandler = useRef()
   const createHandler = async () => {
-    if (inputHandler.current.value === "")
-      return alert("completa los campos hijo de puta")
-    try {
-      const res = await props.getProfileByName(inputHandler.current.value)
-      if (!res.success) return alert("todo salio muy como el orto")
-      if (res.response.length === 0)
-        return alert(
-          "todo salio bien pero el usuario no existe amigo, o no esta en riot"
-        )
-      if (res.success) {
-        props.history.push(`/profile/${res.response.username}`)
-      } else {
-        alert("oh no !")
-        // props.history.push(`/`)
+    // if (inputHandler.current.value === "" && !props.userStatus){
+    //   return alert("empty field")
+    // }
+    if (!props.userStatus) {
+      alert("create an account to do it")
+    } else {
+      if (inputHandler.current.value === "") {
+        return alert("empty field")
       }
-    } catch (e) {
-      console.log("cae en el catch")
-      alert(e.message)
+      try {
+        const res = await props.getProfileByName(inputHandler.current.value)
+        console.log(res)
+        if (!res.success) return alert("champion not found, try another")
+        if (res.response.length === 0)
+          return alert(
+            "todo salio bien pero el usuario no existe amigo, o no esta en riot"
+          )
+        if (res.success) {
+          props.history.push(`/profile/${res.response.username}`)
+        } else {
+          console.log("cai en else y me voy a home ")
+          props.history.push(`/`)
+        }
+      } catch (e) {
+        console.log("cae en el catch")
+        alert(e.message)
+      }
     }
   }
 

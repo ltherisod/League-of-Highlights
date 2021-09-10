@@ -34,7 +34,6 @@ function App(props) {
         {props.userStatus && (
           <Route path="/profile/:username" component={Profile} />
         )}
-
         {/* <Route path="/profile/:username" component={Profile} /> */}
         {/*proteger la ruta, por ahora prueban*/}
         {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
