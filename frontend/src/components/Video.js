@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import ReportForm from "./ReportForm"
 import { useState } from "react"
 import "./Videos.css"
+import { FiAlertTriangle, FiTrash2 } from "react-icons/fi";
 
 const Video = (props) => {
   const [showReport, setShowReport] = useState(false)
@@ -57,8 +58,8 @@ const Video = (props) => {
             <img src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)}/>
           </div>
           <div className="buttonsProfile">
-            <button type="button" onClick={deleteHandler}>Delete</button>
-            <button onClick={reportHandler}>Report</button>
+            <button type="button" onClick={deleteHandler}><FiTrash2 className="delete"/></button>
+            <button onClick={reportHandler}><FiAlertTriangle className="report"/></button>
           </div>
           {showReport ? <ReportForm /> : null}
         </div>

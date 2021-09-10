@@ -3,7 +3,7 @@ import "./UploadVideo.css"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 import championsActions from "../redux/actions/championsActions"
-// import { FiX } from "react-icons/fi";
+import { FiX, FiCheck } from "react-icons/fi";
 
 const UploadVideo = (props) => {
   const [champions, setChampions] = useState([])
@@ -81,7 +81,7 @@ const UploadVideo = (props) => {
       <button className="sendVideo" onClick={sendVideo}>Send Video</button>
     </div>
       }
-      <button className="postButton" onClick={() => setView(!view)}>{view ? "close" : "New Post"}</button>
+      <button className="postButton" onClick={() => setView(!view)}>{view ? <FiX className="close"/> : "New Post"}</button>
     </div>
     </>
   )
