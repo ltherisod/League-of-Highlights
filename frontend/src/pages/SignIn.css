@@ -106,9 +106,7 @@ width: 2em;
     flex-wrap: nowrap;
 }
 
-.faceButton{
-    background-color:#1877f2;
-}
+
 
 .googleButton{
     background-color: white!important;
@@ -129,6 +127,7 @@ width: 2em;
 }
 
 .signIn p{
+    margin-top: 6%;
     font-size: 1.1rem;
     font-weight: 600;
     align-self: center;
