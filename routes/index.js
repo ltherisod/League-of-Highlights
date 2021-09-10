@@ -5,6 +5,7 @@ const championsControllers = require("../controllers/championsControllers")
 const iconsControllers = require("../controllers/iconsControllers")
 const usersControllers = require("../controllers/usersControllers")
 const ranksControllers = require("../controllers/ranksControllers")
+const isAdmin = require("../controllers/isAdmin")
 
 const validator = require("../controllers/validator")
 const videosControllers = require("../controllers/videosControllers")
@@ -71,10 +72,24 @@ router
   .route("/user/:id")
   .get(usersControllers.getUserById) // Hacer validación user logueado.
   .put(usersControllers.updateUser)
-  .delete(usersControllers.deleteUserById)
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.deleteUserById
+  )
 
-router.route("/dismiss/user/:id").put(usersControllers.dismissUserReport)
-router.route("/dismiss/video/:id").put(usersControllers.dismissVideoReport)
+router
+  .route("/dismiss/user/:id")
+  .put(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.dismissUserReport
+  )
+router
+  .route("/dismiss/video/:id")
+  .put(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.dismissVideoReport
+  )
 
 router
   .route("/admin/set/:id")

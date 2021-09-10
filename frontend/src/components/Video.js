@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import ReportForm from "./ReportForm"
 import { useState } from "react"
 import "./Videos.css"
-import { FiAlertTriangle, FiTrash2 } from "react-icons/fi";
+import { FiAlertTriangle, FiTrash2 } from "react-icons/fi"
 
 const Video = (props) => {
   const [showReport, setShowReport] = useState(false)
@@ -28,44 +28,57 @@ const Video = (props) => {
     setShowReport(!showReport)
   }
 
-  let star = props.video.likes.includes(props.user._id) ? "/assets/star_fill.svg" : "/assets/star.svg"
+  let star = props.video.likes.includes(props.user._id)
+    ? "/assets/star_fill.svg"
+    : "/assets/star.svg"
   return (
     // <div className="videoContent" style={{backgroundImage:"url('https://i.postimg.cc/rszLM3Ft/news-banner-frame.png')"}}>
-    <div className="videoContent" >
-        <div className="contentVideoUser">
-          <div className="titleVideo">
-            <h4>{props.video.title}</h4>
-            {props.video.owner === props.user._id && (
-              <>
-                {/* <button type="button" onClick={updateHandler}>
+    <div className="videoContent">
+      <div className="contentVideoUser">
+        <div className="titleVideo">
+          <h4>{props.video.title}</h4>
+          {props.video.owner === props.user._id && (
+            <>
+              {/* <button type="button" onClick={updateHandler}>
                   Update
                 </button> */}
-              </>
-            )}
-          </div>
-          <ReactPlayer
-            width="650px"
-            height="400px"
-            url={props.video.url}
-            className="videoUser"
-            controls={true}
+            </>
+          )}
+        </div>
+        <ReactPlayer
+          width="650px"
+          height="400px"
+          url={props.video.url}
+          className="videoUser"
+          controls={true}
+        />
+        {/* </div> */}
+      </div>
+      <div className="likeReport">
+        <div className="videolikes">
+          {props.video.likes.length}
+          <img
+            className="star"
+            src={star}
+            onClick={() => props.toggleLike(props.video._id, props.user._id)}
+            alt=""
           />
-          {/* </div> */}
         </div>
-        <div className="likeReport">
-          <div className="videolikes">
-            {props.video.likes.length}
-            <img className="star" src={star}  onClick={() => props.toggleLike(props.video._id, props.user._id)} alt=""/>
-          </div>
-          <div className="buttonsProfile">
-            <button type="button" onClick={deleteHandler}><FiTrash2 className="delete"/></button>
-            <button onClick={reportHandler}><FiAlertTriangle className="report"/></button>
-          </div>
-          {showReport ? <ReportForm /> : null}
+        <div className="buttonsProfile">
+          {props.user._id === props.video.owner && (
+            <button type="button" onClick={deleteHandler}>
+              <FiTrash2 className="delete" />
+            </button>
+          )}
+          <button type="button" onClick={reportHandler}>
+            <FiAlertTriangle className="report" />
+          </button>
         </div>
-        <div className="commentsfather">
-          <Comments video={props.video} />
-        </div>
+        {showReport ? <ReportForm videoId={props.video._id} /> : null}
+      </div>
+      <div className="commentsfather">
+        <Comments video={props.video} />
+      </div>
     </div>
   )
 }

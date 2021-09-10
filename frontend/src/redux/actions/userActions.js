@@ -143,7 +143,52 @@ const userActions = {
   deleteUser: (id) => {
     return async (dispatch) => {
       try {
-        const res = await axios.delete(`${HOST}/api/user/${id}`)
+        const res = await axios.delete(`${HOST}/api/user/${id}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        })
+        if (res.data.success) {
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  reportUser: (userReportedId, content) => {
+    return async (dispatch) => {
+      try {
+        const res = await axios.put(
+          `${HOST}/api/user/report/${userReportedId}`,
+          { content },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        if (res.data.success) {
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  dismissUserReport: (id) => {
+    return async (dispatch) => {
+      try {
+        console.log(id, localStorage.getItem("token"))
+        const res = await axios.put(
+          `${HOST}/api/dismiss/user/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
         if (res.data.success) {
           return { success: true, response: res.data.response, error: null }
         }
