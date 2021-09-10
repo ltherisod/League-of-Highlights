@@ -37,6 +37,7 @@ const usersControllers = {
           _id: user._id,
           icon: user.icon,
           token,
+          guest: user.guest,
           admin: user.admin,
         },
         error: null,
@@ -49,7 +50,6 @@ const usersControllers = {
     try {
       const { email, password, googleFlag } = req.body
       const userInBlackList = await BlackList.findOne({ email })
-      console.log(userInBlackList)
       if (userInBlackList) throw new Error("Estás en la blacklist fermacanas.")
       const user = await User.findOne({ email: email })
         .populate({
@@ -112,6 +112,11 @@ const usersControllers = {
     try {
       const { username } = req.params
       const user = await User.findOne({ username })
+        .populate({
+          path: "topChampions",
+          populate: { path: "tags" },
+        })
+        .populate("rank")
       if (!user) throw new Error("User doesn't exist.")
       res.json({
         success: true,
@@ -121,8 +126,10 @@ const usersControllers = {
           guest: user.guest,
           rank: user.rank,
           division: user.division,
+          user: user.username,
           username: user.username,
           _id: user._id,
+          admin: user.admin,
         },
         error: null,
       })
@@ -178,6 +185,7 @@ const usersControllers = {
           rank: user.rank,
           division: user.division,
           topChampions: user.topChampions,
+          admin: user.admin,
         },
         error: null,
       })
@@ -250,7 +258,11 @@ const usersControllers = {
         },
         { new: true }
       )
-      res.json({ success: true, response: user, error: null })
+      res.json({
+        success: true,
+        response: { username: user.username },
+        error: null,
+      })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
@@ -267,6 +279,21 @@ const usersControllers = {
     try {
       const user = await User.findOneAndDelete({ _id: req.params.id })
       await Video.deleteMany({ owner: req.params.id })
+      await Video.updateMany(
+        { "comments.author": req.params.id },
+        { $pull: { comments: { author: req.params.id } } },
+        { new: true }
+      )
+      await Video.updateMany(
+        { "reports.author": req.params.id },
+        { $pull: { reports: { author: req.params.id } } },
+        { new: true }
+      )
+      await Video.updateMany(
+        { likes: req.params.id },
+        { $pull: { likes: req.params.id } },
+        { new: true }
+      )
       const email = new BlackList({ email: user.email })
       await email.save()
       res.json({ success: true, response: user, error: null })
@@ -310,6 +337,12 @@ const usersControllers = {
   },
   dismissVideoReport: async (req, res) => {
     try {
+      const video = await Video.findOneAndUpdate(
+        { _id: req.params.id },
+        { $set: { reports: [] } },
+        { new: true }
+      )
+      res.json({ success: true, response: video, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }

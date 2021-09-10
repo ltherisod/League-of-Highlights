@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 import userActions from "../redux/actions/userActions"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 const Admin = (props) => {
   const [reportedUsers, setReportedUsers] = useState([])
@@ -15,8 +16,28 @@ const Admin = (props) => {
     props.getReportedVideos().then((res) => setReportedVideos(res.response))
   }, [])
 
-  const dismissUserReport = async () => {}
-  const dismissVideoReport = async () => {}
+  const dismissUserReport = async (id) => {
+    const res = await props.dismissUserReport(id)
+    if (res.success) {
+      alert("Todo salió bien")
+      setReportedUsers(
+        reportedUsers.filter((user) => user._id !== res.response._id)
+      )
+      return true
+    }
+    alert(res.error)
+  }
+  const dismissVideoReport = async (id) => {
+    const res = await props.dismissVideoReport(id)
+    if (res.success) {
+      alert("Todo salió bien.")
+      setReportedVideos(
+        reportedVideos.filter((video) => video._id !== res.response._id)
+      )
+      return true
+    }
+    alert(res.error)
+  }
 
   const deleteReportedVideo = async (id, token) => {
     const res = await props.deleteVideo(id, token) // id del video a borrar.
@@ -40,21 +61,25 @@ const Admin = (props) => {
     }
     alert("Error: " + res.error)
   }
+
   return (
     <>
-      <Header />
+      <Header {...props} />
       <div className="containerAdmin">
         <h3>Van users</h3>
         {reportedUsers.map((user) => (
           <div key={user._id} className="van">
-            <p>{`${user.name} (${user.email}) was reported ${user.reports.length} times:`}</p>
+            <p>
+              <Link to={`/profile/${user.username}`}>{user.username}</Link> (
+              {user.email}) was reported {user.reports.length} times:
+            </p>
             <ul>
               {user.reports.map((report) => (
                 <li key={report._id}>{report.content}</li>
               ))}
             </ul>
             <button onClick={() => deleteUser(user._id)}>Delete account</button>
-            <button onClick={dismissUserReport}>Dismiss</button>
+            <button onClick={() => dismissUserReport(user._id)}>Dismiss</button>
           </div>
         ))}
         <h3>Van videos</h3>
@@ -72,7 +97,10 @@ const Admin = (props) => {
                 deleteReportedVideo(video._id, localStorage.getItem("token"))
               }
             >
-              delete
+              Delete
+            </button>
+            <button onClick={() => dismissVideoReport(video._id)}>
+              Dismiss
             </button>
           </div>
         ))}
@@ -82,10 +110,12 @@ const Admin = (props) => {
 }
 
 const mapDispatchToProps = {
+  getReportedVideos: videosActions.getReportedVideos,
   deleteVideo: videosActions.deleteVideo,
+  dismissVideoReport: videosActions.dismissVideoReport,
   getReportedUsers: userActions.getReportedUsers,
   deleteUser: userActions.deleteUser,
-  getReportedVideos: videosActions.getReportedVideos,
+  dismissUserReport: userActions.dismissUserReport,
 }
 
 export default connect(null, mapDispatchToProps)(Admin)
