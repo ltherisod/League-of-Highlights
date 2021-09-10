@@ -3,7 +3,6 @@ import Header from "../components/Header"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
 import { useRef, useState } from "react"
-//import { ref } from "joi"
 import championsActions from "../redux/actions/championsActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
@@ -39,7 +38,7 @@ const SignUp = (props) => {
       setUserId(res.response._id)
       setStep(2)
     } else {
-      alert("Something went wrong! Please try later.") //cambiar alert feo
+      alert(res.error) //cambiar alert feo
       console.log(res.error) // Manejar el error acá.
     }
   }
@@ -67,7 +66,7 @@ const SignUp = (props) => {
   }
 
   const refreshHandler = async () => {
-    if (!usernameRef.current.value) return alert('empty fields') // Completa los campos flojo de mierda.
+    if (!usernameRef.current.value) return alert("empty fields") // Completa los campos flojo de mierda.
     const res = await props.refresh(
       usernameRef.current.value,
       userId,
@@ -75,8 +74,7 @@ const SignUp = (props) => {
     )
     if (res.success) {
       props.loginLS(localStorage.getItem("token"))
-
-    }else{
+    } else {
       alert(res)
     } // Evaluar res.success... si es false, puede ser un error interno, de comunicación, o!!! PUEDE SER QUE EL USUARIO YA EXISTA.
   }

@@ -38,18 +38,6 @@ const videosActions = {
       }
     }
   },
-
-  updateVideo: () => {
-    return async (dispatch, getState) => {
-      try {
-        const res = await axios.put(`${HOST}/api/video/:videoId`)
-        if (!res.data.success) throw new Error(res.data.error)
-      } catch (e) {
-        return { success: false, response: null, error: e.message }
-      }
-    }
-  },
-
   deleteVideo: (videoId, token) => {
     return async (dispatch, getState) => {
       try {
@@ -130,7 +118,7 @@ const videosActions = {
         if (res.data.success) {
           dispatch({
             type: "UPDATE_COMMENT",
-            payload: {...res.data.response, commentId ,newContent },
+            payload: { ...res.data.response, commentId, newContent },
           })
           return { success: true, response: res.data.response }
         }

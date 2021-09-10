@@ -60,17 +60,19 @@ router
   .delete(usersControllers.deleteUserByUsername)
 
 router.route("/user/reports").get(usersControllers.getReportedUsers)
-router
-  .route("/user/:id")
-  .get(usersControllers.getUserById) // Hacer validación user logueado.
-  .put(usersControllers.updateUser)
-
+router.route("/user/blacklist").get(usersControllers.getBlackList)
 router
   .route("/user/report/:id")
   .put(
     passport.authenticate("jwt", { session: false }),
     usersControllers.reportUser
   )
+router
+  .route("/user/:id")
+  .get(usersControllers.getUserById) // Hacer validación user logueado.
+  .put(usersControllers.updateUser)
+  .delete(usersControllers.deleteUserById)
+
 // NO USAR SALVO CASO DE EMERGENCIA
 // router.route("/users/users/users").delete(usersControllers.deleteUsers)
 
