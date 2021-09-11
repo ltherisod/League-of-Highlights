@@ -94,30 +94,15 @@ width: 2em;
     font-family: 'Secular One', sans-serif;
 } 
 
-.googleButton {
-    display:flex!important;
-    justify-content:center!important;
-    align-items: center;
-    font-size: 5rem;
-}
-
 .buttonContainer{
     display:flex;
     flex-wrap: nowrap;
 }
 
-
-
-.googleButton{
-    background-color: white!important;
-}
-
 .googleButton{
     background-color: white!important;
     width: 100%!important;
-    padding: 0.3em 1em!important;
-    /* display: flex!important;
-    flex-direction: row!important; */
+    padding: 0.3em 0.6em!important;
     outline: none!important;
     cursor: pointer!important;
     border-radius: 4px!important;
@@ -128,9 +113,6 @@ width: 2em;
     font-family: 'Secular One', sans-serif;
     color: #525252;
 }
-/* div.buttonContainer span {
-    display: none!important;
-} */
 
 .signIn{
     display: flex;

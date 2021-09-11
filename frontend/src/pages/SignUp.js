@@ -282,7 +282,7 @@ const SignUp = (props) => {
             <img
               style={{ width: "60px", height: "60px" }}
               className="h-4 w-4 rounded-full"
-              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
               alt=""
             />
             <p
@@ -301,11 +301,9 @@ const SignUp = (props) => {
         !hasRiotAccount
       )
       console.log(res)
-      if (res.success) {
+      if (res.success ) {
         props.loginLS(localStorage.getItem("token"))
-        console.log('caigo en if de refresh')
       } else {
-        console.log('caigo en else de refresh')
         toast.custom((t) => (
           <div
             className={`${
@@ -434,7 +432,7 @@ const SignUp = (props) => {
                     <GoogleLogin
                       className="googleButton"
                       clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-                      buttonText="Sign Up with Google"
+                      buttonText="Sign up with Google"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
                       cookiePolicy={"single_host_origin"}

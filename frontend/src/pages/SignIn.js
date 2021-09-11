@@ -137,10 +137,7 @@ const SignIn = (props) => {
               </p>
             </div>
           ))
-          props.history.push("/")
-        } else {
-          props.history.push("/")
-        }
+        } 
       })
       .catch((err) => {
         toast.custom((t) => (
@@ -221,7 +218,7 @@ const SignIn = (props) => {
                     // className="login-button googleButton "
                     className="googleButton"
                     clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-                    buttonText="Sign In with Google"
+                    buttonText="Sign in with Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={"single_host_origin"}
