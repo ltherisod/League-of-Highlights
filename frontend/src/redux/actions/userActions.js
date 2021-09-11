@@ -81,9 +81,14 @@ const userActions = {
     // validar acá.
     return async (dispatch, getState) => {
       try {
-        const accountData = await axios.get(
-          `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?api_key=${API_KEY}`
-        )
+        const accountData = await axios
+          .get(
+            `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?api_key=${API_KEY}`
+          )
+          .catch((err) => console.log(err))
+        if (!accountData) {
+          throw new Error("Error: we didn't found this username.")
+        }
         const { id, profileIconId } = accountData.data
         const rankData = await axios.get(
           `https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${API_KEY}`
@@ -97,6 +102,14 @@ const userActions = {
             : { ...rankData.data[1] }
         if (!Object.keys(soloQ).length) {
           soloQ = { tier: "UNRANKED", rank: "" }
+        }
+        console.log(champs)
+        if (!champs.data.length) {
+          champs.data = [
+            { championId: 17 },
+            { championId: 17 },
+            { championId: 17 },
+          ]
         }
         const refreshedData = {
           username,
