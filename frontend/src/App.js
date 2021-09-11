@@ -19,6 +19,7 @@ function App(props) {
 
   useEffect(() => {
     // setSocket(io("http://localhost:4000"))
+    console.log(props)
     if (token) {
       props.loginLS(token)
     }
@@ -31,7 +32,6 @@ function App(props) {
         <Route exact path="/" component={Home} />
         {!props.userStatus && <Route path="/signin" component={SignIn} />}
         <Route path="/community" component={Community} />
-        {/* Aquí modifiqué a /profile/{user}} para poder obtener el perfil del usuario con ese id.*/}
         {props.userStatus && (
           <Route path="/profile/:username" component={Profile} />
         )}
@@ -39,7 +39,7 @@ function App(props) {
         {/*proteger la ruta, por ahora prueban*/}
         {!props.userStatus && <Route exact path="/signup" component={SignUp} />}
         <Route exact path="/esports" component={EsportsPage} />
-        <Route exact path="/admin" component={Admin} />
+        {props.userStatus.admin && <Route exact path="/admin" component={Admin} />} 
         <Route path="/error" component={Error} />
         <Redirect to="/" />
       </Switch>

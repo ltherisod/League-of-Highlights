@@ -54,7 +54,7 @@ const Profile = (props) => {
         >
           <img style={{ width: "60px", height: "60px"}}
             className="h-4 w-4 rounded-full"
-            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
             alt=""
           />
           <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
@@ -69,12 +69,62 @@ const Profile = (props) => {
         showProfileData._id,
         reportContent.current.value
       )
-      if(res.succes){
-        
+      if(res.success){
+        return toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/PJkZRZL6/demonteemo.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            Successfully reported
+            </p>
+          </div>
+        ))
+      }else{
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/PJkZRZL6/demonteemo.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            {res.error}
+            </p>
+          </div>
+        ))
       }
-      console.log(res)
     }catch(error){
-
+      console.log('caigo en catch de report handler ')
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          {error}
+          </p>
+        </div>
+      ))
     }
     
   }

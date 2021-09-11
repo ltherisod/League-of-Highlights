@@ -40,7 +40,7 @@ const SignIn = (props) => {
         >
           <img style={{ width: "60px", height: "60px"}}
             className="h-4 w-4 rounded-full"
-            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
             alt=""
           />
           <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>

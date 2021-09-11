@@ -54,7 +54,7 @@ const Header = (props) => {
             >
               <img style={{ width: "60px", height: "60px"}}
                 className="h-4 w-4 rounded-full"
-                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
                 alt=""
               />
               <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
@@ -147,6 +147,7 @@ const Header = (props) => {
         light
         expand="md"
       >
+        {console.log(props)}
         <NavbarBrand
           to="/"
           className="logoNavBox text-light d-none d-md-block ms-2 "
@@ -183,6 +184,11 @@ const Header = (props) => {
                       <DropdownItem className="accountBox text-white">Profile</DropdownItem>
                     </Link>
                   ) : null}
+                  {props.userStatus.admin && <Link
+                      to='/admin'
+                    >
+                      <DropdownItem className="accountBox text-white">Admin</DropdownItem>
+                    </Link>}
                   <Link to="/">
                     <DropdownItem className="accountBox text-white" to="/" onClick={sesionOut}>
                       Log out
