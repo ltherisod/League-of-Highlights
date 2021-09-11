@@ -136,14 +136,16 @@ const UploadVideo = (props) => {
         {view && (
           <div className="videoForm">
             <h3>Upload your video</h3>
-            <form>
+            <form className="uploadForm">
               <input
+                className="formInput"
                 type="text"
                 name="title"
                 placeholder="Title of your video"
                 onChange={inputHandler}
               />
               <input
+                className="formInput"
                 type="text"
                 name="url"
                 placeholder="url of your video"

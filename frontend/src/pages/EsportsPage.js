@@ -17,6 +17,7 @@ const EsportsPage = (props) => {
 
   useEffect(() => {
     toTop()
+    // eslint-disable-next-line
   }, [])
 
   return (

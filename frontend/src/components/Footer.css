@@ -22,7 +22,6 @@ footer {
 div.logo {
     width: 20rem;
     height: 13rem;
-    /* margin: 1rem 2rem; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,7 +29,6 @@ div.logo {
 
 div.socialMedia {
     display: flex;
-    /* margin: 1rem 2rem; */
     display: flex;
     justify-content: space-around;
     width: 34vw;

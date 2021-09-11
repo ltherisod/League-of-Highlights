@@ -230,10 +230,21 @@ text-transform: uppercase;
   width: 30%;
   height: 10vh;
   display: flex;
+  /* flex-direction: column; */
   justify-content: space-around;
   align-items: center;
   align-self: center;
-  padding-right: 10%;
+  margin-right: 20%;
+}
+
+.boxReport{
+  width: 50%;
+  height: 10vh;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  align-items: center;
+  align-self: center;
 }
 
 .boxRefresh button {
@@ -250,6 +261,7 @@ text-transform: uppercase;
 
 .refresh{
    transition: 0.9s ease-in-out;
+   width: 35px;
 }
 
 .refresh:hover{

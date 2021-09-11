@@ -138,16 +138,18 @@ const Video = (props) => {
           />
         </div>
         <div className="buttonsProfile">
+          <div className="reportVideoBox">
+            {showReport ? <ReportForm videoId={props.video._id} /> : null}
+            <button type="button" onClick={reportHandler}>
+              <FiAlertTriangle className="report" />
+            </button>
+          </div>
           {props.user._id === props.video.owner && (
             <button type="button" onClick={confirm}>
               <FiTrash2 className="delete" />
             </button>
           )}
-          <button type="button" onClick={reportHandler}>
-            <FiAlertTriangle className="report" />
-          </button>
         </div>
-        {showReport ? <ReportForm videoId={props.video._id} /> : null}
       </div>
       <div className="commentsfather">
         <Comments video={props.video} />

@@ -51,14 +51,15 @@ const ReportForm = (props) => {
   }
   return (
     <>
-      <form className="reportForm">
-        <input
-          //   type="textArea"
-          ref={input}
-          className="reportInput"
-          placeholder="Why are you reporting this video?"
-        />
-            <FiCheck onClick={reportVideoHandler} className="ok" />
+      <form >
+        <div className="reportForm">
+          <input
+            ref={input}
+            className="reportInput"
+            placeholder="Why are you reporting this video?"
+          />
+              <FiCheck onClick={reportVideoHandler} className="ok" />
+        </div>
       </form>
     </>
   )

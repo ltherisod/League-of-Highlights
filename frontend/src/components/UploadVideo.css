@@ -1,4 +1,4 @@
-form, div.videoForm {
+.uploadForm, div.videoForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,14 +13,10 @@ div.videoForm {
 }
 
 
-form input {
+.formInput {
     margin: 0.5rem;
 }
 
-/* 
-.postButton {
-    align-self: flex-start;
-} */
 
 .uploadBox {
     width: 100%;
@@ -60,12 +56,7 @@ form input {
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
-/* .championName::-webkit-scrollbar {
-    width: 100px;     Tamaño del scroll en vertical
-    height: 200px;    Tamaño del scroll en horizontal
-    display: none;
-    background-color: green;
-} */
+
 
 .championName::-webkit-scrollbar{
     width: 0.5rem;
@@ -106,4 +97,12 @@ form input {
     width: 30px;
     height: 30px;
 
+}
+
+.postButton:hover{
+    color: rgb(235, 235, 235);
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    transition: opacity .2s linear;
+    border: none;
 }

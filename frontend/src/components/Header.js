@@ -175,6 +175,7 @@ const Header = (props) => {
               {props.userStatus ? (
                 <>
                   {props.userStatus && !props.userStatus.guest ? (
+                    <>
                     <Link
                       to={`/profile/${
                         props.userStatus.username || props.userStatus.user
@@ -182,6 +183,14 @@ const Header = (props) => {
                     >
                       <DropdownItem className="accountBox text-white">Profile</DropdownItem>
                     </Link>
+                    <Link
+                      to={`/settings/${
+                        props.userStatus.username || props.userStatus.user
+                      }`}
+                    >
+                      <DropdownItem className="accountBox text-white">Settings</DropdownItem>
+                    </Link>
+                    </>
                   ) : null}
                   {props.userStatus.admin && <Link
                       to='/admin'
@@ -233,8 +242,6 @@ const Header = (props) => {
                 Esports
               </Link>
             </NavItem>
-            {/* <input placeholder='Search' type='text' className=' px-2 rounded-pil'/> */}
-            {/* <Input placeholder="Search" bsSize="sm" className="mx-1 rounded-pill inputSize px-5" /> */}
           </Nav>
         </Collapse>
         <div className="divSearch ">

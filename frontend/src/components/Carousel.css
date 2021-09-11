@@ -1,7 +1,5 @@
 @font-face {
   font-family: "BeaufortforLOL-Bold.woff";
-  /* font-style: normal; */
-  /* font-weight: normal; */
   src: url("../assets/BeaufortforLOL-Bold.woff.ttf")
     format("woff", "OneType", "TrueType");
 }
@@ -14,9 +12,8 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  /* background: rgb(253, 203, 203); */
+ 
 
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -52,7 +49,6 @@
 .carouselContainer {
   height: 100vh;
   width: 100%;
-  /* background: coral; */
   /* temporal para trabajar con las slides */
 }
 
@@ -102,21 +98,6 @@ div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   align-items: center;
   position: relative;
 }
-
-/* .carouselTitle h2 {
-  font-family: "BeaufortforLOL-Bold.woff";
-  font-size: 4rem;
-  font-weight: bold;
-}
-
-.carouselTitle p {
-  font-family: "Secular One", sans-serif;
-  font-size: 2rem;
-  letter-spacing: 0, 5px;
-  margin: 0;
-  margin-bottom: -3%;
-  text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
-} */
 
 .carousel-indicators button {
   display: none;
@@ -211,7 +192,6 @@ div.topVideos {
 
 @media (max-width: 768px) {
   .boxTitleCarousel{
-    /* margin-top: 4%; */
     margin-bottom: -25%;
   }
 

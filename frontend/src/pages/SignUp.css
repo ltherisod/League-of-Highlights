@@ -100,10 +100,10 @@ width: 2em;
 div.buttonContainer span {
     display: none!important;
 }
-
+/* 
 .buttonContainer .googleButton{
     width:70%!important
-} 
+}  */
 
 .signIn, .riotIcon{
     display: flex;

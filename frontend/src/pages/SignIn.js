@@ -1,11 +1,11 @@
 import "./SignIn.css"
 import Header from "../components/Header"
 import { connect } from "react-redux"
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import userActions from "../redux/actions/userActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
-import toast, { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from "react-hot-toast"
 
 const SignIn = (props) => {
   const [userData, setUserData] = useState({
@@ -17,12 +17,13 @@ const SignIn = (props) => {
     window.scroll({
       top: 0,
       left: 0,
-      behavior: "smooth"
-    });
-  };
+      behavior: "smooth",
+    })
+  }
 
-  useEffect(()=>{
+  useEffect(() => {
     toTop()
+    // eslint-disable-next-line
   },[])
 
   const inputHandler = (e) => {
@@ -34,16 +35,26 @@ const SignIn = (props) => {
       toast.custom((t) => (
         <div
           className={`${
-            t.visible ? 'animate-enter' : 'animate-leave'
+            t.visible ? "animate-enter" : "animate-leave"
           } bg-black flex`}
-          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
         >
-          <img style={{ width: "60px", height: "60px"}}
+          <img
+            style={{ width: "60px", height: "60px" }}
             className="h-4 w-4 rounded-full"
             src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
             alt=""
           />
-          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
+          >
             empty fields!
           </p>
         </div>
@@ -52,38 +63,58 @@ const SignIn = (props) => {
     }
     try {
       const res = await props.logIn(userData)
-      if (!res.success){
+      if (!res.success) {
         return toast.custom((t) => (
           <div
             className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
+              t.visible ? "animate-enter" : "animate-leave"
             } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
           >
-            <img style={{ width: "60px", height: "60px"}}
+            <img
+              style={{ width: "60px", height: "60px" }}
               className="h-4 w-4 rounded-full"
               src="https://i.postimg.cc/g2dLtyDR/logOut.png"
               alt=""
             />
-            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
               {res.error}
             </p>
           </div>
         ))
-      } else{
+      } else {
         toast.custom((t) => (
           <div
             className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
+              t.visible ? "animate-enter" : "animate-leave"
             } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
           >
-            <img style={{ width: "60px", height: "60px"}}
+            <img
+              style={{ width: "60px", height: "60px" }}
               className="h-4 w-4 rounded-full"
               src="https://i.postimg.cc/Y2JPJ0TM/success.png"
               alt=""
             />
-            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
               Welcome!
             </p>
           </div>
@@ -93,16 +124,26 @@ const SignIn = (props) => {
       toast.custom((t) => (
         <div
           className={`${
-            t.visible ? 'animate-enter' : 'animate-leave'
+            t.visible ? "animate-enter" : "animate-leave"
           } bg-black flex`}
-          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
         >
-          <img style={{ width: "60px", height: "60px"}}
+          <img
+            style={{ width: "60px", height: "60px" }}
             className="h-4 w-4 rounded-full"
             src="https://i.postimg.cc/g2dLtyDR/logOut.png"
             alt=""
           />
-          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
+          >
             {error}
           </p>
         </div>
@@ -123,39 +164,56 @@ const SignIn = (props) => {
           toast.custom((t) => (
             <div
               className={`${
-                t.visible ? 'animate-enter' : 'animate-leave'
+                t.visible ? "animate-enter" : "animate-leave"
               } bg-black flex`}
-              style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
             >
-              <img style={{ width: "60px", height: "60px"}}
+              <img
+                style={{ width: "60px", height: "60px" }}
                 className="h-4 w-4 rounded-full"
                 src="https://i.postimg.cc/g2dLtyDR/logOut.png"
                 alt=""
               />
-              <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-              {res.error}
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
+              >
+                {res.error}
               </p>
             </div>
           ))
-          props.history.push("/")
-        } else {
-          props.history.push("/")
-        }
+        } 
       })
       .catch((err) => {
         toast.custom((t) => (
           <div
             className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
+              t.visible ? "animate-enter" : "animate-leave"
             } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
           >
-            <img style={{ width: "60px", height: "60px"}}
+            <img
+              style={{ width: "60px", height: "60px" }}
               className="h-4 w-4 rounded-full"
               src="https://i.postimg.cc/g2dLtyDR/logOut.png"
               alt=""
             />
-            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
               {err.message}
             </p>
           </div>
@@ -221,7 +279,7 @@ const SignIn = (props) => {
                     // className="login-button googleButton "
                     className="googleButton"
                     clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
-                    buttonText="Sign In with Google"
+                    buttonText="Sign in with Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
                     cookiePolicy={"single_host_origin"}
@@ -235,15 +293,17 @@ const SignIn = (props) => {
           </p>
         </div>
       </div>
-      <Toaster 
+      <Toaster
         containerStyle={{
           top: 80,
           left: 20,
           bottom: 20,
-          right: 20,}}
+          right: 20,
+        }}
         toastOptions={{
           duration: 1500,
-      }}/>
+        }}
+      />
     </>
   )
 }

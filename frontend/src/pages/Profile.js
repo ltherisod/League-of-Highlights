@@ -10,7 +10,8 @@ import UploadVideo from "../components/UploadVideo"
 import BackHome from "../components/BackHome"
 import { FiRefreshCw, FiAlertTriangle, FiCheck } from "react-icons/fi"
 import toast, { Toaster } from 'react-hot-toast'
-import { Link } from "react-router-dom"
+import Verify from "../components/Verify"
+import "animate.css"
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
   const [loader, setLoader] = useState(true)
@@ -176,25 +177,25 @@ const Profile = (props) => {
               >
                 <div className="user">
                   <div className="frameIcon">
-                    <div className="avatar" style={{backgroundImage: `url(${showProfileData.icon})`, }}></div>
+                    <div className="animate__animated animate__fadeInUp animate__slower avatar" style={{backgroundImage: `url(${showProfileData.icon})`, }}></div>
                   </div>
-                  <div className="usernameProfile">
+                  <div className="animate__animated animate__fadeInUp animate__slower usernameProfile">
                     {props.match.params.username}
                   </div>
                 </div>
                 <div className="info">
                   <div
-                    className="rank"
+                    className="animate__animated animate__fadeInUp animate__slower rank"
                     style={{
                       backgroundImage: `url(${showProfileData.rank.image})`,
                     }}
                   ></div>
-                  <div className="rankNameProfile">
+                  <div className="animate__animated animate__fadeInUp animate__slower rankNameProfile">
                     {showProfileData.rank.name} {showProfileData.division}
                   </div>
                 </div>
                 <div
-                  className="tag"
+                  className="animate__animated animate__fadeInUp animate__slower tag"
                   style={{
                     backgroundImage: `url(${showProfileData.topChampions[0].tags[0].image})`,
                   }}
@@ -205,27 +206,29 @@ const Profile = (props) => {
                   <FiRefreshCw className="refresh" />
                 </button>
                 {console.log(userReportVisible)}
-                <button
-                  onClick={() => setUserReportVisible(!userReportVisible)}
-                >
-                  <FiAlertTriangle className="reportUser" />
-                </button>
-                {userReportVisible && (
-                  <>
-                    <input
-                    className="reportInput"
-                      type="text"
-                      ref={reportContent}
-                      placeholder="Why do you want to report this user?"
-                    ></input>
-                    <button onClick={reportHandler}>
-                      <FiCheck className="ok" />
-                    </button>
-                  </>
-                )}
+                <div className="boxReport">
+                  <button
+                    onClick={() => setUserReportVisible(!userReportVisible)}
+                  >
+                    <FiAlertTriangle className="reportUser" />
+                  </button>
+                  {userReportVisible && (
+                    <>
+                      <input
+                      className="reportInput"
+                        type="text"
+                        ref={reportContent}
+                        placeholder="Why do you want to report this user?"
+                      ></input>
+                      <button onClick={reportHandler}>
+                        <FiCheck className="ok" />
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
-            <div className="championBox">
+            <div className="animate__animated animate__fadeInUp animate__slower championBox">
               <div
                 className="dividerTopProfile"
                 style={{
@@ -252,14 +255,9 @@ const Profile = (props) => {
           </div>
           {/* Protegida la sección del formulario para agregar video */}
           {showProfileData._id === props.userData._id &&
-          props.userData.verified ? (
-            <UploadVideo />
-          ) : (
-            <p>
-              Please <Link to="/settings">verify</Link> your account to upload a
-              video.
-            </p>//poner algo lindo para verify
-          )}
+          props.userData.verified && <UploadVideo />}
+          {showProfileData._id === props.userData._id &&
+          !props.userData.verified && <Verify/>}
           <div className="boxVideos">
             <Videos
               className="videoPost"
