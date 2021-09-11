@@ -4,9 +4,12 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: String,
   password: String,
-  username: { type: String },
   guest: { type: Boolean, required: true, default: true },
   admin: { type: Boolean, default: false },
+  google: { type: Boolean, default: false },
+  verified: { type: Boolean, default: false },
+  verifyCode: { type: String, required: true },
+  username: { type: String },
   topChampions: [{ type: mongoose.Types.ObjectId, ref: "champion" }],
   rank: { type: mongoose.Types.ObjectId, ref: "rank" },
   division: String,
@@ -19,9 +22,6 @@ const userSchema = new mongoose.Schema({
   reports: [
     { user: { type: mongoose.Types.ObjectId, ref: "user" }, content: String },
   ],
-  google: { type: Boolean, default: false },
-  verified: { type: Boolean, default: false },
-  verifyCode: { type: String, required: true },
 })
 
 const User = mongoose.model("user", userSchema)

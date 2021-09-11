@@ -30,32 +30,35 @@ const usersControllers = {
         password: hashedPass,
         google: googleFlag,
         verifyCode,
+        verified: googleFlag,
       })
 
-      // send mail
-      transport.transport.sendMail(
-        transport.options(
-          email,
-          "Confirm your new League of Highlights account",
-          `<div>
-              <h2>You're almost finished, ${name}!</h2>
-              <p>To verify your account, please enter this verification code:</p>
-              <p>${verifyCode}</p>
-          </div>`
-        ),
-        (err, info) => {
-          if (err) {
-            console.log(err)
-            return res.json({
-              success: false,
-              response: null,
-              error: err.message,
-            })
-          }
-          res.json({ success: true, response: info, error: null })
-        }
-      )
       const user = await newUser.save()
+      // send mail
+      if (!user.google) {
+        transport.transport.sendMail(
+          transport.options(
+            email,
+            "Confirm your new League of Highlights account",
+            `<div>
+                <h2>You're almost finished, ${name}!</h2>
+                <p>To verify your account, please enter this verification code:</p>
+                <p>${verifyCode}</p>
+            </div>`
+          ),
+          (err, info) => {
+            if (err) {
+              console.log(err)
+              return res.json({
+                success: false,
+                response: null,
+                error: err.message,
+              })
+            }
+            res.json({ success: true, response: info, error: null })
+          }
+        )
+      }
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         process.env.SECRETKEY
