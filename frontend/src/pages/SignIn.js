@@ -1,7 +1,7 @@
 import "./SignIn.css"
 import Header from "../components/Header"
 import { connect } from "react-redux"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import userActions from "../redux/actions/userActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
@@ -12,6 +12,18 @@ const SignIn = (props) => {
     email: "",
     password: "",
   })
+
+  const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  };
+
+  useEffect(()=>{
+    toTop()
+  },[])
 
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -28,7 +40,7 @@ const SignIn = (props) => {
         >
           <img style={{ width: "60px", height: "60px"}}
             className="h-4 w-4 rounded-full"
-            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            src="https://i.postimg.cc/mrHj3y29/success2.png"
             alt=""
           />
           <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>

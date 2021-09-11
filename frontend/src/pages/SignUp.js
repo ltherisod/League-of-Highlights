@@ -2,7 +2,7 @@ import "./SignUp.css"
 import Header from "../components/Header"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
-import { useRef, useState } from "react"
+import { useRef, useState,useEffect } from "react"
 import championsActions from "../redux/actions/championsActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
@@ -31,6 +31,18 @@ const SignUp = (props) => {
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
   }
+
+  const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+
+  useEffect(() => {
+    toTop()
+  }, [])
 
   const createHandler = async () => {
     if (Object.values(userData).some((value) => value === "")) {

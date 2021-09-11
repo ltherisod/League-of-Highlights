@@ -7,8 +7,20 @@ import Carousel from "../components/Carousel"
 import CallToAction from "../components/CallToAction"
 import CarouselAkali from "../components/CarouselAkali"
 import "./Home.css"
+import {useEffect } from "react"
 
 const Home = (props) => {
+  const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+    })
+  }
+
+  useEffect(() => {
+    toTop()
+  }, [])
+
   return (
     <>
       <div className="bodyBackground" style={{backgroundImage:"url('https://i.postimg.cc/wTQ3BSmJ/nuevolala.png')"}}>
