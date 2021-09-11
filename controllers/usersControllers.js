@@ -85,17 +85,21 @@ const usersControllers = {
     try {
       const { email, password, googleFlag } = req.body
       const userInBlackList = await BlackList.findOne({ email })
-      if (userInBlackList) throw new Error("Estás en la blacklist fermacanas.")
+      if (userInBlackList) throw new Error("Estás en la blacklist.")
+      console.log(email)
       const user = await User.findOne({ email: email })
         .populate({
           path: "topChampions",
           populate: { path: "tags" },
         })
         .populate("rank")
+      console.log(user)
       if (!user) throw new Error("Email and/or password incorrect")
       if (user.google && !googleFlag) {
         throw new Error("You  have a Google´s account, please log in there")
       }
+      if (!user.google && googleFlag)
+        throw new Error("You cannot login with google.")
       const secretPassword = await bcryptjs.compare(password, user.password)
       if (!secretPassword) throw new Error("Email and/or password incorrect")
       const token = jwt.sign(
