@@ -39,25 +39,35 @@
     width: 9rem;
     height: 2.5rem;
     padding: 1%;
-    background: rgb(224,191,122);
-    background: linear-gradient(90deg, rgba(224,191,122,1) 30%, rgba(149,118,62,1) 100%);
+    background: rgb(0, 0, 0);
+    color: whitesmoke;
     border: none;
-    box-shadow: 6px 12px 17px 0px rgba(0,0,0,0.51);
-    -webkit-box-shadow: 6px 12px 17px 0px rgba(0,0,0,0.51);
-    -moz-box-shadow: 6px 12px 17px 0px rgba(0,0,0,0.51);
     -webkit-clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
     clip-path: polygon(88% 0, 100% 38%, 100% 100%, 0 99%, 0 0);
     font-family: 'Secular One', sans-serif;
     font-size: 1.3rem;
     letter-spacing: 0,5px;
     margin: 0;
-    /* margin-bottom: -3%; */
     text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
+    /* margin-bottom: 4rem; */
 }
 
-/* .videoCallToAction{
-  margin: 2rem;
-} */
+.buttonCall:hover{
+    background-color: rgb(255, 102, 255);
+    color: black;
+    transition: opacity .2s linear;
+}
+
+.callImage{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 90%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 1024px) {
 
@@ -76,15 +86,11 @@
   .mainCallToAction{
     flex-direction: column;
   }
-  .rock{
-    width: 90%;
-    height: 40vh;
-    margin-top: 0.5%;
+
+  .buttonCall{
+    margin-bottom: 0;
   }
-  .videoCallToAction{
-    width: 500px !important;
-    height: 350px !important;
-  }
+
 };
 
 @media (max-width: 500px) {

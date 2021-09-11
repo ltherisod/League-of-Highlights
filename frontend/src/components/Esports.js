@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { connect } from 'react-redux'
 import championsActions from "../redux/actions/championsActions"
 import { useEffect, useState } from "react"
+import "animate.css"
 
 const Esports = (props) => {
     const [rotations, setRotations] = useState([])
