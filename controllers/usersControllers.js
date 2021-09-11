@@ -1,5 +1,6 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
+const transport = require("../config/mail")
 const jwt = require("jsonwebtoken")
 const Icon = require("../models/Icon")
 const Champion = require("../models/Champion")
@@ -18,12 +19,42 @@ const usersControllers = {
       }
       if (userExists) throw new Error("Email already in use!")
       const hashedPass = await bcryptjs.hash(password, 10)
+      const verifyCode = Math.random()
+        .toString(36)
+        .replace(/[^a-z0-9]+/g, "")
+        .substr(1, 6)
+        .toUpperCase()
       const newUser = new User({
         name: name.toLowerCase(),
         email: email.toLowerCase(),
         password: hashedPass,
         google: googleFlag,
+        verifyCode,
       })
+
+      // send mail
+      transport.transport.sendMail(
+        transport.options(
+          email,
+          "Confirm your new League of Highlights account",
+          `<div>
+              <h2>You're almost finished, ${name}!</h2>
+              <p>To verify your account, please enter this verification code:</p>
+              <p>${verifyCode}</p>
+          </div>`
+        ),
+        (err, info) => {
+          if (err) {
+            console.log(err)
+            return res.json({
+              success: false,
+              response: null,
+              error: err.message,
+            })
+          }
+          res.json({ success: true, response: info, error: null })
+        }
+      )
       const user = await newUser.save()
       const token = jwt.sign(
         { _id: user._id, email: user.email },
@@ -69,19 +100,20 @@ const usersControllers = {
       )
       return res.json({
         success: true,
-        response: {
-          name: user.name,
-          icon: user.icon,
-          email: user.email,
-          topChampions: user.topChampions,
-          guest: user.guest,
-          rank: user.rank,
-          division: user.division,
-          username: user.username,
-          _id: user._id,
-          token,
-          admin: user.admin,
-        },
+        response: { ...user, token },
+        // {
+        //   name: user.name,
+        //   icon: user.icon,
+        //   email: user.email,
+        //   topChampions: user.topChampions,
+        //   guest: user.guest,
+        //   rank: user.rank,
+        //   division: user.division,
+        //   username: user.username,
+        //   _id: user._id,
+        //   token,
+        //   admin: user.admin,
+        // },
         error: null,
       })
     } catch (e) {
@@ -294,8 +326,8 @@ const usersControllers = {
         { $pull: { likes: req.params.id } },
         { new: true }
       )
-      const email = new BlackList({ email: user.email })
-      await email.save()
+      // const email = new BlackList({ email: user.email })
+      // await email.save()
       res.json({ success: true, response: user, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
@@ -343,6 +375,21 @@ const usersControllers = {
         { new: true }
       )
       res.json({ success: true, response: video, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  verifyCode: async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.params.id })
+      if (user.verifyCode !== req.body.verifyCode)
+        throw new Error("Invalid code.")
+      await User.findOneAndUpdate(
+        { _id: req.params.id },
+        { verified: true },
+        { new: true }
+      )
+      res.json({ success: true, response: user, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }

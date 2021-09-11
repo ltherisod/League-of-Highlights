@@ -100,6 +100,8 @@ router
     usersControllers.setAdmin
   )
 
+router.route("/verify/user/:id").put(usersControllers.verifyCode)
+
 // NO USAR SALVO CASO DE EMERGENCIA
 // router.route("/users/users/users").delete(usersControllers.deleteUsers)
 

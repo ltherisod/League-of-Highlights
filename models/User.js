@@ -20,6 +20,8 @@ const userSchema = new mongoose.Schema({
     { user: { type: mongoose.Types.ObjectId, ref: "user" }, content: String },
   ],
   google: { type: Boolean, default: false },
+  verified: { type: Boolean, default: false },
+  verifyCode: { type: String, required: true },
 })
 
 const User = mongoose.model("user", userSchema)

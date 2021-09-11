@@ -19,6 +19,23 @@ const userActions = {
       }
     }
   },
+  verifyCode: (code) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.put(
+          `${HOST}/api/verify/user/${getState().user.user._id}`,
+          { verifyCode: code }
+        )
+        if (res.data.success) {
+          dispatch({ type: "VERIFY_CODE", payload: res.data.response })
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
 
   logIn: (userData) => {
     return async (dispatch, getState) => {
