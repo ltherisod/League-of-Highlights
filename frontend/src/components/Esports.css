@@ -89,10 +89,18 @@ div.news {
     width: 20vw;
 }
 
+.rotationsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    min-height: 90vh;
+}
+
 .rotationsCarousel {
     display: flex;
     justify-content: space-around;
-    width: 95%;
+    width: 100%;
     height: 90vh;
     padding: 1rem;
     border-width: 3px;
@@ -141,85 +149,113 @@ div.news {
     background-size: contain;
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width:1024px) {
     .titleRotation{
-        width: 70%;
+        width: 45%;
     }
+    .rotationImg{
+        width: 100%;
+        height: 80vh;
+        padding: 0;
+        border-image: none;
+    }
+    .rotationsCarousel{
+        width: 100%;
+        height: 80vh;
+        border: none;
+    }
+    .rotationsContainer{
+        width: 100%;
+        height: 80vh;
+    }
+    .dividerButtom, .dividerTop {
+        display: none;
+    }
+}
 
+@media screen and (max-width:768px) {
+    .titleRotation{
+        width: 55%;
+    }
     .rotationImg{
         width: 100%;
         height: 50vh;
         padding: 0;
         border-image: none;
     }
-
     .rotationsCarousel{
         width: 100%;
         height: 50vh;
         border: none;
     }
-
     .rotationsContainer{
         width: 100%;
         height: 50vh;
+        margin-bottom: -60%;
     }
-    
     .dividerButtom, .dividerTop {
         display: none;
     }
-
     .news{
-        margin-bottom: -50%;
+        margin-bottom: -10%;
     }
 }
 
-/* @media screen and (max-width:900px) {
-    .socialBox {
-        width: 30vw;
-    }
-}
-
-@media screen and (max-width:1050px) {
-    div.rotationsContainer {
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
-    }
-
-    div.rotation {
-        width: 30rem;
-        height: 20rem;
-    }
-
+@media screen and (max-width:500px) {
     .titleRotation{
-     margin-bottom:5vh;
-     font-size: 8vw;
-     height:20vh
+        width: 60%;
     }
-
-    .rotationsCarousel {
-        width: 95%;
-        background-size: 0; 
-    }
-
-    .carouselBorder{
-        background-size: 0!important;
-     display:none!important;   
-    }    
-
     .rotationImg{
-        background-size:0!important;
+        width: 100%;
+        height: 50vh;
+        padding: 0;
+        border-image: none;
     }
+    .rotationsCarousel{
+        width: 100%;
+        height: 50vh;
+        border: none;
+    }
+    .rotationsContainer{
+        width: 100%;
+        height: 50vh;
+        margin-bottom: -60%;
+    }
+    .dividerButtom, .dividerTop {
+        display: none;
+    }
+    .news{
+        margin-bottom: -80%;
+    }
+}
 
-    .rotationsCarousel {
-        width: 110%;
-        min-height: 90vh;
-        padding: 0rem;
-        border-width: 3px;
-        border-style: solid;
-        border-image: none
+@media screen and (max-width:450px) {
+    .titleRotation{
+        width: 60%;
     }
-} */
+    .rotationImg{
+        width: 100%;
+        height: 50vh;
+        padding: 0;
+        border-image: none;
+    }
+    .rotationsCarousel{
+        width: 100%;
+        height: 50vh;
+        border: none;
+    }
+    .rotationsContainer{
+        width: 100%;
+        height: 50vh;
+        margin-bottom: -60%;
+    }
+    .dividerButtom, .dividerTop {
+        display: none;
+    }
+    .news{
+        margin-bottom: -90%;
+    }
+}
 
 @media screen and (max-width:700px) {
     .socialContent{
