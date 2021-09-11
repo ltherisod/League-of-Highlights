@@ -1,8 +1,12 @@
-input.reportInput {
+/* input.reportInput {
   width: 20rem;
   height: 10rem;
-}
+} */
 
 form.reportForm {
-    position: absolute;
+    display: flex;
+}
+
+.ok{
+  cursor: pointer;
 }

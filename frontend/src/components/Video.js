@@ -6,7 +6,7 @@ import ReportForm from "./ReportForm"
 import { useState } from "react"
 import "./Videos.css"
 import { FiAlertTriangle, FiTrash2 } from "react-icons/fi"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 const Video = (props) => {
   const [showReport, setShowReport] = useState(false)
@@ -17,17 +17,23 @@ const Video = (props) => {
       localStorage.getItem("token")
     )
     if (res.success) {
-      return (
-        toast.custom((t) => (
-          <div
-            className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
-            } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
-          >
+      return (toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          
             <img style={{ width: "60px", height: "60px"}}
               className="h-4 w-4 rounded-full"
-              src="https://i.postimg.cc/g2dLtyDR/success.png"
+              src="https://i.postimg.cc/Y2JPJ0TM/success.png"
               alt=""
             />
             <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
@@ -40,22 +46,55 @@ const Video = (props) => {
     toast.custom((t) => (
       <div
         className={`${
-          t.visible ? 'animate-enter' : 'animate-leave'
+          t.visible ? "animate-enter" : "animate-leave"
         } bg-black flex`}
-        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        style={{
+          display: "flex",
+          alignContent: "center",
+          alignItems: "center",
+          padding: "5px 10px",
+          borderRadius: "35px",
+        }}
       >
-        <img style={{ width: "60px", height: "60px"}}
+        <img
+          style={{ width: "60px", height: "60px" }}
           className="h-4 w-4 rounded-full"
           src="https://i.postimg.cc/g2dLtyDR/logOut.png"
           alt=""
         />
-        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+        <p
+          className="text-sm font-medium text-white"
+          style={{ marginBottom: 0 }}
+        >
           We couldn't delete the video
         </p>
       </div>
     ))
   }
 
+  const confirm = () => {
+    return (
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "15px 20px", borderRadius: "35px"}}
+        >
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            Delete video? 
+          </p>
+          <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            Yes
+          </button>
+          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            No
+          </button>
+        </div>
+      ))
+      
+    )
+    }
 
   const reportHandler = async () => {
     setShowReport(!showReport)
@@ -100,7 +139,7 @@ const Video = (props) => {
         </div>
         <div className="buttonsProfile">
           {props.user._id === props.video.owner && (
-            <button type="button" onClick={deleteHandler}>
+            <button type="button" onClick={confirm}>
               <FiTrash2 className="delete" />
             </button>
           )}
@@ -113,15 +152,6 @@ const Video = (props) => {
       <div className="commentsfather">
         <Comments video={props.video} />
       </div>
-      <Toaster 
-        containerStyle={{
-          top: 80,
-          left: 20,
-          bottom: 20,
-          right: 20,}}
-        toastOptions={{
-          duration: 1500,
-      }}/>
     </div>
   )
 }

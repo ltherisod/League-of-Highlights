@@ -2,6 +2,7 @@ import "./ReportForm.css"
 import { useRef } from "react"
 import videosActions from "../redux/actions/videosActions"
 import { connect } from "react-redux"
+import {  FiCheck } from "react-icons/fi"
 
 const ReportForm = (props) => {
   const input = useRef(null)
@@ -19,15 +20,13 @@ const ReportForm = (props) => {
   return (
     <>
       <form className="reportForm">
-        <textarea
+        <input
           //   type="textArea"
           ref={input}
           className="reportInput"
           placeholder="Why are you reporting this video?"
         />
-        <button type="button" onClick={reportVideoHandler}>
-          Send
-        </button>
+            <FiCheck onClick={reportVideoHandler} className="ok" />
       </form>
     </>
   )

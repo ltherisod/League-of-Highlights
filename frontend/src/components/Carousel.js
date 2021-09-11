@@ -81,7 +81,7 @@ const Carousel = (props) => {
                     volume={0}
                     muted={true}
                     controls={false}
-                    origin={"http://localhost3000"}
+                    origin={"http://localhost:3000"}
                   />
                 </div>
               </div>

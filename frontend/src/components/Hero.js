@@ -9,10 +9,9 @@ const Hero = () => {
           <source src="/assets/heronew.mp4" type="video/mp4" />
           </video>
           <div className="contentVideo">
-          <Jumbotron className='d-flex justify-content-center align-items-center flex-column'>
-          {/* <div className="shadowVideo" style={{backgroundImage:"url('https://i.postimg.cc/jqv6g9y6/difuminadonegro.png')"}}></div> */}
-          <div className="heroTitle">
-              <img  src="./assets/LOHNEONNEGRO.png" alt="LOH"/>
+          <Jumbotron className='d-flex justify-content-center align-items-center'>
+          <div className="glitch">
+              {/* <img  src="https://i.postimg.cc/XqG8WMvg/LOHNEONNEGRO1.png" alt="LOH"/> */}
           </div>
         </Jumbotron>
       </div>

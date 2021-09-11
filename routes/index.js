@@ -100,6 +100,14 @@ router
     usersControllers.setAdmin
   )
 
+router.route("/verify/user/:id").put(usersControllers.verifyCode)
+router
+  .route("/unverified")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.getUnverifiedAccounts
+  )
 // NO USAR SALVO CASO DE EMERGENCIA
 // router.route("/users/users/users").delete(usersControllers.deleteUsers)
 
@@ -115,7 +123,7 @@ router
   .route("/rank")
   .get(ranksControllers.getRanks)
   .post(ranksControllers.addRank)
-
+  .put(ranksControllers.updateRank)
 // VIDEO ROUTES
 
 router
