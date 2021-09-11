@@ -20,10 +20,11 @@ const Videos = (props) => {
   useEffect(() => {
     getVideos()
     // eslint-disable-next-line
+    
   }, [props.username])
 
   if (loading) return <p>Loading...</p>
-  if (!props.userVideos.length) return <NoVideos/>
+  if (!props.userVideos.length && props.user.verified) return <NoVideos/>
   // Después de esto hay que renderizar desde props.userVideos
   return (
     <>
@@ -40,6 +41,7 @@ const mapStateToProps = (state) => {
   return {
     // userId: state.user.user,
     userVideos: state.videos.userVideos,
+    user: state.user.user
   }
 }
 

@@ -175,6 +175,7 @@ const Header = (props) => {
               {props.userStatus ? (
                 <>
                   {props.userStatus && !props.userStatus.guest ? (
+                    <>
                     <Link
                       to={`/profile/${
                         props.userStatus.username || props.userStatus.user
@@ -182,6 +183,14 @@ const Header = (props) => {
                     >
                       <DropdownItem className="accountBox text-white">Profile</DropdownItem>
                     </Link>
+                    <Link
+                      to={`/settings/${
+                        props.userStatus.username || props.userStatus.user
+                      }`}
+                    >
+                      <DropdownItem className="accountBox text-white">Settings</DropdownItem>
+                    </Link>
+                    </>
                   ) : null}
                   {props.userStatus.admin && <Link
                       to='/admin'
