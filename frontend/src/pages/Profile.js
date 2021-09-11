@@ -9,6 +9,7 @@ import Videos from "../components/Videos"
 import UploadVideo from "../components/UploadVideo"
 import BackHome from "../components/BackHome"
 import { FiRefreshCw, FiAlertTriangle } from "react-icons/fi"
+import toast, { Toaster } from 'react-hot-toast'
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -44,14 +45,38 @@ const Profile = (props) => {
 
   const reportHandler = async () => {
     if (!reportContent.current.value) {
-      alert("Escribe la razón flojo de mierda.")
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            empty field!
+          </p>
+        </div>
+      ))
       return false
     }
-    const res = await props.reportUser(
-      showProfileData._id,
-      reportContent.current.value
-    )
-    console.log(res)
+    try{
+      const res = await props.reportUser(
+        showProfileData._id,
+        reportContent.current.value
+      )
+      if(res.succes){
+        
+      }
+      console.log(res)
+    }catch(error){
+
+    }
+    
   }
 
   useEffect(() => {
@@ -129,7 +154,7 @@ const Profile = (props) => {
                 <button onClick={refreshHandler}>
                   <FiRefreshCw className="refresh" />
                 </button>
-
+                {console.log(userReportVisible)}
                 <button
                   onClick={() => setUserReportVisible(!userReportVisible)}
                 >
@@ -192,6 +217,15 @@ const Profile = (props) => {
         </main>
         <Footer />
       </div>
+      <Toaster 
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </>
   )
 }

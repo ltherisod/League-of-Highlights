@@ -66,7 +66,6 @@ const Header = (props) => {
       }
       try {
         const res = await props.getProfileByName(inputHandler.current.value)
-        console.log(res)
         if (!res.success) {
           return (
             toast.custom((t) => (

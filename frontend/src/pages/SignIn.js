@@ -5,7 +5,7 @@ import { useState,useEffect } from "react"
 import userActions from "../redux/actions/userActions"
 import { Link } from "react-router-dom"
 import GoogleLogin from "react-google-login"
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast'
 
 const SignIn = (props) => {
   const [userData, setUserData] = useState({

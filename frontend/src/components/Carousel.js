@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import { useEffect, useState } from "react"
 import videosActions from "../redux/actions/videosActions"
 import ReactPlayer from "react-player"
+import toast from 'react-hot-toast'
 
 SwiperCore.use([Navigation, Pagination])
 
@@ -15,11 +16,26 @@ const Carousel = (props) => {
   useEffect(() => {
     const getVideos = async () => {
       const res = await props.getTopVideos()
-      console.log(res)
       if (res.success) {
         setVideos(res.response)
       } else {
-        console.log(res.error)
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              {res.error}
+            </p>
+          </div>
+        ))
       }
     }
     getVideos()
