@@ -251,6 +251,14 @@ const usersControllers = {
   },
   reportUser: async (req, res) => {
     try {
+      const alreadyReported = await User.findOne({ _id: req.params.id })
+      if (
+        alreadyReported.reports.some(
+          (report) => report.user.toString() === req.user._id.toString()
+        )
+      ) {
+        throw new Error("You already reported this user.")
+      }
       const user = await User.findOneAndUpdate(
         { _id: req.params.id },
         {

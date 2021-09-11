@@ -115,7 +115,7 @@ router
   .route("/rank")
   .get(ranksControllers.getRanks)
   .post(ranksControllers.addRank)
-
+  .put(ranksControllers.updateRank)
 // VIDEO ROUTES
 
 router
