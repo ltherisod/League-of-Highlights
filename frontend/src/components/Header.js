@@ -24,9 +24,6 @@ const Header = (props) => {
 
   const inputHandler = useRef()
   const createHandler = async () => {
-    // if (inputHandler.current.value === "" && !props.userStatus){
-    //   return alert("empty field")
-    // }
     if (!props.userStatus) {
       toast.custom((t) => (
         <div
@@ -47,23 +44,25 @@ const Header = (props) => {
       ))
     } else {
       if (inputHandler.current.value === "") {
-        toast.custom((t) => (
-          <div
-            className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
-            } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
-          >
-            <img style={{ width: "60px", height: "60px"}}
-              className="h-4 w-4 rounded-full"
-              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
-              alt=""
-            />
-            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-              Please complete the field!
-            </p>
-          </div>
-        ))
+        return (
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? 'animate-enter' : 'animate-leave'
+              } bg-black flex`}
+              style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+            >
+              <img style={{ width: "60px", height: "60px"}}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+                Please complete the field!
+              </p>
+            </div>
+          ))
+        )
       }
       try {
         const res = await props.getProfileByName(inputHandler.current.value)
@@ -83,7 +82,7 @@ const Header = (props) => {
                   alt=""
                 />
                 <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-                  User not found, please try another one
+                  The user doesn't exist
                 </p>
               </div>
             ))
@@ -116,7 +115,7 @@ const Header = (props) => {
           props.history.push(`/`)
         }
       } catch (e) {
-        alert(e.message)
+        toast(e.message)
       }
     }
   }

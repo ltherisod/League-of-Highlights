@@ -8,8 +8,6 @@ import GoogleLogin from "react-google-login"
 import toast, { Toaster } from 'react-hot-toast';
 
 const SignIn = (props) => {
-  // const [errorEmail, setErrorEmail] = useState(null)
-  // const [errorPass, setErrorPass] = useState(null)
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -60,9 +58,43 @@ const SignIn = (props) => {
             </p>
           </div>
         ))
-      } 
-    } catch (e) {
-      console.log(e)
+      } else{
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/Y2JPJ0TM/success.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Welcome!
+            </p>
+          </div>
+        ))
+      }
+    } catch (error) {
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            {error}
+          </p>
+        </div>
+      ))
     }
   }
 
@@ -76,15 +108,46 @@ const SignIn = (props) => {
       .logIn(user)
       .then((res) => {
         if (!res.success) {
-          alert("user doesn´t exits")
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? 'animate-enter' : 'animate-leave'
+              } bg-black flex`}
+              style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+            >
+              <img style={{ width: "60px", height: "60px"}}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              {res.error}
+              </p>
+            </div>
+          ))
           props.history.push("/")
         } else {
-          props.history.push("/community")
+          props.history.push("/")
         }
       })
       .catch((err) => {
-        console.log("cai en google catch")
-        console.log(err.message)
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              {err.message}
+            </p>
+          </div>
+        ))
       })
   }
 

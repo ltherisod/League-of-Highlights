@@ -18,12 +18,8 @@ const Profile = (props) => {
 
   async function fetchUser() {
     try {
-      const response = await props.getProfileByName(props.match.params.username) // aca, llenar variable de estado show
-      const refreshedUser = await props.refresh( // el refresh lo dispara el boton, actualiza showProfileData
-        response.response?.username,
-        response.response?._id
-      )
-      return refreshedUser
+      const response = await props.getProfileByName(props.match.params.username)
+      return response
     } catch (error) {
       console.log(error)
     }

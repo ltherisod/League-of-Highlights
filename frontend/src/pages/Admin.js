@@ -65,46 +65,53 @@ const Admin = (props) => {
   return (
     <>
       <Header {...props} />
-      <div className="containerAdmin">
-        <h3>Van users</h3>
-        {reportedUsers.map((user) => (
-          <div key={user._id} className="van">
-            <p>
-              <Link to={`/profile/${user.username}`}>{user.username}</Link> (
-              {user.email}) was reported {user.reports.length} times:
-            </p>
-            <ul>
-              {user.reports.map((report) => (
-                <li key={report._id}>{report.content}</li>
-              ))}
-            </ul>
-            <button onClick={() => deleteUser(user._id)}>Delete account</button>
-            <button onClick={() => dismissUserReport(user._id)}>Dismiss</button>
-          </div>
+      <div className="containerAdmin" style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
+        <div className="divBanUsers">
+            <h3>Ban users</h3>
+            {reportedUsers.map((user) => (
+              <div key={user._id} className="userToBan">
+                <p>
+                  <Link to={`/profile/${user.username}`}>{user.username}</Link> (
+                  {user.email}) was reported {user.reports.length} times:
+                </p>
+                <ul>
+                  {user.reports.map((report) => (
+                    <li key={report._id}>{report.content}</li>
+                  ))}
+                </ul>
+                <div className="buttonCont">
+                  <button className="deleteadm" onClick={() => deleteUser(user._id)}>Delete</button>
+                  <button className="dismissadm"onClick={() => dismissUserReport(user._id)}>Dismiss</button>
+                  </div>
+              </div>
         ))}
-        <h3>Van videos</h3>
-        {reportedVideos.map((video) => (
-          <div key={video._id} className="deleteVideo">
-            <p>{`The video "${video.title}" owned by ${video.owner.username} was reported ${video.reports.length} times:`}</p>
-            <ul>
-              {video.reports.map((report) => (
-                <li key={report._id}>{report.content}</li>
-              ))}
-            </ul>
-            <p>:video reported</p>
-            <button
-              onClick={() =>
-                deleteReportedVideo(video._id, localStorage.getItem("token"))
-              }
-            >
-              Delete
-            </button>
-            <button onClick={() => dismissVideoReport(video._id)}>
-              Dismiss
-            </button>
-          </div>
-        ))}
+        </div>
+        <div className="divBanVideos">
+            <h3>Ban videos</h3>
+            {reportedVideos.map((video) => (
+              <div key={video._id} className="videoToBan">
+                <p>{`The video "${video.title}" owned by ${video.owner.username} was reported ${video.reports.length} times:`}</p>
+                <ul>
+                  {video.reports.map((report) => (
+                    <li key={report._id}>{report.content}</li>
+                  ))}
+                </ul>
+                <div className="buttonCont">
+                  <button className="deleteadm"
+                  onClick={() =>
+                    deleteReportedVideo(video._id, localStorage.getItem("token"))
+                  }
+                >
+                  Delete
+                </button>
+                <button className="dismissadm" onClick={() => dismissVideoReport(video._id)}>
+                  Dismiss
+                </button>
+              </div>
+            </div>
+            ))}
       </div>
+    </div>
     </>
   )
 }

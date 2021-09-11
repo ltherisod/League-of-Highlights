@@ -91,10 +91,19 @@ div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   height: 10vh;
   background-repeat: no-repeat;
   background-size: contain;
-  margin-bottom: -5%;
+  padding-bottom: -5%;
 }
 
-.carouselTitle h2 {
+.boxTitleCarousel{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* .carouselTitle h2 {
   font-family: "BeaufortforLOL-Bold.woff";
   font-size: 4rem;
   font-weight: bold;
@@ -107,7 +116,7 @@ div.swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets {
   margin: 0;
   margin-bottom: -3%;
   text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
-}
+} */
 
 .carousel-indicators button {
   display: none;
@@ -160,16 +169,82 @@ div.topVideos {
   color: rgb(192, 149, 58);
   text-shadow: 4px 4px 8px rgba(0,0,0,0.6);
 }
+
+
+@media (max-width: 500px) {
+  .boxTitleCarousel{
+    margin-top: -15%;
+    margin-bottom: -70%;
+  }
+
+  .carouselTitle{
+    width: 60%;
+  }
+
+  .mainCarousel{
+    margin-top: 50%;
+    margin-bottom: -60%;
+  }
+
+  .dividerButtomCarousel{
+    width: 60%;
+    margin-top: -15%;
+  }
+
+  div.championCarousel{
+    background-size: 0;
+  }
+
+}
+
+@media (max-width: 450px) {
+  .boxTitleCarousel{
+    margin-top: -20%;
+    margin-bottom: -80%;
+  }
+
+  .carouselTitle{
+    width: 70%;
+  }
+
+  .mainCarousel{
+    margin-top: 60%;
+    margin-bottom: -70%;
+  }
+
+  .dividerButtomCarousel{
+    width: 70%;
+    margin-top: -20%;
+  }
+
+  div.championCarousel{
+    background-size: 0;
+    margin-left: 2%;
+  }
+
+  div.topVideos{
+    justify-content: center;
+    align-items: center;
+  }
+
+  .videoUser{
+    margin-left: 1%;
+  }
+
+  .carouselContainer{
+    width: 100%;
+  }
+}
+
 /* @media only screen and (width: 12rem) {
   .mainCarousel{
     margin-top:80%
   }
 } */
 
-@media screen and (max-width: 1050px) {
+/* @media screen and (min-width: 1050px) {
   .mainCarousel{
    background-size: 0;
-   /* margin:0px */
   }
 
   div .userBox {
@@ -192,13 +267,12 @@ div.topVideos {
 
   .titleCarouselHome {
     font-size: 3rem!important;
-    /* display:none */
   }
 
   div.championCarousel {
     background-size: 0;
   }
-}
+} */
 
 @media screen and (min-width: 1500px) {
   .mainCarousel{
@@ -206,4 +280,13 @@ div.topVideos {
     
   }
 }
+
+@media screen and (min-width: 1600px) {
+  .boxTitleCarousel{
+    margin-bottom:-10%
+    
+  }
+}
+
+
 

@@ -6,6 +6,7 @@ import ReportForm from "./ReportForm"
 import { useState } from "react"
 import "./Videos.css"
 import { FiAlertTriangle, FiTrash2 } from "react-icons/fi"
+import toast, { Toaster } from "react-hot-toast"
 
 const Video = (props) => {
   const [showReport, setShowReport] = useState(false)
@@ -16,13 +17,45 @@ const Video = (props) => {
       localStorage.getItem("token")
     )
     if (res.success) {
-      console.log("Video eliminado.")
-      return false
+      return (
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/success.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Video deleted!
+            </p>
+          </div>
+        ))
+      )
     }
-    alert("No pudimos eliminar el video.")
+    toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? 'animate-enter' : 'animate-leave'
+        } bg-black flex`}
+        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+      >
+        <img style={{ width: "60px", height: "60px"}}
+          className="h-4 w-4 rounded-full"
+          src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+          alt=""
+        />
+        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          We couldn't delete the video
+        </p>
+      </div>
+    ))
   }
 
-  const updateHandler = async () => {}
 
   const reportHandler = async () => {
     setShowReport(!showReport)
@@ -31,6 +64,7 @@ const Video = (props) => {
   let star = props.video.likes.includes(props.user._id)
     ? "/assets/star_fill.svg"
     : "/assets/star.svg"
+
   return (
     // <div className="videoContent" style={{backgroundImage:"url('https://i.postimg.cc/rszLM3Ft/news-banner-frame.png')"}}>
     <div className="videoContent">
@@ -79,6 +113,15 @@ const Video = (props) => {
       <div className="commentsfather">
         <Comments video={props.video} />
       </div>
+      <Toaster 
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </div>
   )
 }
