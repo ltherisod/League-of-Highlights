@@ -32,6 +32,27 @@ const Comment = (props) => {
     console.log(res.error)
   }
 
+  const confirm = () => {
+    return (
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "15px 20px", borderRadius: "35px"}}
+        >
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            Delete comment? 
+          </p>
+          <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            Yes
+          </button>
+        </div>
+      ))
+      
+    )
+    }
+
   const updateHandler = async () => {
     setUpdateComment(!updateComment)
   }
@@ -68,7 +89,7 @@ const Comment = (props) => {
       )}
       {props.comment.author._id === props.user._id && (
         <div className="buttonsComment">
-          <button type="button" onClick={deleteHandler}>
+          <button type="button" onClick={confirm}>
             <FiTrash2 className="delete" />
           </button>
           <button type="button" onClick={updateHandler}>
@@ -76,7 +97,7 @@ const Comment = (props) => {
           </button>
         </div>
       )}
-      <Toaster 
+      {/* <Toaster 
         containerStyle={{
           top: 80,
           left: 20,
@@ -84,7 +105,7 @@ const Comment = (props) => {
           right: 20,}}
         toastOptions={{
           duration: 1500,
-      }}/>
+      }}/> */}
     </div>
   )
 }

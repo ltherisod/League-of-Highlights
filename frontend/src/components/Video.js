@@ -6,7 +6,7 @@ import ReportForm from "./ReportForm"
 import { useState } from "react"
 import "./Videos.css"
 import { FiAlertTriangle, FiTrash2 } from "react-icons/fi"
-import toast, { Toaster } from "react-hot-toast"
+import toast from "react-hot-toast"
 
 const Video = (props) => {
   const [showReport, setShowReport] = useState(false)
@@ -27,7 +27,7 @@ const Video = (props) => {
           >
             <img style={{ width: "60px", height: "60px"}}
               className="h-4 w-4 rounded-full"
-              src="https://i.postimg.cc/g2dLtyDR/success.png"
+              src="https://i.postimg.cc/Y2JPJ0TM/success.png"
               alt=""
             />
             <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
@@ -56,6 +56,26 @@ const Video = (props) => {
     ))
   }
 
+  const confirm = () => {
+    return (
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "15px 20px", borderRadius: "35px"}}
+        >
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            Delete video? 
+          </p>
+          <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            Yes
+          </button>
+        </div>
+      ))
+      
+    )
+    }
 
   const reportHandler = async () => {
     setShowReport(!showReport)
@@ -100,7 +120,7 @@ const Video = (props) => {
         </div>
         <div className="buttonsProfile">
           {props.user._id === props.video.owner && (
-            <button type="button" onClick={deleteHandler}>
+            <button type="button" onClick={confirm}>
               <FiTrash2 className="delete" />
             </button>
           )}
@@ -113,15 +133,6 @@ const Video = (props) => {
       <div className="commentsfather">
         <Comments video={props.video} />
       </div>
-      <Toaster 
-        containerStyle={{
-          top: 80,
-          left: 20,
-          bottom: 20,
-          right: 20,}}
-        toastOptions={{
-          duration: 1500,
-      }}/>
     </div>
   )
 }
