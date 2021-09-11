@@ -10,7 +10,7 @@ import UploadVideo from "../components/UploadVideo"
 import BackHome from "../components/BackHome"
 import { FiRefreshCw, FiAlertTriangle, FiCheck } from "react-icons/fi"
 import toast, { Toaster } from 'react-hot-toast'
-import { Link } from "react-router-dom"
+import Verify from "../components/Verify"
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
   const [loader, setLoader] = useState(true)
@@ -205,24 +205,26 @@ const Profile = (props) => {
                   <FiRefreshCw className="refresh" />
                 </button>
                 {console.log(userReportVisible)}
-                <button
-                  onClick={() => setUserReportVisible(!userReportVisible)}
-                >
-                  <FiAlertTriangle className="reportUser" />
-                </button>
-                {userReportVisible && (
-                  <>
-                    <input
-                    className="reportInput"
-                      type="text"
-                      ref={reportContent}
-                      placeholder="Why do you want to report this user?"
-                    ></input>
-                    <button onClick={reportHandler}>
-                      <FiCheck className="ok" />
-                    </button>
-                  </>
-                )}
+                <div className="boxReport">
+                  <button
+                    onClick={() => setUserReportVisible(!userReportVisible)}
+                  >
+                    <FiAlertTriangle className="reportUser" />
+                  </button>
+                  {userReportVisible && (
+                    <>
+                      <input
+                      className="reportInput"
+                        type="text"
+                        ref={reportContent}
+                        placeholder="Why do you want to report this user?"
+                      ></input>
+                      <button onClick={reportHandler}>
+                        <FiCheck className="ok" />
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
             <div className="championBox">
@@ -252,14 +254,9 @@ const Profile = (props) => {
           </div>
           {/* Protegida la sección del formulario para agregar video */}
           {showProfileData._id === props.userData._id &&
-          props.userData.verified ? (
-            <UploadVideo />
-          ) : (
-            <p>
-              Please <Link to="/settings">verify</Link> your account to upload a
-              video.
-            </p>//poner algo lindo para verify
-          )}
+          props.userData.verified && <UploadVideo />}
+          {showProfileData._id === props.userData._id &&
+          !props.userData.verified && <Verify/>}
           <div className="boxVideos">
             <Videos
               className="videoPost"

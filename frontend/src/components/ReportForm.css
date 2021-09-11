@@ -3,10 +3,14 @@
   height: 10rem;
 } */
 
-form.reportForm {
+div.reportForm {
     display: flex;
+    align-items: center;
+    
 }
 
 .ok{
   cursor: pointer;
+  margin-right: 1rem;
+  margin-left: 0.5rem;
 }

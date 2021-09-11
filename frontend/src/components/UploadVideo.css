@@ -1,4 +1,4 @@
-form, div.videoForm {
+.uploadForm, div.videoForm {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@ div.videoForm {
 }
 
 
-form input {
+.formInput {
     margin: 0.5rem;
 }
 

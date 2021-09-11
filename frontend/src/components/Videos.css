@@ -225,3 +225,10 @@ div.likeReport {
 .videolikes{
     cursor: pointer;
 }
+
+.reportVideoBox{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+}
