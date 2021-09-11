@@ -100,19 +100,8 @@ const Profile = (props) => {
                 }}
               >
                 <div className="user">
-                  <div
-                    className="frameIcon"
-                    // style={{
-                    //   backgroundImage:
-                    //     "url('https://i.postimg.cc/L6g8PMSW/portrait-frame.png')",
-                    // }}
-                  >
-                    <div
-                      className="avatar"
-                      style={{
-                        backgroundImage: `url(${showProfileData.icon})`,
-                      }}
-                    ></div>
+                  <div className="frameIcon">
+                    <div className="avatar" style={{backgroundImage: `url(${showProfileData.icon})`, }}></div>
                   </div>
                   <div className="usernameProfile">
                     {props.match.params.username}
