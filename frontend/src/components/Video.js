@@ -71,6 +71,9 @@ const Video = (props) => {
           <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
             Yes
           </button>
+          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            No
+          </button>
         </div>
       ))
       
