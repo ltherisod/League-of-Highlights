@@ -10,7 +10,7 @@ import UploadVideo from "../components/UploadVideo"
 import BackHome from "../components/BackHome"
 import { FiRefreshCw, FiAlertTriangle, FiCheck } from "react-icons/fi"
 import toast, { Toaster } from 'react-hot-toast'
-
+import { Link } from "react-router-dom"
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
   const [loader, setLoader] = useState(true)
@@ -251,7 +251,15 @@ const Profile = (props) => {
             </div>
           </div>
           {/* Protegida la sección del formulario para agregar video */}
-          {showProfileData._id === props.userData._id && <UploadVideo />}
+          {showProfileData._id === props.userData._id &&
+          props.userData.verified ? (
+            <UploadVideo />
+          ) : (
+            <p>
+              Please <Link to="/settings">verify</Link> your account to upload a
+              video.
+            </p>//poner algo lindo para verify
+          )}
           <div className="boxVideos">
             <Videos
               className="videoPost"
