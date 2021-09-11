@@ -248,12 +248,28 @@ text-transform: uppercase;
   color: rgb(189, 151, 81);
 }
 
+.refresh{
+   transition: 0.9s ease-in-out;
+}
+
+.refresh:hover{
+  transform: rotate(180deg)
+}
+
 .userSideBox{
   width:15%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.reportInput{
+    flex: 1 1;
+    background-color: transparent;
+    border-color: rgb(175, 140, 23);
+    border-radius: 5px;
+    color: whitesmoke;
 }
 
 @media(max-width:550px){

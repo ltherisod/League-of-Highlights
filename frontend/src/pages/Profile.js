@@ -8,7 +8,7 @@ import userActions from "../redux/actions/userActions"
 import Videos from "../components/Videos"
 import UploadVideo from "../components/UploadVideo"
 import BackHome from "../components/BackHome"
-import { FiRefreshCw, FiAlertTriangle } from "react-icons/fi"
+import { FiRefreshCw, FiAlertTriangle, FiCheck } from "react-icons/fi"
 import toast, { Toaster } from 'react-hot-toast'
 
 const Profile = (props) => {
@@ -213,11 +213,14 @@ const Profile = (props) => {
                 {userReportVisible && (
                   <>
                     <input
+                    className="reportInput"
                       type="text"
                       ref={reportContent}
                       placeholder="Why do you want to report this user?"
                     ></input>
-                    <button onClick={reportHandler}>Send</button>
+                    <button onClick={reportHandler}>
+                      <FiCheck className="ok" />
+                    </button>
                   </>
                 )}
               </div>
