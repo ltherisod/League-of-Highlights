@@ -11,6 +11,7 @@ import BackHome from "../components/BackHome"
 import { FiRefreshCw, FiAlertTriangle, FiCheck } from "react-icons/fi"
 import toast, { Toaster } from 'react-hot-toast'
 import Verify from "../components/Verify"
+import "animate.css"
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
   const [loader, setLoader] = useState(true)
@@ -176,25 +177,25 @@ const Profile = (props) => {
               >
                 <div className="user">
                   <div className="frameIcon">
-                    <div className="avatar" style={{backgroundImage: `url(${showProfileData.icon})`, }}></div>
+                    <div className="animate__animated animate__fadeInUp animate__slower avatar" style={{backgroundImage: `url(${showProfileData.icon})`, }}></div>
                   </div>
-                  <div className="usernameProfile">
+                  <div className="animate__animated animate__fadeInUp animate__slower usernameProfile">
                     {props.match.params.username}
                   </div>
                 </div>
                 <div className="info">
                   <div
-                    className="rank"
+                    className="animate__animated animate__fadeInUp animate__slower rank"
                     style={{
                       backgroundImage: `url(${showProfileData.rank.image})`,
                     }}
                   ></div>
-                  <div className="rankNameProfile">
+                  <div className="animate__animated animate__fadeInUp animate__slower rankNameProfile">
                     {showProfileData.rank.name} {showProfileData.division}
                   </div>
                 </div>
                 <div
-                  className="tag"
+                  className="animate__animated animate__fadeInUp animate__slower tag"
                   style={{
                     backgroundImage: `url(${showProfileData.topChampions[0].tags[0].image})`,
                   }}
@@ -227,7 +228,7 @@ const Profile = (props) => {
                 </div>
               </div>
             </div>
-            <div className="championBox">
+            <div className="animate__animated animate__fadeInUp animate__slower championBox">
               <div
                 className="dividerTopProfile"
                 style={{

@@ -107,3 +107,11 @@ div.videoForm {
     height: 30px;
 
 }
+
+.postButton:hover{
+    color: rgb(235, 235, 235);
+    background-color: rgb(0, 0, 0);
+    transform: scale(1.1);
+    transition: opacity .2s linear;
+    border: none;
+}

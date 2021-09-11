@@ -20,6 +20,7 @@ const Videos = (props) => {
   useEffect(() => {
     getVideos()
     // eslint-disable-next-line
+    
   }, [props.username])
 
   if (loading) return <p>Loading...</p>

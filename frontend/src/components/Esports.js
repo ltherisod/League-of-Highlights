@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import championsActions from "../redux/actions/championsActions"
 import { useEffect, useState } from "react"
 import "animate.css"
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 const Esports = (props) => {
     const [rotations, setRotations] = useState([])
@@ -20,6 +22,7 @@ const Esports = (props) => {
         }
         fetchRotations()
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        Aos.init({ duration: 2000 })
     }, [])
 
     if (!rotations) {
@@ -31,7 +34,7 @@ const Esports = (props) => {
     }
     
     return (
-        <div className="news">
+        <div className="news" >
             <div className="socialContent">
                 <p>JOIN OUR SOCIAL NETWORKS |</p>
                 <div className="socialBox">
@@ -54,7 +57,7 @@ const Esports = (props) => {
             </div>
             {/* <h2 className="titleRotation champH2">CHAMPIONS</h2>
             <h2 className="titleRotation">ROTATION</h2> */}
-            <div className="titleRotation" style={{backgroundImage:"url('https://i.postimg.cc/6p2q1Gg5/champions-Rotation.png')"}}></div>
+            <div className="titleRotation" data-aos="fade-up" data-aos-duration="3000" style={{backgroundImage:"url('https://i.postimg.cc/6p2q1Gg5/champions-Rotation.png')"}}></div>
             <div className="dividerTop" style={{backgroundImage:"url('https://i.postimg.cc/wMgzzdnf/dividertop.png')"}}></div>
             <div className="rotationsContainer">
                 <div className="carouselBorder" style={{backgroundImage:"url('https://i.postimg.cc/9MZDQC0y/marcovideo.png')"}}></div>

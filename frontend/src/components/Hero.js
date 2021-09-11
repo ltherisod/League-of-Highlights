@@ -1,5 +1,5 @@
-import { Jumbotron } from 'reactstrap'
 import "./Hero.css"
+import "animate.css"
 
 const Hero = () => {
 
@@ -10,7 +10,7 @@ const Hero = () => {
           </video>
           <div className="contentVideo">
           {/* <div className='glicthBox'> */}
-            <div className="glitch">
+            <div className="animate__animated animate__fadeInUp animate__slower glitch">
                 <img  src="https://i.postimg.cc/wj6dZ55f/LOHglitch.png" alt="LOH"/>
             </div>
           {/* </div> */}
