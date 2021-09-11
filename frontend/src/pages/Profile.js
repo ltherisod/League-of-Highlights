@@ -148,7 +148,7 @@ const Profile = (props) => {
       </div>
     )
   }
-  if (!Object.keys(showProfileData).length) return <p>Que no se rompa.</p> // Vuela después.
+  if (!Object.keys(showProfileData).length) return props.history.push('/error')
   return (
     <>
       <div
