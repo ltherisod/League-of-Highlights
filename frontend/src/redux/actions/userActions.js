@@ -19,11 +19,11 @@ const userActions = {
       }
     }
   },
-  verifyCode: (code) => {
+  verifyCode: (code, id) => {
     return async (dispatch, getState) => {
       try {
         const res = await axios.put(
-          `${HOST}/api/verify/user/${getState().user.user._id}`,
+          `${HOST}/api/verify/user/${id || getState().user.user._id}`,
           { verifyCode: code }
         )
         if (res.data.success) {
@@ -152,6 +152,22 @@ const userActions = {
         const res = await axios.get(`${HOST}/api/user/reports`)
         if (!res.data.success) throw new Error(res.data.error)
         return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+
+  getUnverifiedAccounts: () => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.get(`${HOST}/api/unverified`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        })
+        if (res.data.success) {
+          return { success: true, response: res.data.response, error: null }
+        }
+        throw new Error(res.data.error)
       } catch (e) {
         return { success: false, response: null, error: e.message }
       }

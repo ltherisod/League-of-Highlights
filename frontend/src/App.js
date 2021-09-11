@@ -12,6 +12,7 @@ import userActions from "./redux/actions/userActions"
 import Error from "./pages/Error"
 // import io from "socket.io-client"
 import { useEffect } from "react"
+import Settings from "./pages/Settings"
 
 function App(props) {
   const token = localStorage.getItem("token")
@@ -41,7 +42,8 @@ function App(props) {
         <Route exact path="/esports" component={EsportsPage} />
         <Route exact path="/admin" component={Admin} />
         <Route path="/error" component={Error} />
-        <Redirect to="/" />
+        <Route path="/settings" component={Settings} />
+        {props.userStatus ? <Redirect to="/" /> : <Redirect to="/error" />}
       </Switch>
     </BrowserRouter>
   )

@@ -70,6 +70,7 @@ const usersControllers = {
           token,
           guest: user.guest,
           admin: user.admin,
+          verified: user.verified,
         },
         error: null,
       })
@@ -100,20 +101,20 @@ const usersControllers = {
       )
       return res.json({
         success: true,
-        response: { ...user, token },
-        // {
-        //   name: user.name,
-        //   icon: user.icon,
-        //   email: user.email,
-        //   topChampions: user.topChampions,
-        //   guest: user.guest,
-        //   rank: user.rank,
-        //   division: user.division,
-        //   username: user.username,
-        //   _id: user._id,
-        //   token,
-        //   admin: user.admin,
-        // },
+        response: {
+          name: user.name,
+          icon: user.icon,
+          email: user.email,
+          topChampions: user.topChampions,
+          guest: user.guest,
+          rank: user.rank,
+          division: user.division,
+          username: user.username,
+          _id: user._id,
+          token,
+          admin: user.admin,
+          verified: user.verified,
+        },
         error: null,
       })
     } catch (e) {
@@ -218,6 +219,7 @@ const usersControllers = {
           division: user.division,
           topChampions: user.topChampions,
           admin: user.admin,
+          verified: user.verified,
         },
         error: null,
       })
@@ -234,7 +236,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-      const { icon, email, guest, _id, name, admin } = user
+      const { icon, email, guest, _id, name, admin, verified } = user
       if (!user.guest) {
         const { topChampions, rank, division, username } = user
         return res.json({
@@ -250,13 +252,14 @@ const usersControllers = {
             division,
             username,
             admin,
+            verified,
           },
           error: null,
         })
       }
       return res.json({
         success: true,
-        response: { icon, guest, _id, email, name, admin },
+        response: { icon, guest, _id, email, name, admin, verified },
         error: null,
       })
     } catch (e) {
@@ -384,14 +387,22 @@ const usersControllers = {
       const user = await User.findOne({ _id: req.params.id })
       if (user.verifyCode !== req.body.verifyCode)
         throw new Error("Invalid code.")
-      await User.findOneAndUpdate(
+      const userVerified = await User.findOneAndUpdate(
         { _id: req.params.id },
         { verified: true },
         { new: true }
       )
-      res.json({ success: true, response: user, error: null })
+      res.json({ success: true, response: userVerified, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  getUnverifiedAccounts: async (req, res) => {
+    try {
+      const users = await User.find({ verified: false })
+      res.json({ success: true, response: users, error: null })
+    } catch (e) {
+      res.json({ success: false, response: false, error: e.message })
     }
   },
 }
