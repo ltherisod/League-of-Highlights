@@ -258,10 +258,7 @@ const usersControllers = {
         )
       ) {
         throw new Error("You already reported this user.")
-      }else{
-        console.log(' cae en else de report')
       }
-
       const user = await User.findOneAndUpdate(
         { _id: req.params.id },
         {

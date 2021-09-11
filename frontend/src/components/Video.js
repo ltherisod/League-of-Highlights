@@ -17,14 +17,20 @@ const Video = (props) => {
       localStorage.getItem("token")
     )
     if (res.success) {
-      return (
-        toast.custom((t) => (
-          <div
-            className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
-            } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
-          >
+      return (toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          
             <img style={{ width: "60px", height: "60px"}}
               className="h-4 w-4 rounded-full"
               src="https://i.postimg.cc/Y2JPJ0TM/success.png"
@@ -40,16 +46,26 @@ const Video = (props) => {
     toast.custom((t) => (
       <div
         className={`${
-          t.visible ? 'animate-enter' : 'animate-leave'
+          t.visible ? "animate-enter" : "animate-leave"
         } bg-black flex`}
-        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        style={{
+          display: "flex",
+          alignContent: "center",
+          alignItems: "center",
+          padding: "5px 10px",
+          borderRadius: "35px",
+        }}
       >
-        <img style={{ width: "60px", height: "60px"}}
+        <img
+          style={{ width: "60px", height: "60px" }}
           className="h-4 w-4 rounded-full"
           src="https://i.postimg.cc/g2dLtyDR/logOut.png"
           alt=""
         />
-        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+        <p
+          className="text-sm font-medium text-white"
+          style={{ marginBottom: 0 }}
+        >
           We couldn't delete the video
         </p>
       </div>
