@@ -10,8 +10,16 @@ const Admin = (props) => {
   const [reportedUsers, setReportedUsers] = useState([])
   const [reportedVideos, setReportedVideos] = useState([])
 
+  const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+
   useEffect(() => {
-    window.scrollTo(0, 0)
+   toTop()
     props.getReportedUsers().then((res) => setReportedUsers(res.response))
     props.getReportedVideos().then((res) => setReportedVideos(res.response))
   }, [])

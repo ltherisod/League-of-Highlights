@@ -16,6 +16,14 @@ const Profile = (props) => {
   const [userReportVisible, setUserReportVisible] = useState(false)
   const reportContent = useRef(null)
 
+  const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+  }
+
   async function fetchUser() {
     try {
       const response = await props.getProfileByName(props.match.params.username)
@@ -48,7 +56,7 @@ const Profile = (props) => {
 
   useEffect(() => {
     setLoader(true)
-    window.scroll(0, 0)
+    toTop()
     fetchUser(showProfileData)
       .then((response) => {
         setShowProfileData(response.response || {})
