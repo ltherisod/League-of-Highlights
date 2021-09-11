@@ -2,13 +2,32 @@ import React, { useState, useRef } from "react"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 import { FiTrash2, FiEdit2, FiCheck } from "react-icons/fi"
+import { Toaster} from "react-hot-toast"
 
 const Comment = (props) => {
   const [updateComment, setUpdateComment] = useState(false)
   const deleteHandler = async () => {
     const res = await props.deleteComment(props.comment._id)
     if (res.success) {
-      console.log("Comentario eliminado")
+      return (
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Comment deleted
+            </p>
+          </div>
+        ))
+      )
     }
     console.log(res.error)
   }
@@ -57,6 +76,15 @@ const Comment = (props) => {
           </button>
         </div>
       )}
+      <Toaster 
+        containerStyle={{
+          top: 80,
+          left: 20,
+          bottom: 20,
+          right: 20,}}
+        toastOptions={{
+          duration: 1500,
+      }}/>
     </div>
   )
 }
