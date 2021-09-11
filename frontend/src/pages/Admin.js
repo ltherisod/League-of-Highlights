@@ -5,6 +5,7 @@ import videosActions from "../redux/actions/videosActions"
 import userActions from "../redux/actions/userActions"
 import { useEffect, useState, useRef } from "react"
 import { Link } from "react-router-dom"
+import toast, {Toaster} from "react-hot-toast"
 
 const Admin = (props) => {
   const [reportedUsers, setReportedUsers] = useState([])
@@ -24,21 +25,53 @@ const Admin = (props) => {
     props
       .getReportedUsers()
       .then((res) => setReportedUsers(res.response))
-      .catch((e) => alert("Necesito una tostada para el error."))
+      .catch((e) => toast("This didn't work!",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    ))
     props
       .getReportedVideos()
       .then((res) => setReportedVideos(res.response))
-      .catch((e) => alert("Necesito una tostada para el error."))
+      .catch((e) => toast("This didn't work!",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    ))
     props
       .getUnverifiedAccounts()
       .then((res) => setUnverifiedAccounts(res.response))
-      .catch((e) => alert("Necesito una tostada para el error."))
+      .catch((e) => toast("This didn't work!",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    ))
   }, [])
 
   const dismissUserReport = async (id) => {
     const res = await props.dismissUserReport(id)
     if (res.success) {
-      alert("Todo salió bien")
+      toast("Report dismissed!",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
       setReportedUsers(
         reportedUsers.filter((user) => user._id !== res.response._id)
       )
@@ -49,7 +82,15 @@ const Admin = (props) => {
   const dismissVideoReport = async (id) => {
     const res = await props.dismissVideoReport(id)
     if (res.success) {
-      alert("Todo salió bien.")
+      toast("Video report dismissed!",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
       setReportedVideos(
         reportedVideos.filter((video) => video._id !== res.response._id)
       )
@@ -58,13 +99,36 @@ const Admin = (props) => {
     alert(res.error)
   }
 
-  const deleteReportedVideo = async (id, token) => {
-    const res = await props.deleteVideo(id, token) // id del video a borrar.
+  const confirm = (callback, id) => {
+    return (
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "15px 20px", borderRadius: "35px"}}
+        >
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+            Delete? 
+          </p>
+          <button onClick={() => {callback(id) 
+            toast.dismiss(t.id)}} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            Yes
+          </button>
+          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            No
+          </button>
+        </div>
+      )) 
+    )
+    }
+
+  const deleteReportedVideo = async (id) => {
+    const res = await props.deleteVideo(id, localStorage.getItem("token")) // id del video a borrar.
     if (res.success) {
       setReportedVideos(
         reportedVideos.filter((video) => video._id !== res.response._id)
       )
-      alert("Video borrado.")
       return true
     }
     alert("Error: " + res.error)
@@ -75,7 +139,15 @@ const Admin = (props) => {
       setReportedUsers(
         reportedUsers.filter((user) => user._id !== res.response._id)
       )
-      alert("Usuario borrado.")
+      toast("User deleted successfully!",
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
       return true
     }
     alert("Error: " + res.error)
@@ -84,8 +156,33 @@ const Admin = (props) => {
   const onVerifyAccount = async (code, id) => {
     const res = await props.verifyCode(code, id)
     if (res.success) {
-      console.log(res.response)
-      alert("Cuenta verificada! :)")
+      
+      (toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Verified account! 
+            </p>
+          </div>
+        ))
+      )
+
       setUnverifiedAccounts(
         unverifiedAccounts.filter((acc) => acc._id !== res.response._id)
       )
@@ -120,7 +217,7 @@ const Admin = (props) => {
               <div className="buttonCont">
                 <button
                   className="deleteadm"
-                  onClick={() => deleteUser(user._id)}
+                  onClick={() => confirm(deleteUser, user._id)}
                 >
                   Delete
                 </button>
@@ -148,9 +245,8 @@ const Admin = (props) => {
                 <button
                   className="deleteadm"
                   onClick={() =>
-                    deleteReportedVideo(
-                      video._id,
-                      localStorage.getItem("token")
+                    confirm(deleteReportedVideo,
+                      video._id
                     )
                   }
                 >

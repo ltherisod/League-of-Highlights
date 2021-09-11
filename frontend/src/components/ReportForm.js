@@ -3,6 +3,7 @@ import { useRef } from "react"
 import videosActions from "../redux/actions/videosActions"
 import { connect } from "react-redux"
 import {  FiCheck } from "react-icons/fi"
+import toast from "react-hot-toast"
 
 const ReportForm = (props) => {
   const input = useRef(null)
@@ -12,10 +13,41 @@ const ReportForm = (props) => {
       content: input.current.value,
     })
     if (res.success) {
-      alert("Report enviado.")
-      return true
+      return toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } bg-black flex`}
+          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        >
+          <img style={{ width: "60px", height: "60px"}}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/PJkZRZL6/demonteemo.png"
+            alt=""
+          />
+          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          Successfully reported
+          </p>
+        </div>
+      ))
     }
-    alert("Error, no pudimos reportar este video.")
+    return toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? 'animate-enter' : 'animate-leave'
+        } bg-black flex`}
+        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+      >
+        <img style={{ width: "60px", height: "60px"}}
+          className="h-4 w-4 rounded-full"
+          src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
+          alt=""
+        />
+        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          Video wasn't reported
+        </p>
+      </div>
+    ))
   }
   return (
     <>
