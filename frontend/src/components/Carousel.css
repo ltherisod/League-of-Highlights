@@ -172,7 +172,7 @@ div.topVideos {
 
 @media (max-width: 1024px) {
   .boxTitleCarousel{
-    margin-bottom: -20%;
+    margin-bottom: -15%;
   }
 
   .carouselTitle{
@@ -180,7 +180,7 @@ div.topVideos {
   }
 
   .mainCarousel{
-    margin-bottom: -18%;
+    margin-bottom: -10%;
   }
 
   .dividerButtomCarousel{
@@ -211,8 +211,8 @@ div.topVideos {
 
 @media (max-width: 768px) {
   .boxTitleCarousel{
-    margin-top: 4%;
-    margin-bottom: -35%;
+    /* margin-top: 4%; */
+    margin-bottom: -25%;
   }
 
   .carouselTitle{
@@ -221,7 +221,7 @@ div.topVideos {
 
   .mainCarousel{
     margin-top: 28%;
-    margin-bottom: -30%;
+    margin-bottom: -20%;
   }
 
   .dividerButtomCarousel{
@@ -254,7 +254,7 @@ div.topVideos {
 @media (max-width: 500px) {
   .boxTitleCarousel{
     margin-top: -10%;
-    margin-bottom: -70%;
+    margin-bottom: -60%;
   }
 
   .carouselTitle{
@@ -291,7 +291,7 @@ div.topVideos {
 @media (max-width: 450px) {
   .boxTitleCarousel{
     margin-top: -20%;
-    margin-bottom: -80%;
+    margin-bottom: -70%;
   }
 
   .carouselTitle{
@@ -300,7 +300,7 @@ div.topVideos {
 
   .mainCarousel{
     margin-top: 60%;
-    margin-bottom: -70%;
+    margin-bottom: -60%;
   }
 
   .dividerButtomCarousel{
