@@ -14,12 +14,12 @@
     background-size: cover;
     background-position: center;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
-    margin-bottom: -2%;
+    /* margin-top: 5%;
+    margin-bottom: -2%; */
 }
 
 .buttonAndRock{
@@ -32,7 +32,7 @@
 .rock {
     width: 40rem;
     height: 25rem;
-    margin-top: -5%;
+    /* margin-top: -5%; */
 }
 
 .buttonCall { 
@@ -55,9 +55,9 @@
     text-shadow: 3px 2px 6px rgb(0 0 0 / 33%);
 }
 
-.videoCallToAction{
+/* .videoCallToAction{
   margin: 2rem;
-}
+} */
 
 @media (max-width: 1024px) {
 
@@ -104,16 +104,7 @@
 
 @media (max-width: 450px) {
 
-  .mainCallToAction{
-    flex-direction: column;
-  }
-  .rock{
-    width: 90%;
-    height: 30vh;
-    margin-top: 4%;
-  }
-
-  .videoCallToAction{
-    display: none!important;
-  }
-};
+ .mainCallToAction{
+   display: none;
+ }
+}
