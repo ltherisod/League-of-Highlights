@@ -6,8 +6,7 @@
 }
 
 .videoUser {
-    /* width: 360px !important;
-    height: 210px !important; */
+   
     margin: .5rem;
 } 
 
@@ -15,10 +14,7 @@ div.likeReport {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    /* padding-left: 4%;
-    padding-right: 4%;
-    padding-top: 2%;
-    padding-bottom: 2%; */
+   
 }
 
 .videoContent {

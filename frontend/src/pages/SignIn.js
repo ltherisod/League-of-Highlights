@@ -23,7 +23,8 @@ const SignIn = (props) => {
 
   useEffect(() => {
     toTop()
-  }, [])
+    // eslint-disable-next-line
+  },[])
 
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })

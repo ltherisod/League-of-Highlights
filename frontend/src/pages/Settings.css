@@ -1,0 +1,106 @@
+.settingsContainer{
+    width: 100%;
+    min-height: 90.2vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settingsDiv{
+    width: 40%;
+    background-color: white;
+    padding: 2rem;
+}
+
+.settingsDiv div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.settingsDiv h4{
+    color:#525252;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: bold;
+    font-size: 4vmin;
+}
+
+.newUser, .verification{
+    color: black;
+}
+
+.buttonSett{
+    width: 30%;
+    padding: .0 2em;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    color: transparent;
+    border-radius: 4px;
+    border: 2px solid rgba(0,0,0,0.05);
+    background-color:#1877f2;
+}
+
+.buttonSett p{
+    margin-top: .3em;
+    color:white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.mailverify {
+    margin-top: .5em;
+    font-size: 1.1rem;
+}
+
+.beerify img{
+    width: 50%;
+}
+
+@media(max-width:560px){
+    .settingsDiv{
+        width: 80%;
+    }
+
+    .settingsContainer{
+        min-height: 100vh;
+    }
+    .buttonSett p{
+        font-size: 3vmin;
+        margin:0;
+    }
+
+    .buttonSett{
+        width: 50%;
+    }
+}
+
+@media(max-width:780px){
+    .settingsDiv{
+        width: 80%;
+    }
+
+    .settingsContainer{
+        min-height: 100vh;
+    }
+}
+
+@media(max-width:1100px){
+
+    .settingsDiv{
+        width: 90%;
+    }
+
+    .settingsContainer{
+        min-height: 100vh;
+    }
+
+    .buttonSett{
+        width: 50%;
+    }
+}

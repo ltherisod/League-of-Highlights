@@ -2,6 +2,7 @@ import { connect } from "react-redux"
 import Header from "../components/Header"
 import userActions from "../redux/actions/userActions"
 import { useRef } from "react"
+import "./Settings.css"
 
 const Settings = (props) => {
   const codeRef = useRef(null)
@@ -34,39 +35,51 @@ const Settings = (props) => {
   return (
     <>
       <Header {...props} />
-      <div>
-        <div>
-          <h4>Update username</h4>
-          <input
-            type="text"
-            ref={updateRef}
-            placeholder="Enter your new username"
-          />
-          <button type="button" onClick={onUpdateUsername}>
-            Update
-          </button>
-        </div>
-        {props.user.verified ? (
-          <h5>Your account is already verified :)</h5>
-        ) : (
+      <div className="settingsContainer"style={{backgroundImage:"url('https://i.postimg.cc/QVGzdGYs/riot-desktop-background-2x.jpg')"}}>
+        <div className="settingsDiv">
           <div>
-            <h4>Verify Account</h4>
-            <input
-              ref={codeRef}
-              type="text"
-              placeholder="Verification Code"
-              maxLength="6"
-              minLength="6"
-            />
-            <button type="button" onClick={onVerifyCode}>
-              Verify
-            </button>
-            <p>
-              If you haven't received an email with a verification code please{" "}
-              <a href="mailto:leagueofhighlights.2021@gmail.com">contact us.</a>
-            </p>
+              <h4>Update username</h4>
+              <div className="field" >
+                  <label className="field__label">new username</label>
+                  <input
+                    className="field__form-input newUser"
+                    type="text"
+                    ref={updateRef}
+                  />
+              </div>
+              <button className="buttonSett" type="button" onClick={onUpdateUsername}>
+               <p> Update </p>
+              </button>
           </div>
-        )}
+            {props.user.verified ? (
+              <div className="beerify">
+                <h5>Your account is already verified</h5>
+                <img src="https://i.postimg.cc/8cyt072j/beeHappy.png" alt="bee"/>
+              </div>
+            ) : (
+              <div>
+                <h4>Verify Account</h4>
+                <div className="field">
+                  <label className="field__label"> verification code</label>
+                  <input
+                    className="field__form-input verification"
+                    ref={codeRef}
+                    type="text"
+                    maxLength="6"
+                    minLength="6"
+                  />
+                </div>
+               
+                <button className=" buttonSett" type="button" onClick={onVerifyCode}>
+                 <p> Verify </p>
+                </button>
+                <p className="mailverify">
+                  If you haven't received an email with a verification code please{" "}
+                  <a href="mailto:leagueofhighlights.2021@gmail.com">contact us.</a>
+                </p>
+              </div>
+            )}
+        </div>
       </div>
     </>
   )

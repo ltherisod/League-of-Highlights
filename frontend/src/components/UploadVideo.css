@@ -17,10 +17,6 @@ form input {
     margin: 0.5rem;
 }
 
-/* 
-.postButton {
-    align-self: flex-start;
-} */
 
 .uploadBox {
     width: 100%;
@@ -60,12 +56,7 @@ form input {
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
-/* .championName::-webkit-scrollbar {
-    width: 100px;     Tamaño del scroll en vertical
-    height: 200px;    Tamaño del scroll en horizontal
-    display: none;
-    background-color: green;
-} */
+
 
 .championName::-webkit-scrollbar{
     width: 0.5rem;

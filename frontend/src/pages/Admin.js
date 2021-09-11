@@ -20,7 +20,8 @@ const Admin = (props) => {
       top: 0,
       left: 0,
       behavior: "smooth",
-    })
+      // eslint-disable-next-line
+    }, [])
     
     props
       .getReportedUsers()
