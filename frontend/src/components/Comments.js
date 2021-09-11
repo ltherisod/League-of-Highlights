@@ -8,8 +8,8 @@ const Comments = (props) => {
   const addCommentHandler = async () => {
     if (!content) return false
     const res = await props.addComment(props.video._id, content)
+    console.log(res)
     if (res.success) {
-      console.log("Comentario agregado.")
       return false
     }
     console.log(res.error)

@@ -147,7 +147,6 @@ const Header = (props) => {
         light
         expand="md"
       >
-        {console.log(props)}
         <NavbarBrand
           to="/"
           className="logoNavBox text-light d-none d-md-block ms-2 "

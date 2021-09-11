@@ -19,7 +19,6 @@ function App(props) {
 
   useEffect(() => {
     // setSocket(io("http://localhost:4000"))
-    console.log(props)
     if (token) {
       props.loginLS(token)
     }
