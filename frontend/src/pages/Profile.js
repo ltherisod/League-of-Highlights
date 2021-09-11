@@ -204,7 +204,6 @@ const Profile = (props) => {
                 <button onClick={refreshHandler}>
                   <FiRefreshCw className="refresh" />
                 </button>
-                {console.log(userReportVisible)}
                 <button
                   onClick={() => setUserReportVisible(!userReportVisible)}
                 >
