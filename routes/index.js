@@ -82,12 +82,14 @@ router
   .route("/dismiss/user/:id")
   .put(
     passport.authenticate("jwt", { session: false }),
+    isAdmin,
     usersControllers.dismissUserReport
   )
 router
   .route("/dismiss/video/:id")
   .put(
     passport.authenticate("jwt", { session: false }),
+    isAdmin,
     usersControllers.dismissVideoReport
   )
 
@@ -120,6 +122,7 @@ router
   .route("/videos")
   .get(videosControllers.getTopVideos)
   .post(videosControllers.addVideo)
+
 router
   .route("/video/:videoId")
   .put(videosControllers.updateVideo)
