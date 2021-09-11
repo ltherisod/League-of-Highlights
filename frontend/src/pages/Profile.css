@@ -217,17 +217,13 @@ text-transform: uppercase;
   align-items: center;
 }
 
-/* .loaderdiv img {
-  width: 80%;
-  
-} */
 
 .boxVideos {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: darkcyan; */
+  
 }
 
 .boxRefresh{
@@ -258,4 +254,46 @@ text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media(max-width:550px){
+  .championBox{
+    display:none;
+  }
+
+  .frameIcon{
+    width: 20vw;
+  }
+  div.rank {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .usernameProfile, .rankNameProfile {
+    font-size: 3vmin;
+  }
+
+  .rankNameProfile{
+    padding-top: 2%;
+  }
+
+  div.videoForm{
+    width: 80%;
+  }
+
+  
+}
+
+@media (max-width:800px){
+  .videoUser{
+    width: 600px !important;
+    height: 450px !important;
+  }
+}
+
+@media (max-width:670px){
+  .videoUser{
+    width: 400px !important;
+    height: 350px !important;
+  }
 }
