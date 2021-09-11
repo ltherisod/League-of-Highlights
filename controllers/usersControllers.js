@@ -40,11 +40,15 @@ const usersControllers = {
           transport.options(
             email,
             "Confirm your new League of Highlights account",
-            `<div>
-                <h2>You're almost finished, ${name}!</h2>
-                <p>To verify your account, please enter this verification code:</p>
-                <p>${verifyCode}</p>
-            </div>`
+            `<div style="width: 100%; display: flex; align-items: center; justify-content:center; padding: 1rem;">
+                <div style="width: 280px; height: 280px;padding: 1rem;">
+                  <h2>You're almost finished, ${name}!</h2>
+                  <p>To verify your account, please enter this verification code:</p>
+                  <p>${verifyCode}</p>
+                </div>
+                <div style="background-image: url(https://i.postimg.cc/mrHj3y29/success2.png); width: 280px; height: 280px; background-position: center; background-size: cover;">
+                </div>
+              </div>`
           ),
           (err, info) => {
             if (err) {
