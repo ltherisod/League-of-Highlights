@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 import { FiTrash2, FiEdit2, FiCheck } from "react-icons/fi"
-import { Toaster} from "react-hot-toast"
+import toast,{ Toaster } from "react-hot-toast"
 
 const Comment = (props) => {
   const [updateComment, setUpdateComment] = useState(false)
