@@ -59,7 +59,6 @@ const UploadVideo = (props) => {
     }
 
     const res = await props.addVideo(videoData)
-    console.log(res)
     if (res.success) {
       return (
         toast.custom((t) => (
