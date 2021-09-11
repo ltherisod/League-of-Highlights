@@ -170,31 +170,122 @@ div.topVideos {
   text-shadow: 4px 4px 8px rgba(0,0,0,0.6);
 }
 
-
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
   .boxTitleCarousel{
-    margin-top: -15%;
-    margin-bottom: -70%;
+    margin-bottom: -20%;
   }
 
   .carouselTitle{
-    width: 60%;
+    width: 55%;
   }
 
   .mainCarousel{
-    margin-top: 50%;
-    margin-bottom: -60%;
+    margin-bottom: -18%;
+  }
+
+  .dividerButtomCarousel{
+    width: 70%;
+  }
+
+  div.championCarousel{
+    background-size: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .userBox{
+    margin-left: 0;
+    width: 675px;
+  }
+
+  .videoUser{
+    width: 675px!important;
+    height: 400px!important;
+  }
+
+  .socialBox{
+    width: 25vw;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .boxTitleCarousel{
+    margin-top: 4%;
+    margin-bottom: -35%;
+  }
+
+  .carouselTitle{
+    width: 55%;
+  }
+
+  .mainCarousel{
+    margin-top: 28%;
+    margin-bottom: -30%;
   }
 
   .dividerButtomCarousel{
     width: 60%;
+    margin-top: -5%;
+  }
+
+  div.championCarousel{
+    background-size: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .userBox{
+    margin-left: 0;
+    width: 550px;
+  }
+
+  .videoUser{
+    width: 550px!important;
+    height: 325px!important;
+  }
+
+  .socialBox{
+    width: 30vw;
+  }
+
+}
+
+@media (max-width: 500px) {
+  .boxTitleCarousel{
+    margin-top: -10%;
+    margin-bottom: -70%;
+  }
+
+  .carouselTitle{
+    width: 65%;
+  }
+
+  .mainCarousel{
+    margin-top: 55%;
+    margin-bottom: -50%;
+  }
+
+  .dividerButtomCarousel{
+    width: 70%;
     margin-top: -15%;
   }
 
   div.championCarousel{
     background-size: 0;
+    justify-content: center;
+    align-items: center;
   }
 
+  .userBox{
+    margin-left: 0;
+    width: 350px;
+  }
+  
+  .videoUser{
+    width: 350px!important;
+    height: 200px!important;
+  }
 }
 
 @media (max-width: 450px) {
@@ -204,7 +295,7 @@ div.topVideos {
   }
 
   .carouselTitle{
-    width: 70%;
+    width: 60%;
   }
 
   .mainCarousel{
@@ -219,7 +310,6 @@ div.topVideos {
 
   div.championCarousel{
     background-size: 0;
-    margin-left: 2%;
   }
 
   div.topVideos{
@@ -235,44 +325,6 @@ div.topVideos {
     width: 100%;
   }
 }
-
-/* @media only screen and (width: 12rem) {
-  .mainCarousel{
-    margin-top:80%
-  }
-} */
-
-/* @media screen and (min-width: 1050px) {
-  .mainCarousel{
-   background-size: 0;
-  }
-
-  div .userBox {
-    border-radius: 2rem;
-    width: 95%;
-  }
-
-  .videoUser video {
-    width: 95% !important;
-    text-align: center;
-  }
-
-  div.videoUser {
-    width: 95% !important;
-  }
-
-  .championCarousel {
-    text-align: center;
-  }
-
-  .titleCarouselHome {
-    font-size: 3rem!important;
-  }
-
-  div.championCarousel {
-    background-size: 0;
-  }
-} */
 
 @media screen and (min-width: 1500px) {
   .mainCarousel{

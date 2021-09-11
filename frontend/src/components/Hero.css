@@ -63,6 +63,18 @@ font-face {
     width: 100%;
 }
 
+@media screen and (max-width:1024px){
+    .heroTitle{
+        padding-top: 10%;
+    }
+}
+
+@media screen and (max-width:768px){
+    .heroTitle{
+        padding-top: 20%;
+    }
+}
+
 @media screen and (max-width:500px){
     .heroTitle{
         padding-top: 60%;

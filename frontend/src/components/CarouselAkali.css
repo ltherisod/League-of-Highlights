@@ -37,17 +37,39 @@
   align-self: center;
 }
 
+@media (max-width:1024px) {
+  .mainAkali{
+    height: 70vh;
+  }
+  .akaliImg{
+    height: 70vh;
+  }
+  .diamond{
+    height: 45vh;
+  }
+}
+
+@media (max-width:768px) {
+  .mainAkali{
+    height: 45vh;
+  }
+  .akaliImg{
+    height: 45vh;
+  }
+  .diamond{
+    height: 30vh;
+  }
+}
+
 @media (max-width:500px) {
   .mainAkali{
     height: 40vh;
   }
-
   .akaliImg{
     height: 40vh;
   }
-
   .diamond{
-    height: 40vh;
+    height: 20vh;
   }
 }
 
@@ -55,18 +77,10 @@
   .mainAkali{
     height: 40vh;
   }
-
   .akaliImg{
     height: 40vh;
   }
-
   .diamond{
-    height: 40vh;
+    height: 20vh;
   }
 }
-
-/* @media screen and (max-width: 769px) {
-  .mainAkali {
-    min-height: 0vh;
-  }
-} */
