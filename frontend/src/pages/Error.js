@@ -13,6 +13,7 @@ const Error = () =>{
 
 useEffect(() => {
     toTop()
+    // eslint-disable-next-line
 }, [])
 
     return(

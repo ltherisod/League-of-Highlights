@@ -19,6 +19,7 @@ const Home = (props) => {
 
   useEffect(() => {
     toTop()
+    // eslint-disable-next-line
   }, [])
 
   return (

@@ -233,8 +233,6 @@ const Header = (props) => {
                 Esports
               </Link>
             </NavItem>
-            {/* <input placeholder='Search' type='text' className=' px-2 rounded-pil'/> */}
-            {/* <Input placeholder="Search" bsSize="sm" className="mx-1 rounded-pill inputSize px-5" /> */}
           </Nav>
         </Collapse>
         <div className="divSearch ">

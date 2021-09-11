@@ -42,6 +42,7 @@ const SignUp = (props) => {
 
   useEffect(() => {
     toTop()
+    // eslint-disable-next-line
   }, [])
 
   const createHandler = async () => {
