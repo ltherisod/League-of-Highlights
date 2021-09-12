@@ -3,6 +3,7 @@ import Header from "../components/Header"
 import userActions from "../redux/actions/userActions"
 import { useRef } from "react"
 import "./Settings.css"
+import toast from "react-hot-toast"
 
 const Settings = (props) => {
   const codeRef = useRef(null)
@@ -15,7 +16,15 @@ const Settings = (props) => {
       alert("Your account is verified now! Welcome League of Highlights.")
       return true
     }
-    alert(res.error)
+    toast((res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
 
   const onUpdateUsername = async () => {

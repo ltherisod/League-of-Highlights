@@ -46,7 +46,7 @@ const usersControllers = {
                   <p>To verify your account, please enter this verification code:</p>
                   <p>${verifyCode}</p>
                 </div>
-                <div style="background-image: url(https://i.postimg.cc/xCW0bPjP/beemo.png); width: 400px; height: 280px; background-position: center; background-size: cover;">
+                <div style="background-image: url(https://i.postimg.cc/xCW0bPjP/beemo.png); width: 400px; height: 280px; background-position: center; background-size: contain;">
                 </div>
               </div>`
           ),
