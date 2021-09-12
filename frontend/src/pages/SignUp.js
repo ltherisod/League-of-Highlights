@@ -443,9 +443,6 @@ const SignUp = (props) => {
                 />
               </div>
             </form>
-            {/* <button className="login-button googleButton" > */}
-            {/* <img src="./assets/google.svg" alt="google"/> */}
-            {/* <div className="buttonContainer"> */}
             <div className="container">
               <div className="row">
                 <div className="col-xs-12 col-sm-6">

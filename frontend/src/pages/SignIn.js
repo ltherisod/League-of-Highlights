@@ -240,11 +240,9 @@ const SignIn = (props) => {
         <div className="formContainer">
           <h3 className="">Sign In</h3>
           <form className=" ">
-            {/* <p style={{ color: "red" }}>{errorEmail}</p>&nbsp; */}
             <div className="field">
               <label className="field__label">email</label>
               <input
-                // onBlur={(e) => showErrorEmail(e)}
                 type="text"
                 onChange={inputHandler}
                 id="email"
@@ -252,11 +250,10 @@ const SignIn = (props) => {
                 className="field__form-input email"
               />
             </div>
-            {/* <p style={{ color: "red" }}>{errorPass}</p> &nbsp; */}
             <div className="field">
               <label className="field__label">password</label>
               <input
-                // onBlur={(e) => showErrorPass(e)}
+                
                 type="password"
                 onChange={inputHandler}
                 className="field__form-input password"
