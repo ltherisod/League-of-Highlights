@@ -67,7 +67,7 @@ a {
 }
 
 .logoNav {
-  width: 50px;
+  width: 55px;
 }
 
 .logoNavBox {
@@ -114,6 +114,21 @@ a {
   opacity:1
 }
 
+.changeButton{
+  position: absolute!important;
+  top: -25px!important;
+  left: -10px!important;
+  color:rgb(17, 17, 16)!important;
+ }
+
+ .colorDrop{
+  color:rgb(247, 247, 232)!important;
+ }
+
+ .burguerWhite{
+   color:white!important;
+   font-size: 2.2rem;
+ }
 /* nav{
   position:absolute;
   z-index:1;

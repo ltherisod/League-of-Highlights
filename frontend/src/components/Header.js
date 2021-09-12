@@ -186,20 +186,18 @@ const Header = (props) => {
   return (
     <header className="sticky-top d-flex justify-content-around ">
       <Navbar
-        className="navBar text-center d-flex justify-content-center align-items-center w-100"
+        className="navBar text-center d-flex justify-content-center align-items-center w-100 py-3"
         light
         expand="md"
       >
-        <NavbarBrand
-          to="/"
-          className="logoNavBox text-light d-none d-md-block ms-2 "
+        {/* <div className="logoNavBox text-light "
         >
-          <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" />
-        </NavbarBrand>
-        <NavbarToggler
+           <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" /> 
+        </div> */}
+        {/* <NavbarToggler
           onClick={toggle}
           className="bg-light  text-dark mx-2 changeButton "
-        />
+        /> */}
         <UncontrolledDropdown
           nav
           inNavbar
@@ -281,25 +279,31 @@ const Header = (props) => {
             </DropdownMenu>
           </div>
         </UncontrolledDropdown>
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="navBox mr-auto mx-4 d-flex align-items-center" navbar>
-            <NavItem>
-              <Link to="/" className="text-white fw-bold mx-1">
-                Home{" "}
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/community" className="text-white fw-bold mx-1">
+        <UncontrolledDropdown nav inNavbar className='changeButton'>
+          <DropdownToggle nav caret className='colorDrop'>
+          {/* <NavbarToggler
+          className="bg-light  text-dark mx-2 "
+        /> */}
+        <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" /> 
+          </DropdownToggle>
+          <DropdownMenu right className='text-dark'>
+            <Link className="accountLink " to="/">
+              <DropdownItem className="accountBox text-white">
+                Home
+              </DropdownItem>
+            </Link>
+            <Link className="accountLink " to="/community">
+              <DropdownItem className="accountBox text-white">
                 Community
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/esports" className="text-white fw-bold mx-1">
-                Esports
-              </Link>
-            </NavItem>
-          </Nav>
-        </Collapse>
+              </DropdownItem>
+            </Link>
+            <Link className="accountLink " to="/esports">
+              <DropdownItem className="accountBox text-white">
+                Esport
+              </DropdownItem>
+            </Link>
+          </DropdownMenu>
+        </UncontrolledDropdown>
         <div className="divSearch ">
           <input
             className="linkbox"

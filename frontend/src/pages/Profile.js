@@ -11,6 +11,7 @@ import BackHome from "../components/BackHome"
 import { FiRefreshCw, FiAlertTriangle, FiCheck } from "react-icons/fi"
 import toast, { Toaster } from 'react-hot-toast'
 import Verify from "../components/Verify"
+import Error from "./Error"
 
 const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
@@ -151,7 +152,7 @@ const Profile = (props) => {
       </div>
     )
   }
-  if (!Object.keys(showProfileData).length) return props.history.push('/error')
+  if (!Object.keys(showProfileData).length) return (<Error/>)
   return (
     <>
       <div

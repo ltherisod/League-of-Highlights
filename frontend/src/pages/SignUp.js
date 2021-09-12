@@ -27,6 +27,8 @@ const SignUp = (props) => {
   const [errorName, setErrorName] = useState(null)
   const [errorEmail, setErrorEmail] = useState(null)
   const [errorPass, setErrorPass] = useState(null)
+  const [disableButton,setDisableButton]=useState(false)
+
   // Utils
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -70,17 +72,21 @@ const SignUp = (props) => {
             className="text-sm font-medium text-white"
             style={{ marginBottom: 0 }}
           >
-            empty fields!
+            Please complete all the fields!
           </p>
         </div>
       ))
     }
     try {
+      setDisableButton(true)
       const res = await props.signUp(userData)
+     
       if (res.success) {
+        setDisableButton(false)
         setUserId(res.response._id)
         setStep(2)
       } else {
+        setDisableButton(false)
         if (res.error === "Network Error") {
           toast.custom((t) => (
             <div
@@ -157,6 +163,7 @@ const SignUp = (props) => {
         }
       }
     } catch (error) {
+      setDisableButton(false)
       toast.custom((t) => (
         <div
           className={`${
@@ -184,7 +191,7 @@ const SignUp = (props) => {
           </p>
         </div>
       ))
-      props.history.push("/")
+      
     }
   }
 
@@ -259,7 +266,6 @@ const SignUp = (props) => {
             </p>
           </div>
         ))
-        props.history.push("/")
       })
   }
 
@@ -302,7 +308,6 @@ const SignUp = (props) => {
       )
       if (res.success ) {
         props.loginLS(localStorage.getItem("token"))
-      } else {
         toast.custom((t) => (
           <div
             className={`${
@@ -320,6 +325,34 @@ const SignUp = (props) => {
               style={{ width: "60px", height: "60px" }}
               className="h-4 w-4 rounded-full"
               src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
+              Welcome!
+            </p>
+          </div>
+        ))
+      } else {
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
+          >
+            <img
+              style={{ width: "60px", height: "60px" }}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
               alt=""
             />
             <p
@@ -348,7 +381,7 @@ const SignUp = (props) => {
           <img
             style={{ width: "60px", height: "60px" }}
             className="h-4 w-4 rounded-full"
-            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
             alt=""
           />
           <p
@@ -381,7 +414,6 @@ const SignUp = (props) => {
                 <label className="field__label">name</label>
                 <input
                   type="text"
-                  // onBlur={(e) => showError(e)}
                   onChange={inputHandler}
                   name="name"
                   className="field__form-input name"
@@ -393,7 +425,6 @@ const SignUp = (props) => {
                 <label className="field__label">email</label>
                 <input
                   type="text"
-                  // onBlur={(e) => showErrorEmail(e)}
                   onChange={inputHandler}
                   name="email"
                   className="field__form-input email"
@@ -405,7 +436,6 @@ const SignUp = (props) => {
                 <label className="field__label">password</label>
                 <input
                   type="password"
-                  // onBlur={(e) => showErrorPass(e)}
                   onChange={inputHandler}
                   name="password"
                   className="field__form-input password"
@@ -420,7 +450,7 @@ const SignUp = (props) => {
               <div className="row">
                 <div className="col-xs-12 col-sm-6">
                   <div className="d-flex justify-content-center align-items-center">
-                    <button onClick={createHandler} className="sessionButton">
+                    <button onClick={createHandler} className="sessionButton" disabled={disableButton}>
                       <span>Sign Up</span>
                     </button>
                   </div>
@@ -429,7 +459,7 @@ const SignUp = (props) => {
                   <div className="d-flex justify-content-center align-items-center">
                     <GoogleLogin
                       className="googleButton"
-                      clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                      clientId="801642151543-38r3g1i2708m0o5ianjqsq43fd07cfrt.apps.googleusercontent.com"
                       buttonText="Sign up with Google"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
