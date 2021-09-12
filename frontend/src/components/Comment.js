@@ -150,7 +150,7 @@ const Comment = (props) => {
   return (
     <div className="commentBox">
       {!updateComment ? (
-        <p className="textComment">{`${props.comment.author?.username || props.comment.author.name}: ${props.comment.content}`}</p>
+        <p className="textComment">{`${props.comment.author.username ? props.comment.author.username : props.user.name }: ${props.comment.content}`}</p>
       ) : (
         inputUpdateComment
       )}
