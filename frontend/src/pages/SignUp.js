@@ -432,7 +432,7 @@ const SignUp = (props) => {
                   <div className="d-flex justify-content-center align-items-center">
                     <GoogleLogin
                       className="googleButton"
-                      clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                      clientId="801642151543-38r3g1i2708m0o5ianjqsq43fd07cfrt.apps.googleusercontent.com"
                       buttonText="Sign up with Google"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}
