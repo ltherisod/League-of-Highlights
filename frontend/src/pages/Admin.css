@@ -6,28 +6,26 @@ div.containerAdmin{
     justify-content: space-around;
     width: 100%;
     min-height: 100vh;
+    padding: 0 1em;
     align-items: center;
 }
 
 .divBanUsers, .divBanVideos{
     padding:1rem;
     background-color: white;
-    width: 40%;
+    width: 35%;
     height: 60vh;
     margin: 0 .5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
 }
 
-.divBanUsers::-webkit-scrollbar, .divBanVideos::-webkit-scrollbar {
+.userToBan::-webkit-scrollbar, .videoToBan::-webkit-scrollbar {
     width: 1rem;
 }
 
-.divBanUsers::-webkit-scrollbar-thumb, .divBanVideos::-webkit-scrollbar-thumb {
+.userToBan::-webkit-scrollbar-thumb, .videoToBan::-webkit-scrollbar-thumb {
     background-color: rgb(167, 167, 167);
     border-radius: 8px;
 }
@@ -42,6 +40,9 @@ div.containerAdmin{
     color:#525252;
     font-family: 'Maven Pro', sans-serif;
     font-size: 2.5vmin;
+    overflow-y: auto;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .buttonCont{
@@ -73,6 +74,36 @@ div.containerAdmin{
 
 .dismissadm{
     background-color:#1877f2 ;
+}
+
+.accountFilter{
+    width: 100%;
+    padding: .5em;
+    border-color: #525252;
+    border-radius: 5px;
+}
+
+.verifyButt{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    color: transparent;
+    border-radius: 4px;
+    border: 2px solid rgba(0,0,0,0.05);
+    background-color:#1877f2;
+}
+
+.verifyButt p {
+    margin-top: .5em;
+    align-self: center;
+    text-align: center;
+    color:whitesmoke;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
 }
 
 @media(max-width:1050px ){

@@ -205,8 +205,9 @@ const Admin = (props) => {
       >
         <div className="divBanUsers">
           <h3>Ban users</h3>
+          <div className="userToBan">
           {reportedUsers.map((user) => (
-            <div key={user._id} className="userToBan">
+            <div key={user._id} >
               <p>
                 <Link to={`/profile/${user.username}`}>{user.username}</Link> (
                 {user.email}) was reported {user.reports.length} times:
@@ -232,11 +233,14 @@ const Admin = (props) => {
               </div>
             </div>
           ))}
+          </div>
+         
         </div>
         <div className="divBanVideos">
           <h3>Ban videos</h3>
+          <div className="videoToBan">
           {reportedVideos.map((video) => (
-            <div key={video._id} className="videoToBan">
+            <div key={video._id}>
               <p>{`The video "${video.title}" owned by ${video.owner.username} was reported ${video.reports.length} times:`}</p>
               <ul>
                 {video.reports.map((report) => (
@@ -262,11 +266,13 @@ const Admin = (props) => {
                 </button>
               </div>
             </div>
-          ))}
+          ))}       
+          </div>
         </div>
         <div className="divBanUsers">
           <h3>Unverified Accounts</h3>
-          <input
+          <input 
+            className="accountFilter"
             type="text"
             onChange={(e) => setFilterMailsCondition(e.target.value)}
             placeholder="Filter by email"
@@ -280,10 +286,11 @@ const Admin = (props) => {
                 <li key={user._id} className="userToBan">
                   <p>{user.email}</p>
                   <button
+                    className=" verifyButt"
                     type="button"
                     onClick={() => onVerifyAccount(user.verifyCode, user._id)}
                   >
-                    Verify account
+                    <p>Verify</p>
                   </button>
                   {/* <p>
                 <Link to={`/profile/${user.username}`}>{user.username}</Link> (
