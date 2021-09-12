@@ -81,7 +81,7 @@ const Carousel = (props) => {
                     volume={0}
                     muted={true}
                     controls={false}
-                    origin={"http://localhost:3000"}
+                    origin={"https://leagueofhighlights.herokuapp.com"}
                   />
                 </div>
               </div>

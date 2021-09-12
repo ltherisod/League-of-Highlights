@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const API_KEY = "RGAPI-65efe354-ab45-4796-934a-be85e2d7268d"
-const HOST = "http://localhost:4000"
+const HOST = "https://leagueofhighlights.herokuapp.com"
 
 const userActions = {
   signUp: (userData) => {

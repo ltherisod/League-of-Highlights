@@ -27,16 +27,3 @@ const server = app.listen(
   () => console.log(`Server listening on port ${process.env.PORT || 4000}`)
 )
 
-const io = socket(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    credentials: true,
-  },
-})
-
-// io.on("connection", (socket) => {
-//   console.log("Nueva conexion entrante" + socket.id)
-//   socket.on("Hola", (mensaje) => {
-//     console.log(mensaje)
-//   })
-// })

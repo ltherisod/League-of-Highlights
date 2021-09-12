@@ -10,16 +10,14 @@ import Profile from "./pages/Profile"
 import { connect } from "react-redux"
 import userActions from "./redux/actions/userActions"
 import Error from "./pages/Error"
-// import io from "socket.io-client"
 import { useEffect } from "react"
 import Settings from "./pages/Settings"
 
 function App(props) {
   const token = localStorage.getItem("token")
-  // const [socket, setSocket] = useState(null)
+ 
 
   useEffect(() => {
-    // setSocket(io("http://localhost:4000"))
     if (token) {
       props.loginLS(token)
     }
