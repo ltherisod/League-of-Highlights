@@ -1,6 +1,6 @@
 .settingsContainer{
     width: 100%;
-    min-height: 90.2vh;
+    min-height: 91.1vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -102,5 +102,12 @@
 
     .buttonSett{
         width: 50%;
+    }
+}
+
+@media(max-width:1450px){
+
+    .settingsContainer{
+        min-height: 100vh;
     }
 }
