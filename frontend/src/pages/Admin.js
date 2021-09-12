@@ -130,10 +130,10 @@ const Admin = (props) => {
             Delete? 
           </p>
           <button onClick={() => {callback(id) 
-            toast.dismiss(t.id)}} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+            toast.dismiss(t.id)}} style={{backgroundColor: "rgb(189, 151, 81)",  color: "black", padding: "3px", margin: "2px", border:"none", borderRadius:"2px"}}>
             Yes
           </button>
-          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "black", padding: "3px", margin: "2px", border:"none", borderRadius:"2px"}}>
             No
           </button>
         </div>

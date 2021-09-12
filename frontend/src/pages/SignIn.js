@@ -194,7 +194,35 @@ const SignIn = (props) => {
               </p>
             </div>
           ))
-        } 
+        } else {
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/mrHj3y29/success2.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
+              >
+                Welcome!
+              </p>
+            </div>
+          ))
+        }
       })
       .catch((err) => {
         toast.custom((t) => (
@@ -240,11 +268,9 @@ const SignIn = (props) => {
         <div className="formContainer">
           <h3 className="">Sign In</h3>
           <form className=" ">
-            {/* <p style={{ color: "red" }}>{errorEmail}</p>&nbsp; */}
             <div className="field">
               <label className="field__label">email</label>
               <input
-                // onBlur={(e) => showErrorEmail(e)}
                 type="text"
                 onChange={inputHandler}
                 id="email"
@@ -252,11 +278,10 @@ const SignIn = (props) => {
                 className="field__form-input email"
               />
             </div>
-            {/* <p style={{ color: "red" }}>{errorPass}</p> &nbsp; */}
             <div className="field">
               <label className="field__label">password</label>
               <input
-                // onBlur={(e) => showErrorPass(e)}
+                
                 type="password"
                 onChange={inputHandler}
                 className="field__form-input password"

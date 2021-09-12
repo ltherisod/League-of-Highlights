@@ -9,52 +9,98 @@ const Comment = (props) => {
   const deleteHandler = async () => {
     const res = await props.deleteComment(props.comment._id)
     if (res.success) {
-      return (
-        toast.custom((t) => (
-          <div
-            className={`${
-              t.visible ? 'animate-enter' : 'animate-leave'
-            } bg-black flex`}
-            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+      return toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? "animate-enter" : "animate-leave"
+          } bg-black flex`}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
+        >
+          <img
+            style={{ width: "60px", height: "60px" }}
+            className="h-4 w-4 rounded-full"
+            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            alt=""
+          />
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
           >
-            <img style={{ width: "60px", height: "60px"}}
-              className="h-4 w-4 rounded-full"
-              src="https://i.postimg.cc/mrHj3y29/success2.png"
-              alt=""
-            />
-            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-              Comment deleted
-            </p>
-          </div>
-        ))
-      )
+            Comment deleted
+          </p>
+        </div>
+      ))
     }
-    console.log(res.error)
+    toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? 'animate-enter' : 'animate-leave'
+        } bg-black flex`}
+        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+      >
+        <img style={{ width: "60px", height: "60px"}}
+          className="h-4 w-4 rounded-full"
+          src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
+          alt=""
+        />
+        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          Your comment wasn't deleted
+        </p>
+      </div>
+    ))
   }
 
   const confirm = () => {
-    return (
-      toast.custom((t) => (
-        <div
-          className={`${
-            t.visible ? 'animate-enter' : 'animate-leave'
-          } bg-black flex`}
-          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "15px 20px", borderRadius: "35px"}}
+    return toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? "animate-enter" : "animate-leave"
+        } bg-black flex`}
+        style={{
+          display: "flex",
+          alignContent: "center",
+          alignItems: "center",
+          padding: "15px 20px",
+          borderRadius: "35px",
+        }}
+      >
+        <p
+          className="text-sm font-medium text-white"
+          style={{ marginBottom: 0 }}
         >
-          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-            Delete comment? 
-          </p>
-          <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
-            Yes
-          </button>
-          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
-            No
-          </button>
-        </div>
-      ))
-      
-    )
-    }
+          Delete comment?
+        </p>
+        <button
+          onClick={deleteHandler}
+          style={{
+            backgroundColor: "rgb(189, 151, 81)",
+            color: "white",
+            padding: "5px",
+            margin: "2px",
+          }}
+        >
+          Yes
+        </button>
+        <button
+          onClick={() => toast.dismiss(t.id)}
+          style={{
+            backgroundColor: "rgb(189, 151, 81)",
+            color: "white",
+            padding: "5px",
+            margin: "2px",
+          }}
+        >
+          No
+        </button>
+      </div>
+    ))
+  }
 
   const updateHandler = async () => {
     setUpdateComment(!updateComment)
@@ -67,6 +113,24 @@ const Comment = (props) => {
     )
     if (res.success) {
       setUpdateComment(!updateComment)
+    } else {
+      toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? 'animate-enter' : 'animate-leave'
+        } bg-black flex`}
+        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+      >
+        <img style={{ width: "60px", height: "60px"}}
+          className="h-4 w-4 rounded-full"
+          src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
+          alt=""
+        />
+        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          You can't leave an empty comment
+        </p>
+      </div>
+    ))
     }
   }
 

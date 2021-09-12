@@ -62,7 +62,7 @@ const Profile = (props) => {
             alt=""
           />
           <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-            empty field!
+            Write something to report this user!
           </p>
         </div>
       ))

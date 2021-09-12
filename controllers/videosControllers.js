@@ -73,6 +73,15 @@ const videosControllers = {
     try {
       // sacar el id del author desde redux, y el comentario de un formulario.
       const { author, content } = req.body
+      if (!content) throw new Error("You must specify a reason.")
+      const alreadyReported = await Video.findOne({ _id: req.params.videoId })
+      if (
+        alreadyReported.reports.some(
+          (report) => report.author.toString() === author
+        )
+      ) {
+        throw new Error("You have already reported this video.")
+      }
       const video = await Video.findOneAndUpdate(
         { _id: req.params.videoId },
         { $addToSet: { reports: { author, content } } },
@@ -130,6 +139,8 @@ const videosControllers = {
     switch (req.body.type) {
       case "createComment":
         try {
+          if (!req.body.content)
+            throw new Error("You can't send an empty comment")
           const newComment = await Video.findOneAndUpdate(
             { _id: req.params.id },
             {
@@ -151,6 +162,8 @@ const videosControllers = {
 
       case "updateComments":
         try {
+          if (!req.body.content)
+            throw new Error("You can't send an empty comment")
           const updateComment = await Video.findOneAndUpdate(
             { "comments._id": req.params.id },
             { $set: { "comments.$.content": req.body.content } },

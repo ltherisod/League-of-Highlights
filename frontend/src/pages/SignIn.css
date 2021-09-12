@@ -6,7 +6,7 @@ div.userForm, form, .formContainer {
 
 div.userForm{
     justify-content: center;
-    min-height: 90.2vh;
+    min-height: 91.2vh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
@@ -163,12 +163,21 @@ width: 2em;
     text-decoration: none;
 }
 
+@media(max-width:1300px){
+    div.userForm{
+        min-height: 100vh;
+    }
+}
 
 @media only screen and (max-width: 767px) {
     .formContainer {
         padding: 1.5rem;
         background-color: white;
-        width:75%
+        width:75%;
+    }
+
+    div.userForm{
+        min-height:100vh;
     }
   }
 
