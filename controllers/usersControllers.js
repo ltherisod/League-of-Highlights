@@ -300,7 +300,7 @@ const usersControllers = {
           (report) => report.user.toString() === req.user._id.toString()
         )
       ) {
-        throw new Error("You already reported this user.")
+        throw new Error("You have already reported this user.")
       }
       const user = await User.findOneAndUpdate(
         { _id: req.params.id },
