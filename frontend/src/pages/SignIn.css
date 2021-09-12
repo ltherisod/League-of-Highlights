@@ -170,11 +170,21 @@ width: 2em;
         background-color: white;
         width:75%
     }
+  }
 
-    .login-button {
-        width: 60%!important;
-        /* padding: 1em 2.8em!important; */
-        /* margin:0.5rem */
+  @media only screen and (max-width: 450px) {
+    .googleButton{
+        padding: 0.8em 0.6em!important;
+        
     }
   }
+  @media only screen and (max-width: 350px) {
+    .googleButton{
+        padding: 0.1em 0.6em!important;
+        color: red!important;
+        background-color: aqua;
+        text-align: end!important;
+    }
+  }
+
   

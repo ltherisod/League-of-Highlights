@@ -15,7 +15,7 @@ const usersControllers = {
       const userExists = await User.findOne({ email: email })
       const emailInBlackList = await BlackList.findOne({ email: email })
       if (emailInBlackList) {
-        throw new Error("This email is in black list. Fucking idiot.")
+        throw new Error("This email is in the blacklist.")
       }
       if (userExists) throw new Error("Email already in use!")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -40,19 +40,17 @@ const usersControllers = {
           transport.options(
             email,
             "Confirm your new League of Highlights account",
-            `<div style="width: 100%; display: flex; align-items: center; justify-content:center; padding: .5rem;">
-                <div style="width: 280px; height: 280px;padding: 1rem;">
+            `<div style="width: 100%; height: 400px; display: flex; align-items: center; justify-content:center;">
+                <div style="width: 260px; height: 260px;">
                   <h2>You're almost finished, ${name}!</h2>
                   <p>To verify your account, please enter this verification code:</p>
                   <p>${verifyCode}</p>
                 </div>
-                <div style="background-image: url(https://i.postimg.cc/xCW0bPjP/beemo.png); width: 400px; height: 280px; background-position: center; background-size: contain;">
-                </div>
+                <img style=" width:400px; height: 260px;" src="https://i.postimg.cc/xCW0bPjP/beemo.png" />
               </div>`
           ),
           (err, info) => {
             if (err) {
-              console.log(err)
               return res.json({
                 success: false,
                 response: null,
@@ -89,15 +87,13 @@ const usersControllers = {
     try {
       const { email, password, googleFlag } = req.body
       const userInBlackList = await BlackList.findOne({ email })
-      if (userInBlackList) throw new Error("Estás en la blacklist.")
-      console.log(email)
+      if (userInBlackList) throw new Error("You are in the blacklist.")
       const user = await User.findOne({ email: email })
         .populate({
           path: "topChampions",
           populate: { path: "tags" },
         })
         .populate("rank")
-      console.log(user)
       if (!user) throw new Error("Email and/or password incorrect")
       if (user.google && !googleFlag) {
         throw new Error("You  have a Google´s account, please log in there")
@@ -140,7 +136,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-      if (!user) throw new Error("User doesn't exist")
+      if (!user) throw new Error("The user doesn't exist")
       const { icon, topChampions, guest, rank, division, username, _id } = user
       // res.json({
       //   success: true,
@@ -161,7 +157,7 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-      if (!user) throw new Error("User doesn't exist.")
+      if (!user) throw new Error("The user doesn't exist.")
       res.json({
         success: true,
         response: {
@@ -192,7 +188,7 @@ const usersControllers = {
         .where("riotKey")
         .in(topChampionsKeys)
       const userExists = await User.findOne({ _id: id }) // Tiene el username 'antiguo'
-      if (!userExists) throw new Error("This user doesn't exists.")
+      if (!userExists) throw new Error("This user doesn't exist.")
       const usernameExists = await User.findOne({
         username,
       })
@@ -200,7 +196,7 @@ const usersControllers = {
         usernameExists &&
         usernameExists._id.toString() !== userExists._id.toString()
       ) {
-        throw new Error("Username in use.")
+        throw new Error("Username already in use.")
       }
       const user = await User.findOneAndUpdate(
         { _id: id },
@@ -348,8 +344,8 @@ const usersControllers = {
         { $pull: { likes: req.params.id } },
         { new: true }
       )
-      // const email = new BlackList({ email: user.email })
-      // await email.save()
+      const email = new BlackList({ email: user.email })
+      await email.save()
       res.json({ success: true, response: user, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })

@@ -12,6 +12,7 @@ const SignIn = (props) => {
     email: "",
     password: "",
   })
+  const [disableButton,setDisableButton]=useState(false)
 
   const toTop = () => {
     window.scroll({
@@ -55,15 +56,17 @@ const SignIn = (props) => {
             className="text-sm font-medium text-white"
             style={{ marginBottom: 0 }}
           >
-            empty fields!
+          Please complete all the fields!
           </p>
         </div>
       ))
       return false
     }
     try {
+      setDisableButton(true)
       const res = await props.logIn(userData)
       if (!res.success) {
+        setDisableButton(false)
         return toast.custom((t) => (
           <div
             className={`${
@@ -92,6 +95,7 @@ const SignIn = (props) => {
           </div>
         ))
       } else {
+        setDisableButton(false)
         toast.custom((t) => (
           <div
             className={`${
@@ -120,6 +124,7 @@ const SignIn = (props) => {
           </div>
         ))
       }
+      
     } catch (error) {
       toast.custom((t) => (
         <div
@@ -148,6 +153,7 @@ const SignIn = (props) => {
           </p>
         </div>
       ))
+      setDisableButton(false)
     }
   }
 
@@ -265,6 +271,7 @@ const SignIn = (props) => {
                   <button
                     type="button"
                     onClick={createHandler}
+                    disabled={disableButton}
                     // className="login-button signIn"
                     className="sessionButton"
                   >

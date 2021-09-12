@@ -99,7 +99,6 @@ const UploadVideo = (props) => {
         { duration: 1500 }
       )
     } else {
-      console.log(res.error) // Manejar el error acá.
       return toast.custom((t) => (
         <div
           className={`${
@@ -134,7 +133,7 @@ const UploadVideo = (props) => {
     <>
       <div className="uploadBox">
         {view && (
-          <div className="videoForm">
+          <div className="videoForm2">
             <h3>Upload your video</h3>
             <form className="uploadForm">
               <input

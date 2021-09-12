@@ -79,7 +79,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert(res.error)
+    toast((res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
   const dismissVideoReport = async (id) => {
     const res = await props.dismissVideoReport(id)
@@ -98,7 +106,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert(res.error)
+    toast((res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
 
   const confirm = (callback, id) => {
@@ -133,7 +149,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert("Error: " + res.error)
+    toast(("Error" + res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
   const deleteUser = async (id) => {
     const res = await props.deleteUser(id)
@@ -152,7 +176,15 @@ const Admin = (props) => {
     )
       return true
     }
-    alert("Error: " + res.error)
+      toast(("Error" + res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
 
   const onVerifyAccount = async (code, id) => {
@@ -190,7 +222,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert(res.error)
+      toast((res.error),
+        {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        }
+      )
   }
 
   return (
@@ -277,7 +317,8 @@ const Admin = (props) => {
             onChange={(e) => setFilterMailsCondition(e.target.value)}
             placeholder="Filter by email"
           />
-          <ul>
+           <div className="userToBan">
+           <ul>
             {unverifiedAccounts
               .filter((u) =>
                 u.email.includes(filterMailsCondition.trim().toLowerCase())
@@ -292,32 +333,10 @@ const Admin = (props) => {
                   >
                     <p>Verify</p>
                   </button>
-                  {/* <p>
-                <Link to={`/profile/${user.username}`}>{user.username}</Link> (
-                {user.email}) was reported {user.reports.length} times:
-              </p>
-              <ul>
-                {unverifiedAccounts.map((report) => (
-                  <li key={report._id}>{report.content}</li>
-                ))}
-              </ul>
-              <div className="buttonCont">
-                <button
-                  className="deleteadm"
-                  onClick={() => deleteUser(user._id)}
-                >
-                  Delete
-                </button>
-                <button
-                  className="dismissadm"
-                  onClick={() => dismissUserReport(user._id)}
-                >
-                  Dismiss
-                </button>
-              </div> */}
                 </li>
               ))}
           </ul>
+           </div>
         </div>
       </div>
     </>
