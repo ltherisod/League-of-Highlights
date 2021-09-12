@@ -390,7 +390,6 @@ const SignUp = (props) => {
                 <label className="field__label">name</label>
                 <input
                   type="text"
-                  // onBlur={(e) => showError(e)}
                   onChange={inputHandler}
                   name="name"
                   className="field__form-input name"
@@ -402,7 +401,6 @@ const SignUp = (props) => {
                 <label className="field__label">email</label>
                 <input
                   type="text"
-                  // onBlur={(e) => showErrorEmail(e)}
                   onChange={inputHandler}
                   name="email"
                   className="field__form-input email"
@@ -422,9 +420,6 @@ const SignUp = (props) => {
                 />
               </div>
             </form>
-            {/* <button className="login-button googleButton" > */}
-            {/* <img src="./assets/google.svg" alt="google"/> */}
-            {/* <div className="buttonContainer"> */}
             <div className="container">
               <div className="row">
                 <div className="col-xs-12 col-sm-6">

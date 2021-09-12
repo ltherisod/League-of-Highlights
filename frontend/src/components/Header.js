@@ -190,14 +190,6 @@ const Header = (props) => {
         light
         expand="md"
       >
-        {/* <div className="logoNavBox text-light "
-        >
-           <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" /> 
-        </div> */}
-        {/* <NavbarToggler
-          onClick={toggle}
-          className="bg-light  text-dark mx-2 changeButton "
-        /> */}
         <UncontrolledDropdown
           nav
           inNavbar

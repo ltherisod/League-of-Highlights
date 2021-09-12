@@ -129,11 +129,7 @@ a {
    color:white!important;
    font-size: 2.2rem;
  }
-/* nav{
-  position:absolute;
-  z-index:1;
-} */
-
+ 
 @media only screen and (max-width: 1150px) {
   .textbox {
     /* background: #FFF url(/images/css/input-text-9.png) no-repeat 4px 4px; */
