@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.2ff73b6c.chunk.css",
-    "main.js": "/static/js/main.b4ec498d.chunk.js",
-    "main.js.map": "/static/js/main.b4ec498d.chunk.js.map",
+    "main.css": "/static/css/main.67f86f3d.chunk.css",
+    "main.js": "/static/js/main.90a08769.chunk.js",
+    "main.js.map": "/static/js/main.90a08769.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.4eab1d6a.js",
     "runtime-main.js.map": "/static/js/runtime-main.4eab1d6a.js.map",
     "static/css/2.bc67ead4.chunk.css": "/static/css/2.bc67ead4.chunk.css",
-    "static/js/2.f0f1ceb5.chunk.js": "/static/js/2.f0f1ceb5.chunk.js",
-    "static/js/2.f0f1ceb5.chunk.js.map": "/static/js/2.f0f1ceb5.chunk.js.map",
+    "static/js/2.654a430b.chunk.js": "/static/js/2.654a430b.chunk.js",
+    "static/js/2.654a430b.chunk.js.map": "/static/js/2.654a430b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.bc67ead4.chunk.css.map": "/static/css/2.bc67ead4.chunk.css.map",
-    "static/css/main.2ff73b6c.chunk.css.map": "/static/css/main.2ff73b6c.chunk.css.map",
-    "static/js/2.f0f1ceb5.chunk.js.LICENSE.txt": "/static/js/2.f0f1ceb5.chunk.js.LICENSE.txt",
+    "static/css/main.67f86f3d.chunk.css.map": "/static/css/main.67f86f3d.chunk.css.map",
+    "static/js/2.654a430b.chunk.js.LICENSE.txt": "/static/js/2.654a430b.chunk.js.LICENSE.txt",
     "static/media/Error.css": "/static/media/BeaufortforLOL-Bold.woff.41ef4020.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.4eab1d6a.js",
     "static/css/2.bc67ead4.chunk.css",
-    "static/js/2.f0f1ceb5.chunk.js",
-    "static/css/main.2ff73b6c.chunk.css",
-    "static/js/main.b4ec498d.chunk.js"
+    "static/js/2.654a430b.chunk.js",
+    "static/css/main.67f86f3d.chunk.css",
+    "static/js/main.90a08769.chunk.js"
   ]
 }
