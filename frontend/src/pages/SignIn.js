@@ -321,7 +321,7 @@ const SignIn = (props) => {
             </div>
           </div>
           <p className="textDataForm">
-            Don't have an account? <Link to="/signup">Sign up here! </Link>
+            Don't have an account? <Link  className="linktextaccount" to="/signup">Sign up here! </Link>
           </p>
         </div>
       </div>

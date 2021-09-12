@@ -116,7 +116,7 @@ const SignUp = (props) => {
             </div>
           ))
           props.history.push("/")
-        } else if (res.error === "Email already in use!") {
+        } else if (res.error === "Email already in use!" || res.error === "This email is in the blacklist.") {
           toast.custom((t) => (
             <div
               className={`${
@@ -467,7 +467,7 @@ const SignUp = (props) => {
               </div>
             </div>
             <p className="textDataForm">
-              Already have an account? <Link to="/signin">Sign in here! </Link>
+              Already have an account? <Link className="linktextaccount"to="/signin">Sign in here! </Link>
             </p>
           </div>
         </div>

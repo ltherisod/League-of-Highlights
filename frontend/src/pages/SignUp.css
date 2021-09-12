@@ -8,6 +8,10 @@ div.userForm button, div.riot button {
     margin: .5rem;
 }
 
+a.linktextaccount{
+    color: #1877f2 !important;
+}
+
 div.userForm{
     justify-content: center;
     min-height:100vh;

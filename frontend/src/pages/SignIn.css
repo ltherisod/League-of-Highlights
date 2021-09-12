@@ -80,6 +80,10 @@ div.userForm{
     border: 2px solid rgba(0,0,0,0.05)!important;
 }
 
+a.linktextaccount{
+    color: #1877f2 !important;
+}
+
 /* appearance: none!important; */
     /* color: transparent!important; */
 
