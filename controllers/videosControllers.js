@@ -73,6 +73,7 @@ const videosControllers = {
     try {
       // sacar el id del author desde redux, y el comentario de un formulario.
       const { author, content } = req.body
+      if (!content) throw new Error("You must specify a reason.")
       const alreadyReported = await Video.findOne({ _id: req.params.videoId })
       if (
         alreadyReported.reports.some(
