@@ -70,7 +70,7 @@ const SignUp = (props) => {
             className="text-sm font-medium text-white"
             style={{ marginBottom: 0 }}
           >
-            empty fields!
+            Please complete all the fields!
           </p>
         </div>
       ))
@@ -304,7 +304,6 @@ const SignUp = (props) => {
       console.log(res)
       if (res.success ) {
         props.loginLS(localStorage.getItem("token"))
-      } else {
         toast.custom((t) => (
           <div
             className={`${
@@ -322,6 +321,34 @@ const SignUp = (props) => {
               style={{ width: "60px", height: "60px" }}
               className="h-4 w-4 rounded-full"
               src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
+            >
+              Welcome!
+            </p>
+          </div>
+        ))
+      } else {
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
+          >
+            <img
+              style={{ width: "60px", height: "60px" }}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/g2dLtyDR/logOut.png"
               alt=""
             />
             <p
@@ -351,7 +378,7 @@ const SignUp = (props) => {
           <img
             style={{ width: "60px", height: "60px" }}
             className="h-4 w-4 rounded-full"
-            src="https://i.postimg.cc/mrHj3y29/success2.png"
+            src="https://i.postimg.cc/g2dLtyDR/logOut.png"
             alt=""
           />
           <p

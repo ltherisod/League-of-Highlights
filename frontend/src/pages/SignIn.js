@@ -55,7 +55,7 @@ const SignIn = (props) => {
             className="text-sm font-medium text-white"
             style={{ marginBottom: 0 }}
           >
-            empty fields!
+          Please complete all the fields!
           </p>
         </div>
       ))
