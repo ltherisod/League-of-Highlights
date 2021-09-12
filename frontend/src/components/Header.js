@@ -273,9 +273,6 @@ const Header = (props) => {
         </UncontrolledDropdown>
         <UncontrolledDropdown nav inNavbar className='changeButton'>
           <DropdownToggle nav caret className='colorDrop'>
-          {/* <NavbarToggler
-          className="bg-light  text-dark mx-2 "
-        /> */}
         <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" /> 
           </DropdownToggle>
           <DropdownMenu right className='text-dark'>
