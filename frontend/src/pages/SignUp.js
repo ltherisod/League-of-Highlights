@@ -384,7 +384,6 @@ const SignUp = (props) => {
                 <label className="field__label">name</label>
                 <input
                   type="text"
-                  // onBlur={(e) => showError(e)}
                   onChange={inputHandler}
                   name="name"
                   className="field__form-input name"
@@ -396,7 +395,6 @@ const SignUp = (props) => {
                 <label className="field__label">email</label>
                 <input
                   type="text"
-                  // onBlur={(e) => showErrorEmail(e)}
                   onChange={inputHandler}
                   name="email"
                   className="field__form-input email"
@@ -408,7 +406,6 @@ const SignUp = (props) => {
                 <label className="field__label">password</label>
                 <input
                   type="password"
-                  // onBlur={(e) => showErrorPass(e)}
                   onChange={inputHandler}
                   name="password"
                   className="field__form-input password"
@@ -432,7 +429,7 @@ const SignUp = (props) => {
                   <div className="d-flex justify-content-center align-items-center">
                     <GoogleLogin
                       className="googleButton"
-                      clientId="801642151543-tdc0cnghc9troiltr8lsquna0nd1lvin.apps.googleusercontent.com"
+                      clientId="801642151543-38r3g1i2708m0o5ianjqsq43fd07cfrt.apps.googleusercontent.com"
                       buttonText="Sign up with Google"
                       onSuccess={responseGoogle}
                       onFailure={responseGoogle}

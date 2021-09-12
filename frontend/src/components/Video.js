@@ -84,10 +84,10 @@ const Video = (props) => {
           <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
             Delete video? 
           </p>
-          <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+          <button onClick={deleteHandler} style={{backgroundColor: "rgb(189, 151, 81)",  color: "black", padding: "3px", margin: "2px", border:"none", borderRadius:"2px"}}>
             Yes
           </button>
-          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "white", padding: "5px", margin: "2px"}}>
+          <button onClick={() => toast.dismiss(t.id)} style={{backgroundColor: "rgb(189, 151, 81)",  color: "black", padding: "3px", margin: "2px", border:"none", borderRadius:"2px"}}>
             No
           </button>
         </div>
@@ -105,7 +105,6 @@ const Video = (props) => {
     : "/assets/star.svg"
 
   return (
-    // <div className="videoContent" style={{backgroundImage:"url('https://i.postimg.cc/rszLM3Ft/news-banner-frame.png')"}}>
     <div className="videoContent">
       <div className="contentVideoUser">
         <div className="titleVideo">
@@ -125,7 +124,6 @@ const Video = (props) => {
           className="videoUser"
           controls={true}
         />
-        {/* </div> */}
       </div>
       <div className="likeReport">
         <div className="videolikes">

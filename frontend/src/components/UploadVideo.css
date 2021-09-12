@@ -1,4 +1,4 @@
-.uploadForm, div.videoForm {
+.uploadForm, div.videoForm2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,7 @@
     padding: 1rem;
 }
 
-div.videoForm {
+div.videoForm2 {
 
     background-color: rgba(0, 0, 0, 0.473);
     width: 25%;
@@ -27,11 +27,11 @@ div.videoForm {
     min-height: 60vh;
 }
 
-.videoForm h3{
+.videoForm2 h3{
     color:rgb(189, 151, 81);
 }
 
-.videoForm input{
+.videoForm2 input{
     flex: 1;
     background-color: transparent;
     padding: 1%;
@@ -40,7 +40,7 @@ div.videoForm {
     color: whitesmoke;
 }
 
-.videoForm input::placeholder{
+.videoForm2 input::placeholder{
     color: rgb(175, 140, 23);
     font-style: italic;
 }
@@ -105,4 +105,16 @@ div.videoForm {
     transform: scale(1.1);
     transition: opacity .2s linear;
     border: none;
+}
+
+@media(max-width:1000px){
+    .videoForm2{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width:650px){
+    div.videoForm2{
+        width: 80%;
+    }
 }

@@ -269,7 +269,7 @@ text-transform: uppercase;
 }
 
 .userSideBox{
-  width:15%;
+  /* width:15%; */
   height: 100vh;
   display: flex;
   flex-direction: column;

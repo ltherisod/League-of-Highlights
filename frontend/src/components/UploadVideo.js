@@ -134,7 +134,7 @@ const UploadVideo = (props) => {
     <>
       <div className="uploadBox">
         {view && (
-          <div className="videoForm">
+          <div className="videoForm2">
             <h3>Upload your video</h3>
             <form className="uploadForm">
               <input
