@@ -13,8 +13,25 @@ const Settings = (props) => {
     if (!codeRef.current.value) return false
     const res = await props.verifyCode(codeRef.current.value)
     if (res.success) {
-      alert("Your account is verified now! Welcome League of Highlights.")
-      return true
+      return (
+        toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Your account is verified now! Welcome League of Highlights.
+            </p>
+          </div>
+        ))
+      )
     }
     toast((res.error),
       {
@@ -35,10 +52,35 @@ const Settings = (props) => {
       false
     )
     if (res.success) {
-      alert("Username actualizado correctamente!")
-      return true
+      return (
+       toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? 'animate-enter' : 'animate-leave'
+            } bg-black flex`}
+            style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          >
+            <img style={{ width: "60px", height: "60px"}}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/mrHj3y29/success2.png"
+              alt=""
+            />
+            <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+              Username successfully updated!
+            </p>
+          </div>
+        ))
+      )
     }
-    alert(res.error)
+    toast((res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
 
   return (

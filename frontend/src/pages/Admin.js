@@ -79,7 +79,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert(res.error)
+    toast((res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
   const dismissVideoReport = async (id) => {
     const res = await props.dismissVideoReport(id)
@@ -98,7 +106,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert(res.error)
+    toast((res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
 
   const confirm = (callback, id) => {
@@ -133,7 +149,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert("Error: " + res.error)
+    toast(("Error" + res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
   const deleteUser = async (id) => {
     const res = await props.deleteUser(id)
@@ -152,7 +176,15 @@ const Admin = (props) => {
     )
       return true
     }
-    alert("Error: " + res.error)
+      toast(("Error" + res.error),
+      {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    )
   }
 
   const onVerifyAccount = async (code, id) => {
@@ -190,7 +222,15 @@ const Admin = (props) => {
       )
       return true
     }
-    alert(res.error)
+      toast((res.error),
+        {
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        }
+      )
   }
 
   return (
