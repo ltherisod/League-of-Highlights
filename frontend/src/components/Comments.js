@@ -21,7 +21,7 @@ const Comments = (props) => {
           alt=""
         />
         <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-          empty field!
+          You can't send an empty comment!
         </p>
       </div>
     ))
