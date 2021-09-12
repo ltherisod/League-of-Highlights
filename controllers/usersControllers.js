@@ -52,7 +52,6 @@ const usersControllers = {
           ),
           (err, info) => {
             if (err) {
-              console.log(err)
               return res.json({
                 success: false,
                 response: null,
@@ -90,14 +89,12 @@ const usersControllers = {
       const { email, password, googleFlag } = req.body
       const userInBlackList = await BlackList.findOne({ email })
       if (userInBlackList) throw new Error("Estás en la blacklist.")
-      console.log(email)
       const user = await User.findOne({ email: email })
         .populate({
           path: "topChampions",
           populate: { path: "tags" },
         })
         .populate("rank")
-      console.log(user)
       if (!user) throw new Error("Email and/or password incorrect")
       if (user.google && !googleFlag) {
         throw new Error("You  have a Google´s account, please log in there")

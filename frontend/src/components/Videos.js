@@ -6,7 +6,6 @@ import { useState, useEffect } from "react"
 import NoVideos from "./NoVideos"
 
 const Videos = (props) => {
-  // console.log(userId)
   const [loading, setLoading] = useState(true)
   const getVideos = async () => {
     const res = await props.getUserVideos(props.username)
@@ -23,7 +22,7 @@ const Videos = (props) => {
   }, [props.username])
 
   if (loading) return <p>Loading...</p>
-  if (!props.userVideos.length && props.user.verified) return <NoVideos/>
+  if (!props.userVideos.length && props.user.verified) return <NoVideos />
   // Después de esto hay que renderizar desde props.userVideos
   return (
     <>
@@ -40,7 +39,7 @@ const mapStateToProps = (state) => {
   return {
     // userId: state.user.user,
     userVideos: state.videos.userVideos,
-    user: state.user.user
+    user: state.user.user,
   }
 }
 

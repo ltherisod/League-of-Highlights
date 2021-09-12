@@ -15,8 +15,7 @@ import {
 import { useState, useRef } from "react"
 import { connect } from "react-redux"
 import userActions from "../redux/actions/userActions"
-import toast, { Toaster } from 'react-hot-toast';
-
+import toast, { Toaster } from "react-hot-toast"
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -28,85 +27,119 @@ const Header = (props) => {
       toast.custom((t) => (
         <div
           className={`${
-            t.visible ? 'animate-enter' : 'animate-leave'
+            t.visible ? "animate-enter" : "animate-leave"
           } bg-black flex`}
-          style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          style={{
+            display: "flex",
+            alignContent: "center",
+            alignItems: "center",
+            padding: "5px 10px",
+            borderRadius: "35px",
+          }}
         >
-          <img style={{ width: "60px", height: "60px"}}
+          <img
+            style={{ width: "60px", height: "60px" }}
             className="h-4 w-4 rounded-full"
             src="https://i.postimg.cc/g2dLtyDR/logOut.png"
             alt=""
           />
-          <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+          <p
+            className="text-sm font-medium text-white"
+            style={{ marginBottom: 0 }}
+          >
             You have to log in to search!
           </p>
         </div>
       ))
     } else {
       if (inputHandler.current.value === "") {
-        return (
-          toast.custom((t) => (
-            <div
-              className={`${
-                t.visible ? 'animate-enter' : 'animate-leave'
-              } bg-black flex`}
-              style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        return toast.custom((t) => (
+          <div
+            className={`${
+              t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+              display: "flex",
+              alignContent: "center",
+              alignItems: "center",
+              padding: "5px 10px",
+              borderRadius: "35px",
+            }}
+          >
+            <img
+              style={{ width: "60px", height: "60px" }}
+              className="h-4 w-4 rounded-full"
+              src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
+              alt=""
+            />
+            <p
+              className="text-sm font-medium text-white"
+              style={{ marginBottom: 0 }}
             >
-              <img style={{ width: "60px", height: "60px"}}
-                className="h-4 w-4 rounded-full"
-                src="https://i.postimg.cc/9Q6BYPNR/varusfacepalm.png"
-                alt=""
-              />
-              <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-                Please complete the field!
-              </p>
-            </div>
-          ))
-        )
+              Please complete the field!
+            </p>
+          </div>
+        ))
       }
       try {
         const res = await props.getProfileByName(inputHandler.current.value)
         if (!res.success) {
-          return (
-            toast.custom((t) => (
-              <div
-                className={`${
-                  t.visible ? 'animate-enter' : 'animate-leave'
-                } bg-black flex`}
-                style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+          return toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
               >
-                <img style={{ width: "60px", height: "60px"}}
-                  className="h-4 w-4 rounded-full"
-                  src="https://i.postimg.cc/g2dLtyDR/logOut.png"
-                  alt=""
-                />
-                <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-                  The user doesn't exist
-                </p>
-              </div>
-            ))
-          )
+                The user doesn't exist
+              </p>
+            </div>
+          ))
         }
-        if (res.response.length === 0){
-          return (
-            toast.custom((t) => (
-              <div
-                className={`${
-                  t.visible ? 'animate-enter' : 'animate-leave'
-                } bg-black flex`}
-                style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        if (res.response.length === 0) {
+          return toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/g2dLtyDR/logOut.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
               >
-                <img style={{ width: "60px", height: "60px"}}
-                  className="h-4 w-4 rounded-full"
-                  src="https://i.postimg.cc/g2dLtyDR/logOut.png"
-                  alt=""
-                />
-                <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
-                  Sorry we couldn't find that user!
-                </p>
-              </div>
-            ))
-          )
+                Sorry we couldn't find that user!
+              </p>
+            </div>
+          ))
         }
         if (res.success) {
           props.history.push(`/profile/${res.response.username}`)
@@ -123,16 +156,26 @@ const Header = (props) => {
     toast.custom((t) => (
       <div
         className={`${
-          t.visible ? 'animate-enter' : 'animate-leave'
+          t.visible ? "animate-enter" : "animate-leave"
         } bg-black flex`}
-        style={{ display: "flex", alignContent: "center", alignItems: "center", padding: "5px 10px", borderRadius: "35px"}}
+        style={{
+          display: "flex",
+          alignContent: "center",
+          alignItems: "center",
+          padding: "5px 10px",
+          borderRadius: "35px",
+        }}
       >
-        <img style={{ width: "60px", height: "60px"}}
+        <img
+          style={{ width: "60px", height: "60px" }}
           className="h-4 w-4 rounded-full"
           src="https://i.postimg.cc/g2dLtyDR/logOut.png"
           alt=""
         />
-        <p className="text-sm font-medium text-white" style={{marginBottom: 0,}}>
+        <p
+          className="text-sm font-medium text-white"
+          style={{ marginBottom: 0 }}
+        >
           See you soon!
         </p>
       </div>
@@ -153,7 +196,10 @@ const Header = (props) => {
         >
           <img className="logoNav" alt="nav logo" src="/assets/LOH_H2.png" />
         </NavbarBrand>
-        <NavbarToggler onClick={toggle} className="bg-light  text-dark mx-2 changeButton " />
+        <NavbarToggler
+          onClick={toggle}
+          className="bg-light  text-dark mx-2 changeButton "
+        />
         <UncontrolledDropdown
           nav
           inNavbar
@@ -176,29 +222,39 @@ const Header = (props) => {
                 <>
                   {props.userStatus && !props.userStatus.guest ? (
                     <>
-                    <Link
-                      to={`/profile/${
-                        props.userStatus.username || props.userStatus.user
-                      }`}
-                    >
-                      <DropdownItem className="accountBox text-white">Profile</DropdownItem>
-                    </Link>
-                    <Link
-                      to={`/settings/${
-                        props.userStatus.username || props.userStatus.user
-                      }`}
-                    >
-                      <DropdownItem className="accountBox text-white">Settings</DropdownItem>
-                    </Link>
+                      <Link
+                        to={`/profile/${
+                          props.userStatus.username || props.userStatus.user
+                        }`}
+                      >
+                        <DropdownItem className="accountBox text-white">
+                          Profile
+                        </DropdownItem>
+                      </Link>
                     </>
                   ) : null}
-                  {props.userStatus.admin && <Link
-                      to='/admin'
-                    >
-                      <DropdownItem className="accountBox text-white">Admin</DropdownItem>
-                    </Link>}
+                  <Link
+                    to={`/settings/${
+                      props.userStatus || props.userStatus.user
+                    }`}
+                  >
+                    <DropdownItem className="accountBox text-white">
+                      Settings
+                    </DropdownItem>
+                  </Link>
+                  {props.userStatus.admin && (
+                    <Link to="/admin">
+                      <DropdownItem className="accountBox text-white">
+                        Admin
+                      </DropdownItem>
+                    </Link>
+                  )}
                   <Link to="/">
-                    <DropdownItem className="accountBox text-white" to="/" onClick={sesionOut}>
+                    <DropdownItem
+                      className="accountBox text-white"
+                      to="/"
+                      onClick={sesionOut}
+                    >
                       Log out
                     </DropdownItem>
                   </Link>
@@ -247,7 +303,7 @@ const Header = (props) => {
         <div className="divSearch ">
           <input
             className="linkbox"
-             disabled={!props.userStatus}         
+            disabled={!props.userStatus}
             type="text"
             placeholder="Search your favourite player..."
             ref={inputHandler}
@@ -259,15 +315,17 @@ const Header = (props) => {
           />
         </div>
       </Navbar>
-      <Toaster 
+      <Toaster
         containerStyle={{
           top: 80,
           left: 20,
           bottom: 20,
-          right: 20,}}
+          right: 20,
+        }}
         toastOptions={{
           duration: 1500,
-      }}/>
+        }}
+      />
     </header>
   )
 }
