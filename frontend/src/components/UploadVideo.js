@@ -99,7 +99,6 @@ const UploadVideo = (props) => {
         { duration: 1500 }
       )
     } else {
-      console.log(res.error) // Manejar el error acá.
       return toast.custom((t) => (
         <div
           className={`${

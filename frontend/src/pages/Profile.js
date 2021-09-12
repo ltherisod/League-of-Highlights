@@ -112,7 +112,6 @@ const Profile = (props) => {
         ))
       }
     }catch(error){
-      console.log('caigo en catch de report handler ')
       toast.custom((t) => (
         <div
           className={`${

@@ -51,7 +51,6 @@ const usersControllers = {
           ),
           (err, info) => {
             if (err) {
-              console.log(err)
               return res.json({
                 success: false,
                 response: null,
@@ -96,7 +95,6 @@ const usersControllers = {
           populate: { path: "tags" },
         })
         .populate("rank")
-      console.log(user)
       if (!user) throw new Error("Email and/or password incorrect")
       if (user.google && !googleFlag) {
         throw new Error("You  have a Google´s account, please log in there")
@@ -302,7 +300,7 @@ const usersControllers = {
           (report) => report.user.toString() === req.user._id.toString()
         )
       ) {
-        throw new Error("You already reported this user.")
+        throw new Error("You have already reported this user.")
       }
       const user = await User.findOneAndUpdate(
         { _id: req.params.id },
