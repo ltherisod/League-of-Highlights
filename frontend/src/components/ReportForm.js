@@ -1,18 +1,21 @@
 import "./ReportForm.css"
-import { useRef } from "react"
+import {useState } from "react"
 import videosActions from "../redux/actions/videosActions"
 import { connect } from "react-redux"
 import {  FiCheck } from "react-icons/fi"
 import toast from "react-hot-toast"
 
 const ReportForm = (props) => {
-  const input = useRef(null)
+  //const input = useRef(null)
+  const [content, setContent] = useState("")
+//input.current.value,
   const reportVideoHandler = async () => {
     const res = await props.reportVideo(props.videoId, {
       author: props.user._id,
-      content: input.current.value,
+      content: content
     })
     if (res.success) {
+      setContent('')
       return toast.custom((t) => (
         <div
           className={`${
@@ -54,7 +57,9 @@ const ReportForm = (props) => {
       <form >
         <div className="reportForm">
           <input
-            ref={input}
+            //ref={input}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             className="reportInput"
             placeholder="Why are you reporting this video?"
           />

@@ -16,7 +16,8 @@ const Profile = (props) => {
   const [showProfileData, setShowProfileData] = useState({})
   const [loader, setLoader] = useState(true)
   const [userReportVisible, setUserReportVisible] = useState(false)
-  const reportContent = useRef(null)
+  //const reportContent = useRef(null)
+  const [content, setContent] = useState("")
 
   const toTop = () => {
     window.scroll({
@@ -43,9 +44,9 @@ const Profile = (props) => {
     console.error(res.error)
     return false
   }
-
+//reportContent.current.value
   const reportHandler = async () => {
-    if (!reportContent.current.value) {
+    if (!content) {
       toast.custom((t) => (
         <div
           className={`${
@@ -68,9 +69,10 @@ const Profile = (props) => {
     try{
       const res = await props.reportUser(
         showProfileData._id,
-        reportContent.current.value
+       content
       )
       if(res.success){
+        setContent('')
         return toast.custom((t) => (
           <div
             className={`${
@@ -217,7 +219,9 @@ const Profile = (props) => {
                       <input
                       className="reportInput"
                         type="text"
-                        ref={reportContent}
+                        //ref={reportContent}
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
                         placeholder="Why do you want to report this user?"
                       ></input>
                       <button onClick={reportHandler}>
