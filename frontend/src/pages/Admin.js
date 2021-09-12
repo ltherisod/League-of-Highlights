@@ -317,7 +317,8 @@ const Admin = (props) => {
             onChange={(e) => setFilterMailsCondition(e.target.value)}
             placeholder="Filter by email"
           />
-          <ul>
+           <div className="userToBan">
+           <ul>
             {unverifiedAccounts
               .filter((u) =>
                 u.email.includes(filterMailsCondition.trim().toLowerCase())
@@ -332,32 +333,10 @@ const Admin = (props) => {
                   >
                     <p>Verify</p>
                   </button>
-                  {/* <p>
-                <Link to={`/profile/${user.username}`}>{user.username}</Link> (
-                {user.email}) was reported {user.reports.length} times:
-              </p>
-              <ul>
-                {unverifiedAccounts.map((report) => (
-                  <li key={report._id}>{report.content}</li>
-                ))}
-              </ul>
-              <div className="buttonCont">
-                <button
-                  className="deleteadm"
-                  onClick={() => deleteUser(user._id)}
-                >
-                  Delete
-                </button>
-                <button
-                  className="dismissadm"
-                  onClick={() => dismissUserReport(user._id)}
-                >
-                  Dismiss
-                </button>
-              </div> */}
                 </li>
               ))}
           </ul>
+           </div>
         </div>
       </div>
     </>

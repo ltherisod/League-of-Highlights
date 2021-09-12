@@ -70,18 +70,6 @@ h2 {
     border-radius: 2em;
 }
 
-/* .picCommunity:hover{
-  transition: transform 1s, background-color 0.5s, -webkit-transform 1s;
-  -webkit-transform: scale(1.08);
-  transform: scale(1.08);
-  background-blend-mode: soft-light;
-} */
-
-/* section{
-    box-sizing: border-box;
-   text-align: center;
-   padding:1rem
-} */
 
 .backgroundCommunity {
   display: flex;
@@ -112,17 +100,35 @@ h2 {
   justify-content: center;
 }
 
+
+
+@media(max-width:1200px){
+  .textCommunity{
+      width: 40%;
+  }
+}
+
 @media (max-width: 990px){
   .picBox{
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-
   .picCommunity{
     width: 85%;
     height: 90vh;
   }
-  
+}
+
+@media(max-width:780px){
+  .textCommunity{
+      width: 45%;
+  }
+}
+
+@media(max-width:550px){
+  .textCommunity{
+      width:55%;
+  }
 }
 
