@@ -82,7 +82,6 @@ const SignUp = (props) => {
       const res = await props.signUp(userData)
      
       if (res.success) {
-        console.log('caigo en if de createHandler')
         setDisableButton(false)
         setUserId(res.response._id)
         setStep(2)
@@ -307,7 +306,6 @@ const SignUp = (props) => {
         userId,
         !hasRiotAccount
       )
-      console.log(res)
       if (res.success ) {
         props.loginLS(localStorage.getItem("token"))
       } else {
@@ -340,7 +338,6 @@ const SignUp = (props) => {
         ))
       }
     } catch (error) {
-      console.log('caigo en catch de refresh ')
       toast.custom((t) => (
         <div
           className={`${

@@ -229,17 +229,17 @@ const Header = (props) => {
                           Profile
                         </DropdownItem>
                       </Link>
-                      <Link
-                        to={`/settings/${
-                          props.userStatus.username || props.userStatus.user
-                        }`}
-                      >
-                        <DropdownItem className="accountBox text-white">
-                          Settings
-                        </DropdownItem>
-                      </Link>
                     </>
                   ) : null}
+                  <Link
+                    to={`/settings/${
+                      props.userStatus || props.userStatus.user
+                    }`}
+                  >
+                    <DropdownItem className="accountBox text-white">
+                      Settings
+                    </DropdownItem>
+                  </Link>
                   {props.userStatus.admin && (
                     <Link to="/admin">
                       <DropdownItem className="accountBox text-white">
