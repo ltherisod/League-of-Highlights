@@ -20,6 +20,7 @@ const Footer = () => {
           <a
             className="socialMediaHover"
             href="https://www.youtube.com/user/riotgamesinc"
+            target="_blank"
           >
             <img
               className="socialMediaIcon"
@@ -30,6 +31,7 @@ const Footer = () => {
           <a
             className="socialMediaHover"
             href="https://twitter.com/leagueoflegends"
+            target="_blank"
           >
             <img
               className="socialMediaIcon"
@@ -40,6 +42,7 @@ const Footer = () => {
           <a
             className="socialMediaHover"
             href="https://www.facebook.com/leagueoflegends"
+            target="_blank"
           >
             <img
               className="socialMediaIcon"
@@ -50,6 +53,7 @@ const Footer = () => {
           <a
             className="socialMediaHover"
             href="https://www.instagram.com/leagueoflegends/"
+            target="_blank"
           >
             <img
               className="socialMediaIcon"
@@ -60,6 +64,7 @@ const Footer = () => {
           <a
             className="socialMediaHover"
             href="https://www.reddit.com/r/leagueoflegends/"
+            target="_blank"
           >
             <img
               className="socialMediaIcon"

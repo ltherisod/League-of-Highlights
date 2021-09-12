@@ -35,21 +35,21 @@ const Esports = (props) => {
             <div className="socialContent">
                 <p>JOIN OUR SOCIAL NETWORKS |</p>
                 <div className="socialBox">
-                    <NavLink className="socialMediaHover" to="https://www.youtube.com/user/riotgamesinc">
+                    <a className="socialMediaHover" href="https://www.youtube.com/user/riotgamesinc" target="_blank">
                         <img className="socialMediaIcon" src="./assets/youtube.png" alt=""/>
-                    </NavLink>
-                    <NavLink className="socialMediaHover" to="https://twitter.com/leagueoflegends">
+                    </a>
+                    <a className="socialMediaHover" href="https://twitter.com/leagueoflegends" target="_blank">
                         <img className="socialMediaIcon" src="./assets/twitter.png" alt=""/>
-                    </NavLink>
-                    <NavLink className="socialMediaHover" to="https://www.facebook.com/leagueoflegends">
+                    </a>
+                    <a className="socialMediaHover" href="https://www.facebook.com/leagueoflegends" target="_blank">
                         <img className="socialMediaIcon" src="./assets/facebook.png" alt=""/>
-                    </NavLink>
-                    <NavLink className="socialMediaHover" to="https://www.instagram.com/leagueoflegends/">
+                    </a>
+                    <a className="socialMediaHover" href="https://www.instagram.com/leagueoflegends/" target="_blank">
                         <img className="socialMediaIcon" src="./assets/instagram.png" alt=""/>
-                    </NavLink> 
-                    <NavLink className="socialMediaHover" to="https://www.reddit.com/r/leagueoflegends/">
+                    </a> 
+                    <a className="socialMediaHover" href="https://www.reddit.com/r/leagueoflegends/" target="_blank">
                         <img className="socialMediaIcon" src="./assets/reddit.png" alt=""/>
-                    </NavLink> 
+                    </a> 
                 </div>
             </div>
             <div className="titleRotation" style={{backgroundImage:"url('https://i.postimg.cc/6p2q1Gg5/champions-Rotation.png')"}}></div>
