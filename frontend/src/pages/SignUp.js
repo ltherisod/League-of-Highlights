@@ -27,6 +27,8 @@ const SignUp = (props) => {
   const [errorName, setErrorName] = useState(null)
   const [errorEmail, setErrorEmail] = useState(null)
   const [errorPass, setErrorPass] = useState(null)
+  const [disableButton,setDisableButton]=useState(false)
+
   // Utils
   const inputHandler = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -76,12 +78,16 @@ const SignUp = (props) => {
       ))
     }
     try {
+      setDisableButton(true)
       const res = await props.signUp(userData)
-      console.log(res)
+     
       if (res.success) {
+        console.log('caigo en if de createHandler')
+        setDisableButton(false)
         setUserId(res.response._id)
         setStep(2)
       } else {
+        setDisableButton(false)
         if (res.error === "Network Error") {
           toast.custom((t) => (
             <div
@@ -158,6 +164,7 @@ const SignUp = (props) => {
         }
       }
     } catch (error) {
+      setDisableButton(false)
       toast.custom((t) => (
         <div
           className={`${
@@ -185,7 +192,7 @@ const SignUp = (props) => {
           </p>
         </div>
       ))
-      props.history.push("/")
+      
     }
   }
 
@@ -260,7 +267,6 @@ const SignUp = (props) => {
             </p>
           </div>
         ))
-        props.history.push("/")
       })
   }
 
@@ -423,7 +429,7 @@ const SignUp = (props) => {
               <div className="row">
                 <div className="col-xs-12 col-sm-6">
                   <div className="d-flex justify-content-center align-items-center">
-                    <button onClick={createHandler} className="sessionButton">
+                    <button onClick={createHandler} className="sessionButton" disabled={disableButton}>
                       <span>Sign Up</span>
                     </button>
                   </div>
