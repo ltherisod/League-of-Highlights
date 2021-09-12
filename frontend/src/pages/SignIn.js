@@ -194,7 +194,35 @@ const SignIn = (props) => {
               </p>
             </div>
           ))
-        } 
+        } else {
+          toast.custom((t) => (
+            <div
+              className={`${
+                t.visible ? "animate-enter" : "animate-leave"
+              } bg-black flex`}
+              style={{
+                display: "flex",
+                alignContent: "center",
+                alignItems: "center",
+                padding: "5px 10px",
+                borderRadius: "35px",
+              }}
+            >
+              <img
+                style={{ width: "60px", height: "60px" }}
+                className="h-4 w-4 rounded-full"
+                src="https://i.postimg.cc/mrHj3y29/success2.png"
+                alt=""
+              />
+              <p
+                className="text-sm font-medium text-white"
+                style={{ marginBottom: 0 }}
+              >
+                Welcome!
+              </p>
+            </div>
+          ))
+        }
       })
       .catch((err) => {
         toast.custom((t) => (
