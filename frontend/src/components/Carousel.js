@@ -7,8 +7,6 @@ import { useEffect, useState } from "react"
 import videosActions from "../redux/actions/videosActions"
 import ReactPlayer from "react-player"
 import toast from 'react-hot-toast'
-import Aos from "aos"
-import "aos/dist/aos.css"
 
 SwiperCore.use([Navigation, Pagination])
 
@@ -41,7 +39,6 @@ const Carousel = (props) => {
       }
     }
     getVideos()
-    Aos.init({ duration: 2000 })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
@@ -50,8 +47,8 @@ const Carousel = (props) => {
           {/* <p className='topTitle'>TOP</p>
           <h2 className='titleCarouselHome'>HIGHLIGHTS</h2> */}
           <div className="boxTitleCarousel">
-              <div className="carouselTitle" data-aos="fade-up" data-aos-duration="3000" style={{backgroundImage:"url('https://i.postimg.cc/nLx9RsFh/highlights.png')"}}></div>
-              <div className="dividerButtomCarousel" data-aos="fade-up" data-aos-duration="3000" style={{backgroundImage:"url('https://i.postimg.cc/brxv0gfM/divider.png')"}}></div>
+              <div className="carouselTitle" style={{backgroundImage:"url('https://i.postimg.cc/nLx9RsFh/highlights.png')"}}></div>
+              <div className="dividerButtomCarousel" style={{backgroundImage:"url('https://i.postimg.cc/brxv0gfM/divider.png')"}}></div>
           </div>
         <div className="carouselBox" style={{backgroundImage: "url('https://i.postimg.cc/FKvnT7Zd/fondo-Carousel2.png')"}}>
             <Swiper className="carouselContainer"
