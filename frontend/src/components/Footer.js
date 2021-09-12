@@ -21,6 +21,7 @@ const Footer = () => {
             className="socialMediaHover"
             href="https://www.youtube.com/user/riotgamesinc"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               className="socialMediaIcon"
@@ -32,6 +33,7 @@ const Footer = () => {
             className="socialMediaHover"
             href="https://twitter.com/leagueoflegends"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               className="socialMediaIcon"
@@ -43,6 +45,7 @@ const Footer = () => {
             className="socialMediaHover"
             href="https://www.facebook.com/leagueoflegends"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               className="socialMediaIcon"
@@ -54,6 +57,7 @@ const Footer = () => {
             className="socialMediaHover"
             href="https://www.instagram.com/leagueoflegends/"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               className="socialMediaIcon"
@@ -65,6 +69,7 @@ const Footer = () => {
             className="socialMediaHover"
             href="https://www.reddit.com/r/leagueoflegends/"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               className="socialMediaIcon"
