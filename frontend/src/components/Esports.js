@@ -57,7 +57,7 @@ const Esports = (props) => {
             <div className="rotationsContainer">
                 <div className="carouselBorder" style={{backgroundImage:"url('https://i.postimg.cc/9MZDQC0y/marcovideo.png')"}}></div>
                 <Carousel className="rotationsCarousel">
-                    {rotations.map((rotation, index) => {
+                    {rotations.map((rotation, index) =>{
                         return(
                             <Carousel.Item key={index}>
                             <div className="rotationImg" style={{backgroundImage: `url('${rotation.background}')`}}>    
