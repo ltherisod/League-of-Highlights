@@ -249,7 +249,7 @@ const Admin = (props) => {
           {reportedUsers.map((user) => (
             <div key={user._id} >
               <p>
-                <Link to={`/profile/${user.username}`}>{user.username}</Link> (
+                <Link className="linktextaccount" to={`/profile/${user.username}`}>{user.username}</Link> (
                 {user.email}) was reported {user.reports.length} times:
               </p>
               <ul>

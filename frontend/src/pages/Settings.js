@@ -126,7 +126,7 @@ const Settings = (props) => {
                 </button>
                 <p className="mailverify">
                   If you haven't received an email with a verification code please{" "}
-                  <a href="mailto:leagueofhighlights.2021@gmail.com">contact us.</a>
+                  <a className="linktextaccount" href="mailto:leagueofhighlights.2021@gmail.com">contact us.</a>
                 </p>
               </div>
             )}
