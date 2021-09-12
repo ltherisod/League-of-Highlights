@@ -1,7 +1,7 @@
 import "./Profile.css"
 import "./Home.css"
 import Header from "../components/Header"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import Footer from "../components/Footer"
 import userActions from "../redux/actions/userActions"
@@ -35,6 +35,7 @@ const Profile = (props) => {
       console.log(error)
     }
   }
+  
   const refreshHandler = async () => {
     const res = await props.refresh(showProfileData.user, showProfileData._id)
     if (res.success) {
@@ -207,7 +208,6 @@ const Profile = (props) => {
                 <button onClick={refreshHandler}>
                   <FiRefreshCw className="refresh" />
                 </button>
-                {console.log(userReportVisible)}
                 <div className="boxReport">
                   <button
                     onClick={() => setUserReportVisible(!userReportVisible)}

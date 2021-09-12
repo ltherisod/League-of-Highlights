@@ -21,8 +21,8 @@ const Esports = (props) => {
             }
         }
         fetchRotations()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         Aos.init({ duration: 2000 })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if (!rotations) {

@@ -19,8 +19,7 @@ const Videos = (props) => {
 
   useEffect(() => {
     getVideos()
-    // eslint-disable-next-line
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.username])
 
   if (loading) return <p>Loading...</p>

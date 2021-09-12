@@ -103,7 +103,6 @@ const userActions = {
         if (!Object.keys(soloQ).length) {
           soloQ = { tier: "UNRANKED", rank: "" }
         }
-        console.log(champs)
         if (!champs.data.length) {
           champs.data = [
             { championId: 17 },

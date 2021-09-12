@@ -12,7 +12,7 @@ const Verify = () => {
 
     return (
         <div className="verifyBox" data-aos="fade-up" data-aos-duration="3000">
-            <img className="verifyImg" src="https://i.postimg.cc/K8ByHZHN/gnar.png"/>
+            <img className="verifyImg" src="https://i.postimg.cc/K8ByHZHN/gnar.png" alt=''/>
             <p className="verifyP">Please verify your account to upload a video.</p>
             <Link className="verifyLink" to="/settings">Click here!</Link> 
         </div>

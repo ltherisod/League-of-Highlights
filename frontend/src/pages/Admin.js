@@ -3,9 +3,9 @@ import Header from "../components/Header"
 import { connect } from "react-redux"
 import videosActions from "../redux/actions/videosActions"
 import userActions from "../redux/actions/userActions"
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState} from "react"
 import { Link } from "react-router-dom"
-import toast, {Toaster} from "react-hot-toast"
+import toast from "react-hot-toast"
 
 const Admin = (props) => {
   const [reportedUsers, setReportedUsers] = useState([])
@@ -59,6 +59,7 @@ const Admin = (props) => {
         },
       }
     ))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const dismissUserReport = async (id) => {

@@ -6,9 +6,7 @@ import {  FiCheck } from "react-icons/fi"
 import toast from "react-hot-toast"
 
 const ReportForm = (props) => {
-  //const input = useRef(null)
   const [content, setContent] = useState("")
-//input.current.value,
   const reportVideoHandler = async () => {
     const res = await props.reportVideo(props.videoId, {
       author: props.user._id,
@@ -57,7 +55,6 @@ const ReportForm = (props) => {
       <form >
         <div className="reportForm">
           <input
-            //ref={input}
             value={content}
             onChange={(e) => setContent(e.target.value)}
             className="reportInput"
