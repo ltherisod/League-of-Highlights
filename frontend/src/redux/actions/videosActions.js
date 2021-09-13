@@ -69,7 +69,7 @@ const videosActions = {
         // el id del usuario que lo reporta y contenido
         return { success: false, response: null, error: e.message }
       }
-    } // puede reportar todas las veces pero va  allegar uno, no le avisemos por hijo de puta
+    } 
   },
 
   toggleLike: (videoId, userId) => {
