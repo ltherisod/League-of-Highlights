@@ -42,3 +42,7 @@ Primer Challenge Grupal desarrollado por :
  * [Nicole Dorola](https://github.com/Ndorola)
  * [Lucrecia Gillone](https://github.com/LucreGillone)
  * [Fernando Leniz](https://github.com/FerLeniz)
+
+## Expresiones de Gratitud 💗
+Se agradece a Fernando Biaus por la mentoría y  dedicación. <br/>
+También a Mindhub por la oportunidad de crecer como developers.
