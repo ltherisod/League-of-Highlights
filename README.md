@@ -36,9 +36,9 @@ Este proyecto fue realizado por las siguientes tecnologías
 
 ---
 Primer Challenge Grupal desarrollado por :
-  [Laura Therisod](https://github.com/ltherisod/)
-  [Jonathan Mardones](https://github.com/jmardones94)
-  [Cristian Tortoza](https://github.com/CristianTortoza)
-  [Nicole Dorola](https://github.com/Ndorola)
-  [Lucrecia Gillone](https://github.com/LucreGillone)
-  [Fernando Leniz](https://github.com/FerLeniz)
+ * [Laura Therisod](https://github.com/ltherisod/)
+ * [Jonathan Mardones](https://github.com/jmardones94)
+ * [Cristian Tortoza](https://github.com/CristianTortoza)
+ * [Nicole Dorola](https://github.com/Ndorola)
+ * [Lucrecia Gillone](https://github.com/LucreGillone)
+ * [Fernando Leniz](https://github.com/FerLeniz)
