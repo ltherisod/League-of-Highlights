@@ -32,7 +32,7 @@ Este proyecto fue realizado por las siguientes tecnologías
 * [Redux](https://react-redux.js.org/) -  Utilizado para trabajar con un estado global
 * [Mongoose](https://mongoosejs.com/) - Modelado de objetos (Object Document Mapper (ODM))
 * [Passport](http://www.passportjs.org/) - Utilizada para la autentificación de usuarios
-* [Joi](https://www.npmjs.com/package/joi) - usada para la validación de formularios
+* [Joi](https://www.npmjs.com/package/joi) - Usada para la validación de formularios
 
 ---
 Primer Challenge Grupal desarrollado por :
