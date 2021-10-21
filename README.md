@@ -35,7 +35,7 @@ Este proyecto fue realizado por las siguientes tecnologías
 * [Joi](https://www.npmjs.com/package/joi) - Usada para la validación de formularios
 
 ---
-Primer Challenge Grupal desarrollado por :
+## ✏️ Primer Challenge Grupal desarrollado por :
  * [Laura Therisod](https://github.com/ltherisod/)
  * [Jonathan Mardones](https://github.com/jmardones94)
  * [Cristian Tortoza](https://github.com/CristianTortoza)
